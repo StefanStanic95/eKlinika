@@ -1,0 +1,1 @@
+Scaffold-DbContext "Server=.;Database=eKlinika;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Database
