@@ -34,7 +34,7 @@ namespace eKlinika.WebAPI
             
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+                c.SwaggerDoc("v1", new Info { Title = "eKlinika API", Version = "v1" });
             });
 
             var connection = @"Server=.;Database=eKlinika;Trusted_Connection=True;ConnectRetryCount=0";
@@ -59,7 +59,7 @@ namespace eKlinika.WebAPI
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "eKlinika API V1");
             });
 
             app.UseHttpsRedirection();
