@@ -30,15 +30,12 @@ namespace eKlinika.WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
-
             services.AddAutoMapper();
             
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
             });
-
 
             var connection = @"Server=.;Database=eKlinika;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<eKlinikaContext>(options => options.UseSqlServer(connection));
@@ -55,6 +52,15 @@ namespace eKlinika.WebAPI
             {
                 app.UseHsts();
             }
+
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
 
             app.UseHttpsRedirection();
             app.UseMvc();
