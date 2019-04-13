@@ -13,7 +13,7 @@ namespace eKlinika.WebAPI.Database
             Uputnica = new HashSet<Uputnica>();
         }
 
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Alergije { get; set; }
         public string BrojKartona { get; set; }
         public string BrojKnjizice { get; set; }
@@ -23,7 +23,7 @@ namespace eKlinika.WebAPI.Database
         public double Tezina { get; set; }
         public int Visina { get; set; }
 
-        public Korisnici IdNavigation { get; set; }
+        public Korisnici Korisnik { get; set; }
         public KrvnaGrupa KrvnaGrupa { get; set; }
         public ICollection<ApotekaRacun> ApotekaRacun { get; set; }
         public ICollection<Pregled> Pregled { get; set; }

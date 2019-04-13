@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace eKlinika.WebAPI.Database
 {
-    public partial class KorisniciUloge
+    public class KorisniciUloge
     {
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public int UlogaId { get; set; }
 
         public Uloge Uloga { get; set; }

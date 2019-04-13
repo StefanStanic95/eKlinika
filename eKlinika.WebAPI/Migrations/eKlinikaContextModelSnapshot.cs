@@ -21,7 +21,7 @@ namespace eKlinika.WebAPI.Migrations
 
             modelBuilder.Entity("eKlinika.WebAPI.Database.Apotekar", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<string>("Id");
 
                     b.Property<string>("OpisPosla");
 
@@ -36,11 +36,11 @@ namespace eKlinika.WebAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ApotekarId");
+                    b.Property<string>("ApotekarId");
 
                     b.Property<DateTime>("DatumIzdavanja");
 
-                    b.Property<int?>("PacijentId");
+                    b.Property<string>("PacijentId");
 
                     b.HasKey("Id");
 
@@ -87,7 +87,7 @@ namespace eKlinika.WebAPI.Migrations
 
             modelBuilder.Entity("eKlinika.WebAPI.Database.Doktor", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<string>("Id");
 
                     b.Property<DateTime>("DatumSpecijalizacije");
 
@@ -136,11 +136,13 @@ namespace eKlinika.WebAPI.Migrations
 
             modelBuilder.Entity("eKlinika.WebAPI.Database.Korisnici", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Broj");
+                    b.Property<int>("AccessFailedCount");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken();
 
                     b.Property<DateTime>("DatumRodjenja");
 
@@ -153,20 +155,33 @@ namespace eKlinika.WebAPI.Migrations
 
                     b.Property<string>("Ime");
 
-                    b.Property<string>("Jmbg")
-                        .HasColumnName("JMBG");
+                    b.Property<string>("JMBG");
+
+                    b.Property<bool>("LockoutEnabled");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256);
 
                     b.Property<string>("PasswordHash");
 
                     b.Property<string>("PhoneNumber");
 
+                    b.Property<bool>("PhoneNumberConfirmed");
+
                     b.Property<string>("Prezime");
 
-                    b.Property<string>("Slika");
+                    b.Property<string>("SecurityStamp");
+
+                    b.Property<byte[]>("Slika");
 
                     b.Property<string>("Spol");
 
-                    b.Property<string>("Telefon");
+                    b.Property<bool>("TwoFactorEnabled");
 
                     b.Property<string>("Ulica");
 
@@ -177,20 +192,15 @@ namespace eKlinika.WebAPI.Migrations
 
                     b.HasIndex("GradId");
 
-                    b.ToTable("Korisnici");
-                });
+                    b.HasIndex("NormalizedEmail")
+                        .HasName("EmailIndex");
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.KorisniciUloge", b =>
-                {
-                    b.Property<int>("UserId");
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.Property<int>("UlogaId");
-
-                    b.HasKey("UserId", "UlogaId");
-
-                    b.HasIndex("UlogaId");
-
-                    b.ToTable("KorisniciUloge");
+                    b.ToTable("AspNetUsers");
                 });
 
             modelBuilder.Entity("eKlinika.WebAPI.Database.KrvnaGrupa", b =>
@@ -260,7 +270,7 @@ namespace eKlinika.WebAPI.Migrations
 
             modelBuilder.Entity("eKlinika.WebAPI.Database.MedicinskaSestra", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<string>("Id");
 
                     b.Property<string>("Certifikati");
 
@@ -335,7 +345,7 @@ namespace eKlinika.WebAPI.Migrations
 
             modelBuilder.Entity("eKlinika.WebAPI.Database.Osoblje", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<string>("Id");
 
                     b.Property<DateTime>("DatumZaposlenja");
 
@@ -354,7 +364,7 @@ namespace eKlinika.WebAPI.Migrations
 
             modelBuilder.Entity("eKlinika.WebAPI.Database.Pacijent", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<string>("Id");
 
                     b.Property<string>("Alergije");
 
@@ -389,16 +399,16 @@ namespace eKlinika.WebAPI.Migrations
 
                     b.Property<DateTime>("DatumRezervacije");
 
-                    b.Property<int?>("DoktorId");
+                    b.Property<string>("DoktorId");
 
                     b.Property<bool>("IsOdrzan")
                         .HasColumnName("isOdrzan");
 
-                    b.Property<int?>("MedicinskaSestraId");
+                    b.Property<string>("MedicinskaSestraId");
 
                     b.Property<string>("Napomena");
 
-                    b.Property<int?>("PacijentId");
+                    b.Property<string>("PacijentId");
 
                     b.Property<string>("Prioritet");
 
@@ -507,20 +517,6 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("RezultatPretrage");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Uloge", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(256);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Uloge");
-                });
-
             modelBuilder.Entity("eKlinika.WebAPI.Database.Uplata", b =>
                 {
                     b.Property<int>("Id")
@@ -535,7 +531,7 @@ namespace eKlinika.WebAPI.Migrations
 
                     b.Property<string>("Namjena");
 
-                    b.Property<int?>("PacijentId");
+                    b.Property<string>("PacijentId");
 
                     b.Property<int?>("PregledId");
 
@@ -560,11 +556,11 @@ namespace eKlinika.WebAPI.Migrations
 
                     b.Property<bool>("IsGotovNalaz");
 
-                    b.Property<int?>("LaboratorijDoktorId");
+                    b.Property<string>("LaboratorijDoktorId");
 
-                    b.Property<int?>("PacijentId");
+                    b.Property<string>("PacijentId");
 
-                    b.Property<int?>("UputioDoktorId");
+                    b.Property<string>("UputioDoktorId");
 
                     b.Property<int>("VrstaPretrageId");
 
@@ -617,9 +613,119 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("VrstaPretrage");
                 });
 
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken();
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ClaimType");
+
+                    b.Property<string>("ClaimValue");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ClaimType");
+
+                    b.Property<string>("ClaimValue");
+
+                    b.Property<string>("UserId")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.Property<string>("LoginProvider");
+
+                    b.Property<string>("ProviderKey");
+
+                    b.Property<string>("ProviderDisplayName");
+
+                    b.Property<string>("UserId")
+                        .IsRequired();
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.Property<string>("UserId");
+
+                    b.Property<string>("RoleId");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.Property<string>("UserId");
+
+                    b.Property<string>("LoginProvider");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Value");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens");
+                });
+
             modelBuilder.Entity("eKlinika.WebAPI.Database.Apotekar", b =>
                 {
-                    b.HasOne("eKlinika.WebAPI.Database.Osoblje", "IdNavigation")
+                    b.HasOne("eKlinika.WebAPI.Database.Osoblje", "Osoblje")
                         .WithOne("Apotekar")
                         .HasForeignKey("eKlinika.WebAPI.Database.Apotekar", "Id")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -646,7 +752,7 @@ namespace eKlinika.WebAPI.Migrations
 
             modelBuilder.Entity("eKlinika.WebAPI.Database.Doktor", b =>
                 {
-                    b.HasOne("eKlinika.WebAPI.Database.Osoblje", "IdNavigation")
+                    b.HasOne("eKlinika.WebAPI.Database.Osoblje", "Osoblje")
                         .WithOne("Doktor")
                         .HasForeignKey("eKlinika.WebAPI.Database.Doktor", "Id")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -667,20 +773,6 @@ namespace eKlinika.WebAPI.Migrations
                         .HasForeignKey("GradId");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.KorisniciUloge", b =>
-                {
-                    b.HasOne("eKlinika.WebAPI.Database.Uloge", "Uloga")
-                        .WithMany("KorisniciUloge")
-                        .HasForeignKey("UlogaId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("eKlinika.WebAPI.Database.Korisnici", "User")
-                        .WithMany("KorisniciUloge")
-                        .HasForeignKey("UserId")
-                        .HasConstraintName("FK_KorisniciRoles_Korisnici_UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("eKlinika.WebAPI.Database.LabPretraga", b =>
                 {
                     b.HasOne("eKlinika.WebAPI.Database.VrstaPretrage", "VrstaPretrage")
@@ -699,7 +791,7 @@ namespace eKlinika.WebAPI.Migrations
 
             modelBuilder.Entity("eKlinika.WebAPI.Database.MedicinskaSestra", b =>
                 {
-                    b.HasOne("eKlinika.WebAPI.Database.Osoblje", "IdNavigation")
+                    b.HasOne("eKlinika.WebAPI.Database.Osoblje", "Osoblje")
                         .WithOne("MedicinskaSestra")
                         .HasForeignKey("eKlinika.WebAPI.Database.MedicinskaSestra", "Id")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -736,7 +828,7 @@ namespace eKlinika.WebAPI.Migrations
 
             modelBuilder.Entity("eKlinika.WebAPI.Database.Osoblje", b =>
                 {
-                    b.HasOne("eKlinika.WebAPI.Database.Korisnici", "IdNavigation")
+                    b.HasOne("eKlinika.WebAPI.Database.Korisnici", "Korisnik")
                         .WithOne("Osoblje")
                         .HasForeignKey("eKlinika.WebAPI.Database.Osoblje", "Id")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -744,7 +836,7 @@ namespace eKlinika.WebAPI.Migrations
 
             modelBuilder.Entity("eKlinika.WebAPI.Database.Pacijent", b =>
                 {
-                    b.HasOne("eKlinika.WebAPI.Database.Korisnici", "IdNavigation")
+                    b.HasOne("eKlinika.WebAPI.Database.Korisnici", "Korisnik")
                         .WithOne("Pacijent")
                         .HasForeignKey("eKlinika.WebAPI.Database.Pacijent", "Id")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -826,7 +918,7 @@ namespace eKlinika.WebAPI.Migrations
             modelBuilder.Entity("eKlinika.WebAPI.Database.Uputnica", b =>
                 {
                     b.HasOne("eKlinika.WebAPI.Database.Doktor", "LaboratorijDoktor")
-                        .WithMany("UputnicaLaboratorijDoktor")
+                        .WithMany()
                         .HasForeignKey("LaboratorijDoktorId");
 
                     b.HasOne("eKlinika.WebAPI.Database.Pacijent", "Pacijent")
@@ -834,7 +926,7 @@ namespace eKlinika.WebAPI.Migrations
                         .HasForeignKey("PacijentId");
 
                     b.HasOne("eKlinika.WebAPI.Database.Doktor", "UputioDoktor")
-                        .WithMany("UputnicaUputioDoktor")
+                        .WithMany()
                         .HasForeignKey("UputioDoktorId");
 
                     b.HasOne("eKlinika.WebAPI.Database.VrstaPretrage", "VrstaPretrage")
@@ -853,6 +945,51 @@ namespace eKlinika.WebAPI.Migrations
                     b.HasOne("eKlinika.WebAPI.Database.Pregled", "Pregled")
                         .WithMany("UstanovljenaDijagnoza")
                         .HasForeignKey("PregledId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.HasOne("eKlinika.WebAPI.Database.Korisnici")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.HasOne("eKlinika.WebAPI.Database.Korisnici")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("eKlinika.WebAPI.Database.Korisnici")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.HasOne("eKlinika.WebAPI.Database.Korisnici")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace eKlinika.WebAPI.Database
 {
@@ -9,12 +10,12 @@ namespace eKlinika.WebAPI.Database
         {
             Pregled = new HashSet<Pregled>();
         }
-
-        public int Id { get; set; }
+        [ForeignKey("Osoblje")]
+        public string Id { get; set; }
         public string Certifikati { get; set; }
         public string Kursevi { get; set; }
 
-        public Osoblje IdNavigation { get; set; }
+        public Osoblje Osoblje { get; set; }
         public ICollection<Pregled> Pregled { get; set; }
     }
 }

@@ -1,10 +1,11 @@
 ﻿using System;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace eKlinika.WebAPI.Database
 {
-    public partial class eKlinikaContext : DbContext
+    public partial class eKlinikaContext : IdentityDbContext<Korisnici>
     {
         public eKlinikaContext()
         {
@@ -23,7 +24,6 @@ namespace eKlinika.WebAPI.Database
         public virtual DbSet<Drzava> Drzava { get; set; }
         public virtual DbSet<Grad> Grad { get; set; }
         public virtual DbSet<Korisnici> Korisnici { get; set; }
-        public virtual DbSet<KorisniciUloge> KorisniciUloge { get; set; }
         public virtual DbSet<KrvnaGrupa> KrvnaGrupa { get; set; }
         public virtual DbSet<LabPretraga> LabPretraga { get; set; }
         public virtual DbSet<Lijek> Lijek { get; set; }
@@ -38,7 +38,6 @@ namespace eKlinika.WebAPI.Database
         public virtual DbSet<RacunStavka> RacunStavka { get; set; }
         public virtual DbSet<Recept> Recept { get; set; }
         public virtual DbSet<RezultatPretrage> RezultatPretrage { get; set; }
-        public virtual DbSet<Uloge> Uloge { get; set; }
         public virtual DbSet<Uplata> Uplata { get; set; }
         public virtual DbSet<Uputnica> Uputnica { get; set; }
         public virtual DbSet<UstanovljenaDijagnoza> UstanovljenaDijagnoza { get; set; }
@@ -55,11 +54,13 @@ namespace eKlinika.WebAPI.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Apotekar>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.HasOne(d => d.IdNavigation)
+                entity.HasOne(d => d.Osoblje)
                     .WithOne(p => p.Apotekar)
                     .HasForeignKey<Apotekar>(d => d.Id);
             });
@@ -86,7 +87,7 @@ namespace eKlinika.WebAPI.Database
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.HasOne(d => d.IdNavigation)
+                entity.HasOne(d => d.Osoblje)
                     .WithOne(p => p.Doktor)
                     .HasForeignKey<Doktor>(d => d.Id);
             });
@@ -102,8 +103,6 @@ namespace eKlinika.WebAPI.Database
             {
                 entity.Property(e => e.Email).HasMaxLength(256);
 
-                entity.Property(e => e.Jmbg).HasColumnName("JMBG");
-
                 entity.Property(e => e.UserName).HasMaxLength(256);
 
                 entity.HasOne(d => d.Grad)
@@ -111,19 +110,6 @@ namespace eKlinika.WebAPI.Database
                     .HasForeignKey(d => d.GradId);
             });
 
-            modelBuilder.Entity<KorisniciUloge>(entity =>
-            {
-                entity.HasKey(e => new { e.UserId, e.UlogaId });
-
-                entity.HasOne(d => d.Uloga)
-                    .WithMany(p => p.KorisniciUloge)
-                    .HasForeignKey(d => d.UlogaId);
-
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.KorisniciUloge)
-                    .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK_KorisniciRoles_Korisnici_UserId");
-            });
 
             modelBuilder.Entity<LabPretraga>(entity =>
             {
@@ -143,7 +129,7 @@ namespace eKlinika.WebAPI.Database
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.HasOne(d => d.IdNavigation)
+                entity.HasOne(d => d.Osoblje)
                     .WithOne(p => p.MedicinskaSestra)
                     .HasForeignKey<MedicinskaSestra>(d => d.Id);
             });
@@ -179,7 +165,7 @@ namespace eKlinika.WebAPI.Database
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.HasOne(d => d.IdNavigation)
+                entity.HasOne(d => d.Korisnik)
                     .WithOne(p => p.Osoblje)
                     .HasForeignKey<Osoblje>(d => d.Id);
             });
@@ -188,7 +174,7 @@ namespace eKlinika.WebAPI.Database
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.HasOne(d => d.IdNavigation)
+                entity.HasOne(d => d.Korisnik)
                     .WithOne(p => p.Pacijent)
                     .HasForeignKey<Pacijent>(d => d.Id);
 
@@ -256,11 +242,6 @@ namespace eKlinika.WebAPI.Database
                     .OnDelete(DeleteBehavior.ClientSetNull);
             });
 
-            modelBuilder.Entity<Uloge>(entity =>
-            {
-                entity.Property(e => e.Name).HasMaxLength(256);
-            });
-
             modelBuilder.Entity<Uplata>(entity =>
             {
                 entity.HasOne(d => d.Pacijent)
@@ -270,17 +251,9 @@ namespace eKlinika.WebAPI.Database
 
             modelBuilder.Entity<Uputnica>(entity =>
             {
-                entity.HasOne(d => d.LaboratorijDoktor)
-                    .WithMany(p => p.UputnicaLaboratorijDoktor)
-                    .HasForeignKey(d => d.LaboratorijDoktorId);
-
                 entity.HasOne(d => d.Pacijent)
                     .WithMany(p => p.Uputnica)
                     .HasForeignKey(d => d.PacijentId);
-
-                entity.HasOne(d => d.UputioDoktor)
-                    .WithMany(p => p.UputnicaUputioDoktor)
-                    .HasForeignKey(d => d.UputioDoktorId);
 
                 entity.HasOne(d => d.VrstaPretrage)
                     .WithMany(p => p.Uputnica)
