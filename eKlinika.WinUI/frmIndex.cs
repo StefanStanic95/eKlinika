@@ -1,4 +1,5 @@
 ﻿using eKlinika.WinUI.Korisnici;
+using eKlinika.WinUI.Pacijenti;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -125,6 +126,19 @@ namespace eKlinika.WinUI
         private void pacijentToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void noviPacijentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPacijentiDetails frm = new frmPacijentiDetails();
+            frm.Show();
+
+        }
+
+        private void urediPacijentaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPacijenti frm = new frmPacijenti();
+            frm.Show();
         }
     }
 }

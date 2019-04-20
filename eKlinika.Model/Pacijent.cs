@@ -6,7 +6,7 @@ namespace eKlinika.Model
 {
     public partial class Pacijent
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
         public string Alergije { get; set; }
         public string BrojKartona { get; set; }
         public string BrojKnjizice { get; set; }

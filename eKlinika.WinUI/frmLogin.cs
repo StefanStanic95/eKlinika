@@ -26,8 +26,8 @@ namespace eKlinika.WinUI
             try
             {
                 await _service.Get<dynamic>(null);
-                frmIndex frm = new frmIndex();
-                frm.Show();
+                DialogResult = DialogResult.OK;
+                Close();
             }
             catch (Exception ex)
             {

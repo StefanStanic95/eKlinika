@@ -61,6 +61,15 @@ namespace eKlinika.WinUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Passwordi se ne podudaraju!.
+        /// </summary>
+        internal static string Validation_PasswordNotMatch {
+            get {
+                return ResourceManager.GetString("Validation_PasswordNotMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Obavezno polje!.
         /// </summary>
         internal static string Validation_RequiredField {

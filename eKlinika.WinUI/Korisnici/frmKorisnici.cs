@@ -25,7 +25,7 @@ namespace eKlinika.WinUI.Korisnici
         {
             var search = new KorisniciSearchRequest()
             {
-                Ime = txtPretraga.Text
+                ImePrezime = txtPretraga.Text
             };
 
             var list = await _apiService.Get<List<Model.Korisnici>>(search);

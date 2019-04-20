@@ -66,6 +66,7 @@ namespace eKlinika.WebAPI
 
             services.AddScoped<IKorisniciService, KorisniciService>();
             services.AddScoped<IService<Model.Uloge, object>, BaseService<Model.Uloge, object, Uloge>>();
+            services.AddScoped<IService<Model.KrvnaGrupa, object>, BaseService<Model.KrvnaGrupa, object, KrvnaGrupa>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

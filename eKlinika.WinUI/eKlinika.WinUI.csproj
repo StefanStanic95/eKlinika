@@ -84,6 +84,18 @@
     <Compile Include="Korisnici\frmKorisniciDetails.Designer.cs">
       <DependentUpon>frmKorisniciDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pacijenti\frmPacijenti.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pacijenti\frmPacijenti.Designer.cs">
+      <DependentUpon>frmPacijenti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pacijenti\frmPacijentiDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pacijenti\frmPacijentiDetails.Designer.cs">
+      <DependentUpon>frmPacijentiDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmIndex.resx">
@@ -94,6 +106,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Korisnici\frmKorisniciDetails.resx">
       <DependentUpon>frmKorisniciDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pacijenti\frmPacijenti.resx">
+      <DependentUpon>frmPacijenti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pacijenti\frmPacijentiDetails.resx">
+      <DependentUpon>frmPacijentiDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
