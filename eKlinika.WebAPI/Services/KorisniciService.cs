@@ -35,8 +35,16 @@ namespace eKlinika.WebAPI.Services
             {
                 query = query.Where(x => x.Prezime.StartsWith(request.Prezime));
             }
-            
+
             query = query.Include(x => x.KorisniciUloge).ThenInclude(x => x.Uloga);
+
+
+
+            if (!string.IsNullOrWhiteSpace(request?.Uloga))
+            {
+                query = query.Where(x => x.KorisniciUloge.Where( y => y.Uloga.Naziv == request.Uloga).Any() );
+            }
+
 
             var list = query.ToList();
 
