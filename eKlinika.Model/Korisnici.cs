@@ -22,7 +22,7 @@ namespace eKlinika.Model
         public ICollection<KorisniciUloge> KorisniciUloge { get; set; }
 
         //public Grad Grad { get; set; }
-        //public Osoblje Osoblje { get; set; }
-        //public Pacijent Pacijent { get; set; }
+        public Osoblje Osoblje { get; set; }
+        public Pacijent Pacijent { get; set; }
     }
 }
