@@ -102,7 +102,7 @@ namespace eKlinika.WebAPI
             var UserManager = serviceProvider.GetRequiredService<IKorisniciService>();
             var db = serviceProvider.GetRequiredService<eKlinikaContext>();
 
-            List<string> roles = new List<string> { "Administrator", "Apotekar", "Doktor", "MedicinskaSestra", "Referent" };
+            List<string> roles = new List<string> { "Administrator", "Apotekar", "Doktor", "MedicinskaSestra", "Referent", "Pacijent" };
             foreach (var naziv in roles)
             {
                 if (db.Uloge.Where(x => x.Naziv == naziv).Any())
