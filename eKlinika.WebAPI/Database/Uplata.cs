@@ -15,7 +15,7 @@ namespace eKlinika.WebAPI.Database
         public DateTime DatumUplate { get; set; }
         public double Iznos { get; set; }
         public string Namjena { get; set; }
-        public string PacijentId { get; set; }
+        public int PacijentId { get; set; }
         public int? PregledId { get; set; }
         public string ZiroRacun { get; set; }
 

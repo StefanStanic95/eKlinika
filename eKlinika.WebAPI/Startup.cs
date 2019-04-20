@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using eKlinika.WebAPI.Database;
+using eKlinika.WebAPI.Security;
 using eKlinika.WebAPI.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -16,9 +18,23 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace eKlinika.WebAPI
 {
+    public class BasicAuthDocumentFilter : IDocumentFilter
+    {
+        public void Apply(SwaggerDocument swaggerDoc, DocumentFilterContext context)
+        {
+            var securityRequirements = new Dictionary<string, IEnumerable<string>>()
+        {
+            { "basic", new string[] { } }  // in swagger you specify empty list unless using OAuth2 scopes
+        };
+
+            swaggerDoc.Security = new[] { securityRequirements };
+        }
+    }
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -35,24 +51,21 @@ namespace eKlinika.WebAPI
             var connection = @"Server=.;Database=eKlinika;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<eKlinikaContext>(options => options.UseSqlServer(connection));
 
-            //and this: add identity and create the db
-            services.AddIdentityCore<Korisnici>(options => { });
-            new IdentityBuilder(typeof(Korisnici), typeof(IdentityRole), services)
-                .AddRoleManager<RoleManager<IdentityRole>>()
-                .AddSignInManager<SignInManager<Korisnici>>()
-                .AddEntityFrameworkStores<eKlinikaContext>();
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddAutoMapper();
             
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "eKlinika API", Version = "v1" });
+                c.AddSecurityDefinition("basic", new BasicAuthScheme() { Type = "basic" });
+                c.DocumentFilter<BasicAuthDocumentFilter>();
             });
 
+            services.AddAuthentication("BasicAuthentication")
+              .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 
             services.AddScoped<IKorisniciService, KorisniciService>();
-
+            services.AddScoped<IService<Model.Uloge, object>, BaseService<Model.Uloge, object, Uloge>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,7 +77,7 @@ namespace eKlinika.WebAPI
             }
             else
             {
-                app.UseHsts();
+                //app.UseHsts();
             }
 
             app.UseSwagger();
@@ -77,7 +90,7 @@ namespace eKlinika.WebAPI
             });
 
             app.UseAuthentication();
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseMvc();
             app.UseSwagger();
 
@@ -86,67 +99,54 @@ namespace eKlinika.WebAPI
 
         private async Task CreateUserRoles(IServiceProvider serviceProvider)
         {
-            var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-            var UserManager = serviceProvider.GetRequiredService<UserManager<Korisnici>>();
+            var UserManager = serviceProvider.GetRequiredService<IKorisniciService>();
             var db = serviceProvider.GetRequiredService<eKlinikaContext>();
 
-            IdentityResult roleResult;
-            //Adding Admin Role
-            var roleCheck = await RoleManager.RoleExistsAsync("Admin");
-            if (!roleCheck)
+            List<string> roles = new List<string> { "Administrator", "Apotekar", "Doktor", "MedicinskaSestra", "Referent" };
+            foreach (var naziv in roles)
             {
-                roleResult = await RoleManager.CreateAsync(new IdentityRole("Admin"));
+                if (db.Uloge.Where(x => x.Naziv == naziv).Any())
+                    continue;
+
+                Uloge uloga = new Uloge
+                {
+                    Naziv = naziv
+                };
+                db.Uloge.Add(uloga);
             }
-            //Adding Apotekar Role
-            roleCheck = await RoleManager.RoleExistsAsync("Apotekar");
-            if (!roleCheck)
-            {
-                roleResult = await RoleManager.CreateAsync(new IdentityRole("Apotekar"));
-            }
-            //Adding Doktor Role
-            roleCheck = await RoleManager.RoleExistsAsync("Doktor");
-            if (!roleCheck)
-            {
-                roleResult = await RoleManager.CreateAsync(new IdentityRole("Doktor"));
-            }
-            //Adding MedicinskaSestra Role
-            roleCheck = await RoleManager.RoleExistsAsync("MedicinskaSestra");
-            if (!roleCheck)
-            {
-                roleResult = await RoleManager.CreateAsync(new IdentityRole("MedicinskaSestra"));
-            }
-            //Adding Referent Role
-            roleCheck = await RoleManager.RoleExistsAsync("Referent");
-            if (!roleCheck)
-            {
-                roleResult = await RoleManager.CreateAsync(new IdentityRole("Referent"));
-            }
+
+            db.SaveChanges();
+
+            int AdminUlogaId = db.Uloge.Where(x => x.Naziv == "Administrator").Select(x => x.Id).FirstOrDefault();
             //Assign Admin role to the main User here we have given our newly registered 
             //login id for Admin management
 
-            Korisnici k = new Korisnici
+            Database.Korisnici k = new Korisnici
             {
                 JMBG = "1234567890123",
                 Ime = "Emina",
                 Prezime = "Custovic",
                 Spol = "F"
             };
-            string password = "myP@ssW0r@d123";
-
             k.UserName = k.Ime + "." + k.Prezime;
             k.Email = k.UserName + "@eKlinika.ba";
+            string password = "myP@ssW0r@d123";
 
-            Korisnici user = await UserManager.FindByEmailAsync(k.Email);
-            if(user != null)
+            Model.Korisnici existingUser = UserManager.GetByEmail(k.Email);
+            if(existingUser == null)
             {
-                await UserManager.AddToRoleAsync(user, "Admin");
-            }
-            else
-            {
-                IdentityResult chkUser = await UserManager.CreateAsync(k, password);
+                k.LozinkaSalt = KorisniciService.GenerateSalt();
+                k.LozinkaHash = KorisniciService.GenerateHash(k.LozinkaSalt, password);
 
-                await UserManager.AddToRoleAsync(k, "Admin");
+                db.Korisnici.Add(k);
 
+                Database.KorisniciUloge korisniciUloge = new Database.KorisniciUloge();
+                korisniciUloge.KorisnikId = k.Id;
+                korisniciUloge.UlogaId = AdminUlogaId;
+                db.KorisniciUloge.Add(korisniciUloge);
+
+                db.SaveChanges();
+                
                 Osoblje osoblje = new Osoblje
                 {
                     Id = k.Id,

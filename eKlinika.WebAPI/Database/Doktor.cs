@@ -11,7 +11,7 @@ namespace eKlinika.WebAPI.Database
             Pregled = new HashSet<Pregled>();
         }
         [ForeignKey("Osoblje")]
-        public string Id { get; set; }
+        public int Id { get; set; }
         public DateTime DatumSpecijalizacije { get; set; }
         public string Specijalizacija { get; set; }
         public string Titula { get; set; }

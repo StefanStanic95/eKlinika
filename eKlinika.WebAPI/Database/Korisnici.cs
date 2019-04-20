@@ -5,12 +5,20 @@ using System.Collections.Generic;
 
 namespace eKlinika.WebAPI.Database
 {
-    public partial class Korisnici : IdentityUser
+    public partial class Korisnici
     {
-        public Korisnici(): base()
+        public Korisnici()
         {
-            KorisniciUloge = new List<Role>();
+            KorisniciUloge = new HashSet<KorisniciUloge>();
         }
+
+
+        public int Id { get; set; }
+        public string UserName { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Email { get; set; }
+        public string LozinkaHash { get; set; }
+        public string LozinkaSalt { get; set; }
 
         public DateTime DatumRodjenja { get; set; }
         public int? GradId { get; set; }
@@ -25,6 +33,6 @@ namespace eKlinika.WebAPI.Database
         public Osoblje Osoblje { get; set; }
         public Pacijent Pacijent { get; set; }
 
-        public List<Role> KorisniciUloge { get; set; }
+        public ICollection<KorisniciUloge> KorisniciUloge { get; set; }
     }
 }

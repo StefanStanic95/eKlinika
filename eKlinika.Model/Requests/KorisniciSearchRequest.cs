@@ -6,8 +6,8 @@ namespace eKlinika.Model.Requests
 {
     public class KorisniciSearchRequest
     {
-        public string ImePrezime { get; set; }
+        public string Ime { get; set; }
 
-        public bool IsUlogeLoadingEnabled { get; set; }
+        public string Prezime { get; set; }
     }
 }

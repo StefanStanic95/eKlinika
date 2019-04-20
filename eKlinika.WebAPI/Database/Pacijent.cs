@@ -13,7 +13,7 @@ namespace eKlinika.WebAPI.Database
             Uputnica = new HashSet<Uputnica>();
         }
 
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Alergije { get; set; }
         public string BrojKartona { get; set; }
         public string BrojKnjizice { get; set; }

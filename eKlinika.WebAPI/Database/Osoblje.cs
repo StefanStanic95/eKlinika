@@ -7,7 +7,7 @@ namespace eKlinika.WebAPI.Database
     public partial class Osoblje
     {
         [ForeignKey("Korisnik")]
-        public string Id { get; set; }
+        public int Id { get; set; }
         public DateTime DatumZaposlenja { get; set; }
         public int GodineStaza { get; set; }
         public string Jezici { get; set; }

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace eKlinika.WebAPI.Database
 {
-    public partial class eKlinikaContext : IdentityDbContext<Korisnici>
+    public partial class eKlinikaContext : DbContext
     {
         public eKlinikaContext()
         {
@@ -24,6 +24,7 @@ namespace eKlinika.WebAPI.Database
         public virtual DbSet<Drzava> Drzava { get; set; }
         public virtual DbSet<Grad> Grad { get; set; }
         public virtual DbSet<Korisnici> Korisnici { get; set; }
+        public virtual DbSet<KorisniciUloge> KorisniciUloge { get; set; }
         public virtual DbSet<KrvnaGrupa> KrvnaGrupa { get; set; }
         public virtual DbSet<LabPretraga> LabPretraga { get; set; }
         public virtual DbSet<Lijek> Lijek { get; set; }
@@ -38,6 +39,7 @@ namespace eKlinika.WebAPI.Database
         public virtual DbSet<RacunStavka> RacunStavka { get; set; }
         public virtual DbSet<Recept> Recept { get; set; }
         public virtual DbSet<RezultatPretrage> RezultatPretrage { get; set; }
+        public virtual DbSet<Uloge> Uloge { get; set; }
         public virtual DbSet<Uplata> Uplata { get; set; }
         public virtual DbSet<Uputnica> Uputnica { get; set; }
         public virtual DbSet<UstanovljenaDijagnoza> UstanovljenaDijagnoza { get; set; }
@@ -73,7 +75,9 @@ namespace eKlinika.WebAPI.Database
 
                 entity.HasOne(d => d.Pacijent)
                     .WithMany(p => p.ApotekaRacun)
-                    .HasForeignKey(d => d.PacijentId);
+                    .HasForeignKey(d => d.PacijentId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
             });
 
             modelBuilder.Entity<Dobavljac>(entity =>
@@ -101,6 +105,15 @@ namespace eKlinika.WebAPI.Database
 
             modelBuilder.Entity<Korisnici>(entity =>
             {
+
+                entity.HasIndex(e => e.Email)
+                    .HasName("CS_Email")
+                    .IsUnique();
+
+                entity.HasIndex(e => e.UserName)
+                    .HasName("CS_UserName")
+                    .IsUnique();
+
                 entity.Property(e => e.Email).HasMaxLength(256);
 
                 entity.Property(e => e.UserName).HasMaxLength(256);
@@ -193,11 +206,13 @@ namespace eKlinika.WebAPI.Database
 
                 entity.HasOne(d => d.MedicinskaSestra)
                     .WithMany(p => p.Pregled)
-                    .HasForeignKey(d => d.MedicinskaSestraId);
+                    .HasForeignKey(d => d.MedicinskaSestraId)
+                    .OnDelete(DeleteBehavior.Restrict);
 
                 entity.HasOne(d => d.Pacijent)
                     .WithMany(p => p.Pregled)
-                    .HasForeignKey(d => d.PacijentId);
+                    .HasForeignKey(d => d.PacijentId)
+                    .OnDelete(DeleteBehavior.Restrict);
 
                 entity.HasOne(d => d.Uplata)
                     .WithMany(p => p.Pregled)
@@ -253,11 +268,23 @@ namespace eKlinika.WebAPI.Database
             {
                 entity.HasOne(d => d.Pacijent)
                     .WithMany(p => p.Uputnica)
-                    .HasForeignKey(d => d.PacijentId);
+                    .HasForeignKey(d => d.PacijentId)
+                    .OnDelete(DeleteBehavior.Restrict);
 
                 entity.HasOne(d => d.VrstaPretrage)
                     .WithMany(p => p.Uputnica)
                     .HasForeignKey(d => d.VrstaPretrageId);
+                
+                entity.HasOne(d => d.UputioDoktor)
+                    .WithMany()
+                    .HasForeignKey(d => d.UputioDoktorId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(d => d.LaboratorijDoktor)
+                    .WithMany()
+                    .HasForeignKey(d => d.LaboratorijDoktorId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
             });
 
             modelBuilder.Entity<UstanovljenaDijagnoza>(entity =>

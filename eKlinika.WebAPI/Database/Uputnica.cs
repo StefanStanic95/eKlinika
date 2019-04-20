@@ -14,9 +14,9 @@ namespace eKlinika.WebAPI.Database
         public DateTime DatumRezultata { get; set; }
         public DateTime DatumUputnice { get; set; }
         public bool IsGotovNalaz { get; set; }
-        public string LaboratorijDoktorId { get; set; }
-        public string PacijentId { get; set; }
-        public string UputioDoktorId { get; set; }
+        public int LaboratorijDoktorId { get; set; }
+        public int PacijentId { get; set; }
+        public int UputioDoktorId { get; set; }
         public int VrstaPretrageId { get; set; }
 
         public Doktor LaboratorijDoktor { get; set; }

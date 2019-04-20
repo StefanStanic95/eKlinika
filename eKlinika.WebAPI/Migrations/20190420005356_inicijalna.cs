@@ -4,24 +4,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace eKlinika.WebAPI.Migrations
 {
-    public partial class Initial : Migration
+    public partial class inicijalna : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "AspNetRoles",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(maxLength: 256, nullable: true),
-                    NormalizedName = table.Column<string>(maxLength: 256, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetRoles", x => x.Id);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Dijagnoza",
                 columns: table => new
@@ -78,6 +64,20 @@ namespace eKlinika.WebAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Uloge",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Naziv = table.Column<string>(nullable: true),
+                    Opis = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Uloge", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "VrstaPretrage",
                 columns: table => new
                 {
@@ -88,27 +88,6 @@ namespace eKlinika.WebAPI.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_VrstaPretrage", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AspNetRoleClaims",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    RoleId = table.Column<string>(nullable: false),
-                    ClaimType = table.Column<string>(nullable: true),
-                    ClaimValue = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetRoleClaims", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "AspNetRoles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -225,24 +204,16 @@ namespace eKlinika.WebAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AspNetUsers",
+                name: "Korisnici",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     UserName = table.Column<string>(maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
-                    Email = table.Column<string>(maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(nullable: false),
-                    PasswordHash = table.Column<string>(nullable: true),
-                    SecurityStamp = table.Column<string>(nullable: true),
-                    ConcurrencyStamp = table.Column<string>(nullable: true),
                     PhoneNumber = table.Column<string>(nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
-                    LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false),
+                    Email = table.Column<string>(maxLength: 256, nullable: true),
+                    LozinkaHash = table.Column<string>(nullable: true),
+                    LozinkaSalt = table.Column<string>(nullable: true),
                     DatumRodjenja = table.Column<DateTime>(nullable: false),
                     GradId = table.Column<int>(nullable: true),
                     Ime = table.Column<string>(nullable: true),
@@ -254,9 +225,9 @@ namespace eKlinika.WebAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                    table.PrimaryKey("PK_Korisnici", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetUsers_Grad_GradId",
+                        name: "FK_Korisnici_Grad_GradId",
                         column: x => x.GradId,
                         principalTable: "Grad",
                         principalColumn: "Id",
@@ -312,86 +283,27 @@ namespace eKlinika.WebAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AspNetUserClaims",
+                name: "KorisniciUloge",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    UserId = table.Column<string>(nullable: false),
-                    ClaimType = table.Column<string>(nullable: true),
-                    ClaimValue = table.Column<string>(nullable: true)
+                    KorisnikId = table.Column<int>(nullable: false),
+                    UlogaId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetUserClaims", x => x.Id);
+                    table.PrimaryKey("PK_KorisniciUloge", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetUserClaims_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AspNetUserLogins",
-                columns: table => new
-                {
-                    LoginProvider = table.Column<string>(nullable: false),
-                    ProviderKey = table.Column<string>(nullable: false),
-                    ProviderDisplayName = table.Column<string>(nullable: true),
-                    UserId = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
-                    table.ForeignKey(
-                        name: "FK_AspNetUserLogins_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AspNetUserRoles",
-                columns: table => new
-                {
-                    UserId = table.Column<string>(nullable: false),
-                    RoleId = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUserRoles", x => new { x.UserId, x.RoleId });
-                    table.ForeignKey(
-                        name: "FK_AspNetUserRoles_AspNetRoles_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "AspNetRoles",
+                        name: "FK_KorisniciUloge_Korisnici_KorisnikId",
+                        column: x => x.KorisnikId,
+                        principalTable: "Korisnici",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AspNetUserRoles_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AspNetUserTokens",
-                columns: table => new
-                {
-                    UserId = table.Column<string>(nullable: false),
-                    LoginProvider = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(nullable: false),
-                    Value = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
-                    table.ForeignKey(
-                        name: "FK_AspNetUserTokens_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
+                        name: "FK_KorisniciUloge_Uloge_UlogaId",
+                        column: x => x.UlogaId,
+                        principalTable: "Uloge",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -400,7 +312,7 @@ namespace eKlinika.WebAPI.Migrations
                 name: "Osoblje",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false),
                     DatumZaposlenja = table.Column<DateTime>(nullable: false),
                     GodineStaza = table.Column<int>(nullable: false),
                     Jezici = table.Column<string>(nullable: true),
@@ -411,9 +323,9 @@ namespace eKlinika.WebAPI.Migrations
                 {
                     table.PrimaryKey("PK_Osoblje", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Osoblje_AspNetUsers_Id",
+                        name: "FK_Osoblje_Korisnici_Id",
                         column: x => x.Id,
-                        principalTable: "AspNetUsers",
+                        principalTable: "Korisnici",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -422,7 +334,7 @@ namespace eKlinika.WebAPI.Migrations
                 name: "Pacijent",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false),
                     Alergije = table.Column<string>(nullable: true),
                     BrojKartona = table.Column<string>(nullable: true),
                     BrojKnjizice = table.Column<string>(nullable: true),
@@ -436,9 +348,9 @@ namespace eKlinika.WebAPI.Migrations
                 {
                     table.PrimaryKey("PK_Pacijent", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Pacijent_AspNetUsers_Id",
+                        name: "FK_Pacijent_Korisnici_Id",
                         column: x => x.Id,
-                        principalTable: "AspNetUsers",
+                        principalTable: "Korisnici",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -453,7 +365,7 @@ namespace eKlinika.WebAPI.Migrations
                 name: "Apotekar",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false),
                     OpisPosla = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -471,7 +383,7 @@ namespace eKlinika.WebAPI.Migrations
                 name: "Doktor",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false),
                     DatumSpecijalizacije = table.Column<DateTime>(nullable: false),
                     Specijalizacija = table.Column<string>(nullable: true),
                     Titula = table.Column<string>(nullable: true)
@@ -491,7 +403,7 @@ namespace eKlinika.WebAPI.Migrations
                 name: "MedicinskaSestra",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false),
                     Certifikati = table.Column<string>(nullable: true),
                     Kursevi = table.Column<string>(nullable: true)
                 },
@@ -516,7 +428,7 @@ namespace eKlinika.WebAPI.Migrations
                     DatumUplate = table.Column<DateTime>(nullable: false),
                     Iznos = table.Column<double>(nullable: false),
                     Namjena = table.Column<string>(nullable: true),
-                    PacijentId = table.Column<string>(nullable: true),
+                    PacijentId = table.Column<int>(nullable: false),
                     PregledId = table.Column<int>(nullable: true),
                     ZiroRacun = table.Column<string>(nullable: true)
                 },
@@ -528,7 +440,7 @@ namespace eKlinika.WebAPI.Migrations
                         column: x => x.PacijentId,
                         principalTable: "Pacijent",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -537,9 +449,9 @@ namespace eKlinika.WebAPI.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ApotekarId = table.Column<string>(nullable: true),
+                    ApotekarId = table.Column<int>(nullable: false),
                     DatumIzdavanja = table.Column<DateTime>(nullable: false),
-                    PacijentId = table.Column<string>(nullable: true)
+                    PacijentId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -549,7 +461,7 @@ namespace eKlinika.WebAPI.Migrations
                         column: x => x.ApotekarId,
                         principalTable: "Apotekar",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ApotekaRacun_Pacijent_PacijentId",
                         column: x => x.PacijentId,
@@ -567,9 +479,9 @@ namespace eKlinika.WebAPI.Migrations
                     DatumRezultata = table.Column<DateTime>(nullable: false),
                     DatumUputnice = table.Column<DateTime>(nullable: false),
                     IsGotovNalaz = table.Column<bool>(nullable: false),
-                    LaboratorijDoktorId = table.Column<string>(nullable: true),
-                    PacijentId = table.Column<string>(nullable: true),
-                    UputioDoktorId = table.Column<string>(nullable: true),
+                    LaboratorijDoktorId = table.Column<int>(nullable: false),
+                    PacijentId = table.Column<int>(nullable: false),
+                    UputioDoktorId = table.Column<int>(nullable: false),
                     VrstaPretrageId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -609,14 +521,14 @@ namespace eKlinika.WebAPI.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     DatumPregleda = table.Column<DateTime>(nullable: false),
                     DatumRezervacije = table.Column<DateTime>(nullable: false),
-                    DoktorId = table.Column<string>(nullable: true),
-                    MedicinskaSestraId = table.Column<string>(nullable: true),
+                    DoktorId = table.Column<int>(nullable: false),
+                    MedicinskaSestraId = table.Column<int>(nullable: false),
                     Napomena = table.Column<string>(nullable: true),
                     Prioritet = table.Column<string>(nullable: true),
                     TipPregleda = table.Column<string>(nullable: true),
                     UplataId = table.Column<int>(nullable: true),
                     isOdrzan = table.Column<bool>(nullable: false),
-                    PacijentId = table.Column<string>(nullable: true)
+                    PacijentId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -626,7 +538,7 @@ namespace eKlinika.WebAPI.Migrations
                         column: x => x.DoktorId,
                         principalTable: "Doktor",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Pregled_MedicinskaSestra_MedicinskaSestraId",
                         column: x => x.MedicinskaSestraId,
@@ -777,50 +689,6 @@ namespace eKlinika.WebAPI.Migrations
                 column: "PacijentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetRoleClaims_RoleId",
-                table: "AspNetRoleClaims",
-                column: "RoleId");
-
-            migrationBuilder.CreateIndex(
-                name: "RoleNameIndex",
-                table: "AspNetRoles",
-                column: "NormalizedName",
-                unique: true,
-                filter: "[NormalizedName] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AspNetUserClaims_UserId",
-                table: "AspNetUserClaims",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AspNetUserLogins_UserId",
-                table: "AspNetUserLogins",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AspNetUserRoles_RoleId",
-                table: "AspNetUserRoles",
-                column: "RoleId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AspNetUsers_GradId",
-                table: "AspNetUsers",
-                column: "GradId");
-
-            migrationBuilder.CreateIndex(
-                name: "EmailIndex",
-                table: "AspNetUsers",
-                column: "NormalizedEmail");
-
-            migrationBuilder.CreateIndex(
-                name: "UserNameIndex",
-                table: "AspNetUsers",
-                column: "NormalizedUserName",
-                unique: true,
-                filter: "[NormalizedUserName] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Dobavljac_DrzavaId",
                 table: "Dobavljac",
                 column: "DrzavaId");
@@ -829,6 +697,35 @@ namespace eKlinika.WebAPI.Migrations
                 name: "IX_Grad_DrzavaId",
                 table: "Grad",
                 column: "DrzavaId");
+
+            migrationBuilder.CreateIndex(
+                name: "CS_Email",
+                table: "Korisnici",
+                column: "Email",
+                unique: true,
+                filter: "[Email] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Korisnici_GradId",
+                table: "Korisnici",
+                column: "GradId");
+
+            migrationBuilder.CreateIndex(
+                name: "CS_UserName",
+                table: "Korisnici",
+                column: "UserName",
+                unique: true,
+                filter: "[UserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_KorisniciUloge_KorisnikId",
+                table: "KorisniciUloge",
+                column: "KorisnikId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_KorisniciUloge_UlogaId",
+                table: "KorisniciUloge",
+                column: "UlogaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_LabPretraga_VrstaPretrageId",
@@ -959,19 +856,7 @@ namespace eKlinika.WebAPI.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AspNetRoleClaims");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUserClaims");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUserLogins");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUserRoles");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUserTokens");
+                name: "KorisniciUloge");
 
             migrationBuilder.DropTable(
                 name: "NarudzbaStavka");
@@ -989,7 +874,7 @@ namespace eKlinika.WebAPI.Migrations
                 name: "UstanovljenaDijagnoza");
 
             migrationBuilder.DropTable(
-                name: "AspNetRoles");
+                name: "Uloge");
 
             migrationBuilder.DropTable(
                 name: "Narudzba");
@@ -1043,7 +928,7 @@ namespace eKlinika.WebAPI.Migrations
                 name: "Pacijent");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Korisnici");
 
             migrationBuilder.DropTable(
                 name: "KrvnaGrupa");

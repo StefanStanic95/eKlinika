@@ -12,7 +12,7 @@ namespace eKlinika.WebAPI.Database
         }
 
         [ForeignKey("Osoblje")]
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string OpisPosla { get; set; }
 
         public virtual Osoblje Osoblje { get; set; }

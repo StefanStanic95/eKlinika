@@ -4,12 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using eKlinika.Model.Requests;
 using eKlinika.WebAPI.Services;
+using eKlinika.Model.Requests;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eKlinika.WebAPI.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class KorisniciController : ControllerBase
     {
@@ -25,17 +28,19 @@ namespace eKlinika.WebAPI.Controllers
             return _service.Get(request);
         }
 
-        //[HttpPost]
-        //public Model.Korisnici Insert(KorisniciInsertRequest request)
-        //{
-        //    return _service.Insert(request);
-        //}
+        [Authorize(Roles = "Administrator")]
+        [HttpPost]
+        public Model.Korisnici Insert(KorisniciInsertRequest request)
+        {
+            return _service.Insert(request);
+        }
 
-        //[HttpPut("{id}")]
-        //public Model.Korisnici Update(int id, [FromBody]KorisniciInsertRequest request)
-        //{
-        //    return _service.Update(id, request);
-        //}
+        [Authorize(Roles = "Administrator")]
+        [HttpPut("{id}")]
+        public Model.Korisnici Update(int id, [FromBody]KorisniciInsertRequest request)
+        {
+            return _service.Update(id, request);
+        }
 
         [HttpGet("{id}")]
         public Model.Korisnici GetById(int id)
