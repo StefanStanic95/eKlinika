@@ -17,7 +17,7 @@ namespace eKlinika.WebAPI.Services
 
         Model.Korisnici Insert(KorisniciInsertRequest request);
 
-        Model.Korisnici Update(int id, KorisniciInsertRequest request);
+        Model.Korisnici Update(int id, KorisniciUpdateRequest request);
 
         Model.Korisnici Authenticiraj(string username, string pass);
     }

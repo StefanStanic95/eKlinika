@@ -53,14 +53,16 @@ namespace eKlinika.WebAPI.Services
 
         public Model.Korisnici GetById(int id)
         {
-            var entity = _context.Korisnici.Find(id);
+            var entity = _context.Korisnici.Where(x => x.Id == id)
+                .Include(x => x.KorisniciUloge).ThenInclude(x => x.Uloga);
 
-            return _mapper.Map<Model.Korisnici>(entity);
+            return _mapper.Map<Model.Korisnici>(entity.FirstOrDefault());
         }
 
         public Model.Korisnici GetByEmail(string email)
         {
-            var entity = _context.Korisnici.Where(x => x.Email == email);
+            var entity = _context.Korisnici.Where(x => x.Email == email)
+                .Include(x => x.KorisniciUloge).ThenInclude(x => x.Uloga);
 
             return _mapper.Map<Model.Korisnici>(entity.FirstOrDefault());
         }
@@ -92,7 +94,7 @@ namespace eKlinika.WebAPI.Services
             return _mapper.Map<Model.Korisnici>(entity);
         }
 
-        public Model.Korisnici Update(int id, KorisniciInsertRequest request)
+        public Model.Korisnici Update(int id, KorisniciUpdateRequest request)
         {
             var entity = _context.Korisnici.Find(id);
             _context.Korisnici.Attach(entity);

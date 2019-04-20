@@ -19,6 +19,7 @@ namespace eProdaja.WebAPI.Mapper
 
 
             CreateMap<eKlinika.WebAPI.Database.Korisnici, eKlinika.Model.Requests.KorisniciInsertRequest>().ReverseMap();
+            CreateMap<eKlinika.WebAPI.Database.Korisnici, eKlinika.Model.Requests.KorisniciUpdateRequest>().ReverseMap();
         }
     }
 }

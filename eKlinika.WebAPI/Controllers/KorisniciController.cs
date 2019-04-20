@@ -37,7 +37,7 @@ namespace eKlinika.WebAPI.Controllers
 
         [Authorize(Roles = "Administrator")]
         [HttpPut("{id}")]
-        public Model.Korisnici Update(int id, [FromBody]KorisniciInsertRequest request)
+        public Model.Korisnici Update(int id, [FromBody]KorisniciUpdateRequest request)
         {
             return _service.Update(id, request);
         }

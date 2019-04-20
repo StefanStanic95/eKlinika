@@ -25,7 +25,7 @@ namespace eKlinika.WinUI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://localhost:44380¸/api")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://localhost:44380/api")]
         public string APIUrl {
             get {
                 return ((string)(this["APIUrl"]));

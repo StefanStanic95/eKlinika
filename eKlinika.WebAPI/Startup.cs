@@ -130,7 +130,7 @@ namespace eKlinika.WebAPI
             };
             k.UserName = k.Ime + "." + k.Prezime;
             k.Email = k.UserName + "@eKlinika.ba";
-            string password = "myP@ssW0r@d123";
+            string password = "123";
 
             Model.Korisnici existingUser = UserManager.GetByEmail(k.Email);
             if(existingUser == null)
