@@ -37,6 +37,8 @@ namespace eKlinika.WinUI
 
             if (IsAdmin || roles.Contains("Referent"))
                 tsmiReferent.Visible = true;
+
+            FormBorderStyle = FormBorderStyle.None;
         }
 
         private void ShowNewForm(object sender, EventArgs e)
@@ -156,6 +158,21 @@ namespace eKlinika.WinUI
         {
             frmPacijenti frm = new frmPacijenti();
             frm.Show();
+        }
+
+        private void minimizeForm_Click(object sender, System.EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void maximizeForm_Click(object sender, System.EventArgs e)
+        {
+            WindowState = FormWindowState.Maximized;
+        }
+
+        private void closeForm_Click(object sender, System.EventArgs e)
+        {
+            Close();
         }
     }
 }

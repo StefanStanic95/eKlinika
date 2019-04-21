@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmIndex));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.tsmiKorisnici = new System.Windows.Forms.ToolStripMenuItem();
             this.pretragaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,12 +53,22 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.minimizeForm = new System.Windows.Forms.Label();
+            this.maximizeForm = new System.Windows.Forms.Label();
+            this.closeForm = new System.Windows.Forms.Label();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip
             // 
+            this.menuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiKorisnici,
@@ -67,6 +78,7 @@
             this.tsmiApotekar});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Padding = new System.Windows.Forms.Padding(66, 2, 0, 2);
             this.menuStrip.Size = new System.Drawing.Size(632, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
@@ -76,6 +88,7 @@
             this.tsmiKorisnici.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pretragaToolStripMenuItem,
             this.noviKorisnikToolStripMenuItem});
+            this.tsmiKorisnici.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.tsmiKorisnici.Name = "tsmiKorisnici";
             this.tsmiKorisnici.Size = new System.Drawing.Size(61, 20);
             this.tsmiKorisnici.Text = "Korisnik";
@@ -83,15 +96,19 @@
             // 
             // pretragaToolStripMenuItem
             // 
+            this.pretragaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+            this.pretragaToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.pretragaToolStripMenuItem.Name = "pretragaToolStripMenuItem";
-            this.pretragaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pretragaToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.pretragaToolStripMenuItem.Text = "Pretraga";
             this.pretragaToolStripMenuItem.Click += new System.EventHandler(this.pretragaToolStripMenuItem_Click);
             // 
             // noviKorisnikToolStripMenuItem
             // 
+            this.noviKorisnikToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+            this.noviKorisnikToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.noviKorisnikToolStripMenuItem.Name = "noviKorisnikToolStripMenuItem";
-            this.noviKorisnikToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.noviKorisnikToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.noviKorisnikToolStripMenuItem.Text = "Novi korisnik";
             this.noviKorisnikToolStripMenuItem.Click += new System.EventHandler(this.noviKorisnikToolStripMenuItem_Click);
             // 
@@ -100,6 +117,7 @@
             this.tsmiDoktor.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.uputniceToolStripMenuItem,
             this.preglediToolStripMenuItem});
+            this.tsmiDoktor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.tsmiDoktor.Name = "tsmiDoktor";
             this.tsmiDoktor.Size = new System.Drawing.Size(55, 20);
             this.tsmiDoktor.Text = "Doktor";
@@ -107,14 +125,18 @@
             // 
             // uputniceToolStripMenuItem
             // 
+            this.uputniceToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+            this.uputniceToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.uputniceToolStripMenuItem.Name = "uputniceToolStripMenuItem";
-            this.uputniceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.uputniceToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.uputniceToolStripMenuItem.Text = "Uputnice";
             // 
             // preglediToolStripMenuItem
             // 
+            this.preglediToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+            this.preglediToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.preglediToolStripMenuItem.Name = "preglediToolStripMenuItem";
-            this.preglediToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.preglediToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.preglediToolStripMenuItem.Text = "Pregledi";
             // 
             // tsmiMedicinskaSestra
@@ -123,6 +145,7 @@
             this.uplateToolStripMenuItem,
             this.uputniceToolStripMenuItem1,
             this.preglediToolStripMenuItem1});
+            this.tsmiMedicinskaSestra.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.tsmiMedicinskaSestra.Name = "tsmiMedicinskaSestra";
             this.tsmiMedicinskaSestra.Size = new System.Drawing.Size(112, 20);
             this.tsmiMedicinskaSestra.Text = "Medicinska sestra";
@@ -130,26 +153,33 @@
             // 
             // uplateToolStripMenuItem
             // 
+            this.uplateToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+            this.uplateToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.uplateToolStripMenuItem.Name = "uplateToolStripMenuItem";
-            this.uplateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.uplateToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.uplateToolStripMenuItem.Text = "Uplate";
             // 
             // uputniceToolStripMenuItem1
             // 
+            this.uputniceToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+            this.uputniceToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.uputniceToolStripMenuItem1.Name = "uputniceToolStripMenuItem1";
-            this.uputniceToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.uputniceToolStripMenuItem1.Size = new System.Drawing.Size(122, 22);
             this.uputniceToolStripMenuItem1.Text = "Uputnice";
             // 
             // preglediToolStripMenuItem1
             // 
+            this.preglediToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+            this.preglediToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.preglediToolStripMenuItem1.Name = "preglediToolStripMenuItem1";
-            this.preglediToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.preglediToolStripMenuItem1.Size = new System.Drawing.Size(122, 22);
             this.preglediToolStripMenuItem1.Text = "Pregledi";
             // 
             // tsmiReferent
             // 
             this.tsmiReferent.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pacijentToolStripMenuItem});
+            this.tsmiReferent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.tsmiReferent.Name = "tsmiReferent";
             this.tsmiReferent.Size = new System.Drawing.Size(63, 20);
             this.tsmiReferent.Text = "Referent";
@@ -157,16 +187,20 @@
             // 
             // pacijentToolStripMenuItem
             // 
+            this.pacijentToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
             this.pacijentToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.noviPacijentToolStripMenuItem,
             this.urediPacijentaToolStripMenuItem});
+            this.pacijentToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.pacijentToolStripMenuItem.Name = "pacijentToolStripMenuItem";
-            this.pacijentToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pacijentToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.pacijentToolStripMenuItem.Text = "Pacijenti";
             this.pacijentToolStripMenuItem.Click += new System.EventHandler(this.pacijentToolStripMenuItem_Click);
             // 
             // noviPacijentToolStripMenuItem
             // 
+            this.noviPacijentToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+            this.noviPacijentToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.noviPacijentToolStripMenuItem.Name = "noviPacijentToolStripMenuItem";
             this.noviPacijentToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.noviPacijentToolStripMenuItem.Text = "Novi pacijent";
@@ -174,6 +208,8 @@
             // 
             // urediPacijentaToolStripMenuItem
             // 
+            this.urediPacijentaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+            this.urediPacijentaToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.urediPacijentaToolStripMenuItem.Name = "urediPacijentaToolStripMenuItem";
             this.urediPacijentaToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.urediPacijentaToolStripMenuItem.Text = "Pregled pacijenta";
@@ -186,6 +222,7 @@
             this.računiToolStripMenuItem,
             this.narudžbeToolStripMenuItem,
             this.receptiToolStripMenuItem});
+            this.tsmiApotekar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.tsmiApotekar.Name = "tsmiApotekar";
             this.tsmiApotekar.Size = new System.Drawing.Size(67, 20);
             this.tsmiApotekar.Text = "Apotekar";
@@ -193,24 +230,32 @@
             // 
             // lijekoviToolStripMenuItem
             // 
+            this.lijekoviToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+            this.lijekoviToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.lijekoviToolStripMenuItem.Name = "lijekoviToolStripMenuItem";
             this.lijekoviToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.lijekoviToolStripMenuItem.Text = "Lijekovi";
             // 
             // računiToolStripMenuItem
             // 
+            this.računiToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+            this.računiToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.računiToolStripMenuItem.Name = "računiToolStripMenuItem";
             this.računiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.računiToolStripMenuItem.Text = "Računi";
             // 
             // narudžbeToolStripMenuItem
             // 
+            this.narudžbeToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+            this.narudžbeToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.narudžbeToolStripMenuItem.Name = "narudžbeToolStripMenuItem";
             this.narudžbeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.narudžbeToolStripMenuItem.Text = "Narudžbe";
             // 
             // receptiToolStripMenuItem
             // 
+            this.receptiToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+            this.receptiToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.receptiToolStripMenuItem.Name = "receptiToolStripMenuItem";
             this.receptiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.receptiToolStripMenuItem.Text = "Recepti";
@@ -225,6 +270,7 @@
             this.statusStrip.Size = new System.Drawing.Size(632, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
+            this.statusStrip.Visible = false;
             // 
             // toolStripStatusLabel
             // 
@@ -232,13 +278,88 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 24);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(632, 429);
+            this.panel1.TabIndex = 4;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 409);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(632, 20);
+            this.panel3.TabIndex = 1;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.panel2.Location = new System.Drawing.Point(12, 24);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(600, 1);
+            this.panel2.TabIndex = 1;
+            // 
+            // minimizeForm
+            // 
+            this.minimizeForm.AutoSize = true;
+            this.minimizeForm.Location = new System.Drawing.Point(557, 0);
+            this.minimizeForm.Name = "minimizeForm";
+            this.minimizeForm.Size = new System.Drawing.Size(18, 21);
+            this.minimizeForm.TabIndex = 3;
+            this.minimizeForm.Text = "_";
+            this.minimizeForm.Click += new System.EventHandler(this.minimizeForm_Click);
+            // 
+            // maximizeForm
+            // 
+            this.maximizeForm.AutoSize = true;
+            this.maximizeForm.Location = new System.Drawing.Point(581, 0);
+            this.maximizeForm.Name = "maximizeForm";
+            this.maximizeForm.Size = new System.Drawing.Size(22, 21);
+            this.maximizeForm.TabIndex = 4;
+            this.maximizeForm.Text = "➚";
+            this.maximizeForm.Click += new System.EventHandler(this.maximizeForm_Click);
+            // 
+            // closeForm
+            // 
+            this.closeForm.AutoSize = true;
+            this.closeForm.Location = new System.Drawing.Point(609, 0);
+            this.closeForm.Name = "closeForm";
+            this.closeForm.Size = new System.Drawing.Size(19, 21);
+            this.closeForm.TabIndex = 5;
+            this.closeForm.Text = "X";
+            this.closeForm.Click += new System.EventHandler(this.closeForm_Click);
+            // 
             // frmIndex
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(632, 453);
+            this.Controls.Add(this.closeForm);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.maximizeForm);
+            this.Controls.Add(this.minimizeForm);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
+            this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "frmIndex";
@@ -248,6 +369,8 @@
             this.menuStrip.PerformLayout();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -278,6 +401,13 @@
         private System.Windows.Forms.ToolStripMenuItem receptiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem noviPacijentToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem urediPacijentaToolStripMenuItem;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label minimizeForm;
+        private System.Windows.Forms.Label maximizeForm;
+        private System.Windows.Forms.Label closeForm;
     }
 }
 
