@@ -28,14 +28,20 @@ namespace eKlinika.WebAPI.Controllers
             return _service.Get(request);
         }
 
-        [Authorize(Roles = "Administrator")]
+        [HttpGet("me")]
+        public Model.Korisnici GetMe()
+        {
+            return _service.GetMe();
+        }
+
+        [Authorize(Roles = "Administrator,Referent")]
         [HttpPost]
         public Model.Korisnici Insert(KorisniciInsertRequest request)
         {
             return _service.Insert(request);
         }
 
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator,Referent")]
         [HttpPut("{id}")]
         public Model.Korisnici Update(int id, [FromBody]KorisniciUpdateRequest request)
         {

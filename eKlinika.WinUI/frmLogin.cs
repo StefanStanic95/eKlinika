@@ -25,7 +25,7 @@ namespace eKlinika.WinUI
             APIService.Password = txtPassword.Text;
             try
             {
-                await _service.Get<dynamic>(null);
+                APIService.Korisnik = await _service.Get<Model.Korisnici>(null, "me");
                 DialogResult = DialogResult.OK;
                 Close();
             }

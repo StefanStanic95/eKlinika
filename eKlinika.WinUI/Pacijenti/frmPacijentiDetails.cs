@@ -207,12 +207,12 @@ namespace eKlinika.WinUI.Pacijenti
         {
             bool dodavanje = !_id.HasValue;
 
-            if (dodavanje && (string.IsNullOrWhiteSpace(txtPassword.Text) || string.IsNullOrWhiteSpace(txtPasswordPotvrda.Text)))
+            if (dodavanje && string.IsNullOrWhiteSpace(txtPassword.Text))
             {
                 e.Cancel = true;
                 errorProvider.SetError(txtPassword, Resources.Validation_RequiredField);
             }
-            else if (!dodavanje && !string.IsNullOrWhiteSpace(txtPassword.Text) && !string.IsNullOrWhiteSpace(txtPasswordPotvrda.Text) && (txtPassword.Text.Length < 3 || txtPasswordPotvrda.Text.Length < 3))
+            else if (!dodavanje && !string.IsNullOrWhiteSpace(txtPassword.Text) && !string.IsNullOrWhiteSpace(txtPasswordPotvrda.Text) && txtPassword.Text.Length < 3)
             {
                 e.Cancel = true;
                 errorProvider.SetError(txtPassword, Resources.Validation_RequiredField);
@@ -220,6 +220,26 @@ namespace eKlinika.WinUI.Pacijenti
             else
             {
                 errorProvider.SetError(txtPassword, null);
+            }
+        }
+
+        private void txtPasswordPotvrda_Validating(object sender, CancelEventArgs e)
+        {
+            bool dodavanje = !_id.HasValue;
+
+            if (dodavanje && string.IsNullOrWhiteSpace(txtPasswordPotvrda.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(txtPasswordPotvrda, Resources.Validation_RequiredField);
+            }
+            else if (!dodavanje && !string.IsNullOrWhiteSpace(txtPassword.Text) && !string.IsNullOrWhiteSpace(txtPasswordPotvrda.Text) && txtPasswordPotvrda.Text.Length < 3)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(txtPasswordPotvrda, Resources.Validation_RequiredField);
+            }
+            else
+            {
+                errorProvider.SetError(txtPasswordPotvrda, null);
             }
         }
     }

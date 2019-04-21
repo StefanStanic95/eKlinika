@@ -30,21 +30,21 @@
         {
             this.components = new System.ComponentModel.Container();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.korisniciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiKorisnici = new System.Windows.Forms.ToolStripMenuItem();
             this.pretragaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noviKorisnikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.doktorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDoktor = new System.Windows.Forms.ToolStripMenuItem();
             this.uputniceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.preglediToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.medicinskaSestraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiMedicinskaSestra = new System.Windows.Forms.ToolStripMenuItem();
             this.uplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uputniceToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.preglediToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.referentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiReferent = new System.Windows.Forms.ToolStripMenuItem();
             this.pacijentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noviPacijentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.urediPacijentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.apotekarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiApotekar = new System.Windows.Forms.ToolStripMenuItem();
             this.lijekoviToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.računiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.narudžbeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,96 +60,100 @@
             // 
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.korisniciToolStripMenuItem,
-            this.doktorToolStripMenuItem,
-            this.medicinskaSestraToolStripMenuItem,
-            this.referentToolStripMenuItem,
-            this.apotekarToolStripMenuItem});
+            this.tsmiKorisnici,
+            this.tsmiDoktor,
+            this.tsmiMedicinskaSestra,
+            this.tsmiReferent,
+            this.tsmiApotekar});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(632, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
-            // korisniciToolStripMenuItem
+            // tsmiKorisnici
             // 
-            this.korisniciToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiKorisnici.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pretragaToolStripMenuItem,
             this.noviKorisnikToolStripMenuItem});
-            this.korisniciToolStripMenuItem.Name = "korisniciToolStripMenuItem";
-            this.korisniciToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.korisniciToolStripMenuItem.Text = "Korisnik";
+            this.tsmiKorisnici.Name = "tsmiKorisnici";
+            this.tsmiKorisnici.Size = new System.Drawing.Size(61, 20);
+            this.tsmiKorisnici.Text = "Korisnik";
+            this.tsmiKorisnici.Visible = false;
             // 
             // pretragaToolStripMenuItem
             // 
             this.pretragaToolStripMenuItem.Name = "pretragaToolStripMenuItem";
-            this.pretragaToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.pretragaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.pretragaToolStripMenuItem.Text = "Pretraga";
             this.pretragaToolStripMenuItem.Click += new System.EventHandler(this.pretragaToolStripMenuItem_Click);
             // 
             // noviKorisnikToolStripMenuItem
             // 
             this.noviKorisnikToolStripMenuItem.Name = "noviKorisnikToolStripMenuItem";
-            this.noviKorisnikToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.noviKorisnikToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.noviKorisnikToolStripMenuItem.Text = "Novi korisnik";
             this.noviKorisnikToolStripMenuItem.Click += new System.EventHandler(this.noviKorisnikToolStripMenuItem_Click);
             // 
-            // doktorToolStripMenuItem
+            // tsmiDoktor
             // 
-            this.doktorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiDoktor.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.uputniceToolStripMenuItem,
             this.preglediToolStripMenuItem});
-            this.doktorToolStripMenuItem.Name = "doktorToolStripMenuItem";
-            this.doktorToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
-            this.doktorToolStripMenuItem.Text = "Doktor";
+            this.tsmiDoktor.Name = "tsmiDoktor";
+            this.tsmiDoktor.Size = new System.Drawing.Size(55, 20);
+            this.tsmiDoktor.Text = "Doktor";
+            this.tsmiDoktor.Visible = false;
             // 
             // uputniceToolStripMenuItem
             // 
             this.uputniceToolStripMenuItem.Name = "uputniceToolStripMenuItem";
-            this.uputniceToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.uputniceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.uputniceToolStripMenuItem.Text = "Uputnice";
             // 
             // preglediToolStripMenuItem
             // 
             this.preglediToolStripMenuItem.Name = "preglediToolStripMenuItem";
-            this.preglediToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.preglediToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.preglediToolStripMenuItem.Text = "Pregledi";
             // 
-            // medicinskaSestraToolStripMenuItem
+            // tsmiMedicinskaSestra
             // 
-            this.medicinskaSestraToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiMedicinskaSestra.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.uplateToolStripMenuItem,
             this.uputniceToolStripMenuItem1,
             this.preglediToolStripMenuItem1});
-            this.medicinskaSestraToolStripMenuItem.Name = "medicinskaSestraToolStripMenuItem";
-            this.medicinskaSestraToolStripMenuItem.Size = new System.Drawing.Size(112, 20);
-            this.medicinskaSestraToolStripMenuItem.Text = "Medicinska sestra";
+            this.tsmiMedicinskaSestra.Name = "tsmiMedicinskaSestra";
+            this.tsmiMedicinskaSestra.Size = new System.Drawing.Size(112, 20);
+            this.tsmiMedicinskaSestra.Text = "Medicinska sestra";
+            this.tsmiMedicinskaSestra.Visible = false;
             // 
             // uplateToolStripMenuItem
             // 
             this.uplateToolStripMenuItem.Name = "uplateToolStripMenuItem";
-            this.uplateToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.uplateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.uplateToolStripMenuItem.Text = "Uplate";
             // 
             // uputniceToolStripMenuItem1
             // 
             this.uputniceToolStripMenuItem1.Name = "uputniceToolStripMenuItem1";
-            this.uputniceToolStripMenuItem1.Size = new System.Drawing.Size(122, 22);
+            this.uputniceToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.uputniceToolStripMenuItem1.Text = "Uputnice";
             // 
             // preglediToolStripMenuItem1
             // 
             this.preglediToolStripMenuItem1.Name = "preglediToolStripMenuItem1";
-            this.preglediToolStripMenuItem1.Size = new System.Drawing.Size(122, 22);
+            this.preglediToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.preglediToolStripMenuItem1.Text = "Pregledi";
             // 
-            // referentToolStripMenuItem
+            // tsmiReferent
             // 
-            this.referentToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiReferent.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pacijentToolStripMenuItem});
-            this.referentToolStripMenuItem.Name = "referentToolStripMenuItem";
-            this.referentToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.referentToolStripMenuItem.Text = "Referent";
+            this.tsmiReferent.Name = "tsmiReferent";
+            this.tsmiReferent.Size = new System.Drawing.Size(63, 20);
+            this.tsmiReferent.Text = "Referent";
+            this.tsmiReferent.Visible = false;
             // 
             // pacijentToolStripMenuItem
             // 
@@ -164,50 +168,51 @@
             // noviPacijentToolStripMenuItem
             // 
             this.noviPacijentToolStripMenuItem.Name = "noviPacijentToolStripMenuItem";
-            this.noviPacijentToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.noviPacijentToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.noviPacijentToolStripMenuItem.Text = "Novi pacijent";
             this.noviPacijentToolStripMenuItem.Click += new System.EventHandler(this.noviPacijentToolStripMenuItem_Click);
             // 
             // urediPacijentaToolStripMenuItem
             // 
             this.urediPacijentaToolStripMenuItem.Name = "urediPacijentaToolStripMenuItem";
-            this.urediPacijentaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.urediPacijentaToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.urediPacijentaToolStripMenuItem.Text = "Pregled pacijenta";
             this.urediPacijentaToolStripMenuItem.Click += new System.EventHandler(this.urediPacijentaToolStripMenuItem_Click);
             // 
-            // apotekarToolStripMenuItem
+            // tsmiApotekar
             // 
-            this.apotekarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiApotekar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lijekoviToolStripMenuItem,
             this.računiToolStripMenuItem,
             this.narudžbeToolStripMenuItem,
             this.receptiToolStripMenuItem});
-            this.apotekarToolStripMenuItem.Name = "apotekarToolStripMenuItem";
-            this.apotekarToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
-            this.apotekarToolStripMenuItem.Text = "Apotekar";
+            this.tsmiApotekar.Name = "tsmiApotekar";
+            this.tsmiApotekar.Size = new System.Drawing.Size(67, 20);
+            this.tsmiApotekar.Text = "Apotekar";
+            this.tsmiApotekar.Visible = false;
             // 
             // lijekoviToolStripMenuItem
             // 
             this.lijekoviToolStripMenuItem.Name = "lijekoviToolStripMenuItem";
-            this.lijekoviToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.lijekoviToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.lijekoviToolStripMenuItem.Text = "Lijekovi";
             // 
             // računiToolStripMenuItem
             // 
             this.računiToolStripMenuItem.Name = "računiToolStripMenuItem";
-            this.računiToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.računiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.računiToolStripMenuItem.Text = "Računi";
             // 
             // narudžbeToolStripMenuItem
             // 
             this.narudžbeToolStripMenuItem.Name = "narudžbeToolStripMenuItem";
-            this.narudžbeToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.narudžbeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.narudžbeToolStripMenuItem.Text = "Narudžbe";
             // 
             // receptiToolStripMenuItem
             // 
             this.receptiToolStripMenuItem.Name = "receptiToolStripMenuItem";
-            this.receptiToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.receptiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.receptiToolStripMenuItem.Text = "Recepti";
             // 
             // statusStrip
@@ -254,19 +259,19 @@
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
         private System.Windows.Forms.ToolTip toolTip;
-        private System.Windows.Forms.ToolStripMenuItem korisniciToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiKorisnici;
         private System.Windows.Forms.ToolStripMenuItem pretragaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem noviKorisnikToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem doktorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiDoktor;
         private System.Windows.Forms.ToolStripMenuItem uputniceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem preglediToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem medicinskaSestraToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiMedicinskaSestra;
         private System.Windows.Forms.ToolStripMenuItem uplateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem uputniceToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem preglediToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem referentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiReferent;
         private System.Windows.Forms.ToolStripMenuItem pacijentToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem apotekarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiApotekar;
         private System.Windows.Forms.ToolStripMenuItem lijekoviToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem računiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem narudžbeToolStripMenuItem;

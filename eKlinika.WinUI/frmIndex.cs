@@ -20,6 +20,23 @@ namespace eKlinika.WinUI
         public frmIndex()
         {
             InitializeComponent();
+
+            List<string> roles = APIService.Korisnik.KorisniciUloge.Select(x => x.Uloga.Naziv).ToList();
+            bool IsAdmin = roles.Contains("Administrator");
+            if (IsAdmin)
+                tsmiKorisnici.Visible = true;
+
+            if (IsAdmin || roles.Contains("Doktor"))
+                tsmiDoktor.Visible = true;
+
+            if (IsAdmin || roles.Contains("Apotekar"))
+                tsmiApotekar.Visible = true;
+
+            if (IsAdmin || roles.Contains("MedicinskaSestra"))
+                tsmiMedicinskaSestra.Visible = true;
+
+            if (IsAdmin || roles.Contains("Referent"))
+                tsmiReferent.Visible = true;
         }
 
         private void ShowNewForm(object sender, EventArgs e)
