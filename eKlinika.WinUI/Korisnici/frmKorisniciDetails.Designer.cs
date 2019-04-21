@@ -30,6 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.clbRole = new System.Windows.Forms.CheckedListBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -48,12 +55,23 @@
             this.txtIme = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.closeForm = new System.Windows.Forms.Label();
+            this.maximizeForm = new System.Windows.Forms.Label();
+            this.minimizeForm = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.panel7);
+            this.groupBox1.Controls.Add(this.panel6);
+            this.groupBox1.Controls.Add(this.panel5);
+            this.groupBox1.Controls.Add(this.panel4);
+            this.groupBox1.Controls.Add(this.panel3);
+            this.groupBox1.Controls.Add(this.panel2);
+            this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.clbRole);
             this.groupBox1.Controls.Add(this.label7);
@@ -70,28 +88,88 @@
             this.groupBox1.Controls.Add(this.txtPrezime);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtIme);
-            this.groupBox1.Location = new System.Drawing.Point(13, 50);
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.groupBox1.Location = new System.Drawing.Point(13, 122);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(407, 484);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalji korisnika";
             // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.panel7.Location = new System.Drawing.Point(156, 322);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(190, 1);
+            this.panel7.TabIndex = 22;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.panel6.Location = new System.Drawing.Point(7, 322);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(140, 1);
+            this.panel6.TabIndex = 21;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.panel5.Location = new System.Drawing.Point(8, 274);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(340, 1);
+            this.panel5.TabIndex = 20;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.panel4.Location = new System.Drawing.Point(8, 222);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(340, 1);
+            this.panel4.TabIndex = 19;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.panel3.Location = new System.Drawing.Point(7, 121);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(340, 1);
+            this.panel3.TabIndex = 18;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.panel2.Location = new System.Drawing.Point(7, 173);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(340, 1);
+            this.panel2.TabIndex = 18;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.panel1.Location = new System.Drawing.Point(7, 71);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(340, 1);
+            this.panel1.TabIndex = 17;
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(1, 347);
+            this.label8.Location = new System.Drawing.Point(5, 350);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 13);
+            this.label8.Size = new System.Drawing.Size(42, 13);
             this.label8.TabIndex = 16;
-            this.label8.Text = "Uloge";
+            this.label8.Text = "Uloge *";
             // 
             // clbRole
             // 
+            this.clbRole.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.clbRole.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.clbRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.clbRole.FormattingEnabled = true;
-            this.clbRole.Location = new System.Drawing.Point(0, 366);
+            this.clbRole.Location = new System.Drawing.Point(6, 366);
             this.clbRole.Name = "clbRole";
-            this.clbRole.Size = new System.Drawing.Size(120, 94);
+            this.clbRole.Size = new System.Drawing.Size(120, 90);
             this.clbRole.TabIndex = 15;
             // 
             // label7
@@ -99,15 +177,18 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(154, 284);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(98, 13);
+            this.label7.Size = new System.Drawing.Size(105, 13);
             this.label7.TabIndex = 13;
-            this.label7.Text = "Potvrda passworda";
+            this.label7.Text = "Potvrda passworda *";
             // 
             // txtPasswordPotvrda
             // 
-            this.txtPasswordPotvrda.Location = new System.Drawing.Point(154, 303);
+            this.txtPasswordPotvrda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.txtPasswordPotvrda.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPasswordPotvrda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.txtPasswordPotvrda.Location = new System.Drawing.Point(157, 303);
             this.txtPasswordPotvrda.Name = "txtPasswordPotvrda";
-            this.txtPasswordPotvrda.Size = new System.Drawing.Size(194, 20);
+            this.txtPasswordPotvrda.Size = new System.Drawing.Size(189, 13);
             this.txtPasswordPotvrda.TabIndex = 12;
             this.txtPasswordPotvrda.Validating += new System.ComponentModel.CancelEventHandler(this.txtPasswordPotvrda_Validating);
             // 
@@ -116,15 +197,18 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(6, 284);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 13);
+            this.label6.Size = new System.Drawing.Size(60, 13);
             this.label6.TabIndex = 11;
-            this.label6.Text = "Password";
+            this.label6.Text = "Password *";
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(6, 303);
+            this.txtPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.txtPassword.Location = new System.Drawing.Point(10, 303);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(142, 20);
+            this.txtPassword.Size = new System.Drawing.Size(127, 13);
             this.txtPassword.TabIndex = 10;
             this.txtPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtPassword_Validating);
             // 
@@ -133,15 +217,18 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(7, 236);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 13);
+            this.label5.Size = new System.Drawing.Size(82, 13);
             this.label5.TabIndex = 9;
-            this.label5.Text = "Korisničko ime";
+            this.label5.Text = "Korisničko ime *";
             // 
             // txtKorisnickoIme
             // 
-            this.txtKorisnickoIme.Location = new System.Drawing.Point(7, 255);
+            this.txtKorisnickoIme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.txtKorisnickoIme.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtKorisnickoIme.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.txtKorisnickoIme.Location = new System.Drawing.Point(11, 255);
             this.txtKorisnickoIme.Name = "txtKorisnickoIme";
-            this.txtKorisnickoIme.Size = new System.Drawing.Size(341, 20);
+            this.txtKorisnickoIme.Size = new System.Drawing.Size(335, 13);
             this.txtKorisnickoIme.TabIndex = 8;
             this.txtKorisnickoIme.Validating += new System.ComponentModel.CancelEventHandler(this.txtKorisnickoIme_Validating);
             // 
@@ -150,15 +237,18 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(7, 184);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 13);
+            this.label4.Size = new System.Drawing.Size(50, 13);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Telefon";
+            this.label4.Text = "Telefon *";
             // 
             // txtTelefon
             // 
-            this.txtTelefon.Location = new System.Drawing.Point(7, 203);
+            this.txtTelefon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.txtTelefon.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTelefon.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.txtTelefon.Location = new System.Drawing.Point(11, 203);
             this.txtTelefon.Name = "txtTelefon";
-            this.txtTelefon.Size = new System.Drawing.Size(341, 20);
+            this.txtTelefon.Size = new System.Drawing.Size(335, 13);
             this.txtTelefon.TabIndex = 6;
             // 
             // label3
@@ -166,15 +256,18 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(7, 135);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 13);
+            this.label3.Size = new System.Drawing.Size(39, 13);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Email";
+            this.label3.Text = "Email *";
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(7, 154);
+            this.txtEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.txtEmail.Location = new System.Drawing.Point(11, 154);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(341, 20);
+            this.txtEmail.Size = new System.Drawing.Size(335, 13);
             this.txtEmail.TabIndex = 4;
             this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmail_Validating);
             // 
@@ -183,15 +276,18 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(7, 81);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Prezime";
+            this.label2.Text = "Prezime *";
             // 
             // txtPrezime
             // 
-            this.txtPrezime.Location = new System.Drawing.Point(7, 100);
+            this.txtPrezime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.txtPrezime.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPrezime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.txtPrezime.Location = new System.Drawing.Point(11, 100);
             this.txtPrezime.Name = "txtPrezime";
-            this.txtPrezime.Size = new System.Drawing.Size(341, 20);
+            this.txtPrezime.Size = new System.Drawing.Size(335, 13);
             this.txtPrezime.TabIndex = 2;
             this.txtPrezime.Validating += new System.ComponentModel.CancelEventHandler(this.txtPrezime_Validating);
             // 
@@ -206,40 +302,102 @@
             // 
             // txtIme
             // 
-            this.txtIme.Location = new System.Drawing.Point(7, 51);
+            this.txtIme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.txtIme.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtIme.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.txtIme.Location = new System.Drawing.Point(10, 50);
             this.txtIme.Name = "txtIme";
-            this.txtIme.Size = new System.Drawing.Size(341, 20);
+            this.txtIme.Size = new System.Drawing.Size(335, 13);
             this.txtIme.TabIndex = 0;
             this.txtIme.Validating += new System.ComponentModel.CancelEventHandler(this.txtIme_Validating);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(345, 540);
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Arial Narrow", 11.25F);
+            this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.btnSave.Location = new System.Drawing.Point(340, 612);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(80, 30);
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Sačuvaj";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // closeForm
+            // 
+            this.closeForm.AutoSize = true;
+            this.closeForm.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.closeForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
+            this.closeForm.Location = new System.Drawing.Point(409, 9);
+            this.closeForm.Name = "closeForm";
+            this.closeForm.Size = new System.Drawing.Size(15, 16);
+            this.closeForm.TabIndex = 8;
+            this.closeForm.Text = "X";
+            this.closeForm.Click += new System.EventHandler(this.closeForm_Click);
+            // 
+            // maximizeForm
+            // 
+            this.maximizeForm.AutoSize = true;
+            this.maximizeForm.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maximizeForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
+            this.maximizeForm.Location = new System.Drawing.Point(381, 9);
+            this.maximizeForm.Name = "maximizeForm";
+            this.maximizeForm.Size = new System.Drawing.Size(16, 16);
+            this.maximizeForm.TabIndex = 7;
+            this.maximizeForm.Text = "➚";
+            this.maximizeForm.Click += new System.EventHandler(this.maximizeForm_Click);
+            // 
+            // minimizeForm
+            // 
+            this.minimizeForm.AutoSize = true;
+            this.minimizeForm.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.minimizeForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
+            this.minimizeForm.Location = new System.Drawing.Point(357, 9);
+            this.minimizeForm.Name = "minimizeForm";
+            this.minimizeForm.Size = new System.Drawing.Size(14, 16);
+            this.minimizeForm.TabIndex = 6;
+            this.minimizeForm.Text = "_";
+            this.minimizeForm.Click += new System.EventHandler(this.minimizeForm_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.label9.Location = new System.Drawing.Point(107, 47);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(213, 24);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "Pregled detalja korisnika";
+            // 
             // frmKorisniciDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(438, 573);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.ClientSize = new System.Drawing.Size(438, 677);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.closeForm);
+            this.Controls.Add(this.maximizeForm);
+            this.Controls.Add(this.minimizeForm);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmKorisniciDetails";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmKorisniciDetails";
             this.Load += new System.EventHandler(this.frmKorisniciDetails_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -264,5 +422,16 @@
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckedListBox clbRole;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label closeForm;
+        private System.Windows.Forms.Label maximizeForm;
+        private System.Windows.Forms.Label minimizeForm;
+        private System.Windows.Forms.Label label9;
     }
 }

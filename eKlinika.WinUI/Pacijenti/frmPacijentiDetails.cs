@@ -242,5 +242,35 @@ namespace eKlinika.WinUI.Pacijenti
                 errorProvider.SetError(txtPasswordPotvrda, null);
             }
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void minimizeForm_Click(object sender, System.EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void maximizeForm_Click(object sender, System.EventArgs e)
+        {
+            WindowState = FormWindowState.Maximized;
+        }
+
+        private void closeForm_Click(object sender, System.EventArgs e)
+        {
+            Close();
+        }
+
+        //void frmPacijentiDetails_Paint(object sender, PaintEventArgs e)
+        //{
+        //    ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle, Color.Black, ButtonBorderStyle.Solid);
+        //}
     }
 }

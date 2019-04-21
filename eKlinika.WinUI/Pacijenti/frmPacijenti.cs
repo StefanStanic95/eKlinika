@@ -19,6 +19,19 @@ namespace eKlinika.WinUI.Pacijenti
         public frmPacijenti()
         {
             InitializeComponent();
+
+            dgvKorisnici.BorderStyle = BorderStyle.None;
+
+            dgvKorisnici.EnableHeadersVisualStyles = false;
+            dgvKorisnici.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvKorisnici.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(34, 36, 49);
+            dgvKorisnici.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(78, 184, 206);
+
+            dgvKorisnici.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(34, 36, 49);
+            dgvKorisnici.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvKorisnici.DefaultCellStyle.SelectionBackColor = Color.FromArgb(34, 36, 49);
+            dgvKorisnici.DefaultCellStyle.SelectionForeColor = Color.FromArgb(78, 184, 206);
+            dgvKorisnici.BackgroundColor = Color.FromArgb(34, 36, 49);
         }
 
         private async void btnPrikazi_Click(object sender, EventArgs e)
@@ -67,6 +80,21 @@ namespace eKlinika.WinUI.Pacijenti
                     dgvKorisnici.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = data;
                 }
             }
+        }
+
+        private void minimizeForm_Click(object sender, System.EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void maximizeForm_Click(object sender, System.EventArgs e)
+        {
+            WindowState = FormWindowState.Maximized;
+        }
+
+        private void closeForm_Click(object sender, System.EventArgs e)
+        {
+            Close();
         }
     }
 }

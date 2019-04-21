@@ -193,5 +193,23 @@ namespace eKlinika.WinUI.Korisnici
                 errorProvider.SetError(txtPasswordPotvrda, null);
             }
         }
+
+        private void minimizeForm_Click(object sender, System.EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+
+        }
+
+        private void maximizeForm_Click(object sender, System.EventArgs e)
+        {
+            WindowState = FormWindowState.Maximized;
+
+        }
+
+        private void closeForm_Click(object sender, System.EventArgs e)
+        {
+            Close();
+
+        }
     }
 }
