@@ -106,6 +106,7 @@
             this.txtPasswordPotvrda.Name = "txtPasswordPotvrda";
             this.txtPasswordPotvrda.Size = new System.Drawing.Size(194, 20);
             this.txtPasswordPotvrda.TabIndex = 12;
+            this.txtPasswordPotvrda.Validating += new System.ComponentModel.CancelEventHandler(this.txtPasswordPotvrda_Validating);
             // 
             // label6
             // 

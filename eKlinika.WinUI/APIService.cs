@@ -13,6 +13,7 @@ namespace eKlinika.WinUI
     {
         public static string Username { get; set; }
         public static string Password { get; set; }
+        public static Model.Korisnici Korisnik { get; set; }
 
         private readonly string _route;
         public APIService(string route)
@@ -20,9 +21,14 @@ namespace eKlinika.WinUI
             _route = route;
         }
 
-        public async Task<T> Get<T>(object search)
+        public async Task<T> Get<T>(object search, string action = null)
         {
             var url = $"{Properties.Settings.Default.APIUrl}/{_route}";
+            if (action != null)
+            {
+                url += "/";
+                url += action;
+            }
 
             try
             {

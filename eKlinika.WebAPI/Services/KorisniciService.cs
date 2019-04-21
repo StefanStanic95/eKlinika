@@ -9,6 +9,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using eKlinika.WebAPI.Security;
 
 namespace eKlinika.WebAPI.Services
 {
@@ -69,6 +70,20 @@ namespace eKlinika.WebAPI.Services
 
             return _mapper.Map<Model.Korisnici>(entity.FirstOrDefault());
         }
+
+
+        public Model.Korisnici GetMe()
+        {
+            var entity = _context.Korisnici.Where(x => x.Id == BasicAuthenticationHandler.korisnik.Id)
+                .Include(x => x.KorisniciUloge).ThenInclude(x => x.Uloga)
+                .Include(x => x.Pacijent)
+                .Include(x => x.Osoblje).ThenInclude(x => x.Apotekar)
+                .Include(x => x.Osoblje).ThenInclude(x => x.Doktor)
+                .Include(x => x.Osoblje).ThenInclude(x => x.MedicinskaSestra);
+
+            return _mapper.Map<Model.Korisnici>(entity.FirstOrDefault());
+        }
+
 
         public Model.Korisnici GetByEmail(string email)
         {

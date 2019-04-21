@@ -11,6 +11,8 @@ namespace eKlinika.WebAPI.Services
     {
         List<Model.Korisnici> Get(KorisniciSearchRequest request);
 
+        Model.Korisnici GetMe();
+
         Model.Korisnici GetById(int id);
 
         Model.Korisnici GetByEmail(string email);

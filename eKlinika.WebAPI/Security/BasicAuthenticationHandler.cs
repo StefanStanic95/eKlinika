@@ -12,12 +12,14 @@ using System.Security.Claims;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using System.Security.Principal;
 
 namespace eKlinika.WebAPI.Security
 {
     public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
     {
         private readonly IKorisniciService _userService;
+        public static Model.Korisnici korisnik;
 
         public BasicAuthenticationHandler(
             IOptionsMonitor<AuthenticationSchemeOptions> options,
@@ -67,6 +69,8 @@ namespace eKlinika.WebAPI.Security
             var principal = new ClaimsPrincipal(identity);
             var ticket = new AuthenticationTicket(principal, Scheme.Name);
 
+            korisnik = user;
+                
             return AuthenticateResult.Success(ticket);
         }
     }
