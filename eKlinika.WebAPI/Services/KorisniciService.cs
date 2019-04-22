@@ -41,12 +41,7 @@ namespace eKlinika.WebAPI.Services
             {
                 query = query.Where(x => (x.Ime + " " + x.Prezime).Contains(request.ImePrezime));
             }
-
-            query = query.Include(x => x.KorisniciUloge).ThenInclude(x => x.Uloga);
-            query = query.Include(x => x.Pacijent);
-            query = query.Include(x => x.Osoblje).ThenInclude(x => x.Apotekar);
-            query = query.Include(x => x.Osoblje).ThenInclude(x => x.Doktor);
-            query = query.Include(x => x.Osoblje).ThenInclude(x => x.MedicinskaSestra);
+            query = IncludeUserDetails(query);
 
             if (!string.IsNullOrWhiteSpace(request?.Uloga))
             {
@@ -59,14 +54,20 @@ namespace eKlinika.WebAPI.Services
             return _mapper.Map<List<Model.Korisnici>>(list);
         }
 
-        public Model.Korisnici GetById(int id)
+        private static IQueryable<Korisnici> IncludeUserDetails(IQueryable<Korisnici> query)
         {
-            var entity = _context.Korisnici.Where(x => x.Id == id)
+            return query
                 .Include(x => x.KorisniciUloge).ThenInclude(x => x.Uloga)
                 .Include(x => x.Pacijent)
                 .Include(x => x.Osoblje).ThenInclude(x => x.Apotekar)
                 .Include(x => x.Osoblje).ThenInclude(x => x.Doktor)
                 .Include(x => x.Osoblje).ThenInclude(x => x.MedicinskaSestra);
+        }
+
+        public Model.Korisnici GetById(int id)
+        {
+            var entity = _context.Korisnici.Where(x => x.Id == id);
+            entity = IncludeUserDetails(entity);
 
             return _mapper.Map<Model.Korisnici>(entity.FirstOrDefault());
         }
@@ -74,12 +75,8 @@ namespace eKlinika.WebAPI.Services
 
         public Model.Korisnici GetMe()
         {
-            var entity = _context.Korisnici.Where(x => x.Id == BasicAuthenticationHandler.korisnik.Id)
-                .Include(x => x.KorisniciUloge).ThenInclude(x => x.Uloga)
-                .Include(x => x.Pacijent)
-                .Include(x => x.Osoblje).ThenInclude(x => x.Apotekar)
-                .Include(x => x.Osoblje).ThenInclude(x => x.Doktor)
-                .Include(x => x.Osoblje).ThenInclude(x => x.MedicinskaSestra);
+            var entity = _context.Korisnici.Where(x => x.Id == BasicAuthenticationHandler.korisnik.Id);
+            entity = IncludeUserDetails(entity);
 
             return _mapper.Map<Model.Korisnici>(entity.FirstOrDefault());
         }
@@ -87,12 +84,8 @@ namespace eKlinika.WebAPI.Services
 
         public Model.Korisnici GetByEmail(string email)
         {
-            var entity = _context.Korisnici.Where(x => x.Email == email)
-                .Include(x => x.KorisniciUloge).ThenInclude(x => x.Uloga)
-                .Include(x => x.Pacijent)
-                .Include(x => x.Osoblje).ThenInclude(x => x.Apotekar)
-                .Include(x => x.Osoblje).ThenInclude(x => x.Doktor)
-                .Include(x => x.Osoblje).ThenInclude(x => x.MedicinskaSestra);
+            var entity = _context.Korisnici.Where(x => x.Email == email);
+            entity = IncludeUserDetails(entity);
 
             return _mapper.Map<Model.Korisnici>(entity.FirstOrDefault());
         }
@@ -126,13 +119,10 @@ namespace eKlinika.WebAPI.Services
 
         public Model.Korisnici Update(int id, KorisniciUpdateRequest request)
         {
-            var entity = _context.Korisnici.Where(x => x.Id == id)
-                .Include(x => x.KorisniciUloge).ThenInclude(x => x.Uloga)
-                .Include(x => x.Pacijent)
-                .Include(x => x.Osoblje).ThenInclude(x => x.Apotekar)
-                .Include(x => x.Osoblje).ThenInclude(x => x.Doktor)
-                .Include(x => x.Osoblje).ThenInclude(x => x.MedicinskaSestra)
-                .FirstOrDefault();
+            var result = _context.Korisnici.Where(x => x.Id == id);
+            result = IncludeUserDetails(result);
+
+            var entity = result.FirstOrDefault();
 
 
             _context.Korisnici.Attach(entity);
@@ -158,13 +148,10 @@ namespace eKlinika.WebAPI.Services
 
         public Model.Korisnici Authenticiraj(string username, string pass)
         {
-            var user = _context.Korisnici.Include("KorisniciUloge.Uloga")
-                .Include(x => x.Pacijent)
-                .Include(x => x.Osoblje).ThenInclude(x => x.Apotekar)
-                .Include(x => x.Osoblje).ThenInclude(x => x.Doktor)
-                .Include(x => x.Osoblje).ThenInclude(x => x.MedicinskaSestra)
-            .FirstOrDefault(x => x.UserName == username);
+            var result = _context.Korisnici.Where(x => x.UserName == username);
+            result = IncludeUserDetails(result);
 
+            var user = result.FirstOrDefault();
             if (user != null)
             {
                 var newHash = GenerateHash(user.LozinkaSalt, pass);

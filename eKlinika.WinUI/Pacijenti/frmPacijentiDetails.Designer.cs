@@ -117,7 +117,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lični podaci";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // panel7
             // 
@@ -356,7 +355,6 @@
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Zdravstveni karton";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // panel14
             // 
@@ -575,7 +573,7 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(86, 30);
             this.btnSave.TabIndex = 5;
-            this.btnSave.Text = "Login";
+            this.btnSave.Text = "Sačuvaj";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 

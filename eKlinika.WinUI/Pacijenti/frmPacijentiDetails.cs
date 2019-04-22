@@ -41,36 +41,36 @@ namespace eKlinika.WinUI.Pacijenti
                     }
                 }
 
+                KorisniciInsertRequest request = new KorisniciInsertRequest
+                {
+                    Email = txtEmail.Text,
+                    Ime = txtIme.Text,
+                    UserName = txtKorisnickoIme.Text,
+                    Password = txtPassword.Text,
+                    PasswordPotvrda = txtPasswordPotvrda.Text,
+                    Prezime = txtPrezime.Text,
+                    PhoneNumber = txtTelefon.Text,
+                    Uloge = roleList,
+                    
+                    Pacijent = new Pacijent
+                    {
+                        BrojKartona = txtBrojKartona.Text,
+                        Alergije = txtAlergije.Text,
+                        BrojKnjizice = txtBrojKnjizice.Text,
+                        DatumRegistracije = DateTime.Now,
+                        KrvnaGrupaId = ((KrvnaGrupa)cmbKrvnaGrupa.SelectedValue).Id,
+                        SpecijalniZahtjevi = txtSpecZahtjevi.Text,
+                        Tezina = double.TryParse(txtTezina.Text, out var tezina) ? tezina : 0.0,
+                        Visina = int.TryParse(txtVisina.Text, out var visina) ? visina : 0
+                    }
+                };
+
                 Model.Korisnici entity = null;
                 if (!_id.HasValue)
                 {
-                    var request = new KorisniciInsertRequest
-                    {
-                        Email = txtEmail.Text,
-                        Ime = txtIme.Text,
-                        UserName = txtKorisnickoIme.Text,
-                        Password = txtPassword.Text,
-                        PasswordPotvrda = txtPasswordPotvrda.Text,
-                        Prezime = txtPrezime.Text,
-                        PhoneNumber = txtTelefon.Text,
-                        Uloge = roleList,
-                        Pacijent = new Pacijent
-                        {
-                            BrojKartona = txtBrojKartona.Text,
-                            Alergije = txtAlergije.Text,
-                            BrojKnjizice = txtBrojKnjizice.Text,
-                            DatumRegistracije = DateTime.Now,
-                            KrvnaGrupaId = ((KrvnaGrupa)cmbKrvnaGrupa.SelectedValue).Id,
-                            SpecijalniZahtjevi = txtSpecZahtjevi.Text,
-                            Tezina = double.Parse(txtTezina.Text),
-                            Visina = int.Parse(txtVisina.Text)
-                        }
-                    };
-
                     try
                     {
                         entity = await _service.Insert<Model.Korisnici>(request);
-
                     }
                     catch (Exception ex)
                     {
@@ -80,31 +80,6 @@ namespace eKlinika.WinUI.Pacijenti
                 }
                 else
                 {
-                    var request = new KorisniciUpdateRequest
-                    {
-                        Email = txtEmail.Text,
-                        Ime = txtIme.Text,
-                        UserName = txtKorisnickoIme.Text,
-                        Password = txtPassword.Text,
-                        PasswordPotvrda = txtPasswordPotvrda.Text,
-                        Prezime = txtPrezime.Text,
-                        PhoneNumber = txtTelefon.Text,
-                        Uloge = roleList,
-                        Pacijent = new Pacijent
-                        {
-                            BrojKartona = txtBrojKartona.Text,
-                            Alergije = txtAlergije.Text,
-                            BrojKnjizice = txtBrojKnjizice.Text,
-                            DatumRegistracije = DateTime.Now,
-                            KrvnaGrupaId = ((KrvnaGrupa)cmbKrvnaGrupa.SelectedValue).Id,
-                            SpecijalniZahtjevi = txtSpecZahtjevi.Text,
-                            Tezina = double.Parse(txtTezina.Text),
-                            Visina = int.Parse(txtVisina.Text)
-                        }
-                    };
-
-
-
                     try
                     {
                         entity = await _service.Update<Model.Korisnici>(_id.Value, request);
@@ -144,7 +119,11 @@ namespace eKlinika.WinUI.Pacijenti
                 txtAlergije.Text = entity.Pacijent.Alergije;
                 txtBrojKnjizice.Text = entity.Pacijent.BrojKnjizice.ToString();
                 dtpDatumRegistarcije.Value = entity.Pacijent.DatumRegistracije;
-                cmbKrvnaGrupa.SelectedIndex = entity.Pacijent.KrvnaGrupaId;
+                foreach (KrvnaGrupa item in cmbKrvnaGrupa.Items)
+                {
+                    if (item.Id == entity.Pacijent.KrvnaGrupaId)
+                        cmbKrvnaGrupa.SelectedItem = item;
+                }
                 txtSpecZahtjevi.Text = entity.Pacijent.SpecijalniZahtjevi;
                 txtTezina.Text = entity.Pacijent.Tezina.ToString();
                 txtVisina.Text = entity.Pacijent.Visina.ToString();
@@ -207,15 +186,18 @@ namespace eKlinika.WinUI.Pacijenti
         {
             bool dodavanje = !_id.HasValue;
 
-            if (dodavanje && string.IsNullOrWhiteSpace(txtPassword.Text))
+            bool pass_empty = string.IsNullOrWhiteSpace(txtPassword.Text),
+                confirm_empty = string.IsNullOrWhiteSpace(txtPasswordPotvrda.Text);
+
+            if ((dodavanje || !confirm_empty) && pass_empty)
             {
                 e.Cancel = true;
                 errorProvider.SetError(txtPassword, Resources.Validation_RequiredField);
             }
-            else if (!dodavanje && !string.IsNullOrWhiteSpace(txtPassword.Text) && !string.IsNullOrWhiteSpace(txtPasswordPotvrda.Text) && txtPassword.Text.Length < 3)
+            else if (!pass_empty && txtPassword.Text.Length < 3)
             {
                 e.Cancel = true;
-                errorProvider.SetError(txtPassword, Resources.Validation_RequiredField);
+                errorProvider.SetError(txtPassword, Resources.Validation_PasswordLength);
             }
             else
             {
@@ -227,30 +209,23 @@ namespace eKlinika.WinUI.Pacijenti
         {
             bool dodavanje = !_id.HasValue;
 
-            if (dodavanje && string.IsNullOrWhiteSpace(txtPasswordPotvrda.Text))
+            bool pass_empty = string.IsNullOrWhiteSpace(txtPassword.Text),
+                confirm_empty = string.IsNullOrWhiteSpace(txtPasswordPotvrda.Text);
+
+            if ((dodavanje || !pass_empty) && confirm_empty)
             {
                 e.Cancel = true;
                 errorProvider.SetError(txtPasswordPotvrda, Resources.Validation_RequiredField);
             }
-            else if (!dodavanje && !string.IsNullOrWhiteSpace(txtPassword.Text) && !string.IsNullOrWhiteSpace(txtPasswordPotvrda.Text) && txtPasswordPotvrda.Text.Length < 3)
+            else if (!pass_empty && !confirm_empty && txtPassword.Text != txtPasswordPotvrda.Text)
             {
                 e.Cancel = true;
-                errorProvider.SetError(txtPasswordPotvrda, Resources.Validation_RequiredField);
+                errorProvider.SetError(txtPasswordPotvrda, Resources.Validation_PasswordNotMatch);
             }
             else
             {
                 errorProvider.SetError(txtPasswordPotvrda, null);
             }
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
         }
 
         private void minimizeForm_Click(object sender, System.EventArgs e)
@@ -260,7 +235,7 @@ namespace eKlinika.WinUI.Pacijenti
 
         private void maximizeForm_Click(object sender, System.EventArgs e)
         {
-            WindowState = FormWindowState.Maximized;
+            WindowState = WindowState == FormWindowState.Maximized ? FormWindowState.Normal : FormWindowState.Maximized;
         }
 
         private void closeForm_Click(object sender, System.EventArgs e)

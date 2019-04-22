@@ -15,7 +15,6 @@ namespace eKlinika.WinUI
 {
     public partial class frmIndex : Form
     {
-        private int childFormNumber = 0;
 
         public frmIndex()
         {
@@ -39,14 +38,6 @@ namespace eKlinika.WinUI
                 tsmiReferent.Visible = true;
 
             FormBorderStyle = FormBorderStyle.None;
-        }
-
-        private void ShowNewForm(object sender, EventArgs e)
-        {
-            Form childForm = new Form();
-            childForm.MdiParent = this;
-            childForm.Text = "Window " + childFormNumber++;
-            childForm.Show();
         }
 
         private void OpenFile(object sender, EventArgs e)
@@ -73,29 +64,7 @@ namespace eKlinika.WinUI
 
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
-        }
-
-        private void CutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
+            Close();
         }
 
         private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -129,22 +98,13 @@ namespace eKlinika.WinUI
         private void pretragaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmKorisnici frm = new frmKorisnici();
-            frm.MdiParent = this;
-            frm.WindowState = FormWindowState.Maximized;
-
             frm.Show();
-
         }
 
         private void noviKorisnikToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmKorisniciDetails frm = new frmKorisniciDetails();
             frm.Show();
-        }
-
-        private void pacijentToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void noviPacijentToolStripMenuItem_Click(object sender, EventArgs e)
@@ -167,7 +127,7 @@ namespace eKlinika.WinUI
 
         private void maximizeForm_Click(object sender, System.EventArgs e)
         {
-            WindowState = FormWindowState.Maximized;
+            WindowState = WindowState == FormWindowState.Maximized ? FormWindowState.Normal : FormWindowState.Maximized;
         }
 
         private void closeForm_Click(object sender, System.EventArgs e)

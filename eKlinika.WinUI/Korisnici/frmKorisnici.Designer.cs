@@ -154,6 +154,7 @@
             // 
             this.txtPretraga.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.txtPretraga.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPretraga.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.txtPretraga.Location = new System.Drawing.Point(17, 80);
             this.txtPretraga.Name = "txtPretraga";
             this.txtPretraga.Size = new System.Drawing.Size(325, 13);

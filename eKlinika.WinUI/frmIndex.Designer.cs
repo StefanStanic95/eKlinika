@@ -193,9 +193,8 @@
             this.urediPacijentaToolStripMenuItem});
             this.pacijentToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.pacijentToolStripMenuItem.Name = "pacijentToolStripMenuItem";
-            this.pacijentToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.pacijentToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.pacijentToolStripMenuItem.Text = "Pacijenti";
-            this.pacijentToolStripMenuItem.Click += new System.EventHandler(this.pacijentToolStripMenuItem_Click);
             // 
             // noviPacijentToolStripMenuItem
             // 
@@ -233,7 +232,7 @@
             this.lijekoviToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
             this.lijekoviToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.lijekoviToolStripMenuItem.Name = "lijekoviToolStripMenuItem";
-            this.lijekoviToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.lijekoviToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.lijekoviToolStripMenuItem.Text = "Lijekovi";
             // 
             // računiToolStripMenuItem
@@ -241,7 +240,7 @@
             this.računiToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
             this.računiToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.računiToolStripMenuItem.Name = "računiToolStripMenuItem";
-            this.računiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.računiToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.računiToolStripMenuItem.Text = "Računi";
             // 
             // narudžbeToolStripMenuItem
@@ -249,7 +248,7 @@
             this.narudžbeToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
             this.narudžbeToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.narudžbeToolStripMenuItem.Name = "narudžbeToolStripMenuItem";
-            this.narudžbeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.narudžbeToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.narudžbeToolStripMenuItem.Text = "Narudžbe";
             // 
             // receptiToolStripMenuItem
@@ -257,7 +256,7 @@
             this.receptiToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
             this.receptiToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.receptiToolStripMenuItem.Name = "receptiToolStripMenuItem";
-            this.receptiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.receptiToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.receptiToolStripMenuItem.Text = "Recepti";
             // 
             // statusStrip

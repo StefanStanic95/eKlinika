@@ -27,6 +27,7 @@ namespace eKlinika.WinUI.Pacijenti
             dgvKorisnici.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(34, 36, 49);
             dgvKorisnici.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(78, 184, 206);
 
+            dgvKorisnici.RowsDefaultCellStyle.BackColor = Color.FromArgb(34, 36, 49);
             dgvKorisnici.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(34, 36, 49);
             dgvKorisnici.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvKorisnici.DefaultCellStyle.SelectionBackColor = Color.FromArgb(34, 36, 49);
@@ -54,11 +55,6 @@ namespace eKlinika.WinUI.Pacijenti
 
             frmPacijentiDetails frm = new frmPacijentiDetails(korisnikId);
             frm.Show();
-        }
-
-        private void dgvKorisnici_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void dgvKorisnici_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -89,7 +85,7 @@ namespace eKlinika.WinUI.Pacijenti
 
         private void maximizeForm_Click(object sender, System.EventArgs e)
         {
-            WindowState = FormWindowState.Maximized;
+            WindowState = WindowState == FormWindowState.Maximized ? FormWindowState.Normal : FormWindowState.Maximized;
         }
 
         private void closeForm_Click(object sender, System.EventArgs e)
