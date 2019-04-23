@@ -19,7 +19,6 @@ namespace eKlinika.WebAPI.Controllers
             _service = service;
         }
 
-
         [HttpGet]
         public List<T> Get([FromQuery]TSearch search)
         {

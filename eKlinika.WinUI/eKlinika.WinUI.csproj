@@ -60,6 +60,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIService.cs" />
+    <Compile Include="Doktori\frmPregledi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doktori\frmPregledi.Designer.cs">
+      <DependentUpon>frmPregledi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Doktori\frmUputnice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doktori\frmUputnice.Designer.cs">
+      <DependentUpon>frmUputnice.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmIndex.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +110,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Doktori\frmPregledi.resx">
+      <DependentUpon>frmPregledi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Doktori\frmUputnice.resx">
+      <DependentUpon>frmUputnice.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmIndex.resx">
       <DependentUpon>frmIndex.cs</DependentUpon>
     </EmbeddedResource>
@@ -146,5 +164,6 @@
       <Name>eKlinika.Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

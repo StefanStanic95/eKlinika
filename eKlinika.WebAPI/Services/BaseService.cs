@@ -17,6 +17,13 @@ namespace eKlinika.WebAPI.Services
             _mapper = mapper;
         }
 
+        public virtual List<TModel> Get()
+        {
+            var list = _context.Set<TDatabase>().ToList();
+
+            return _mapper.Map<List<TModel>>(list);
+        }
+
         public virtual List<TModel> Get(TSearch search)
         {
             var list = _context.Set<TDatabase>().ToList();

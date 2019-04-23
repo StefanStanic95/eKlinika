@@ -9,6 +9,8 @@ namespace eKlinika.WebAPI.Services
     {
         List<T> Get(TSearch search);
 
+        List<T> Get();
+
         T GetById(int id);
     }
 }

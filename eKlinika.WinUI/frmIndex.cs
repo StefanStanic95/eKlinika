@@ -1,4 +1,5 @@
-﻿using eKlinika.WinUI.Korisnici;
+﻿using eKlinika.WinUI.Doktori;
+using eKlinika.WinUI.Korisnici;
 using eKlinika.WinUI.Pacijenti;
 using System;
 using System.Collections.Generic;
@@ -133,6 +134,18 @@ namespace eKlinika.WinUI
         private void closeForm_Click(object sender, System.EventArgs e)
         {
             Close();
+        }
+
+        private void preglediToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPregledi frm = new frmPregledi();
+            frm.Show();
+        }
+
+        private void uputniceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUputnice frm = new frmUputnice();
+            frm.Show();
         }
     }
 }

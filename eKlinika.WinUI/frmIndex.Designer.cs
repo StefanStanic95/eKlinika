@@ -128,16 +128,18 @@
             this.uputniceToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
             this.uputniceToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.uputniceToolStripMenuItem.Name = "uputniceToolStripMenuItem";
-            this.uputniceToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.uputniceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.uputniceToolStripMenuItem.Text = "Uputnice";
+            this.uputniceToolStripMenuItem.Click += new System.EventHandler(this.uputniceToolStripMenuItem_Click);
             // 
             // preglediToolStripMenuItem
             // 
             this.preglediToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
             this.preglediToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.preglediToolStripMenuItem.Name = "preglediToolStripMenuItem";
-            this.preglediToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.preglediToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.preglediToolStripMenuItem.Text = "Pregledi";
+            this.preglediToolStripMenuItem.Click += new System.EventHandler(this.preglediToolStripMenuItem_Click);
             // 
             // tsmiMedicinskaSestra
             // 
@@ -193,7 +195,7 @@
             this.urediPacijentaToolStripMenuItem});
             this.pacijentToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.pacijentToolStripMenuItem.Name = "pacijentToolStripMenuItem";
-            this.pacijentToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pacijentToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.pacijentToolStripMenuItem.Text = "Pacijenti";
             // 
             // noviPacijentToolStripMenuItem

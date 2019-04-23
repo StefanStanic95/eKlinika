@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using eKlinika.Model.Requests;
 using eKlinika.WebAPI.Database;
-using eKlinika.Model.Requests;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
