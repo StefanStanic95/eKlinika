@@ -60,6 +60,7 @@
             this.minimizeForm = new System.Windows.Forms.Label();
             this.maximizeForm = new System.Windows.Forms.Label();
             this.closeForm = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -128,7 +129,7 @@
             this.uputniceToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
             this.uputniceToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.uputniceToolStripMenuItem.Name = "uputniceToolStripMenuItem";
-            this.uputniceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.uputniceToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.uputniceToolStripMenuItem.Text = "Uputnice";
             this.uputniceToolStripMenuItem.Click += new System.EventHandler(this.uputniceToolStripMenuItem_Click);
             // 
@@ -137,7 +138,7 @@
             this.preglediToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
             this.preglediToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.preglediToolStripMenuItem.Name = "preglediToolStripMenuItem";
-            this.preglediToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.preglediToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.preglediToolStripMenuItem.Text = "Pregledi";
             this.preglediToolStripMenuItem.Click += new System.EventHandler(this.preglediToolStripMenuItem_Click);
             // 
@@ -281,6 +282,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -291,10 +293,11 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox1.Size = new System.Drawing.Size(64, 409);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
@@ -346,6 +349,16 @@
             this.closeForm.Text = "X";
             this.closeForm.Click += new System.EventHandler(this.closeForm_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 70);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 17);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "eKlinika";
+            // 
             // frmIndex
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -371,6 +384,7 @@
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -409,6 +423,7 @@
         private System.Windows.Forms.Label minimizeForm;
         private System.Windows.Forms.Label maximizeForm;
         private System.Windows.Forms.Label closeForm;
+        private System.Windows.Forms.Label label1;
     }
 }
 

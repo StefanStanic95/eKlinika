@@ -92,5 +92,10 @@ namespace eKlinika.WinUI.Pacijenti
         {
             Close();
         }
+
+        private void dgvKorisnici_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
