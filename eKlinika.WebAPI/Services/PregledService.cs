@@ -68,7 +68,6 @@ namespace eKlinika.WebAPI.Services
         public Model.Pregled Update(int id, Model.Pregled request)
         {
             var result = _context.Pregled.Where(x => x.Id == id);
-            result = IncludeUserDetails(result);
 
             var entity = result.FirstOrDefault();
 

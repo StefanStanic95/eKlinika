@@ -24,5 +24,8 @@ namespace eKlinika.Model
         //public Grad Grad { get; set; }
         public Osoblje Osoblje { get; set; }
         public Pacijent Pacijent { get; set; }
+
+        public string ImePrezime { get => Ime + " " + Prezime; }
+
     }
 }

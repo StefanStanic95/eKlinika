@@ -80,6 +80,7 @@ namespace eKlinika.WinUI.Pacijenti
                 }
                 else
                 {
+                    request.Pacijent.Id = _id.Value;
                     try
                     {
                         entity = await _service.Update<Model.Korisnici>(_id.Value, request);

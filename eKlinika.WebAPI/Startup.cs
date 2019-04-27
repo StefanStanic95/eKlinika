@@ -66,6 +66,7 @@ namespace eKlinika.WebAPI
             services.AddScoped<IKorisniciService, KorisniciService>();
             services.AddScoped<IPregledService, PregledService>();
             services.AddScoped<IUputnicaService, UputnicaService>();
+            services.AddScoped<IUplateService, UplateService>();
 
             services.AddScoped<IService<Model.Uloge, object>, BaseService<Model.Uloge, object, Uloge>>();
             services.AddScoped<IService<Model.KrvnaGrupa, object>, BaseService<Model.KrvnaGrupa, object, KrvnaGrupa>>();

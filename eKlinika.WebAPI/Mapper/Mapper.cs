@@ -22,6 +22,8 @@ namespace eProdaja.WebAPI.Mapper
 
             CreateMap<eKlinika.WebAPI.Database.Pregled, eKlinika.Model.Pregled>();
             CreateMap<eKlinika.WebAPI.Database.Uputnica, eKlinika.Model.Uputnica>();
+            CreateMap<eKlinika.WebAPI.Database.Uplata, eKlinika.Model.Uplata>();
+
         }
     }
 }

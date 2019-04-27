@@ -214,9 +214,11 @@ namespace eKlinika.WebAPI.Database
                     .HasForeignKey(d => d.PacijentId)
                     .OnDelete(DeleteBehavior.Restrict);
 
-                entity.HasOne(d => d.Uplata)
-                    .WithMany(p => p.Pregled)
-                    .HasForeignKey(d => d.UplataId);
+
+                entity.HasMany(d => d.Uplata)
+                    .WithOne(p => p.Pregled)
+                    .HasForeignKey(d => d.PregledId);
+
             });
 
             modelBuilder.Entity<RacunStavka>(entity =>
@@ -262,6 +264,12 @@ namespace eKlinika.WebAPI.Database
                 entity.HasOne(d => d.Pacijent)
                     .WithMany(p => p.Uplata)
                     .HasForeignKey(d => d.PacijentId);
+
+                entity.HasOne(d => d.Pregled)
+                    .WithMany(p => p.Uplata)
+                    .HasForeignKey(d => d.PregledId);
+
+
             });
 
             modelBuilder.Entity<Uputnica>(entity =>

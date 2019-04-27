@@ -159,15 +159,16 @@
             this.uplateToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
             this.uplateToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.uplateToolStripMenuItem.Name = "uplateToolStripMenuItem";
-            this.uplateToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.uplateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.uplateToolStripMenuItem.Text = "Uplate";
+            this.uplateToolStripMenuItem.Click += new System.EventHandler(this.uplateToolStripMenuItem_Click);
             // 
             // uputniceToolStripMenuItem1
             // 
             this.uputniceToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
             this.uputniceToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.uputniceToolStripMenuItem1.Name = "uputniceToolStripMenuItem1";
-            this.uputniceToolStripMenuItem1.Size = new System.Drawing.Size(122, 22);
+            this.uputniceToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.uputniceToolStripMenuItem1.Text = "Uputnice";
             this.uputniceToolStripMenuItem1.Click += new System.EventHandler(this.uputniceToolStripMenuItem1_Click);
             // 
@@ -176,7 +177,7 @@
             this.preglediToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
             this.preglediToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.preglediToolStripMenuItem1.Name = "preglediToolStripMenuItem1";
-            this.preglediToolStripMenuItem1.Size = new System.Drawing.Size(122, 22);
+            this.preglediToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.preglediToolStripMenuItem1.Text = "Pregledi";
             this.preglediToolStripMenuItem1.Click += new System.EventHandler(this.preglediToolStripMenuItem1_Click);
             // 

@@ -18,6 +18,6 @@ namespace eKlinika.Model
         //public Doktor Doktor { get; set; }
         //public MedicinskaSestra MedicinskaSestra { get; set; }
 
-        public string ImePrezime { get => Korisnik.Ime + " " + Korisnik.Prezime; }
+        public string ImePrezime { get => Korisnik?.Ime + " " + Korisnik?.Prezime; }
     }
 }

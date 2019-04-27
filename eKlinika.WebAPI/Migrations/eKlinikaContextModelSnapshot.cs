@@ -415,8 +415,6 @@ namespace eKlinika.WebAPI.Migrations
 
                     b.Property<string>("TipPregleda");
 
-                    b.Property<int?>("UplataId");
-
                     b.HasKey("Id");
 
                     b.HasIndex("DoktorId");
@@ -424,8 +422,6 @@ namespace eKlinika.WebAPI.Migrations
                     b.HasIndex("MedicinskaSestraId");
 
                     b.HasIndex("PacijentId");
-
-                    b.HasIndex("UplataId");
 
                     b.ToTable("Pregled");
                 });
@@ -556,6 +552,8 @@ namespace eKlinika.WebAPI.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("PacijentId");
+
+                    b.HasIndex("PregledId");
 
                     b.ToTable("Uplata");
                 });
@@ -784,10 +782,6 @@ namespace eKlinika.WebAPI.Migrations
                         .WithMany("Pregled")
                         .HasForeignKey("PacijentId")
                         .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("eKlinika.WebAPI.Database.Uplata", "Uplata")
-                        .WithMany("Pregled")
-                        .HasForeignKey("UplataId");
                 });
 
             modelBuilder.Entity("eKlinika.WebAPI.Database.RacunStavka", b =>
@@ -838,6 +832,10 @@ namespace eKlinika.WebAPI.Migrations
                         .WithMany("Uplata")
                         .HasForeignKey("PacijentId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("eKlinika.WebAPI.Database.Pregled", "Pregled")
+                        .WithMany("Uplata")
+                        .HasForeignKey("PregledId");
                 });
 
             modelBuilder.Entity("eKlinika.WebAPI.Database.Uputnica", b =>

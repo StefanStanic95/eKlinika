@@ -419,31 +419,6 @@ namespace eKlinika.WebAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Uplata",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    BrojUplatnice = table.Column<string>(nullable: true),
-                    DatumUplate = table.Column<DateTime>(nullable: false),
-                    Iznos = table.Column<double>(nullable: false),
-                    Namjena = table.Column<string>(nullable: true),
-                    PacijentId = table.Column<int>(nullable: false),
-                    PregledId = table.Column<int>(nullable: true),
-                    ZiroRacun = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Uplata", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Uplata_Pacijent_PacijentId",
-                        column: x => x.PacijentId,
-                        principalTable: "Pacijent",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "ApotekaRacun",
                 columns: table => new
                 {
@@ -526,7 +501,6 @@ namespace eKlinika.WebAPI.Migrations
                     Napomena = table.Column<string>(nullable: true),
                     Prioritet = table.Column<string>(nullable: true),
                     TipPregleda = table.Column<string>(nullable: true),
-                    UplataId = table.Column<int>(nullable: true),
                     isOdrzan = table.Column<bool>(nullable: false),
                     PacijentId = table.Column<int>(nullable: false)
                 },
@@ -549,12 +523,6 @@ namespace eKlinika.WebAPI.Migrations
                         name: "FK_Pregled_Pacijent_PacijentId",
                         column: x => x.PacijentId,
                         principalTable: "Pacijent",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Pregled_Uplata_UplataId",
-                        column: x => x.UplataId,
-                        principalTable: "Uplata",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -648,6 +616,37 @@ namespace eKlinika.WebAPI.Migrations
                         principalTable: "Pregled",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Uplata",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    BrojUplatnice = table.Column<string>(nullable: true),
+                    DatumUplate = table.Column<DateTime>(nullable: false),
+                    Iznos = table.Column<double>(nullable: false),
+                    Namjena = table.Column<string>(nullable: true),
+                    PacijentId = table.Column<int>(nullable: false),
+                    PregledId = table.Column<int>(nullable: true),
+                    ZiroRacun = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Uplata", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Uplata_Pacijent_PacijentId",
+                        column: x => x.PacijentId,
+                        principalTable: "Pacijent",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Uplata_Pregled_PregledId",
+                        column: x => x.PregledId,
+                        principalTable: "Pregled",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -778,11 +777,6 @@ namespace eKlinika.WebAPI.Migrations
                 column: "PacijentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pregled_UplataId",
-                table: "Pregled",
-                column: "UplataId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_RacunStavka_ApotekaRacunId",
                 table: "RacunStavka",
                 column: "ApotekaRacunId");
@@ -821,6 +815,11 @@ namespace eKlinika.WebAPI.Migrations
                 name: "IX_Uplata_PacijentId",
                 table: "Uplata",
                 column: "PacijentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Uplata_PregledId",
+                table: "Uplata",
+                column: "PregledId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Uputnica_LaboratorijDoktorId",
@@ -871,6 +870,9 @@ namespace eKlinika.WebAPI.Migrations
                 name: "RezultatPretrage");
 
             migrationBuilder.DropTable(
+                name: "Uplata");
+
+            migrationBuilder.DropTable(
                 name: "UstanovljenaDijagnoza");
 
             migrationBuilder.DropTable(
@@ -916,7 +918,7 @@ namespace eKlinika.WebAPI.Migrations
                 name: "MedicinskaSestra");
 
             migrationBuilder.DropTable(
-                name: "Uplata");
+                name: "Pacijent");
 
             migrationBuilder.DropTable(
                 name: "VrstaPretrage");
@@ -925,13 +927,10 @@ namespace eKlinika.WebAPI.Migrations
                 name: "Osoblje");
 
             migrationBuilder.DropTable(
-                name: "Pacijent");
+                name: "KrvnaGrupa");
 
             migrationBuilder.DropTable(
                 name: "Korisnici");
-
-            migrationBuilder.DropTable(
-                name: "KrvnaGrupa");
 
             migrationBuilder.DropTable(
                 name: "Grad");

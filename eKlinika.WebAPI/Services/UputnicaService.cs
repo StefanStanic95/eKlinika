@@ -69,7 +69,6 @@ namespace eKlinika.WebAPI.Services
         public Model.Uputnica Update(int id, Model.Uputnica request)
         {
             var result = _context.Uputnica.Where(x => x.Id == id);
-            result = IncludeDetails(result);
 
             var entity = result.FirstOrDefault();
 

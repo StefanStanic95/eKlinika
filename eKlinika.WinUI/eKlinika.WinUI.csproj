@@ -66,6 +66,18 @@
     <Compile Include="MedicinskeSestre\frmPregledi.Designer.cs">
       <DependentUpon>frmPregledi.cs</DependentUpon>
     </Compile>
+    <Compile Include="MedicinskeSestre\frmUplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MedicinskeSestre\frmUplate.Designer.cs">
+      <DependentUpon>frmUplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MedicinskeSestre\frmUplateDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MedicinskeSestre\frmUplateDetails.Designer.cs">
+      <DependentUpon>frmUplateDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="MedicinskeSestre\frmUputnice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +136,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MedicinskeSestre\frmPregledi.resx">
       <DependentUpon>frmPregledi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MedicinskeSestre\frmUplate.resx">
+      <DependentUpon>frmUplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MedicinskeSestre\frmUplateDetails.resx">
+      <DependentUpon>frmUplateDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MedicinskeSestre\frmUputnice.resx">
       <DependentUpon>frmUputnice.cs</DependentUpon>
