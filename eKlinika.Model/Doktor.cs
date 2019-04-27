@@ -10,5 +10,9 @@ namespace eKlinika.Model
         public DateTime DatumSpecijalizacije { get; set; }
         public string Specijalizacija { get; set; }
         public string Titula { get; set; }
+
+        public Osoblje Osoblje { get; set; }
+
+        public string ImePrezime { get => (Titula.Length != 0 ? Titula + " " : "") + Osoblje.ImePrezime; }
     }
 }

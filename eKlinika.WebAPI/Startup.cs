@@ -64,10 +64,11 @@ namespace eKlinika.WebAPI
               .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 
             services.AddScoped<IKorisniciService, KorisniciService>();
+            services.AddScoped<IPregledService, PregledService>();
+            services.AddScoped<IUputnicaService, UputnicaService>();
+
             services.AddScoped<IService<Model.Uloge, object>, BaseService<Model.Uloge, object, Uloge>>();
             services.AddScoped<IService<Model.KrvnaGrupa, object>, BaseService<Model.KrvnaGrupa, object, KrvnaGrupa>>();
-            services.AddScoped<IService<Model.Pregled, object>, BaseService<Model.Pregled, object, Pregled>>();
-            services.AddScoped<IService<Model.Uputnica, object>, BaseService<Model.Uputnica, object, Uputnica>>();
 
         }
 

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using eKlinika.Model.Requests;
 using eKlinika.WebAPI.Services;
-using eKlinika.Model.Requests;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

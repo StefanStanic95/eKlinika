@@ -9,5 +9,7 @@ namespace eKlinika.Model
         public int Id { get; set; }
         public string Certifikati { get; set; }
         public string Kursevi { get; set; }
+
+        public Osoblje Osoblje { get; set; }
     }
 }

@@ -54,13 +54,13 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.minimizeForm = new System.Windows.Forms.Label();
             this.maximizeForm = new System.Windows.Forms.Label();
             this.closeForm = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -169,6 +169,7 @@
             this.uputniceToolStripMenuItem1.Name = "uputniceToolStripMenuItem1";
             this.uputniceToolStripMenuItem1.Size = new System.Drawing.Size(122, 22);
             this.uputniceToolStripMenuItem1.Text = "Uputnice";
+            this.uputniceToolStripMenuItem1.Click += new System.EventHandler(this.uputniceToolStripMenuItem1_Click);
             // 
             // preglediToolStripMenuItem1
             // 
@@ -177,6 +178,7 @@
             this.preglediToolStripMenuItem1.Name = "preglediToolStripMenuItem1";
             this.preglediToolStripMenuItem1.Size = new System.Drawing.Size(122, 22);
             this.preglediToolStripMenuItem1.Text = "Pregledi";
+            this.preglediToolStripMenuItem1.Click += new System.EventHandler(this.preglediToolStripMenuItem1_Click);
             // 
             // tsmiReferent
             // 
@@ -291,6 +293,16 @@
             this.panel1.Size = new System.Drawing.Size(632, 429);
             this.panel1.TabIndex = 4;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 70);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 17);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "eKlinika";
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -348,16 +360,6 @@
             this.closeForm.TabIndex = 5;
             this.closeForm.Text = "X";
             this.closeForm.Click += new System.EventHandler(this.closeForm_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 70);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 17);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "eKlinika";
             // 
             // frmIndex
             // 

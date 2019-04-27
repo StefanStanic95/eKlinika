@@ -14,5 +14,10 @@ namespace eKlinika.Model
         public int PacijentId { get; set; }
         public int UputioDoktorId { get; set; }
         public int VrstaPretrageId { get; set; }
+
+        public Doktor LaboratorijDoktor { get; set; }
+        public Doktor UputioDoktor { get; set; }
+        public Pacijent Pacijent { get; set; }
+        public VrstaPretrage VrstaPretrage { get; set; }
     }
 }

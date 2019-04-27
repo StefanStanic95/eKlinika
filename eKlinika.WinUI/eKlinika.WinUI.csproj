@@ -60,6 +60,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIService.cs" />
+    <Compile Include="MedicinskeSestre\frmPregledi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MedicinskeSestre\frmPregledi.Designer.cs">
+      <DependentUpon>frmPregledi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MedicinskeSestre\frmUputnice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MedicinskeSestre\frmUputnice.Designer.cs">
+      <DependentUpon>frmUputnice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Doktori\frmPregledi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +122,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="MedicinskeSestre\frmPregledi.resx">
+      <DependentUpon>frmPregledi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MedicinskeSestre\frmUputnice.resx">
+      <DependentUpon>frmUputnice.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Doktori\frmPregledi.resx">
       <DependentUpon>frmPregledi.cs</DependentUpon>
     </EmbeddedResource>

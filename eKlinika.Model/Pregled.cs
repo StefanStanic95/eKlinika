@@ -18,5 +18,9 @@ namespace eKlinika.Model
         public int MedicinskaSestraId { get; set; }
         public int PacijentId { get; set; }
 
+        public Doktor Doktor { get; set; }
+        public MedicinskaSestra MedicinskaSestra { get; set; }
+        public Pacijent Pacijent { get; set; }
+
     }
 }

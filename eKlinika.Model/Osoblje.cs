@@ -11,10 +11,13 @@ namespace eKlinika.Model
         public int GodineStaza { get; set; }
         public string Jezici { get; set; }
         public string TipZaposlenja { get; set; }
-        public string TrajanjeUgovora { get; set; }
+        public string TrajanjeUgovora { get; set; }        
 
-        public Apotekar Apotekar { get; set; }
-        public Doktor Doktor { get; set; }
-        public MedicinskaSestra MedicinskaSestra { get; set; }
+        public Korisnici_Base Korisnik { get; set; }
+//        public Apotekar Apotekar { get; set; }
+        //public Doktor Doktor { get; set; }
+        //public MedicinskaSestra MedicinskaSestra { get; set; }
+
+        public string ImePrezime { get => Korisnik.Ime + " " + Korisnik.Prezime; }
     }
 }

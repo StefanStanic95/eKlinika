@@ -4,11 +4,9 @@ using System.Text;
 
 namespace eKlinika.Model
 {
-    public class Apotekar
+    public class VrstaPretrage
     {
         public int Id { get; set; }
-        public string OpisPosla { get; set; }
-
-        public Osoblje Osoblje { get; set; }
+        public string Naziv { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace eKlinika.WinUI.Doktori
+﻿namespace eKlinika.WinUI.MedicinskeSestre
 {
     partial class frmPregledi
     {

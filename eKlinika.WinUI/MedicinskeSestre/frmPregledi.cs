@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace eKlinika.WinUI.Doktori
+namespace eKlinika.WinUI.MedicinskeSestre
 {
     public partial class frmPregledi : Form
     {

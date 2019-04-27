@@ -17,9 +17,11 @@ namespace eProdaja.WebAPI.Mapper
             CreateMap<eKlinika.Model.Apotekar, eKlinika.WebAPI.Database.Apotekar>();
             CreateMap<eKlinika.Model.MedicinskaSestra, eKlinika.WebAPI.Database.MedicinskaSestra>();
 
-
             CreateMap<eKlinika.WebAPI.Database.Korisnici, eKlinika.Model.Requests.KorisniciInsertRequest>().ReverseMap();
             CreateMap<eKlinika.WebAPI.Database.Korisnici, eKlinika.Model.Requests.KorisniciUpdateRequest>().ReverseMap();
+
+            CreateMap<eKlinika.WebAPI.Database.Pregled, eKlinika.Model.Pregled>();
+            CreateMap<eKlinika.WebAPI.Database.Uputnica, eKlinika.Model.Uputnica>();
         }
     }
 }

@@ -16,6 +16,10 @@ namespace eKlinika.Model
         public double Tezina { get; set; }
         public int Visina { get; set; }
 
+        public Korisnici_Base Korisnik { get; set; }
+
+        public string ImePrezime { get => Korisnik.Ime + " " + Korisnik.Prezime; }
+
         //public KrvnaGrupa KrvnaGrupa { get; set; }
         //public ICollection<ApotekaRacun> ApotekaRacun { get; set; }
         //public ICollection<Pregled> Pregled { get; set; }

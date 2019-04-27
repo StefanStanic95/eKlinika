@@ -138,13 +138,25 @@ namespace eKlinika.WinUI
 
         private void preglediToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmPregledi frm = new frmPregledi();
+            Doktori.frmPregledi frm = new Doktori.frmPregledi();
             frm.Show();
         }
 
         private void uputniceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmUputnice frm = new frmUputnice();
+            Doktori.frmUputnice frm = new Doktori.frmUputnice();
+            frm.Show();
+        }
+
+        private void uputniceToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            MedicinskeSestre.frmUputnice frm = new MedicinskeSestre.frmUputnice();
+            frm.Show();
+        }
+
+        private void preglediToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            MedicinskeSestre.frmPregledi frm = new MedicinskeSestre.frmPregledi();
             frm.Show();
         }
     }
