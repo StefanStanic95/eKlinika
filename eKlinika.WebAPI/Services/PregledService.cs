@@ -55,7 +55,7 @@ namespace eKlinika.WebAPI.Services
             return _mapper.Map<Model.Pregled>(entity.FirstOrDefault());
         }
 
-        public Model.Pregled Insert(Model.Pregled request)
+        public Model.Pregled Insert(PregledInsertRequest request)
         {
             var entity = _mapper.Map<Database.Pregled>(request);
 
@@ -65,7 +65,7 @@ namespace eKlinika.WebAPI.Services
             return _mapper.Map<Model.Pregled>(entity);
         }
 
-        public Model.Pregled Update(int id, Model.Pregled request)
+        public Model.Pregled Update(int id, PregledInsertRequest request)
         {
             var result = _context.Pregled.Where(x => x.Id == id);
 

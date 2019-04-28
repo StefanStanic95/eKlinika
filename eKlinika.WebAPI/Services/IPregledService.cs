@@ -12,9 +12,9 @@ namespace eKlinika.WebAPI.Services
 
         Model.Pregled GetById(int id);
 
-        Model.Pregled Insert(Model.Pregled request);
+        Model.Pregled Insert(PregledInsertRequest request);
 
-        Model.Pregled Update(int id, Model.Pregled request);
+        Model.Pregled Update(int id, PregledInsertRequest request);
         
     }
 }

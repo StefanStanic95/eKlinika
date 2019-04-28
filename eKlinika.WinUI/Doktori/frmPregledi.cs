@@ -67,5 +67,19 @@ namespace eKlinika.WinUI.Doktori
                 dgvPregledi.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = data;
             }
         }
+
+        private void btnDodaj_Click(object sender, EventArgs e)
+        {
+            frmPreglediDetails frm = new frmPreglediDetails();
+            frm.Show();
+        }
+
+        private void dgvPregledi_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var pregledId = int.Parse(dgvPregledi.SelectedRows[0].Cells[0].Value.ToString());
+
+            frmPreglediDetails frm = new frmPreglediDetails(pregledId);
+            frm.Show();
+        }
     }
 }

@@ -123,7 +123,6 @@ namespace eKlinika.WebAPI.Services
 
             var entity = result.FirstOrDefault();
 
-
             _context.Korisnici.Attach(entity);
             _context.Korisnici.Update(entity);
 
@@ -138,7 +137,7 @@ namespace eKlinika.WebAPI.Services
                 entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Password);
             }
 
-            _mapper.Map(request, entity);
+            _mapper.Map(request.Pacijent, entity.Pacijent);
 
             _context.SaveChanges();
 

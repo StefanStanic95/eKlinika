@@ -40,9 +40,10 @@
             this.dtToDate = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnDodaj = new System.Windows.Forms.Button();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DatumPregleda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumUputnice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumPregleda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsGotovNalaz = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LaboratorijDoktorId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PacijentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -98,8 +99,8 @@
             this.dgvUputnice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUputnice.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
-            this.DatumPregleda,
             this.DatumUputnice,
+            this.DatumPregleda,
             this.IsGotovNalaz,
             this.LaboratorijDoktorId,
             this.PacijentId,
@@ -111,6 +112,7 @@
             this.dgvUputnice.ReadOnly = true;
             this.dgvUputnice.Size = new System.Drawing.Size(1183, 322);
             this.dgvUputnice.TabIndex = 0;
+            this.dgvUputnice.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUputnice_CellDoubleClick);
             this.dgvUputnice.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvUputnice_CellFormatting);
             // 
             // panel1
@@ -178,6 +180,20 @@
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
             // 
+            // btnDodaj
+            // 
+            this.btnDodaj.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.btnDodaj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDodaj.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDodaj.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.btnDodaj.Location = new System.Drawing.Point(1112, 511);
+            this.btnDodaj.Name = "btnDodaj";
+            this.btnDodaj.Size = new System.Drawing.Size(86, 23);
+            this.btnDodaj.TabIndex = 15;
+            this.btnDodaj.Text = "Dodaj";
+            this.btnDodaj.UseVisualStyleBackColor = false;
+            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
+            // 
             // Id
             // 
             this.Id.DataPropertyName = "Id";
@@ -186,6 +202,13 @@
             this.Id.ReadOnly = true;
             this.Id.Visible = false;
             // 
+            // DatumUputnice
+            // 
+            this.DatumUputnice.DataPropertyName = "DatumUputnice";
+            this.DatumUputnice.HeaderText = "Datum uputnice";
+            this.DatumUputnice.Name = "DatumUputnice";
+            this.DatumUputnice.ReadOnly = true;
+            // 
             // DatumPregleda
             // 
             this.DatumPregleda.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -193,13 +216,6 @@
             this.DatumPregleda.HeaderText = "Datum rezultata ";
             this.DatumPregleda.Name = "DatumPregleda";
             this.DatumPregleda.ReadOnly = true;
-            // 
-            // DatumUputnice
-            // 
-            this.DatumUputnice.DataPropertyName = "DatumUputnice";
-            this.DatumUputnice.HeaderText = "Datum uputnice";
-            this.DatumUputnice.Name = "DatumUputnice";
-            this.DatumUputnice.ReadOnly = true;
             // 
             // IsGotovNalaz
             // 
@@ -241,7 +257,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.ClientSize = new System.Drawing.Size(1213, 499);
+            this.ClientSize = new System.Drawing.Size(1213, 546);
+            this.Controls.Add(this.btnDodaj);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dtToDate);
             this.Controls.Add(this.label3);
@@ -275,9 +292,10 @@
         private System.Windows.Forms.DateTimePicker dtToDate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnDodaj;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DatumPregleda;
         private System.Windows.Forms.DataGridViewTextBoxColumn DatumUputnice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DatumPregleda;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsGotovNalaz;
         private System.Windows.Forms.DataGridViewTextBoxColumn LaboratorijDoktorId;
         private System.Windows.Forms.DataGridViewTextBoxColumn PacijentId;

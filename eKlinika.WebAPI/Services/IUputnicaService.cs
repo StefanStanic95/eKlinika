@@ -12,9 +12,9 @@ namespace eKlinika.WebAPI.Services
 
         Model.Uputnica GetById(int id);
 
-        Model.Uputnica Insert(Model.Uputnica request);
+        Model.Uputnica Insert(UputnicaInsertRequest request);
 
-        Model.Uputnica Update(int id, Model.Uputnica request);
+        Model.Uputnica Update(int id, UputnicaInsertRequest request);
         
     }
 }

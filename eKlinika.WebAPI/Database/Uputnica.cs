@@ -5,10 +5,10 @@ namespace eKlinika.WebAPI.Database
 {
     public partial class Uputnica
     {
-        public Uputnica()
-        {
-            RezultatPretrage = new HashSet<RezultatPretrage>();
-        }
+        //public Uputnica()
+        //{
+        //    RezultatPretrage = new HashSet<RezultatPretrage>();
+        //}
 
         public int Id { get; set; }
         public DateTime DatumRezultata { get; set; }
@@ -23,6 +23,6 @@ namespace eKlinika.WebAPI.Database
         public Pacijent Pacijent { get; set; }
         public Doktor UputioDoktor { get; set; }
         public VrstaPretrage VrstaPretrage { get; set; }
-        public ICollection<RezultatPretrage> RezultatPretrage { get; set; }
+        //public ICollection<RezultatPretrage> RezultatPretrage { get; set; }
     }
 }

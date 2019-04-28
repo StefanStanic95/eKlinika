@@ -73,10 +73,6 @@ namespace eKlinika.WebAPI.Database
                     .WithMany(p => p.ApotekaRacun)
                     .HasForeignKey(d => d.ApotekarId);
 
-                entity.HasOne(d => d.Pacijent)
-                    .WithMany(p => p.ApotekaRacun)
-                    .HasForeignKey(d => d.PacijentId)
-                    .OnDelete(DeleteBehavior.Restrict);
 
             });
 
@@ -209,11 +205,6 @@ namespace eKlinika.WebAPI.Database
                     .HasForeignKey(d => d.MedicinskaSestraId)
                     .OnDelete(DeleteBehavior.Restrict);
 
-                entity.HasOne(d => d.Pacijent)
-                    .WithMany(p => p.Pregled)
-                    .HasForeignKey(d => d.PacijentId)
-                    .OnDelete(DeleteBehavior.Restrict);
-
 
                 entity.HasMany(d => d.Uplata)
                     .WithOne(p => p.Pregled)
@@ -253,18 +244,15 @@ namespace eKlinika.WebAPI.Database
                     .WithMany(p => p.RezultatPretrage)
                     .HasForeignKey(d => d.ModalitetId);
 
-                entity.HasOne(d => d.Uputnica)
-                    .WithMany(p => p.RezultatPretrage)
-                    .HasForeignKey(d => d.UputnicaId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                //entity.HasOne(d => d.Uputnica)
+                //    .WithMany(p => p.RezultatPretrage)
+                //    .HasForeignKey(d => d.UputnicaId)
+                //    .OnDelete(DeleteBehavior.ClientSetNull);
             });
 
             modelBuilder.Entity<Uplata>(entity =>
             {
-                entity.HasOne(d => d.Pacijent)
-                    .WithMany(p => p.Uplata)
-                    .HasForeignKey(d => d.PacijentId);
-
+                
                 entity.HasOne(d => d.Pregled)
                     .WithMany(p => p.Uplata)
                     .HasForeignKey(d => d.PregledId);
@@ -274,10 +262,7 @@ namespace eKlinika.WebAPI.Database
 
             modelBuilder.Entity<Uputnica>(entity =>
             {
-                entity.HasOne(d => d.Pacijent)
-                    .WithMany(p => p.Uputnica)
-                    .HasForeignKey(d => d.PacijentId)
-                    .OnDelete(DeleteBehavior.Restrict);
+                
 
                 entity.HasOne(d => d.VrstaPretrage)
                     .WithMany(p => p.Uputnica)

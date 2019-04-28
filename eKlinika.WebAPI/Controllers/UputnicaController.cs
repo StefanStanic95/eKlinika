@@ -31,14 +31,14 @@ namespace eKlinika.WebAPI.Controllers
 
         [Authorize(Roles = "Administrator,Doktor")]
         [HttpPost]
-        public Model.Uputnica Insert(Uputnica request)
+        public Model.Uputnica Insert(UputnicaInsertRequest request)
         {
             return _service.Insert(request);
         }
 
         [Authorize(Roles = "Administrator,Doktor")]
         [HttpPut("{id}")]
-        public Model.Uputnica Update(int id, [FromBody]Uputnica request)
+        public Model.Uputnica Update(int id, [FromBody]UputnicaInsertRequest request)
         {
             return _service.Update(id, request);
         }

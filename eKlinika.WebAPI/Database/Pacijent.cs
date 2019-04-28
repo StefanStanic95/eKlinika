@@ -5,13 +5,13 @@ namespace eKlinika.WebAPI.Database
 {
     public partial class Pacijent
     {
-        public Pacijent()
-        {
-            ApotekaRacun = new HashSet<ApotekaRacun>();
-            Pregled = new HashSet<Pregled>();
-            Uplata = new HashSet<Uplata>();
-            Uputnica = new HashSet<Uputnica>();
-        }
+        //public Pacijent()
+        //{
+        //    ApotekaRacun = new HashSet<ApotekaRacun>();
+        //    Pregled = new HashSet<Pregled>();
+        //    Uplata = new HashSet<Uplata>();
+        //    Uputnica = new HashSet<Uputnica>();
+        //}
 
         public int Id { get; set; }
         public string Alergije { get; set; }
@@ -25,9 +25,10 @@ namespace eKlinika.WebAPI.Database
 
         public Korisnici Korisnik { get; set; }
         public KrvnaGrupa KrvnaGrupa { get; set; }
-        public ICollection<ApotekaRacun> ApotekaRacun { get; set; }
-        public ICollection<Pregled> Pregled { get; set; }
-        public ICollection<Uplata> Uplata { get; set; }
-        public ICollection<Uputnica> Uputnica { get; set; }
+
+        //public ICollection<ApotekaRacun> ApotekaRacun { get; set; }
+        //public ICollection<Pregled> Pregled { get; set; }
+        //public ICollection<Uplata> Uplata { get; set; }
+        //public ICollection<Uputnica> Uputnica { get; set; }
     }
 }

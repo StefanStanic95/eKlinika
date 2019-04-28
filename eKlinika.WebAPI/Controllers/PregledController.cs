@@ -31,14 +31,14 @@ namespace eKlinika.WebAPI.Controllers
 
         [Authorize(Roles = "Administrator,Doktor")]
         [HttpPost]
-        public Model.Pregled Insert(Pregled request)
+        public Model.Pregled Insert(PregledInsertRequest request)
         {
             return _service.Insert(request);
         }
 
         [Authorize(Roles = "Administrator,Doktor")]
         [HttpPut("{id}")]
-        public Model.Pregled Update(int id, [FromBody]Pregled request)
+        public Model.Pregled Update(int id, [FromBody]PregledInsertRequest request)
         {
             return _service.Update(id, request);
         }

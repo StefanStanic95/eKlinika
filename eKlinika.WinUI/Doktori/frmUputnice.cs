@@ -66,5 +66,19 @@ namespace eKlinika.WinUI.Doktori
                 dgvUputnice.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = data;
             }
         }
+
+        private void btnDodaj_Click(object sender, EventArgs e)
+        {
+            frmUputniceDetails frm = new frmUputniceDetails();
+            frm.Show();
+        }
+
+        private void dgvUputnice_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var uputnicaId = int.Parse(dgvUputnice.SelectedRows[0].Cells[0].Value.ToString());
+
+            frmUputniceDetails frm = new frmUputniceDetails(uputnicaId);
+            frm.Show();
+        }
     }
 }

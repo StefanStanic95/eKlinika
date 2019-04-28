@@ -32,12 +32,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvPregledi = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dtpDatumPregleda = new System.Windows.Forms.DateTimePicker();
-            this.btnPrikazi = new System.Windows.Forms.Button();
-            this.closeForm = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumPregleda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumRezervacije = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,6 +42,13 @@
             this.MedicinskaSestraId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PacijentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsOdrzan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtpDatumPregleda = new System.Windows.Forms.DateTimePicker();
+            this.btnPrikazi = new System.Windows.Forms.Button();
+            this.closeForm = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnDodaj = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPregledi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -96,72 +97,8 @@
             this.dgvPregledi.ReadOnly = true;
             this.dgvPregledi.Size = new System.Drawing.Size(1183, 322);
             this.dgvPregledi.TabIndex = 0;
+            this.dgvPregledi.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPregledi_CellDoubleClick);
             this.dgvPregledi.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvPregledi_CellFormatting);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
-            this.label1.Location = new System.Drawing.Point(536, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 25);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Pregledi";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
-            this.label2.Location = new System.Drawing.Point(14, 107);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Datum pregleda:";
-            // 
-            // dtpDatumPregleda
-            // 
-            this.dtpDatumPregleda.CustomFormat = "dd-MM-yyyy";
-            this.dtpDatumPregleda.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDatumPregleda.Location = new System.Drawing.Point(106, 106);
-            this.dtpDatumPregleda.Name = "dtpDatumPregleda";
-            this.dtpDatumPregleda.Size = new System.Drawing.Size(99, 20);
-            this.dtpDatumPregleda.TabIndex = 4;
-            // 
-            // btnPrikazi
-            // 
-            this.btnPrikazi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
-            this.btnPrikazi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrikazi.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrikazi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.btnPrikazi.Location = new System.Drawing.Point(1112, 107);
-            this.btnPrikazi.Name = "btnPrikazi";
-            this.btnPrikazi.Size = new System.Drawing.Size(86, 23);
-            this.btnPrikazi.TabIndex = 5;
-            this.btnPrikazi.Text = "Prikaži";
-            this.btnPrikazi.UseVisualStyleBackColor = false;
-            this.btnPrikazi.Click += new System.EventHandler(this.btnPrikazi_Click);
-            // 
-            // closeForm
-            // 
-            this.closeForm.AutoSize = true;
-            this.closeForm.Font = new System.Drawing.Font("Century Gothic", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.closeForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-            this.closeForm.Location = new System.Drawing.Point(1181, 9);
-            this.closeForm.Name = "closeForm";
-            this.closeForm.Size = new System.Drawing.Size(17, 16);
-            this.closeForm.TabIndex = 9;
-            this.closeForm.Text = "X";
-            this.closeForm.Click += new System.EventHandler(this.closeForm_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(15, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(64, 64);
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
             // 
             // Id
             // 
@@ -235,12 +172,92 @@
             this.IsOdrzan.Name = "IsOdrzan";
             this.IsOdrzan.ReadOnly = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.label1.Location = new System.Drawing.Point(536, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 25);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Pregledi";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.label2.Location = new System.Drawing.Point(14, 107);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(85, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Datum pregleda:";
+            // 
+            // dtpDatumPregleda
+            // 
+            this.dtpDatumPregleda.CustomFormat = "dd-MM-yyyy";
+            this.dtpDatumPregleda.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpDatumPregleda.Location = new System.Drawing.Point(106, 106);
+            this.dtpDatumPregleda.Name = "dtpDatumPregleda";
+            this.dtpDatumPregleda.Size = new System.Drawing.Size(99, 20);
+            this.dtpDatumPregleda.TabIndex = 4;
+            // 
+            // btnPrikazi
+            // 
+            this.btnPrikazi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.btnPrikazi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrikazi.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrikazi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.btnPrikazi.Location = new System.Drawing.Point(1112, 107);
+            this.btnPrikazi.Name = "btnPrikazi";
+            this.btnPrikazi.Size = new System.Drawing.Size(86, 23);
+            this.btnPrikazi.TabIndex = 5;
+            this.btnPrikazi.Text = "Prikaži";
+            this.btnPrikazi.UseVisualStyleBackColor = false;
+            this.btnPrikazi.Click += new System.EventHandler(this.btnPrikazi_Click);
+            // 
+            // closeForm
+            // 
+            this.closeForm.AutoSize = true;
+            this.closeForm.Font = new System.Drawing.Font("Century Gothic", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.closeForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
+            this.closeForm.Location = new System.Drawing.Point(1181, 9);
+            this.closeForm.Name = "closeForm";
+            this.closeForm.Size = new System.Drawing.Size(17, 16);
+            this.closeForm.TabIndex = 9;
+            this.closeForm.Text = "X";
+            this.closeForm.Click += new System.EventHandler(this.closeForm_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(15, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnDodaj
+            // 
+            this.btnDodaj.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.btnDodaj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDodaj.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDodaj.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.btnDodaj.Location = new System.Drawing.Point(1115, 501);
+            this.btnDodaj.Name = "btnDodaj";
+            this.btnDodaj.Size = new System.Drawing.Size(86, 23);
+            this.btnDodaj.TabIndex = 16;
+            this.btnDodaj.Text = "Dodaj";
+            this.btnDodaj.UseVisualStyleBackColor = false;
+            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
+            // 
             // frmPregledi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.ClientSize = new System.Drawing.Size(1213, 499);
+            this.ClientSize = new System.Drawing.Size(1213, 536);
+            this.Controls.Add(this.btnDodaj);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.closeForm);
             this.Controls.Add(this.btnPrikazi);
@@ -281,5 +298,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MedicinskaSestraId;
         private System.Windows.Forms.DataGridViewTextBoxColumn PacijentId;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsOdrzan;
+        private System.Windows.Forms.Button btnDodaj;
     }
 }

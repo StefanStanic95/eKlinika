@@ -60,6 +60,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIService.cs" />
+    <Compile Include="Apotekar\frmLijekovi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apotekar\frmLijekovi.Designer.cs">
+      <DependentUpon>frmLijekovi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apotekar\frmLijekoviDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apotekar\frmLijekoviDetails.Designer.cs">
+      <DependentUpon>frmLijekoviDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Doktori\frmPreglediDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doktori\frmPreglediDetails.Designer.cs">
+      <DependentUpon>frmPreglediDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Doktori\frmUputniceDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doktori\frmUputniceDetails.Designer.cs">
+      <DependentUpon>frmUputniceDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="MedicinskeSestre\frmPregledi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +158,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Apotekar\frmLijekovi.resx">
+      <DependentUpon>frmLijekovi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apotekar\frmLijekoviDetails.resx">
+      <DependentUpon>frmLijekoviDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Doktori\frmPreglediDetails.resx">
+      <DependentUpon>frmPreglediDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Doktori\frmUputniceDetails.resx">
+      <DependentUpon>frmUputniceDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MedicinskeSestre\frmPregledi.resx">
       <DependentUpon>frmPregledi.cs</DependentUpon>
     </EmbeddedResource>

@@ -165,5 +165,11 @@ namespace eKlinika.WinUI
             MedicinskeSestre.frmUplate frm = new MedicinskeSestre.frmUplate();
             frm.Show();
         }
+
+        private void lijekoviToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Apotekar.frmLijekovi frm = new Apotekar.frmLijekovi();
+            frm.Show();
+        }
     }
 }

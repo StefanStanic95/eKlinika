@@ -56,7 +56,7 @@ namespace eKlinika.WebAPI.Services
             return _mapper.Map<Model.Uputnica>(entity.FirstOrDefault());
         }
 
-        public Model.Uputnica Insert(Model.Uputnica request)
+        public Model.Uputnica Insert(UputnicaInsertRequest request)
         {
             var entity = _mapper.Map<Database.Uputnica>(request);
 
@@ -66,7 +66,7 @@ namespace eKlinika.WebAPI.Services
             return _mapper.Map<Model.Uputnica>(entity);
         }
 
-        public Model.Uputnica Update(int id, Model.Uputnica request)
+        public Model.Uputnica Update(int id, UputnicaInsertRequest request)
         {
             var result = _context.Uputnica.Where(x => x.Id == id);
 
