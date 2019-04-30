@@ -40,6 +40,7 @@
             this.txtNaziv = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CijenaPoKomadu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,7 +49,6 @@
             this.Tip = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UkupnoNaStanju = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Uputstvo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLijekovi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -95,6 +95,7 @@
             this.dgvLijekovi.ReadOnly = true;
             this.dgvLijekovi.Size = new System.Drawing.Size(1244, 444);
             this.dgvLijekovi.TabIndex = 0;
+            this.dgvLijekovi.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLijekovi_CellFormatting);
             // 
             // label1
             // 
@@ -171,6 +172,20 @@
             this.panel2.Size = new System.Drawing.Size(167, 1);
             this.panel2.TabIndex = 18;
             // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.btnAdd.Location = new System.Drawing.Point(1158, 616);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(86, 23);
+            this.btnAdd.TabIndex = 19;
+            this.btnAdd.Text = "Dodaj";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // Id
             // 
             this.Id.DataPropertyName = "Id";
@@ -205,7 +220,7 @@
             // 
             // ProizvodjacId
             // 
-            this.ProizvodjacId.DataPropertyName = "ProizvodjacId";
+            this.ProizvodjacId.DataPropertyName = "Proizvodjac.Naziv";
             this.ProizvodjacId.HeaderText = "Proizvodjac";
             this.ProizvodjacId.Name = "ProizvodjacId";
             this.ProizvodjacId.ReadOnly = true;
@@ -230,20 +245,6 @@
             this.Uputstvo.HeaderText = "Uputstvo";
             this.Uputstvo.Name = "Uputstvo";
             this.Uputstvo.ReadOnly = true;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.btnAdd.Location = new System.Drawing.Point(1158, 616);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(86, 23);
-            this.btnAdd.TabIndex = 19;
-            this.btnAdd.Text = "Dodaj";
-            this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // frmLijekovi
             // 
@@ -284,6 +285,7 @@
         private System.Windows.Forms.TextBox txtNaziv;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn CijenaPoKomadu;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
@@ -292,6 +294,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Tip;
         private System.Windows.Forms.DataGridViewTextBoxColumn UkupnoNaStanju;
         private System.Windows.Forms.DataGridViewTextBoxColumn Uputstvo;
-        private System.Windows.Forms.Button btnAdd;
     }
 }
