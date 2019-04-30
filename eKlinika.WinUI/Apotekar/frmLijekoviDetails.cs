@@ -16,6 +16,8 @@ namespace eKlinika.WinUI.Apotekar
     public partial class frmLijekoviDetails : Form
     {
         APIService _service = new APIService("Lijek");
+        APIService _serviceProizvodjac = new APIService("Proizvodjac");
+
         private int? _id = null;
 
         public frmLijekoviDetails(int? id = null)
@@ -34,7 +36,7 @@ namespace eKlinika.WinUI.Apotekar
                     CijenaPoKomadu = double.Parse(txtCijena.Text),
                     Naziv = txtNaziv.Text,
                     PoReceptu = chbPoReceptu.Checked,
-                    ProizvodjacId = int.Parse(txtProizvodjac.Text),
+                    ProizvodjacId = ((Model.Proizvodjac)cmbProizvodjac.SelectedItem).Id,
                     Tip = txtTipLijeka.Text,
                     UkupnoNaStanju = int.Parse(txtUkupnoNaStanju.Text),
                     Uputstvo = txtUputstvo.Text
@@ -75,6 +77,37 @@ namespace eKlinika.WinUI.Apotekar
 
         }
 
+        private async void frmLijekoviDetails_Load(object sender, EventArgs e)
+        {
+            var search = new KorisniciSearchRequest()
+            {
+                Uloga = "Apotekar"
+            };
+
+            var proizvodjaciList = await _serviceProizvodjac.Get<List<Model.Proizvodjac>>(search);
+
+            cmbProizvodjac.DataSource = proizvodjaciList;
+            cmbProizvodjac.DisplayMember = "Naziv";
+
+
+            if (_id.HasValue)
+            {
+                var entity = await _service.GetById<Model.Lijek>(_id);
+
+                txtCijena.Text = entity.CijenaPoKomadu.ToString();
+                txtNaziv.Text = entity.Naziv;
+                chbPoReceptu.Checked = entity.PoReceptu;
+                txtTipLijeka.Text = entity.Tip;
+                txtUkupnoNaStanju.Text = entity.UkupnoNaStanju.ToString();
+                txtUputstvo.Text = entity.Uputstvo;
+
+                foreach (Model.Proizvodjac item in cmbProizvodjac.Items)
+                {
+                    if (item.Id == entity.ProizvodjacId)
+                        cmbProizvodjac.SelectedItem = item;
+                }
+            }
+        }
 
         private void minimizeForm_Click(object sender, System.EventArgs e)
         {

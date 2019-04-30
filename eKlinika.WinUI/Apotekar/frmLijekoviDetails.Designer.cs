@@ -30,13 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbProizvodjac = new System.Windows.Forms.ComboBox();
             this.chbPoReceptu = new System.Windows.Forms.CheckBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.txtUputstvo = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -44,7 +44,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtTipLijeka = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtProizvodjac = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtCijena = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -63,13 +62,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbProizvodjac);
             this.groupBox1.Controls.Add(this.chbPoReceptu);
             this.groupBox1.Controls.Add(this.panel6);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtUputstvo);
             this.groupBox1.Controls.Add(this.panel5);
             this.groupBox1.Controls.Add(this.panel4);
-            this.groupBox1.Controls.Add(this.panel3);
             this.groupBox1.Controls.Add(this.panel2);
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.label5);
@@ -77,7 +76,6 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtTipLijeka);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtProizvodjac);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtCijena);
             this.groupBox1.Controls.Add(this.label1);
@@ -89,6 +87,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalji";
+            // 
+            // cmbProizvodjac
+            // 
+            this.cmbProizvodjac.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.cmbProizvodjac.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.cmbProizvodjac.FormattingEnabled = true;
+            this.cmbProizvodjac.Location = new System.Drawing.Point(10, 156);
+            this.cmbProizvodjac.Name = "cmbProizvodjac";
+            this.cmbProizvodjac.Size = new System.Drawing.Size(344, 21);
+            this.cmbProizvodjac.TabIndex = 23;
             // 
             // chbPoReceptu
             // 
@@ -143,14 +151,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(338, 1);
             this.panel4.TabIndex = 17;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
-            this.panel3.Location = new System.Drawing.Point(10, 173);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(338, 1);
-            this.panel3.TabIndex = 16;
             // 
             // panel2
             // 
@@ -214,19 +214,9 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.label3.Location = new System.Drawing.Point(7, 135);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 13);
+            this.label3.Size = new System.Drawing.Size(69, 13);
             this.label3.TabIndex = 5;
-            this.label3.Text = "ProizvodjacId *";
-            // 
-            // txtProizvodjac
-            // 
-            this.txtProizvodjac.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.txtProizvodjac.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtProizvodjac.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
-            this.txtProizvodjac.Location = new System.Drawing.Point(13, 154);
-            this.txtProizvodjac.Name = "txtProizvodjac";
-            this.txtProizvodjac.Size = new System.Drawing.Size(341, 13);
-            this.txtProizvodjac.TabIndex = 4;
+            this.label3.Text = "Proizvodjac *";
             // 
             // label2
             // 
@@ -375,7 +365,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtTipLijeka;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtProizvodjac;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtCijena;
         private System.Windows.Forms.Label label1;
@@ -384,7 +373,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel15;
@@ -396,5 +384,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtUputstvo;
         private System.Windows.Forms.CheckBox chbPoReceptu;
+        private System.Windows.Forms.ComboBox cmbProizvodjac;
     }
 }

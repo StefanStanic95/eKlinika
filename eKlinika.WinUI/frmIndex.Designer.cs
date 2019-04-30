@@ -266,6 +266,7 @@
             this.receptiToolStripMenuItem.Name = "receptiToolStripMenuItem";
             this.receptiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.receptiToolStripMenuItem.Text = "Recepti";
+            this.receptiToolStripMenuItem.Click += new System.EventHandler(this.receptiToolStripMenuItem_Click);
             // 
             // statusStrip
             // 

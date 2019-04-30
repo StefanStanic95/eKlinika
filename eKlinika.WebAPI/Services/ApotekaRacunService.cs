@@ -29,25 +29,21 @@ namespace eKlinika.WebAPI.Services
                 query = query.Where(x => x.DatumIzdavanja.Date == request.DatumIzdavanja.Value.Date);
             }
 
-            query = IncludeUserDetails(query);
+            query = query.Include(x => x.Pacijent.Korisnik).Include(x => x.Apotekar.Osoblje.Korisnik);
 
-            var list = query
-                .ToList();
+            var list = query.ToList();
 
             return _mapper.Map<List<Model.ApotekaRacun>>(list);
         }
 
-        private static IQueryable<Database.ApotekaRacun> IncludeUserDetails(IQueryable<Database.ApotekaRacun> query)
-        {
-            return query
-                .Include(x => x.Pacijent.Korisnik)
-                .Include(x => x.Apotekar.Osoblje.Korisnik);
-        }
 
         public Model.ApotekaRacun GetById(int id)
         {
-            var entity = _context.ApotekaRacun.Where(x => x.Id == id);
-            entity = IncludeUserDetails(entity);
+            var entity = _context.ApotekaRacun
+                .Where(x => x.Id == id)
+                .Include(x => x.Pacijent.Korisnik)
+                .Include(x => x.Apotekar.Osoblje.Korisnik);
+
 
             return _mapper.Map<Model.ApotekaRacun>(entity.FirstOrDefault());
         }

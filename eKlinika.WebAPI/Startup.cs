@@ -69,6 +69,7 @@ namespace eKlinika.WebAPI
             services.AddScoped<IUplateService, UplateService>();
             services.AddScoped<ILijekService, LijekService>();
             services.AddScoped<IApotekaRacunService, ApotekaRacunService>();
+            services.AddScoped<IReceptService, ReceptService>();
 
 
             services.AddScoped<IService<Model.Uloge, object>, BaseService<Model.Uloge, object, Uloge>>();

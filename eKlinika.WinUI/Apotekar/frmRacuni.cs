@@ -54,8 +54,22 @@ namespace eKlinika.WinUI.Apotekar
 
         private void btnDodaj_Click(object sender, EventArgs e)
         {
-            //frmRacuniDetails frm = new frmRacuniDetails();
-            //frm.Show();
+            frmRacuniDetails frm = new frmRacuniDetails();
+            frm.Show();
+        }
+
+        private void dgvRacuni_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridViewColumn column = dgvRacuni.Columns[e.ColumnIndex];
+            if (column.DataPropertyName.Contains("."))
+            {
+                object data = dgvRacuni.Rows[e.RowIndex].DataBoundItem;
+                string[] properties = column.DataPropertyName.Split('.');
+                for (int i = 0; i < properties.Length && data != null; i++)
+                    data = data.GetType().GetProperty(properties[i]).GetValue(data);
+
+                dgvRacuni.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = data;
+            }
         }
 
     }
