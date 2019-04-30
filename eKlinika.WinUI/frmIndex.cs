@@ -171,5 +171,17 @@ namespace eKlinika.WinUI
             Apotekar.frmLijekovi frm = new Apotekar.frmLijekovi();
             frm.Show();
         }
+
+        private void dodavanjeLijekaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Apotekar.frmLijekoviDetails frm = new Apotekar.frmLijekoviDetails();
+            frm.Show();
+        }
+
+        private void računiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Apotekar.frmRacuni frm = new Apotekar.frmRacuni();
+            frm.Show();
+        }
     }
 }

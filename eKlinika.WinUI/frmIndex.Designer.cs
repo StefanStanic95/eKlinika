@@ -249,6 +249,7 @@
             this.računiToolStripMenuItem.Name = "računiToolStripMenuItem";
             this.računiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.računiToolStripMenuItem.Text = "Računi";
+            this.računiToolStripMenuItem.Click += new System.EventHandler(this.računiToolStripMenuItem_Click);
             // 
             // narudžbeToolStripMenuItem
             // 

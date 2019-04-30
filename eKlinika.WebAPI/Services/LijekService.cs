@@ -36,7 +36,6 @@ namespace eKlinika.WebAPI.Services
             return _mapper.Map<List<Model.Lijek>>(list);
         }
 
-
         public Model.Lijek GetById(int id)
         {
             var item = _context.Lijek

@@ -60,6 +60,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIService.cs" />
+    <Compile Include="Apotekar\frmRacuniDetails.cs" />
+    <Compile Include="Apotekar\frmRacuniDetails.Designer.cs">
+      <DependentUpon>frmRacuniDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Apotekar\frmLijekovi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +75,12 @@
     </Compile>
     <Compile Include="Apotekar\frmLijekoviDetails.Designer.cs">
       <DependentUpon>frmLijekoviDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apotekar\frmRacuni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apotekar\frmRacuni.Designer.cs">
+      <DependentUpon>frmRacuni.cs</DependentUpon>
     </Compile>
     <Compile Include="Doktori\frmPreglediDetails.cs">
       <SubType>Form</SubType>
@@ -163,6 +173,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Apotekar\frmLijekoviDetails.resx">
       <DependentUpon>frmLijekoviDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apotekar\frmRacuni.resx">
+      <DependentUpon>frmRacuni.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apotekar\frmRacuniDetails.resx">
+      <DependentUpon>frmRacuniDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Doktori\frmPreglediDetails.resx">
       <DependentUpon>frmPreglediDetails.cs</DependentUpon>
