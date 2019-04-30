@@ -95,6 +95,7 @@
             this.dgvLijekovi.ReadOnly = true;
             this.dgvLijekovi.Size = new System.Drawing.Size(1244, 444);
             this.dgvLijekovi.TabIndex = 0;
+            this.dgvLijekovi.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLijekovi_CellFormatting);
             // 
             // label1
             // 
@@ -219,7 +220,7 @@
             // 
             // ProizvodjacId
             // 
-            this.ProizvodjacId.DataPropertyName = "ProizvodjacId";
+            this.ProizvodjacId.DataPropertyName = "Proizvodjac.Naziv";
             this.ProizvodjacId.HeaderText = "Proizvodjac";
             this.ProizvodjacId.Name = "ProizvodjacId";
             this.ProizvodjacId.ReadOnly = true;

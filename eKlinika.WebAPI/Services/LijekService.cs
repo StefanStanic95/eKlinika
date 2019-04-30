@@ -31,6 +31,8 @@ namespace eKlinika.WebAPI.Services
                 query = query.Where(x => x.Naziv.StartsWith(request.Naziv));
             }
 
+            query = query.Include(x => x.Proizvodjac);
+
             var list = query.ToList();
 
             return _mapper.Map<List<Model.Lijek>>(list);
@@ -39,7 +41,8 @@ namespace eKlinika.WebAPI.Services
         public Model.Lijek GetById(int id)
         {
             var item = _context.Lijek
-                .Where(x => x.Id == id);
+                .Where(x => x.Id == id)
+                .Include(x => x.Proizvodjac);
 
             return _mapper.Map<Model.Lijek>(item.FirstOrDefault());
         }
