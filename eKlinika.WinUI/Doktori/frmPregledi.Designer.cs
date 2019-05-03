@@ -95,6 +95,7 @@
             this.dgvPregledi.Location = new System.Drawing.Point(3, 16);
             this.dgvPregledi.Name = "dgvPregledi";
             this.dgvPregledi.ReadOnly = true;
+            this.dgvPregledi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPregledi.Size = new System.Drawing.Size(1183, 322);
             this.dgvPregledi.TabIndex = 0;
             this.dgvPregledi.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPregledi_CellDoubleClick);

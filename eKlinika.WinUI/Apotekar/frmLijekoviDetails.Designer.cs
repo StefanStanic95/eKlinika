@@ -91,6 +91,7 @@
             // cmbProizvodjac
             // 
             this.cmbProizvodjac.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.cmbProizvodjac.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProizvodjac.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.cmbProizvodjac.FormattingEnabled = true;
             this.cmbProizvodjac.Location = new System.Drawing.Point(10, 156);

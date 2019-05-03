@@ -234,11 +234,6 @@ namespace eKlinika.WinUI.MedicinskeSestre
             Close();
         }
 
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         //void frmPacijentiDetails_Paint(object sender, PaintEventArgs e)
         //{
         //    ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle, Color.Black, ButtonBorderStyle.Solid);

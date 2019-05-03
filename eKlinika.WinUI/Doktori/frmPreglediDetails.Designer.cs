@@ -154,6 +154,7 @@
             // cmbPacijent
             // 
             this.cmbPacijent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.cmbPacijent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPacijent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.cmbPacijent.FormattingEnabled = true;
             this.cmbPacijent.Location = new System.Drawing.Point(33, 239);
@@ -174,6 +175,7 @@
             // cmbMedSestra
             // 
             this.cmbMedSestra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.cmbMedSestra.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMedSestra.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.cmbMedSestra.FormattingEnabled = true;
             this.cmbMedSestra.Location = new System.Drawing.Point(227, 170);
@@ -214,6 +216,7 @@
             // cmbDoktor
             // 
             this.cmbDoktor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.cmbDoktor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDoktor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.cmbDoktor.FormattingEnabled = true;
             this.cmbDoktor.Location = new System.Drawing.Point(33, 170);

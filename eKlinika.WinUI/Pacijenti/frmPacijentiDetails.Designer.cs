@@ -407,6 +407,7 @@
             // cmbKrvnaGrupa
             // 
             this.cmbKrvnaGrupa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.cmbKrvnaGrupa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbKrvnaGrupa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.cmbKrvnaGrupa.FormattingEnabled = true;
             this.cmbKrvnaGrupa.Location = new System.Drawing.Point(206, 154);

@@ -95,6 +95,7 @@
             // cmbVrstaPretrage
             // 
             this.cmbVrstaPretrage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.cmbVrstaPretrage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVrstaPretrage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.cmbVrstaPretrage.FormattingEnabled = true;
             this.cmbVrstaPretrage.Location = new System.Drawing.Point(227, 178);
@@ -115,6 +116,7 @@
             // cmbPacijent
             // 
             this.cmbPacijent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.cmbPacijent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPacijent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.cmbPacijent.FormattingEnabled = true;
             this.cmbPacijent.Location = new System.Drawing.Point(33, 178);
@@ -135,6 +137,7 @@
             // cmbLabDoktor
             // 
             this.cmbLabDoktor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.cmbLabDoktor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbLabDoktor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.cmbLabDoktor.FormattingEnabled = true;
             this.cmbLabDoktor.Location = new System.Drawing.Point(227, 109);
@@ -175,6 +178,7 @@
             // cmbUputioDoktor
             // 
             this.cmbUputioDoktor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.cmbUputioDoktor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbUputioDoktor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.cmbUputioDoktor.FormattingEnabled = true;
             this.cmbUputioDoktor.Location = new System.Drawing.Point(33, 109);

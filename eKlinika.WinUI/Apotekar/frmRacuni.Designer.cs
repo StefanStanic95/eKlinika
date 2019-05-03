@@ -84,6 +84,7 @@
             this.dgvRacuni.Location = new System.Drawing.Point(3, 16);
             this.dgvRacuni.Name = "dgvRacuni";
             this.dgvRacuni.ReadOnly = true;
+            this.dgvRacuni.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRacuni.Size = new System.Drawing.Size(1244, 444);
             this.dgvRacuni.TabIndex = 0;
             this.dgvRacuni.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvRacuni_CellFormatting);

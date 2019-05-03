@@ -90,6 +90,7 @@
             this.dgvUplate.Location = new System.Drawing.Point(3, 16);
             this.dgvUplate.Name = "dgvUplate";
             this.dgvUplate.ReadOnly = true;
+            this.dgvUplate.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUplate.Size = new System.Drawing.Size(1183, 322);
             this.dgvUplate.TabIndex = 0;
             this.dgvUplate.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUplate_CellDoubleClick);

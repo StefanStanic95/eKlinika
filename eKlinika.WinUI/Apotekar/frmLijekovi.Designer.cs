@@ -28,19 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLijekovi));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLijekovi));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvLijekovi = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnPrikazi = new System.Windows.Forms.Button();
-            this.closeForm = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.txtNaziv = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CijenaPoKomadu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +41,14 @@
             this.Tip = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UkupnoNaStanju = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Uputstvo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnPrikazi = new System.Windows.Forms.Button();
+            this.closeForm = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtNaziv = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLijekovi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -93,9 +93,70 @@
             this.dgvLijekovi.Location = new System.Drawing.Point(3, 16);
             this.dgvLijekovi.Name = "dgvLijekovi";
             this.dgvLijekovi.ReadOnly = true;
+            this.dgvLijekovi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLijekovi.Size = new System.Drawing.Size(1244, 444);
             this.dgvLijekovi.TabIndex = 0;
             this.dgvLijekovi.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLijekovi_CellFormatting);
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // CijenaPoKomadu
+            // 
+            this.CijenaPoKomadu.DataPropertyName = "CijenaPoKomadu";
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.CijenaPoKomadu.DefaultCellStyle = dataGridViewCellStyle1;
+            this.CijenaPoKomadu.HeaderText = "Cijena po kom.";
+            this.CijenaPoKomadu.Name = "CijenaPoKomadu";
+            this.CijenaPoKomadu.ReadOnly = true;
+            // 
+            // Naziv
+            // 
+            this.Naziv.DataPropertyName = "Naziv";
+            this.Naziv.HeaderText = "Naziv lijeka";
+            this.Naziv.Name = "Naziv";
+            this.Naziv.ReadOnly = true;
+            // 
+            // PoReceptu
+            // 
+            this.PoReceptu.DataPropertyName = "PoReceptu";
+            this.PoReceptu.HeaderText = "Po receptu (DA/NE)";
+            this.PoReceptu.Name = "PoReceptu";
+            this.PoReceptu.ReadOnly = true;
+            // 
+            // ProizvodjacId
+            // 
+            this.ProizvodjacId.DataPropertyName = "Proizvodjac.Naziv";
+            this.ProizvodjacId.HeaderText = "Proizvodjac";
+            this.ProizvodjacId.Name = "ProizvodjacId";
+            this.ProizvodjacId.ReadOnly = true;
+            // 
+            // Tip
+            // 
+            this.Tip.DataPropertyName = "Tip";
+            this.Tip.HeaderText = "Tip lijeka";
+            this.Tip.Name = "Tip";
+            this.Tip.ReadOnly = true;
+            // 
+            // UkupnoNaStanju
+            // 
+            this.UkupnoNaStanju.DataPropertyName = "UkupnoNaStanju";
+            this.UkupnoNaStanju.HeaderText = "Ukupno na stanju";
+            this.UkupnoNaStanju.Name = "UkupnoNaStanju";
+            this.UkupnoNaStanju.ReadOnly = true;
+            // 
+            // Uputstvo
+            // 
+            this.Uputstvo.DataPropertyName = "Uputstvo";
+            this.Uputstvo.HeaderText = "Uputstvo";
+            this.Uputstvo.Name = "Uputstvo";
+            this.Uputstvo.ReadOnly = true;
             // 
             // label1
             // 
@@ -185,66 +246,6 @@
             this.btnAdd.Text = "Dodaj";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // CijenaPoKomadu
-            // 
-            this.CijenaPoKomadu.DataPropertyName = "CijenaPoKomadu";
-            dataGridViewCellStyle1.Format = "C2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.CijenaPoKomadu.DefaultCellStyle = dataGridViewCellStyle1;
-            this.CijenaPoKomadu.HeaderText = "Cijena po kom.";
-            this.CijenaPoKomadu.Name = "CijenaPoKomadu";
-            this.CijenaPoKomadu.ReadOnly = true;
-            // 
-            // Naziv
-            // 
-            this.Naziv.DataPropertyName = "Naziv";
-            this.Naziv.HeaderText = "Naziv lijeka";
-            this.Naziv.Name = "Naziv";
-            this.Naziv.ReadOnly = true;
-            // 
-            // PoReceptu
-            // 
-            this.PoReceptu.DataPropertyName = "PoReceptu";
-            this.PoReceptu.HeaderText = "Po receptu (DA/NE)";
-            this.PoReceptu.Name = "PoReceptu";
-            this.PoReceptu.ReadOnly = true;
-            // 
-            // ProizvodjacId
-            // 
-            this.ProizvodjacId.DataPropertyName = "Proizvodjac.Naziv";
-            this.ProizvodjacId.HeaderText = "Proizvodjac";
-            this.ProizvodjacId.Name = "ProizvodjacId";
-            this.ProizvodjacId.ReadOnly = true;
-            // 
-            // Tip
-            // 
-            this.Tip.DataPropertyName = "Tip";
-            this.Tip.HeaderText = "Tip lijeka";
-            this.Tip.Name = "Tip";
-            this.Tip.ReadOnly = true;
-            // 
-            // UkupnoNaStanju
-            // 
-            this.UkupnoNaStanju.DataPropertyName = "UkupnoNaStanju";
-            this.UkupnoNaStanju.HeaderText = "Ukupno na stanju";
-            this.UkupnoNaStanju.Name = "UkupnoNaStanju";
-            this.UkupnoNaStanju.ReadOnly = true;
-            // 
-            // Uputstvo
-            // 
-            this.Uputstvo.DataPropertyName = "Uputstvo";
-            this.Uputstvo.HeaderText = "Uputstvo";
-            this.Uputstvo.Name = "Uputstvo";
-            this.Uputstvo.ReadOnly = true;
             // 
             // frmLijekovi
             // 

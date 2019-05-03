@@ -32,12 +32,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvRecepti = new System.Windows.Forms.DataGridView();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.btnPrikazi = new System.Windows.Forms.Button();
-            this.closeForm = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dtpDatumIzdavanja = new System.Windows.Forms.DateTimePicker();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumIzdavanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Kolicina = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,6 +39,12 @@
             this.PregledId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Uputstvo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsObradjen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.btnPrikazi = new System.Windows.Forms.Button();
+            this.closeForm = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtpDatumIzdavanja = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecepti)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -88,9 +88,60 @@
             this.dgvRecepti.Location = new System.Drawing.Point(3, 16);
             this.dgvRecepti.Name = "dgvRecepti";
             this.dgvRecepti.ReadOnly = true;
+            this.dgvRecepti.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRecepti.Size = new System.Drawing.Size(1244, 444);
             this.dgvRecepti.TabIndex = 0;
             this.dgvRecepti.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvRecepti_CellFormatting);
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // DatumIzdavanja
+            // 
+            this.DatumIzdavanja.DataPropertyName = "DatumIzdavanja";
+            this.DatumIzdavanja.HeaderText = "Datum izdavanja";
+            this.DatumIzdavanja.Name = "DatumIzdavanja";
+            this.DatumIzdavanja.ReadOnly = true;
+            // 
+            // Kolicina
+            // 
+            this.Kolicina.DataPropertyName = "Kolicina";
+            this.Kolicina.HeaderText = "Količina";
+            this.Kolicina.Name = "Kolicina";
+            this.Kolicina.ReadOnly = true;
+            // 
+            // LijekId
+            // 
+            this.LijekId.DataPropertyName = "Lijek.Naziv";
+            this.LijekId.HeaderText = "Lijek";
+            this.LijekId.Name = "LijekId";
+            this.LijekId.ReadOnly = true;
+            // 
+            // PregledId
+            // 
+            this.PregledId.DataPropertyName = "Pregled.DatumPregleda";
+            this.PregledId.HeaderText = "Pregled";
+            this.PregledId.Name = "PregledId";
+            this.PregledId.ReadOnly = true;
+            // 
+            // Uputstvo
+            // 
+            this.Uputstvo.DataPropertyName = "Uputstvo";
+            this.Uputstvo.HeaderText = "Uputstvo";
+            this.Uputstvo.Name = "Uputstvo";
+            this.Uputstvo.ReadOnly = true;
+            // 
+            // IsObradjen
+            // 
+            this.IsObradjen.DataPropertyName = "IsObradjen";
+            this.IsObradjen.HeaderText = "Obrađen (DA/NE)";
+            this.IsObradjen.Name = "IsObradjen";
+            this.IsObradjen.ReadOnly = true;
             // 
             // lblTitle
             // 
@@ -155,56 +206,6 @@
             this.dtpDatumIzdavanja.Name = "dtpDatumIzdavanja";
             this.dtpDatumIzdavanja.Size = new System.Drawing.Size(92, 20);
             this.dtpDatumIzdavanja.TabIndex = 20;
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // DatumIzdavanja
-            // 
-            this.DatumIzdavanja.DataPropertyName = "DatumIzdavanja";
-            this.DatumIzdavanja.HeaderText = "Datum izdavanja";
-            this.DatumIzdavanja.Name = "DatumIzdavanja";
-            this.DatumIzdavanja.ReadOnly = true;
-            // 
-            // Kolicina
-            // 
-            this.Kolicina.DataPropertyName = "Kolicina";
-            this.Kolicina.HeaderText = "Količina";
-            this.Kolicina.Name = "Kolicina";
-            this.Kolicina.ReadOnly = true;
-            // 
-            // LijekId
-            // 
-            this.LijekId.DataPropertyName = "Lijek.Naziv";
-            this.LijekId.HeaderText = "Lijek";
-            this.LijekId.Name = "LijekId";
-            this.LijekId.ReadOnly = true;
-            // 
-            // PregledId
-            // 
-            this.PregledId.DataPropertyName = "Pregled.DatumPregleda";
-            this.PregledId.HeaderText = "Pregled";
-            this.PregledId.Name = "PregledId";
-            this.PregledId.ReadOnly = true;
-            // 
-            // Uputstvo
-            // 
-            this.Uputstvo.DataPropertyName = "Uputstvo";
-            this.Uputstvo.HeaderText = "Uputstvo";
-            this.Uputstvo.Name = "Uputstvo";
-            this.Uputstvo.ReadOnly = true;
-            // 
-            // IsObradjen
-            // 
-            this.IsObradjen.DataPropertyName = "IsObradjen";
-            this.IsObradjen.HeaderText = "Obrađen (DA/NE)";
-            this.IsObradjen.Name = "IsObradjen";
-            this.IsObradjen.ReadOnly = true;
             // 
             // frmRecepti
             // 

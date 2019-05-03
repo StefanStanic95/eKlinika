@@ -86,6 +86,7 @@
             // cmbPacijent
             // 
             this.cmbPacijent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.cmbPacijent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPacijent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.cmbPacijent.FormattingEnabled = true;
             this.cmbPacijent.Location = new System.Drawing.Point(23, 97);
@@ -96,6 +97,7 @@
             // cmbApotekar
             // 
             this.cmbApotekar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.cmbApotekar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbApotekar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.cmbApotekar.FormattingEnabled = true;
             this.cmbApotekar.Location = new System.Drawing.Point(24, 155);
@@ -116,7 +118,7 @@
             this.dtpDatumIzdavanja.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDatumIzdavanja.Location = new System.Drawing.Point(21, 44);
             this.dtpDatumIzdavanja.Name = "dtpDatumIzdavanja";
-            this.dtpDatumIzdavanja.Size = new System.Drawing.Size(186, 20);
+            this.dtpDatumIzdavanja.Size = new System.Drawing.Size(202, 20);
             this.dtpDatumIzdavanja.TabIndex = 23;
             // 
             // label15

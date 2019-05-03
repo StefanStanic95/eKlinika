@@ -97,11 +97,11 @@
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalji uplate";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // cmbPregled
             // 
             this.cmbPregled.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.cmbPregled.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPregled.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.cmbPregled.FormattingEnabled = true;
             this.cmbPregled.Location = new System.Drawing.Point(221, 184);
@@ -112,6 +112,7 @@
             // cmbPacijent
             // 
             this.cmbPacijent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.cmbPacijent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPacijent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.cmbPacijent.FormattingEnabled = true;
             this.cmbPacijent.Location = new System.Drawing.Point(222, 229);
@@ -318,7 +319,7 @@
             this.panel15.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel15.Location = new System.Drawing.Point(0, 0);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(532, 47);
+            this.panel15.Size = new System.Drawing.Size(530, 47);
             this.panel15.TabIndex = 6;
             // 
             // closeForm
@@ -326,7 +327,7 @@
             this.closeForm.AutoSize = true;
             this.closeForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.closeForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-            this.closeForm.Location = new System.Drawing.Point(877, 9);
+            this.closeForm.Location = new System.Drawing.Point(497, 12);
             this.closeForm.Name = "closeForm";
             this.closeForm.Size = new System.Drawing.Size(21, 20);
             this.closeForm.TabIndex = 9;
@@ -349,7 +350,7 @@
             this.maximizeForm.AutoSize = true;
             this.maximizeForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.maximizeForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-            this.maximizeForm.Location = new System.Drawing.Point(849, 9);
+            this.maximizeForm.Location = new System.Drawing.Point(469, 12);
             this.maximizeForm.Name = "maximizeForm";
             this.maximizeForm.Size = new System.Drawing.Size(19, 20);
             this.maximizeForm.TabIndex = 8;
@@ -361,7 +362,7 @@
             this.minimizeForm.AutoSize = true;
             this.minimizeForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.minimizeForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-            this.minimizeForm.Location = new System.Drawing.Point(825, 9);
+            this.minimizeForm.Location = new System.Drawing.Point(445, 12);
             this.minimizeForm.Name = "minimizeForm";
             this.minimizeForm.Size = new System.Drawing.Size(19, 20);
             this.minimizeForm.TabIndex = 7;
@@ -373,7 +374,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.ClientSize = new System.Drawing.Size(532, 568);
+            this.ClientSize = new System.Drawing.Size(530, 568);
             this.Controls.Add(this.panel15);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox2);
