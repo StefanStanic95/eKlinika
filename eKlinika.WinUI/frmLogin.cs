@@ -45,5 +45,12 @@ namespace eKlinika.WinUI
         {
             Close();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            txtUsername.Text = "Emina.Custovic";
+            txtPassword.Text = "123";
+            btnLogin.PerformClick();
+        }
     }
 }
