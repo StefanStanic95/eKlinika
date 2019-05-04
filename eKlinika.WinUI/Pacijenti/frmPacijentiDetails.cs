@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -158,10 +159,17 @@ namespace eKlinika.WinUI.Pacijenti
 
         private void txtEmail_Validating(object sender, CancelEventArgs e)
         {
+            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
                 e.Cancel = true;
                 errorProvider.SetError(txtEmail, Resources.Validation_RequiredField);
+            }
+            else if (!regex.IsMatch(txtEmail.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(txtEmail, Resources.Validation_InvalidFormat);
             }
             else
             {
@@ -174,11 +182,11 @@ namespace eKlinika.WinUI.Pacijenti
             if (string.IsNullOrWhiteSpace(txtKorisnickoIme.Text) || txtKorisnickoIme.Text.Length < 3)
             {
                 e.Cancel = true;
-                errorProvider.SetError(txtEmail, Resources.Validation_RequiredField);
+                errorProvider.SetError(txtKorisnickoIme, Resources.Validation_RequiredField);
             }
             else
             {
-                errorProvider.SetError(txtEmail, null);
+                errorProvider.SetError(txtKorisnickoIme, null);
             }
         }
 
@@ -243,9 +251,79 @@ namespace eKlinika.WinUI.Pacijenti
             Close();
         }
 
-        //void frmPacijentiDetails_Paint(object sender, PaintEventArgs e)
-        //{
-        //    ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle, Color.Black, ButtonBorderStyle.Solid);
-        //}
+        private void txtTelefon_Validating(object sender, CancelEventArgs e)
+        {
+            var regex = new Regex(@"\+?([0-9]{9,15}|[0-9 ]{9,18})");
+            if (string.IsNullOrWhiteSpace(txtTelefon.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(txtTelefon, Resources.Validation_RequiredField);
+            }
+            else if (txtTelefon.Text.Length < 9 || txtTelefon.Text.Length > 15
+                || !regex.IsMatch(txtTelefon.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(txtTelefon, Resources.Validation_InvalidFormat);
+            }
+            else
+            {
+                errorProvider.SetError(txtTelefon, null);
+            }
+        }
+
+        private void txtBrojKartona_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtBrojKartona.Text) || txtBrojKartona.Text.Length > 10)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(txtBrojKartona, Resources.Validation_RequiredField);
+            }
+            else
+            {
+                errorProvider.SetError(txtBrojKartona, null);
+            }
+        }
+
+        private void txtBrojKnjizice_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtBrojKnjizice.Text) || txtBrojKnjizice.Text.Length > 10)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(txtBrojKnjizice, Resources.Validation_RequiredField);
+            }
+            else
+            {
+                errorProvider.SetError(txtBrojKnjizice, null);
+            }
+        }
+
+        private void txtTezina_Validating(object sender, CancelEventArgs e)
+        {
+            double val;
+            if (string.IsNullOrWhiteSpace(txtTezina.Text) || !double.TryParse(txtTezina.Text, out val) || val < 0.1)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(txtTezina, Resources.Validation_RequiredField);
+            }
+            else
+            {
+                errorProvider.SetError(txtTezina, null);
+            }
+        }
+
+        private void txtVisina_Validating(object sender, CancelEventArgs e)
+        {
+            int val;
+            if (string.IsNullOrWhiteSpace(txtVisina.Text) || !int.TryParse(txtVisina.Text, out val) || val < 1)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(txtVisina, Resources.Validation_RequiredField);
+            }
+            else
+            {
+                errorProvider.SetError(txtVisina, null);
+            }
+        }
+
     }
 }

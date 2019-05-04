@@ -96,6 +96,7 @@
             this.txtTipPregleda.Name = "txtTipPregleda";
             this.txtTipPregleda.Size = new System.Drawing.Size(142, 20);
             this.txtTipPregleda.TabIndex = 39;
+            this.txtTipPregleda.Validating += new System.ComponentModel.CancelEventHandler(this.txtTipPregleda_Validating);
             // 
             // label5
             // 
@@ -123,6 +124,7 @@
             this.txtPrioritet.Name = "txtPrioritet";
             this.txtPrioritet.Size = new System.Drawing.Size(142, 20);
             this.txtPrioritet.TabIndex = 36;
+            this.txtPrioritet.Validating += new System.ComponentModel.CancelEventHandler(this.txtPrioritet_Validating);
             // 
             // txtNapomena
             // 
@@ -130,6 +132,7 @@
             this.txtNapomena.Name = "txtNapomena";
             this.txtNapomena.Size = new System.Drawing.Size(141, 20);
             this.txtNapomena.TabIndex = 35;
+            this.txtNapomena.Validating += new System.ComponentModel.CancelEventHandler(this.txtNapomena_Validating);
             // 
             // chbOdrzan
             // 
@@ -200,7 +203,6 @@
             this.dtpDatumRezervacije.Name = "dtpDatumRezervacije";
             this.dtpDatumRezervacije.Size = new System.Drawing.Size(141, 20);
             this.dtpDatumRezervacije.TabIndex = 26;
-            this.dtpDatumRezervacije.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // label1
             // 
@@ -211,7 +213,6 @@
             this.label1.Size = new System.Drawing.Size(99, 13);
             this.label1.TabIndex = 25;
             this.label1.Text = "Datum rezervacije *";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // cmbDoktor
             // 
@@ -300,7 +301,6 @@
             this.label16.Size = new System.Drawing.Size(177, 24);
             this.label16.TabIndex = 0;
             this.label16.Text = "Evidencija pregleda";
-            this.label16.Click += new System.EventHandler(this.label16_Click);
             // 
             // maximizeForm
             // 

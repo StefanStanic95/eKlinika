@@ -134,5 +134,11 @@ namespace eKlinika.WinUI
             Apotekar.frmRecepti frm = new Apotekar.frmRecepti();
             frm.Show();
         }
+
+        private void narudžbeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Apotekar.frmNarudzbe frm = new Apotekar.frmNarudzbe();
+            frm.Show();
+        }
     }
 }

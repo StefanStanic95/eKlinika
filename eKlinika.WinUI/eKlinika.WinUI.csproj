@@ -60,6 +60,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIService.cs" />
+    <Compile Include="Apotekar\frmNarudzbe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apotekar\frmNarudzbe.Designer.cs">
+      <DependentUpon>frmNarudzbe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apotekar\frmNarudzbeDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apotekar\frmNarudzbeDetails.Designer.cs">
+      <DependentUpon>frmNarudzbeDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apotekar\frmReceptiDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apotekar\frmReceptiDetails.Designer.cs">
+      <DependentUpon>frmReceptiDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Apotekar\frmRecepti.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +194,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Apotekar\frmNarudzbe.resx">
+      <DependentUpon>frmNarudzbe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apotekar\frmNarudzbeDetails.resx">
+      <DependentUpon>frmNarudzbeDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apotekar\frmReceptiDetails.resx">
+      <DependentUpon>frmReceptiDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Apotekar\frmRecepti.resx">
       <DependentUpon>frmRecepti.cs</DependentUpon>
     </EmbeddedResource>

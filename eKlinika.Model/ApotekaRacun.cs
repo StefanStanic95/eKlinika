@@ -13,5 +13,7 @@ namespace eKlinika.Model
 
         public Apotekar Apotekar { get; set; }
         public Pacijent Pacijent { get; set; }
+        public ICollection<RacunStavka> RacunStavka { get; set; }
+        public double Iznos { get; set; }
     }
 }

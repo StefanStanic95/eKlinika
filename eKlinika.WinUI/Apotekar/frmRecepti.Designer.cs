@@ -34,7 +34,6 @@
             this.dgvRecepti = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumIzdavanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Kolicina = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LijekId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PregledId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Uputstvo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,6 +44,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dtpDatumIzdavanja = new System.Windows.Forms.DateTimePicker();
+            this.btnDodaj = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecepti)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -79,7 +79,6 @@
             this.dgvRecepti.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.DatumIzdavanja,
-            this.Kolicina,
             this.LijekId,
             this.PregledId,
             this.Uputstvo,
@@ -92,6 +91,7 @@
             this.dgvRecepti.Size = new System.Drawing.Size(1244, 444);
             this.dgvRecepti.TabIndex = 0;
             this.dgvRecepti.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvRecepti_CellFormatting);
+            this.dgvRecepti.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvRecepti_CellMouseDoubleClick);
             // 
             // Id
             // 
@@ -107,13 +107,7 @@
             this.DatumIzdavanja.HeaderText = "Datum izdavanja";
             this.DatumIzdavanja.Name = "DatumIzdavanja";
             this.DatumIzdavanja.ReadOnly = true;
-            // 
-            // Kolicina
-            // 
-            this.Kolicina.DataPropertyName = "Kolicina";
-            this.Kolicina.HeaderText = "Količina";
-            this.Kolicina.Name = "Kolicina";
-            this.Kolicina.ReadOnly = true;
+            this.DatumIzdavanja.Width = 120;
             // 
             // LijekId
             // 
@@ -128,6 +122,7 @@
             this.PregledId.HeaderText = "Pregled";
             this.PregledId.Name = "PregledId";
             this.PregledId.ReadOnly = true;
+            this.PregledId.Width = 135;
             // 
             // Uputstvo
             // 
@@ -207,12 +202,27 @@
             this.dtpDatumIzdavanja.Size = new System.Drawing.Size(92, 20);
             this.dtpDatumIzdavanja.TabIndex = 20;
             // 
+            // btnDodaj
+            // 
+            this.btnDodaj.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.btnDodaj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDodaj.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDodaj.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.btnDodaj.Location = new System.Drawing.Point(1173, 616);
+            this.btnDodaj.Name = "btnDodaj";
+            this.btnDodaj.Size = new System.Drawing.Size(86, 23);
+            this.btnDodaj.TabIndex = 6;
+            this.btnDodaj.Text = "Dodaj";
+            this.btnDodaj.UseVisualStyleBackColor = false;
+            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
+            // 
             // frmRecepti
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.ClientSize = new System.Drawing.Size(1274, 651);
+            this.Controls.Add(this.btnDodaj);
             this.Controls.Add(this.dtpDatumIzdavanja);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox1);
@@ -223,7 +233,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmRecepti";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmLijekovi";
+            this.Text = "Recepti";
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecepti)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -245,10 +255,10 @@
         private System.Windows.Forms.DateTimePicker dtpDatumIzdavanja;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn DatumIzdavanja;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Kolicina;
         private System.Windows.Forms.DataGridViewTextBoxColumn LijekId;
         private System.Windows.Forms.DataGridViewTextBoxColumn PregledId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Uputstvo;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsObradjen;
+        private System.Windows.Forms.Button btnDodaj;
     }
 }

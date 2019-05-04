@@ -13,6 +13,6 @@ namespace eKlinika.Model
 
         public Osoblje Osoblje { get; set; }
 
-        public string ImePrezime { get => (Titula.Length != 0 ? Titula + " " : "") + Osoblje?.ImePrezime; }
+        public string ImePrezime { get => ((Titula != null && Titula.Length != 0) ? Titula + " " : "") + Osoblje?.ImePrezime; }
     }
 }

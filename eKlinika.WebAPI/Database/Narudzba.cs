@@ -14,7 +14,6 @@ namespace eKlinika.WebAPI.Database
         public DateTime? DatumIsporuke { get; set; }
         public DateTime DatumNarudzbe { get; set; }
         public int DobavljacId { get; set; }
-        public double Iznos { get; set; }
 
         public Dobavljac Dobavljac { get; set; }
         public ICollection<NarudzbaStavka> NarudzbaStavka { get; set; }

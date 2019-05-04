@@ -137,6 +137,7 @@
             this.txtIznos.Name = "txtIznos";
             this.txtIznos.Size = new System.Drawing.Size(141, 13);
             this.txtIznos.TabIndex = 30;
+            this.txtIznos.Validating += new System.ComponentModel.CancelEventHandler(this.txtIznos_Validating);
             // 
             // panel14
             // 
@@ -235,6 +236,7 @@
             this.txtNamjena.Name = "txtNamjena";
             this.txtNamjena.Size = new System.Drawing.Size(141, 13);
             this.txtNamjena.TabIndex = 15;
+            this.txtNamjena.Validating += new System.ComponentModel.CancelEventHandler(this.txtNamjena_Validating);
             // 
             // label11
             // 
@@ -275,6 +277,7 @@
             this.txtZiroRacun.Name = "txtZiroRacun";
             this.txtZiroRacun.Size = new System.Drawing.Size(141, 13);
             this.txtZiroRacun.TabIndex = 2;
+            this.txtZiroRacun.Validating += new System.ComponentModel.CancelEventHandler(this.txtZiroRacun_Validating);
             // 
             // label14
             // 
@@ -295,6 +298,7 @@
             this.txtBrojUplatnice.Name = "txtBrojUplatnice";
             this.txtBrojUplatnice.Size = new System.Drawing.Size(341, 13);
             this.txtBrojUplatnice.TabIndex = 0;
+            this.txtBrojUplatnice.Validating += new System.ComponentModel.CancelEventHandler(this.txtBrojUplatnice_Validating);
             // 
             // btnSave
             // 

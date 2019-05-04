@@ -29,13 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRacuni));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbxRacuni = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvRacuni = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DatumIzdavanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApotekarId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PacijentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblRacuni = new System.Windows.Forms.Label();
             this.btnPrikazi = new System.Windows.Forms.Button();
             this.closeForm = new System.Windows.Forms.Label();
@@ -44,6 +41,11 @@
             this.lblDatumIzdavanja = new System.Windows.Forms.Label();
             this.dtpDatumIzdavanja = new System.Windows.Forms.DateTimePicker();
             this.btnDodaj = new System.Windows.Forms.Button();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumIzdavanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApotekarId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PacijentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Iznos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbxRacuni.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRacuni)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -79,7 +81,8 @@
             this.Id,
             this.DatumIzdavanja,
             this.ApotekarId,
-            this.PacijentId});
+            this.PacijentId,
+            this.Iznos});
             this.dgvRacuni.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvRacuni.Location = new System.Drawing.Point(3, 16);
             this.dgvRacuni.Name = "dgvRacuni";
@@ -89,35 +92,6 @@
             this.dgvRacuni.TabIndex = 0;
             this.dgvRacuni.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvRacuni_CellFormatting);
             this.dgvRacuni.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvRacuni_CellMouseDoubleClick);
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // DatumIzdavanja
-            // 
-            this.DatumIzdavanja.DataPropertyName = "DatumIzdavanja";
-            this.DatumIzdavanja.HeaderText = "Datum izdavanja";
-            this.DatumIzdavanja.Name = "DatumIzdavanja";
-            this.DatumIzdavanja.ReadOnly = true;
-            // 
-            // ApotekarId
-            // 
-            this.ApotekarId.DataPropertyName = "Apotekar.Osoblje.ImePrezime";
-            this.ApotekarId.HeaderText = "Izdao apotekar";
-            this.ApotekarId.Name = "ApotekarId";
-            this.ApotekarId.ReadOnly = true;
-            // 
-            // PacijentId
-            // 
-            this.PacijentId.DataPropertyName = "Pacijent.ImePrezime";
-            this.PacijentId.HeaderText = "Pacijent";
-            this.PacijentId.Name = "PacijentId";
-            this.PacijentId.ReadOnly = true;
             // 
             // lblRacuni
             // 
@@ -207,6 +181,45 @@
             this.btnDodaj.UseVisualStyleBackColor = false;
             this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
             // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // DatumIzdavanja
+            // 
+            this.DatumIzdavanja.DataPropertyName = "DatumIzdavanja";
+            this.DatumIzdavanja.HeaderText = "Datum izdavanja";
+            this.DatumIzdavanja.Name = "DatumIzdavanja";
+            this.DatumIzdavanja.ReadOnly = true;
+            // 
+            // ApotekarId
+            // 
+            this.ApotekarId.DataPropertyName = "Apotekar.Osoblje.ImePrezime";
+            this.ApotekarId.HeaderText = "Izdao apotekar";
+            this.ApotekarId.Name = "ApotekarId";
+            this.ApotekarId.ReadOnly = true;
+            // 
+            // PacijentId
+            // 
+            this.PacijentId.DataPropertyName = "Pacijent.ImePrezime";
+            this.PacijentId.HeaderText = "Pacijent";
+            this.PacijentId.Name = "PacijentId";
+            this.PacijentId.ReadOnly = true;
+            // 
+            // Iznos
+            // 
+            this.Iznos.DataPropertyName = "Iznos";
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.Iznos.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Iznos.HeaderText = "Iznos";
+            this.Iznos.Name = "Iznos";
+            this.Iznos.ReadOnly = true;
+            // 
             // frmRacuni
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -250,5 +263,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DatumIzdavanja;
         private System.Windows.Forms.DataGridViewTextBoxColumn ApotekarId;
         private System.Windows.Forms.DataGridViewTextBoxColumn PacijentId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Iznos;
     }
 }

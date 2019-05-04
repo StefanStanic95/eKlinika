@@ -121,104 +121,6 @@ namespace eKlinika.WinUI.MedicinskeSestre
             }
         }
 
-        //private void txtIme_Validating(object sender, CancelEventArgs e)
-        //{
-        //    if (string.IsNullOrWhiteSpace(txtBrojUplatnice.Text))
-        //    {
-        //        e.Cancel = true;
-        //        errorProvider.SetError(txtBrojUplatnice, Resources.Validation_RequiredField);
-        //    }
-        //    else
-        //    {
-        //        errorProvider.SetError(txtBrojUplatnice, null);
-        //    }
-        //}
-
-        //private void txtPrezime_Validating(object sender, CancelEventArgs e)
-        //{
-        //    if (string.IsNullOrWhiteSpace(txtPrezime.Text))
-        //    {
-        //        e.Cancel = true;
-        //        errorProvider.SetError(txtPrezime, Resources.Validation_RequiredField);
-        //    }
-        //    else
-        //    {
-        //        errorProvider.SetError(txtPrezime, null);
-        //    }
-        //}
-
-        //private void txtEmail_Validating(object sender, CancelEventArgs e)
-        //{
-        //    if (string.IsNullOrWhiteSpace(txtEmail.Text))
-        //    {
-        //        e.Cancel = true;
-        //        errorProvider.SetError(txtEmail, Resources.Validation_RequiredField);
-        //    }
-        //    else
-        //    {
-        //        errorProvider.SetError(txtEmail, null);
-        //    }
-        //}
-
-        //private void txtKorisnickoIme_Validating(object sender, CancelEventArgs e)
-        //{
-        //    if (string.IsNullOrWhiteSpace(txtKorisnickoIme.Text) || txtKorisnickoIme.Text.Length < 3)
-        //    {
-        //        e.Cancel = true;
-        //        errorProvider.SetError(txtEmail, Resources.Validation_RequiredField);
-        //    }
-        //    else
-        //    {
-        //        errorProvider.SetError(txtEmail, null);
-        //    }
-        //}
-
-        //private void txtPassword_Validating(object sender, CancelEventArgs e)
-        //{
-        //    bool dodavanje = !_id.HasValue;
-
-        //    bool pass_empty = string.IsNullOrWhiteSpace(txtPassword.Text),
-        //        confirm_empty = string.IsNullOrWhiteSpace(txtPasswordPotvrda.Text);
-
-        //    if ((dodavanje || !confirm_empty) && pass_empty)
-        //    {
-        //        e.Cancel = true;
-        //        errorProvider.SetError(txtPassword, Resources.Validation_RequiredField);
-        //    }
-        //    else if (!pass_empty && txtPassword.Text.Length < 3)
-        //    {
-        //        e.Cancel = true;
-        //        errorProvider.SetError(txtPassword, Resources.Validation_PasswordLength);
-        //    }
-        //    else
-        //    {
-        //        errorProvider.SetError(txtPassword, null);
-        //    }
-        //}
-
-        //private void txtPasswordPotvrda_Validating(object sender, CancelEventArgs e)
-        //{
-        //    bool dodavanje = !_id.HasValue;
-
-        //    bool pass_empty = string.IsNullOrWhiteSpace(txtPassword.Text),
-        //        confirm_empty = string.IsNullOrWhiteSpace(txtPasswordPotvrda.Text);
-
-        //    if ((dodavanje || !pass_empty) && confirm_empty)
-        //    {
-        //        e.Cancel = true;
-        //        errorProvider.SetError(txtPasswordPotvrda, Resources.Validation_RequiredField);
-        //    }
-        //    else if (!pass_empty && !confirm_empty && txtPassword.Text != txtPasswordPotvrda.Text)
-        //    {
-        //        e.Cancel = true;
-        //        errorProvider.SetError(txtPasswordPotvrda, Resources.Validation_PasswordNotMatch);
-        //    }
-        //    else
-        //    {
-        //        errorProvider.SetError(txtPasswordPotvrda, null);
-        //    }
-        //}
-
         private void minimizeForm_Click(object sender, System.EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
@@ -234,9 +136,58 @@ namespace eKlinika.WinUI.MedicinskeSestre
             Close();
         }
 
-        //void frmPacijentiDetails_Paint(object sender, PaintEventArgs e)
-        //{
-        //    ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle, Color.Black, ButtonBorderStyle.Solid);
-        //}
+        private void txtBrojUplatnice_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtBrojUplatnice.Text) || txtBrojUplatnice.Text.Length < 5)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(txtBrojUplatnice, Resources.Validation_RequiredField);
+            }
+            else
+            {
+                errorProvider.SetError(txtBrojUplatnice, null);
+            }
+        }
+
+        private void txtIznos_Validating(object sender, CancelEventArgs e)
+        {
+            double val;
+            if (string.IsNullOrWhiteSpace(txtIznos.Text) || !double.TryParse(txtIznos.Text, out val) || val < 0.1)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(txtIznos, Resources.Validation_RequiredField);
+            }
+            else
+            {
+                errorProvider.SetError(txtIznos, null);
+            }
+        }
+
+        private void txtNamjena_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNamjena.Text) || txtNamjena.Text.Length < 5)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(txtNamjena, Resources.Validation_RequiredField);
+            }
+            else
+            {
+                errorProvider.SetError(txtNamjena, null);
+            }
+        }
+
+        private void txtZiroRacun_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtZiroRacun.Text) || txtZiroRacun.Text.Length < 16 || txtZiroRacun.Text.Length > 20)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(txtZiroRacun, Resources.Validation_RequiredField);
+            }
+            else
+            {
+                errorProvider.SetError(txtZiroRacun, null);
+            }
+        }
+
     }
 }

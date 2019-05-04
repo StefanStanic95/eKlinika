@@ -141,103 +141,6 @@ namespace eKlinika.WinUI.Doktori
             }
         }
 
-        //private void txtIme_Validating(object sender, CancelEventArgs e)
-        //{
-        //    if (string.IsNullOrWhiteSpace(txtIme.Text))
-        //    {
-        //        e.Cancel = true;
-        //        errorProvider.SetError(txtIme, Resources.Validation_RequiredField);
-        //    }
-        //    else
-        //    {
-        //        errorProvider.SetError(txtIme, null);
-        //    }
-        //}
-
-        //private void txtPrezime_Validating(object sender, CancelEventArgs e)
-        //{
-        //    if (string.IsNullOrWhiteSpace(txtPrezime.Text))
-        //    {
-        //        e.Cancel = true;
-        //        errorProvider.SetError(txtPrezime, Resources.Validation_RequiredField);
-        //    }
-        //    else
-        //    {
-        //        errorProvider.SetError(txtPrezime, null);
-        //    }
-        //}
-
-        //private void txtEmail_Validating(object sender, CancelEventArgs e)
-        //{
-        //    if (string.IsNullOrWhiteSpace(txtEmail.Text))
-        //    {
-        //        e.Cancel = true;
-        //        errorProvider.SetError(txtEmail, Resources.Validation_RequiredField);
-        //    }
-        //    else
-        //    {
-        //        errorProvider.SetError(txtEmail, null);
-        //    }
-        //}
-
-        //private void txtKorisnickoIme_Validating(object sender, CancelEventArgs e)
-        //{
-        //    if (string.IsNullOrWhiteSpace(txtKorisnickoIme.Text) || txtKorisnickoIme.Text.Length < 3)
-        //    {
-        //        e.Cancel = true;
-        //        errorProvider.SetError(txtEmail, Resources.Validation_RequiredField);
-        //    }
-        //    else
-        //    {
-        //        errorProvider.SetError(txtEmail, null);
-        //    }
-        //}
-
-        //private void txtPassword_Validating(object sender, CancelEventArgs e)
-        //{
-        //    bool dodavanje = !_id.HasValue;
-
-        //    bool pass_empty = string.IsNullOrWhiteSpace(txtPassword.Text),
-        //        confirm_empty = string.IsNullOrWhiteSpace(txtPasswordPotvrda.Text);
-
-        //    if ((dodavanje || !confirm_empty) && pass_empty)
-        //    {
-        //        e.Cancel = true;
-        //        errorProvider.SetError(txtPassword, Resources.Validation_RequiredField);
-        //    }
-        //    else if (!pass_empty && txtPassword.Text.Length < 3)
-        //    {
-        //        e.Cancel = true;
-        //        errorProvider.SetError(txtPassword, Resources.Validation_PasswordLength);
-        //    }
-        //    else
-        //    {
-        //        errorProvider.SetError(txtPassword, null);
-        //    }
-        //}
-
-        //private void txtPasswordPotvrda_Validating(object sender, CancelEventArgs e)
-        //{
-        //    bool dodavanje = !_id.HasValue;
-
-        //    bool pass_empty = string.IsNullOrWhiteSpace(txtPassword.Text),
-        //        confirm_empty = string.IsNullOrWhiteSpace(txtPasswordPotvrda.Text);
-
-        //    if ((dodavanje || !pass_empty) && confirm_empty)
-        //    {
-        //        e.Cancel = true;
-        //        errorProvider.SetError(txtPasswordPotvrda, Resources.Validation_RequiredField);
-        //    }
-        //    else if (!pass_empty && !confirm_empty && txtPassword.Text != txtPasswordPotvrda.Text)
-        //    {
-        //        e.Cancel = true;
-        //        errorProvider.SetError(txtPasswordPotvrda, Resources.Validation_PasswordNotMatch);
-        //    }
-        //    else
-        //    {
-        //        errorProvider.SetError(txtPasswordPotvrda, null);
-        //    }
-        //}
 
         private void minimizeForm_Click(object sender, System.EventArgs e)
         {
@@ -254,24 +157,44 @@ namespace eKlinika.WinUI.Doktori
             Close();
         }
 
-        private void label16_Click(object sender, EventArgs e)
-        {
 
+        private void txtNapomena_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNapomena.Text) || txtNapomena.Text.Length < 10)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(txtNapomena, Resources.Validation_RequiredField);
+            }
+            else
+            {
+                errorProvider.SetError(txtNapomena, null);
+            }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void txtPrioritet_Validating(object sender, CancelEventArgs e)
         {
-
+            if (string.IsNullOrWhiteSpace(txtPrioritet.Text) || txtPrioritet.Text.Length < 5)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(txtPrioritet, Resources.Validation_RequiredField);
+            }
+            else
+            {
+                errorProvider.SetError(txtPrioritet, null);
+            }
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        private void txtTipPregleda_Validating(object sender, CancelEventArgs e)
         {
-
+            if (string.IsNullOrWhiteSpace(txtTipPregleda.Text) || txtTipPregleda.Text.Length < 5)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(txtTipPregleda, Resources.Validation_RequiredField);
+            }
+            else
+            {
+                errorProvider.SetError(txtTipPregleda, null);
+            }
         }
-
-        //void frmPacijentiDetails_Paint(object sender, PaintEventArgs e)
-        //{
-        //    ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle, Color.Black, ButtonBorderStyle.Solid);
-        //}
     }
 }

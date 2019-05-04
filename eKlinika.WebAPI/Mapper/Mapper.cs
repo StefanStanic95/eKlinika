@@ -29,6 +29,10 @@ namespace eProdaja.WebAPI.Mapper
             CreateMap<eKlinika.WebAPI.Database.Pregled, eKlinika.Model.Requests.PregledInsertRequest>().ReverseMap();
             CreateMap<eKlinika.WebAPI.Database.ApotekaRacun, eKlinika.Model.Requests.ApotekaRacunInsertRequest>().ReverseMap();
             CreateMap<eKlinika.WebAPI.Database.Lijek, eKlinika.Model.Requests.LijekInsertRequest>().ReverseMap();
+            CreateMap<eKlinika.WebAPI.Database.RacunStavka, eKlinika.Model.Requests.RacunStavkaInsertRequest>().ReverseMap();
+            CreateMap<eKlinika.WebAPI.Database.Recept, eKlinika.Model.Requests.ReceptInsertRequest>().ReverseMap();
+            CreateMap<eKlinika.WebAPI.Database.Narudzba, eKlinika.Model.Requests.NarudzbaInsertRequest>().ReverseMap();
+            CreateMap<eKlinika.WebAPI.Database.NarudzbaStavka, eKlinika.Model.Requests.NarudzbaStavkaInsertRequest>().ReverseMap();
 
 
             CreateMap<eKlinika.WebAPI.Database.Pregled, eKlinika.Model.Pregled>();
@@ -36,6 +40,10 @@ namespace eProdaja.WebAPI.Mapper
             CreateMap<eKlinika.WebAPI.Database.Uplata, eKlinika.Model.Uplata>();
             CreateMap<eKlinika.WebAPI.Database.ApotekaRacun, eKlinika.Model.ApotekaRacun>();
             CreateMap<eKlinika.WebAPI.Database.Lijek, eKlinika.Model.Lijek>();
+            CreateMap<eKlinika.WebAPI.Database.RacunStavka, eKlinika.Model.RacunStavka>();
+            CreateMap<eKlinika.WebAPI.Database.Recept, eKlinika.Model.Recept>();
+            CreateMap<eKlinika.WebAPI.Database.Narudzba, eKlinika.Model.Narudzba>();
+            CreateMap<eKlinika.WebAPI.Database.NarudzbaStavka, eKlinika.Model.NarudzbaStavka>();
 
         }
     }

@@ -30,10 +30,24 @@ namespace eKlinika.WebAPI.Services
             }
 
             query = query.Include(x => x.Pacijent.Korisnik).Include(x => x.Apotekar.Osoblje.Korisnik);
+            query = query.Include(x => x.RacunStavka);
 
-            var list = query.ToList();
+            List<Database.ApotekaRacun> list = query.ToList();
 
-            return _mapper.Map<List<Model.ApotekaRacun>>(list);
+            List<Model.ApotekaRacun> modelList = _mapper.Map<List<Model.ApotekaRacun>>(list);
+
+            foreach (var item in modelList)
+            {
+                double iznos = 0;
+                foreach (var stavka in item.RacunStavka)
+                {
+                    Database.Lijek lijek = _context.Lijek.Find(stavka.LijekId);
+                    iznos += lijek.CijenaPoKomadu * stavka.Kolicina;
+                }
+                item.Iznos = iznos;
+            }
+
+            return modelList;
         }
 
 
@@ -42,7 +56,8 @@ namespace eKlinika.WebAPI.Services
             var entity = _context.ApotekaRacun
                 .Where(x => x.Id == id)
                 .Include(x => x.Pacijent.Korisnik)
-                .Include(x => x.Apotekar.Osoblje.Korisnik);
+                .Include(x => x.Apotekar.Osoblje.Korisnik)
+                .Include(x => x.RacunStavka);
 
 
             return _mapper.Map<Model.ApotekaRacun>(entity.FirstOrDefault());

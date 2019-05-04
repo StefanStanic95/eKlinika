@@ -256,6 +256,7 @@
             this.txtTelefon.Name = "txtTelefon";
             this.txtTelefon.Size = new System.Drawing.Size(341, 13);
             this.txtTelefon.TabIndex = 6;
+            this.txtTelefon.Validating += new System.ComponentModel.CancelEventHandler(this.txtTelefon_Validating);
             // 
             // label3
             // 
@@ -473,6 +474,7 @@
             this.txtVisina.Name = "txtVisina";
             this.txtVisina.Size = new System.Drawing.Size(141, 13);
             this.txtVisina.TabIndex = 16;
+            this.txtVisina.Validating += new System.ComponentModel.CancelEventHandler(this.txtVisina_Validating);
             // 
             // txtTezina
             // 
@@ -483,6 +485,7 @@
             this.txtTezina.Name = "txtTezina";
             this.txtTezina.Size = new System.Drawing.Size(141, 13);
             this.txtTezina.TabIndex = 15;
+            this.txtTezina.Validating += new System.ComponentModel.CancelEventHandler(this.txtTezina_Validating);
             // 
             // txtAlergije
             // 
@@ -543,6 +546,7 @@
             this.txtBrojKnjizice.Name = "txtBrojKnjizice";
             this.txtBrojKnjizice.Size = new System.Drawing.Size(141, 13);
             this.txtBrojKnjizice.TabIndex = 2;
+            this.txtBrojKnjizice.Validating += new System.ComponentModel.CancelEventHandler(this.txtBrojKnjizice_Validating);
             // 
             // label14
             // 
@@ -563,6 +567,7 @@
             this.txtBrojKartona.Name = "txtBrojKartona";
             this.txtBrojKartona.Size = new System.Drawing.Size(341, 13);
             this.txtBrojKartona.TabIndex = 0;
+            this.txtBrojKartona.Validating += new System.ComponentModel.CancelEventHandler(this.txtBrojKartona_Validating);
             // 
             // btnSave
             // 

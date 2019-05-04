@@ -137,7 +137,7 @@ namespace eKlinika.WebAPI.Services
                 entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Password);
             }
 
-            _mapper.Map(request.Pacijent, entity.Pacijent);
+            _mapper.Map(request, entity);
 
             _context.SaveChanges();
 

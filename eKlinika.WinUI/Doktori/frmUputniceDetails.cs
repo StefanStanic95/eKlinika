@@ -90,13 +90,14 @@ namespace eKlinika.WinUI.Doktori
             };
 
             var doktoriList = await _serviceKorisnici.Get<List<Model.Korisnici>>(searchDoktori);
+            var doktoriList2 = new List<Model.Korisnici>(doktoriList);
             var pacijentiList = await _serviceKorisnici.Get<List<Model.Korisnici>>(searchPacijenti);
             var vrstaPretrageList = await _serviceVrstaPretrage.Get<List<Model.VrstaPretrage>>();
 
             cmbLabDoktor.DataSource = doktoriList;
             cmbLabDoktor.DisplayMember = "ImePrezime";
 
-            cmbUputioDoktor.DataSource = doktoriList;
+            cmbUputioDoktor.DataSource = doktoriList2;
             cmbUputioDoktor.DisplayMember = "ImePrezime";
 
             cmbPacijent.DataSource = pacijentiList;

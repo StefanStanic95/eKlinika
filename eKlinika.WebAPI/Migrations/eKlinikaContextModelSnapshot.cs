@@ -314,8 +314,6 @@ namespace eKlinika.WebAPI.Migrations
 
                     b.Property<int>("DobavljacId");
 
-                    b.Property<double>("Iznos");
-
                     b.HasKey("Id");
 
                     b.HasIndex("DobavljacId");
@@ -471,8 +469,6 @@ namespace eKlinika.WebAPI.Migrations
                     b.Property<DateTime>("DatumIzdavanja");
 
                     b.Property<bool>("IsObradjen");
-
-                    b.Property<int>("Kolicina");
 
                     b.Property<int>("LijekId");
 
@@ -643,9 +639,9 @@ namespace eKlinika.WebAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("eKlinika.WebAPI.Database.Pacijent", "Pacijent")
-                        .WithMany("ApotekaRacun")
+                        .WithMany()
                         .HasForeignKey("PacijentId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("eKlinika.WebAPI.Database.Dobavljac", b =>
@@ -779,9 +775,9 @@ namespace eKlinika.WebAPI.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("eKlinika.WebAPI.Database.Pacijent", "Pacijent")
-                        .WithMany("Pregled")
+                        .WithMany()
                         .HasForeignKey("PacijentId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("eKlinika.WebAPI.Database.RacunStavka", b =>
@@ -822,14 +818,15 @@ namespace eKlinika.WebAPI.Migrations
                         .HasForeignKey("ModalitetId");
 
                     b.HasOne("eKlinika.WebAPI.Database.Uputnica", "Uputnica")
-                        .WithMany("RezultatPretrage")
-                        .HasForeignKey("UputnicaId");
+                        .WithMany()
+                        .HasForeignKey("UputnicaId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("eKlinika.WebAPI.Database.Uplata", b =>
                 {
                     b.HasOne("eKlinika.WebAPI.Database.Pacijent", "Pacijent")
-                        .WithMany("Uplata")
+                        .WithMany()
                         .HasForeignKey("PacijentId")
                         .OnDelete(DeleteBehavior.Cascade);
 
@@ -846,9 +843,9 @@ namespace eKlinika.WebAPI.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("eKlinika.WebAPI.Database.Pacijent", "Pacijent")
-                        .WithMany("Uputnica")
+                        .WithMany()
                         .HasForeignKey("PacijentId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("eKlinika.WebAPI.Database.Doktor", "UputioDoktor")
                         .WithMany()

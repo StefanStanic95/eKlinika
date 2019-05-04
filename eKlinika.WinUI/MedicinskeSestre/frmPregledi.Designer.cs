@@ -32,6 +32,12 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvPregledi = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtpDatumPregleda = new System.Windows.Forms.DateTimePicker();
+            this.btnPrikazi = new System.Windows.Forms.Button();
+            this.closeForm = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumPregleda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumRezervacije = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,12 +48,6 @@
             this.MedicinskaSestraId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PacijentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsOdrzan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dtpDatumPregleda = new System.Windows.Forms.DateTimePicker();
-            this.btnPrikazi = new System.Windows.Forms.Button();
-            this.closeForm = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPregledi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -68,7 +68,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
-            this.panel1.Location = new System.Drawing.Point(6, 46);
+            this.panel1.Location = new System.Drawing.Point(6, 34);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1164, 1);
             this.panel1.TabIndex = 1;
@@ -98,78 +98,6 @@
             this.dgvPregledi.Size = new System.Drawing.Size(1183, 322);
             this.dgvPregledi.TabIndex = 0;
             this.dgvPregledi.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvPregledi_CellFormatting);
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // DatumPregleda
-            // 
-            this.DatumPregleda.DataPropertyName = "DatumPregleda";
-            this.DatumPregleda.HeaderText = "Datum pregleda";
-            this.DatumPregleda.Name = "DatumPregleda";
-            this.DatumPregleda.ReadOnly = true;
-            // 
-            // DatumRezervacije
-            // 
-            this.DatumRezervacije.DataPropertyName = "DatumRezervacije";
-            this.DatumRezervacije.HeaderText = "Datum rezervacije";
-            this.DatumRezervacije.Name = "DatumRezervacije";
-            this.DatumRezervacije.ReadOnly = true;
-            // 
-            // Napomena
-            // 
-            this.Napomena.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Napomena.DataPropertyName = "Napomena";
-            this.Napomena.HeaderText = "Napomena";
-            this.Napomena.Name = "Napomena";
-            this.Napomena.ReadOnly = true;
-            // 
-            // Prioritet
-            // 
-            this.Prioritet.DataPropertyName = "Prioritet";
-            this.Prioritet.HeaderText = "Prioritet";
-            this.Prioritet.Name = "Prioritet";
-            this.Prioritet.ReadOnly = true;
-            // 
-            // TipPregleda
-            // 
-            this.TipPregleda.DataPropertyName = "TipPregleda";
-            this.TipPregleda.HeaderText = "Tip pregleda";
-            this.TipPregleda.Name = "TipPregleda";
-            this.TipPregleda.ReadOnly = true;
-            // 
-            // DoktorId
-            // 
-            this.DoktorId.DataPropertyName = "Doktor.ImePrezime";
-            this.DoktorId.HeaderText = "Doktor";
-            this.DoktorId.Name = "DoktorId";
-            this.DoktorId.ReadOnly = true;
-            // 
-            // MedicinskaSestraId
-            // 
-            this.MedicinskaSestraId.DataPropertyName = "MedicinskaSestra.Osoblje.ImePrezime";
-            this.MedicinskaSestraId.HeaderText = "Medicinska sestra";
-            this.MedicinskaSestraId.Name = "MedicinskaSestraId";
-            this.MedicinskaSestraId.ReadOnly = true;
-            // 
-            // PacijentId
-            // 
-            this.PacijentId.DataPropertyName = "Pacijent.ImePrezime";
-            this.PacijentId.HeaderText = "Pacijent";
-            this.PacijentId.Name = "PacijentId";
-            this.PacijentId.ReadOnly = true;
-            // 
-            // IsOdrzan
-            // 
-            this.IsOdrzan.DataPropertyName = "IsOdrzan";
-            this.IsOdrzan.HeaderText = "Održan (DA/NE)";
-            this.IsOdrzan.Name = "IsOdrzan";
-            this.IsOdrzan.ReadOnly = true;
             // 
             // label1
             // 
@@ -235,6 +163,82 @@
             this.pictureBox1.Size = new System.Drawing.Size(64, 64);
             this.pictureBox1.TabIndex = 15;
             this.pictureBox1.TabStop = false;
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // DatumPregleda
+            // 
+            this.DatumPregleda.DataPropertyName = "DatumPregleda";
+            this.DatumPregleda.HeaderText = "Datum pregleda";
+            this.DatumPregleda.Name = "DatumPregleda";
+            this.DatumPregleda.ReadOnly = true;
+            this.DatumPregleda.Width = 120;
+            // 
+            // DatumRezervacije
+            // 
+            this.DatumRezervacije.DataPropertyName = "DatumRezervacije";
+            this.DatumRezervacije.HeaderText = "Datum rezervacije";
+            this.DatumRezervacije.Name = "DatumRezervacije";
+            this.DatumRezervacije.ReadOnly = true;
+            this.DatumRezervacije.Width = 120;
+            // 
+            // Napomena
+            // 
+            this.Napomena.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Napomena.DataPropertyName = "Napomena";
+            this.Napomena.HeaderText = "Napomena";
+            this.Napomena.Name = "Napomena";
+            this.Napomena.ReadOnly = true;
+            // 
+            // Prioritet
+            // 
+            this.Prioritet.DataPropertyName = "Prioritet";
+            this.Prioritet.HeaderText = "Prioritet";
+            this.Prioritet.Name = "Prioritet";
+            this.Prioritet.ReadOnly = true;
+            // 
+            // TipPregleda
+            // 
+            this.TipPregleda.DataPropertyName = "TipPregleda";
+            this.TipPregleda.HeaderText = "Tip pregleda";
+            this.TipPregleda.Name = "TipPregleda";
+            this.TipPregleda.ReadOnly = true;
+            // 
+            // DoktorId
+            // 
+            this.DoktorId.DataPropertyName = "Doktor.ImePrezime";
+            this.DoktorId.HeaderText = "Doktor";
+            this.DoktorId.Name = "DoktorId";
+            this.DoktorId.ReadOnly = true;
+            // 
+            // MedicinskaSestraId
+            // 
+            this.MedicinskaSestraId.DataPropertyName = "MedicinskaSestra.Osoblje.ImePrezime";
+            this.MedicinskaSestraId.HeaderText = "Medicinska sestra";
+            this.MedicinskaSestraId.Name = "MedicinskaSestraId";
+            this.MedicinskaSestraId.ReadOnly = true;
+            this.MedicinskaSestraId.Width = 140;
+            // 
+            // PacijentId
+            // 
+            this.PacijentId.DataPropertyName = "Pacijent.ImePrezime";
+            this.PacijentId.HeaderText = "Pacijent";
+            this.PacijentId.Name = "PacijentId";
+            this.PacijentId.ReadOnly = true;
+            // 
+            // IsOdrzan
+            // 
+            this.IsOdrzan.DataPropertyName = "IsOdrzan";
+            this.IsOdrzan.HeaderText = "Održan (DA/NE)";
+            this.IsOdrzan.Name = "IsOdrzan";
+            this.IsOdrzan.ReadOnly = true;
+            this.IsOdrzan.Width = 120;
             // 
             // frmPregledi
             // 

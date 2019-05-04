@@ -61,6 +61,15 @@ namespace eKlinika.WinUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Neispravan format!.
+        /// </summary>
+        internal static string Validation_InvalidFormat {
+            get {
+                return ResourceManager.GetString("Validation_InvalidFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password mora imati barem 3 karaktera!.
         /// </summary>
         internal static string Validation_PasswordLength {

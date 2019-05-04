@@ -70,12 +70,16 @@ namespace eKlinika.WebAPI
             services.AddScoped<ILijekService, LijekService>();
             services.AddScoped<IApotekaRacunService, ApotekaRacunService>();
             services.AddScoped<IReceptService, ReceptService>();
+            services.AddScoped<IRacunStavkaService, RacunStavkaService>();
+            services.AddScoped<INarudzbaService, NarudzbaService>();
+            services.AddScoped<INarudzbaStavkaService, NarudzbaStavkaService>();
 
 
             services.AddScoped<IService<Model.Uloge, object>, BaseService<Model.Uloge, object, Uloge>>();
             services.AddScoped<IService<Model.KrvnaGrupa, object>, BaseService<Model.KrvnaGrupa, object, KrvnaGrupa>>();
             services.AddScoped<IService<Model.VrstaPretrage, object>, BaseService<Model.VrstaPretrage, object, VrstaPretrage>>();
             services.AddScoped<IService<Model.Proizvodjac, object>, BaseService<Model.Proizvodjac, object, Proizvodjac>>();
+            services.AddScoped<IService<Model.Dobavljac, object>, BaseService<Model.Dobavljac, object, Dobavljac>>();
 
         }
 

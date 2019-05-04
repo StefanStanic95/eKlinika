@@ -136,6 +136,7 @@
             this.txtUputstvo.Name = "txtUputstvo";
             this.txtUputstvo.Size = new System.Drawing.Size(341, 13);
             this.txtUputstvo.TabIndex = 19;
+            this.txtUputstvo.Validating += new System.ComponentModel.CancelEventHandler(this.txtUputstvo_Validating);
             // 
             // panel5
             // 
@@ -188,6 +189,7 @@
             this.txtUkupnoNaStanju.Name = "txtUkupnoNaStanju";
             this.txtUkupnoNaStanju.Size = new System.Drawing.Size(341, 13);
             this.txtUkupnoNaStanju.TabIndex = 8;
+            this.txtUkupnoNaStanju.Validating += new System.ComponentModel.CancelEventHandler(this.txtUkupnoNaStanju_Validating);
             // 
             // label4
             // 
@@ -208,6 +210,7 @@
             this.txtTipLijeka.Name = "txtTipLijeka";
             this.txtTipLijeka.Size = new System.Drawing.Size(341, 13);
             this.txtTipLijeka.TabIndex = 6;
+            this.txtTipLijeka.Validating += new System.ComponentModel.CancelEventHandler(this.txtTipLijeka_Validating);
             // 
             // label3
             // 
@@ -238,6 +241,7 @@
             this.txtCijena.Name = "txtCijena";
             this.txtCijena.Size = new System.Drawing.Size(341, 13);
             this.txtCijena.TabIndex = 2;
+            this.txtCijena.Validating += new System.ComponentModel.CancelEventHandler(this.txtCijena_Validating);
             // 
             // label1
             // 
@@ -258,6 +262,7 @@
             this.txtNaziv.Name = "txtNaziv";
             this.txtNaziv.Size = new System.Drawing.Size(341, 13);
             this.txtNaziv.TabIndex = 0;
+            this.txtNaziv.Validating += new System.ComponentModel.CancelEventHandler(this.txtNaziv_Validating);
             // 
             // errorProvider
             // 

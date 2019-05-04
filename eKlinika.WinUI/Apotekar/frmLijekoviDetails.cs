@@ -120,6 +120,71 @@ namespace eKlinika.WinUI.Apotekar
             Close();
         }
 
+        private void txtNaziv_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNaziv.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(txtNaziv, Resources.Validation_RequiredField);
+            }
+            else
+            {
+                errorProvider.SetError(txtNaziv, null);
+            }
+        }
 
+        private void txtCijena_Validating(object sender, CancelEventArgs e)
+        {
+            double val;
+            if (string.IsNullOrWhiteSpace(txtCijena.Text) || !double.TryParse(txtCijena.Text, out val) || val < 0.1)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(txtCijena, Resources.Validation_RequiredField);
+            }
+            else
+            {
+                errorProvider.SetError(txtCijena, null);
+            }
+        }
+
+        private void txtTipLijeka_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtTipLijeka.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(txtTipLijeka, Resources.Validation_RequiredField);
+            }
+            else
+            {
+                errorProvider.SetError(txtTipLijeka, null);
+            }
+        }
+
+        private void txtUkupnoNaStanju_Validating(object sender, CancelEventArgs e)
+        {
+            int val;
+            if (string.IsNullOrWhiteSpace(txtUkupnoNaStanju.Text) || !int.TryParse(txtUkupnoNaStanju.Text, out val) || val < 1)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(txtUkupnoNaStanju, Resources.Validation_RequiredField);
+            }
+            else
+            {
+                errorProvider.SetError(txtUkupnoNaStanju, null);
+            }
+        }
+
+        private void txtUputstvo_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtUputstvo.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(txtUputstvo, Resources.Validation_RequiredField);
+            }
+            else
+            {
+                errorProvider.SetError(txtUputstvo, null);
+            }
+        }
     }
 }

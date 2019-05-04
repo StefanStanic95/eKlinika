@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Validation_InvalidFormat" xml:space="preserve">
+    <value>Neispravan format!</value>
+  </data>
   <data name="Validation_PasswordLength" xml:space="preserve">
     <value>Password mora imati barem 3 karaktera!</value>
   </data>
