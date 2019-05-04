@@ -72,5 +72,12 @@ namespace eKlinika.WinUI.Apotekar
             }
         }
 
+        private void dgvRacuni_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var racunId = int.Parse(dgvRacuni.SelectedRows[0].Cells[0].Value.ToString());
+
+            frmRacuniDetails frm = new frmRacuniDetails(racunId);
+            frm.Show();
+        }
     }
 }

@@ -28,12 +28,14 @@ namespace eProdaja.WebAPI.Mapper
             CreateMap<eKlinika.WebAPI.Database.Uputnica, eKlinika.Model.Requests.UputnicaInsertRequest>().ReverseMap();
             CreateMap<eKlinika.WebAPI.Database.Pregled, eKlinika.Model.Requests.PregledInsertRequest>().ReverseMap();
             CreateMap<eKlinika.WebAPI.Database.ApotekaRacun, eKlinika.Model.Requests.ApotekaRacunInsertRequest>().ReverseMap();
+            CreateMap<eKlinika.WebAPI.Database.Lijek, eKlinika.Model.Requests.LijekInsertRequest>().ReverseMap();
 
 
             CreateMap<eKlinika.WebAPI.Database.Pregled, eKlinika.Model.Pregled>();
             CreateMap<eKlinika.WebAPI.Database.Uputnica, eKlinika.Model.Uputnica>();
             CreateMap<eKlinika.WebAPI.Database.Uplata, eKlinika.Model.Uplata>();
             CreateMap<eKlinika.WebAPI.Database.ApotekaRacun, eKlinika.Model.ApotekaRacun>();
+            CreateMap<eKlinika.WebAPI.Database.Lijek, eKlinika.Model.Lijek>();
 
         }
     }

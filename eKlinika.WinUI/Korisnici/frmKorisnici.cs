@@ -75,5 +75,11 @@ namespace eKlinika.WinUI.Korisnici
         {
             Close();
         }
+
+        private void btnDodaj_Click(object sender, EventArgs e)
+        {
+            frmKorisniciDetails frm = new frmKorisniciDetails();
+            frm.Show();
+        }
     }
 }

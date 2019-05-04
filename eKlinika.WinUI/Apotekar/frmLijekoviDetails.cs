@@ -79,15 +79,11 @@ namespace eKlinika.WinUI.Apotekar
 
         private async void frmLijekoviDetails_Load(object sender, EventArgs e)
         {
-            var search = new KorisniciSearchRequest()
-            {
-                Uloga = "Apotekar"
-            };
 
-            var proizvodjaciList = await _serviceProizvodjac.Get<List<Model.Proizvodjac>>(search);
+            var proizvodjaciList = await _serviceProizvodjac.Get<List<Model.Proizvodjac>>(null);
 
-            cmbProizvodjac.DataSource = proizvodjaciList;
             cmbProizvodjac.DisplayMember = "Naziv";
+            cmbProizvodjac.DataSource = proizvodjaciList;
 
 
             if (_id.HasValue)
@@ -123,5 +119,7 @@ namespace eKlinika.WinUI.Apotekar
         {
             Close();
         }
+
+
     }
 }

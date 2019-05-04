@@ -97,6 +97,7 @@
             this.dgvLijekovi.Size = new System.Drawing.Size(1244, 444);
             this.dgvLijekovi.TabIndex = 0;
             this.dgvLijekovi.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLijekovi_CellFormatting);
+            this.dgvLijekovi.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLijekovi_CellMouseDoubleClick);
             // 
             // Id
             // 

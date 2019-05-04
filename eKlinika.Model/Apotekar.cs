@@ -9,6 +9,6 @@ namespace eKlinika.Model
         public int Id { get; set; }
         public string OpisPosla { get; set; }
 
-        //public Osoblje Osoblje { get; set; }
+        public Osoblje Osoblje { get; set; }
     }
 }

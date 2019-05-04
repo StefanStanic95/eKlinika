@@ -72,5 +72,12 @@ namespace eKlinika.WinUI.Apotekar
             }
         }
 
+        private void dgvLijekovi_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var lijekId = int.Parse(dgvLijekovi.SelectedRows[0].Cells[0].Value.ToString());
+
+            frmLijekoviDetails frm = new frmLijekoviDetails(lijekId);
+            frm.Show();
+        }
     }
 }

@@ -87,7 +87,13 @@ namespace eKlinika.WinUI.Apotekar
             cmbPacijent.DataSource = korisniciList;
             cmbPacijent.DisplayMember = "ImePrezime";
 
-            var apotekariList = await _serviceKorisnici.Get<List<Model.Korisnici>>(search);
+
+            var search1 = new KorisniciSearchRequest()
+            {
+                Uloga = "Apotekar"
+            };
+
+            var apotekariList = await _serviceKorisnici.Get<List<Model.Korisnici>>(search1);
 
             cmbApotekar.DataSource = apotekariList;
             cmbApotekar.DisplayMember = "ImePrezime";

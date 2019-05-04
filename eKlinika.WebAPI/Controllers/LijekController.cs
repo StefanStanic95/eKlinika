@@ -34,5 +34,19 @@ namespace eKlinika.WebAPI.Controllers
             {
                 return _service.GetById(id);
             }
+
+            [Authorize(Roles = "Administrator,Apotekar")]
+            [HttpPost]
+            public Model.Lijek Insert(LijekInsertRequest request)
+            {
+                return _service.Insert(request);
+            }
+
+            [Authorize(Roles = "Administrator,Apotekar")]
+            [HttpPut("{id}")]
+            public Model.Lijek Update(int id, [FromBody]LijekInsertRequest request)
+            {
+                return _service.Update(id, request);
+            }
     }
 }

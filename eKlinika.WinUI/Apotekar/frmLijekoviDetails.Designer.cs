@@ -349,6 +349,7 @@
             this.Name = "frmLijekoviDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registracija pacijenta";
+            this.Load += new System.EventHandler(this.frmLijekoviDetails_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();

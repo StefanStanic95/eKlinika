@@ -88,6 +88,7 @@
             this.dgvRacuni.Size = new System.Drawing.Size(1244, 444);
             this.dgvRacuni.TabIndex = 0;
             this.dgvRacuni.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvRacuni_CellFormatting);
+            this.dgvRacuni.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvRacuni_CellMouseDoubleClick);
             // 
             // Id
             // 
