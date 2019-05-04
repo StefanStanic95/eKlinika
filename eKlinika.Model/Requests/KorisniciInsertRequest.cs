@@ -27,7 +27,7 @@ namespace eKlinika.Model.Requests
         public string PasswordPotvrda { get; set; }
 
         public int? GradId { get; set; }
-        public Osoblje Osoblje { get; set; }
+        public Osoblje_Upsert Osoblje { get; set; }
         public Pacijent Pacijent { get; set; }
 
         public List<int> Uloge { get; set; } = new List<int>();

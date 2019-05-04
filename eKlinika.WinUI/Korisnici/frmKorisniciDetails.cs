@@ -30,6 +30,7 @@ namespace eKlinika.WinUI.Korisnici
             if (ValidateChildren())
             {
                 var roleList = clbRole.CheckedItems.Cast<Model.Uloge>().Select(x => x.Id).ToList();
+                var roleListStr = clbRole.CheckedItems.Cast<Model.Uloge>().Select(x => x.Naziv).ToList();
 
 
                 Model.Korisnici entity = null;
@@ -46,6 +47,25 @@ namespace eKlinika.WinUI.Korisnici
                 };
                 if (!_id.HasValue)
                 {
+                    if(roleListStr.Contains("Apotekar"))
+                    {
+                        request.Osoblje = new Osoblje_Upsert {
+                            Apotekar = new Apotekar_Upsert()
+                        };
+                    }
+                    if(roleListStr.Contains("Doktor"))
+                    {
+                        request.Osoblje = new Osoblje_Upsert {
+                            Doktor = new Doktor_Upsert()
+                        };
+                    }
+                    if(roleListStr.Contains("Doktor"))
+                    {
+                        request.Osoblje = new Osoblje_Upsert {
+                            MedicinskaSestra = new MedicinskaSestra_Upsert()
+                        };
+                    }
+
                     entity = await _service.Insert<Model.Korisnici>(request);
                 }
                 else

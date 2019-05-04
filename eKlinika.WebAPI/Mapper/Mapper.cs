@@ -14,9 +14,13 @@ namespace eProdaja.WebAPI.Mapper
             CreateMap<eKlinika.Model.Pacijent, eKlinika.WebAPI.Database.Pacijent>()
                 .ForMember(x => x.Korisnik, opt => opt.Ignore());
             CreateMap<eKlinika.Model.Osoblje, eKlinika.WebAPI.Database.Osoblje>();
+            CreateMap<eKlinika.Model.Osoblje_Upsert, eKlinika.WebAPI.Database.Osoblje>();
             CreateMap<eKlinika.Model.Doktor, eKlinika.WebAPI.Database.Doktor>();
+            CreateMap<eKlinika.Model.Doktor_Upsert, eKlinika.WebAPI.Database.Doktor>();
             CreateMap<eKlinika.Model.Apotekar, eKlinika.WebAPI.Database.Apotekar>();
+            CreateMap<eKlinika.Model.Apotekar_Upsert, eKlinika.WebAPI.Database.Apotekar>();
             CreateMap<eKlinika.Model.MedicinskaSestra, eKlinika.WebAPI.Database.MedicinskaSestra>();
+            CreateMap<eKlinika.Model.MedicinskaSestra_Upsert, eKlinika.WebAPI.Database.MedicinskaSestra>();
 
 
             CreateMap<eKlinika.WebAPI.Database.Korisnici, eKlinika.Model.Requests.KorisniciInsertRequest>().ReverseMap();
