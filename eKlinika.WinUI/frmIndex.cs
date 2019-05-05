@@ -40,29 +40,29 @@ namespace eKlinika.WinUI
 
             FormBorderStyle = FormBorderStyle.None;
         }
-        
+
         private void pretragaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmKorisnici frm = new frmKorisnici();
+            var frm = new frmKorisnici();
             frm.Show();
         }
 
         private void noviKorisnikToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmKorisniciDetails frm = new frmKorisniciDetails();
+            var frm = new frmKorisniciDetails();
             frm.Show();
         }
 
         private void noviPacijentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmPacijentiDetails frm = new frmPacijentiDetails();
+            var frm = new frmPacijentiDetails();
             frm.Show();
 
         }
 
         private void urediPacijentaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmPacijenti frm = new frmPacijenti();
+            var frm = new frmPacijenti();
             frm.Show();
         }
 
@@ -83,61 +83,73 @@ namespace eKlinika.WinUI
 
         private void preglediToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Doktori.frmPregledi frm = new Doktori.frmPregledi();
+            var frm = new frmPregledi();
             frm.Show();
         }
 
         private void uputniceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Doktori.frmUputnice frm = new Doktori.frmUputnice();
+            var frm = new frmUputnice();
             frm.Show();
         }
 
         private void uputniceToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            MedicinskeSestre.frmUputnice frm = new MedicinskeSestre.frmUputnice();
+            var frm = new MedicinskeSestre.frmUputnice();
             frm.Show();
         }
 
         private void preglediToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            MedicinskeSestre.frmPregledi frm = new MedicinskeSestre.frmPregledi();
+            var frm = new MedicinskeSestre.frmPregledi();
             frm.Show();
         }
 
         private void uplateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MedicinskeSestre.frmUplate frm = new MedicinskeSestre.frmUplate();
+            var frm = new MedicinskeSestre.frmUplate();
             frm.Show();
         }
 
         private void lijekoviToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Apotekar.frmLijekovi frm = new Apotekar.frmLijekovi();
+            var frm = new Apotekar.frmLijekovi();
             frm.Show();
         }
 
         private void dodavanjeLijekaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Apotekar.frmLijekoviDetails frm = new Apotekar.frmLijekoviDetails();
+            var frm = new Apotekar.frmLijekoviDetails();
             frm.Show();
         }
 
         private void računiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Apotekar.frmRacuni frm = new Apotekar.frmRacuni();
+            var frm = new Apotekar.frmRacuni();
             frm.Show();
         }
 
         private void receptiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Apotekar.frmRecepti frm = new Apotekar.frmRecepti();
+            var frm = new Apotekar.frmRecepti();
             frm.Show();
         }
 
         private void narudžbeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Apotekar.frmNarudzbe frm = new Apotekar.frmNarudzbe();
+            var frm = new Apotekar.frmNarudzbe();
+            frm.Show();
+        }
+
+        private void pregledPacijentaToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            var frm = new frmPacijenti();
+            frm.Show();
+        }
+
+        private void noviPacijentToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            var frm = new frmPacijentiDetails();
             frm.Show();
         }
     }

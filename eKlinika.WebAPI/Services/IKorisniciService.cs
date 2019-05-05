@@ -1,5 +1,4 @@
 ﻿using eKlinika.Model.Requests;
-using eKlinika.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.Linq;

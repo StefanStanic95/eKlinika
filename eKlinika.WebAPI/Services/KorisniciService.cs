@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using eKlinika.WebAPI.Security;
+using eKlinika.WebAPI.Exceptions;
 
 namespace eKlinika.WebAPI.Services
 {
@@ -95,7 +96,7 @@ namespace eKlinika.WebAPI.Services
 
             if (request.Password != request.PasswordPotvrda)
             {
-                throw new Exception("Passwordi se ne slažu");
+                throw new UserException("Passwordi se ne slažu");
             }
 
             entity.LozinkaSalt = GenerateSalt();
@@ -106,9 +107,11 @@ namespace eKlinika.WebAPI.Services
 
             foreach (var uloga in request.Uloge)
             {
-                Database.KorisniciUloge korisniciUloge = new Database.KorisniciUloge();
-                korisniciUloge.KorisnikId = entity.Id;
-                korisniciUloge.UlogaId = uloga;
+                Database.KorisniciUloge korisniciUloge = new Database.KorisniciUloge
+                {
+                    KorisnikId = entity.Id,
+                    UlogaId = uloga
+                };
                 _context.KorisniciUloge.Add(korisniciUloge);
             }
             _context.SaveChanges();
@@ -130,7 +133,7 @@ namespace eKlinika.WebAPI.Services
             {
                 if (request.Password != request.PasswordPotvrda)
                 {
-                    throw new Exception("Passwordi se ne slažu");
+                    throw new UserException("Passwordi se ne slažu");
                 }
 
                 entity.LozinkaSalt = GenerateSalt();
