@@ -48,13 +48,16 @@
             this.maximizeForm = new System.Windows.Forms.Label();
             this.minimizeForm = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.dgvStavke = new System.Windows.Forms.DataGridView();
             this.LijekId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Lijek = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Kolicina = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmbLijek = new System.Windows.Forms.ComboBox();
-            this.txtKolicina = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnDodaj = new System.Windows.Forms.Button();
+            this.txtKolicina = new System.Windows.Forms.TextBox();
+            this.cmbLijek = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.panel15.SuspendLayout();
@@ -178,7 +181,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.btnSave.Location = new System.Drawing.Point(361, 514);
+            this.btnSave.Location = new System.Drawing.Point(366, 522);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(86, 30);
             this.btnSave.TabIndex = 5;
@@ -250,6 +253,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.panel2);
             this.groupBox1.Controls.Add(this.dgvStavke);
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.groupBox1.Location = new System.Drawing.Point(71, 326);
@@ -258,6 +262,14 @@
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lijekovi";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.panel2.Location = new System.Drawing.Point(6, 31);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(380, 1);
+            this.panel2.TabIndex = 35;
             // 
             // dgvStavke
             // 
@@ -290,45 +302,69 @@
             this.Lijek.HeaderText = "Lijek";
             this.Lijek.Name = "Lijek";
             this.Lijek.ReadOnly = true;
+            this.Lijek.Width = 150;
             // 
             // Kolicina
             // 
             this.Kolicina.DataPropertyName = "Kolicina";
-            this.Kolicina.HeaderText = "Kolicina";
+            this.Kolicina.HeaderText = "Količina";
             this.Kolicina.Name = "Kolicina";
             this.Kolicina.ReadOnly = true;
             // 
-            // cmbLijek
+            // label4
             // 
-            this.cmbLijek.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbLijek.FormattingEnabled = true;
-            this.cmbLijek.Location = new System.Drawing.Point(92, 484);
-            this.cmbLijek.Name = "cmbLijek";
-            this.cmbLijek.Size = new System.Drawing.Size(121, 21);
-            this.cmbLijek.TabIndex = 9;
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.label4.Location = new System.Drawing.Point(230, 486);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 13);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Količina:";
             // 
-            // txtKolicina
+            // label3
             // 
-            this.txtKolicina.Location = new System.Drawing.Point(229, 485);
-            this.txtKolicina.Name = "txtKolicina";
-            this.txtKolicina.Size = new System.Drawing.Size(100, 20);
-            this.txtKolicina.TabIndex = 10;
-            this.txtKolicina.Validating += new System.ComponentModel.CancelEventHandler(this.txtKolicina_Validating);
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.label3.Location = new System.Drawing.Point(66, 484);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(32, 13);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Lijek:";
             // 
             // btnDodaj
             // 
             this.btnDodaj.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.btnDodaj.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnDodaj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDodaj.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDodaj.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDodaj.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.btnDodaj.Location = new System.Drawing.Point(361, 478);
+            this.btnDodaj.Location = new System.Drawing.Point(387, 481);
             this.btnDodaj.Name = "btnDodaj";
-            this.btnDodaj.Size = new System.Drawing.Size(86, 30);
-            this.btnDodaj.TabIndex = 11;
+            this.btnDodaj.Size = new System.Drawing.Size(65, 23);
+            this.btnDodaj.TabIndex = 16;
             this.btnDodaj.Text = "Dodaj";
             this.btnDodaj.UseVisualStyleBackColor = false;
             this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
+            // 
+            // txtKolicina
+            // 
+            this.txtKolicina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.txtKolicina.Location = new System.Drawing.Point(283, 481);
+            this.txtKolicina.Name = "txtKolicina";
+            this.txtKolicina.Size = new System.Drawing.Size(88, 20);
+            this.txtKolicina.TabIndex = 15;
+            this.txtKolicina.Validating += new System.ComponentModel.CancelEventHandler(this.txtKolicina_Validating);
+            // 
+            // cmbLijek
+            // 
+            this.cmbLijek.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.cmbLijek.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbLijek.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.cmbLijek.FormattingEnabled = true;
+            this.cmbLijek.Location = new System.Drawing.Point(103, 481);
+            this.cmbLijek.Name = "cmbLijek";
+            this.cmbLijek.Size = new System.Drawing.Size(121, 21);
+            this.cmbLijek.TabIndex = 14;
             // 
             // frmRacuniDetails
             // 
@@ -336,6 +372,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.ClientSize = new System.Drawing.Size(532, 573);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnDodaj);
             this.Controls.Add(this.txtKolicina);
             this.Controls.Add(this.cmbLijek);
@@ -379,11 +417,14 @@
         private System.Windows.Forms.ComboBox cmbPacijent;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView dgvStavke;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnDodaj;
         private System.Windows.Forms.TextBox txtKolicina;
         private System.Windows.Forms.ComboBox cmbLijek;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dgvStavke;
+        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridViewTextBoxColumn LijekId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lijek;
         private System.Windows.Forms.DataGridViewTextBoxColumn Kolicina;

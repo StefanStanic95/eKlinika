@@ -26,6 +26,20 @@ namespace eKlinika.WinUI.Apotekar
             InitializeComponent();
             _id = id;
 
+            dgvStavke.BorderStyle = BorderStyle.None;
+
+            dgvStavke.EnableHeadersVisualStyles = false;
+            dgvStavke.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvStavke.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(34, 36, 49);
+            dgvStavke.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(78, 184, 206);
+
+            dgvStavke.RowsDefaultCellStyle.BackColor = Color.FromArgb(34, 36, 49);
+            dgvStavke.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(34, 36, 49);
+            dgvStavke.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvStavke.DefaultCellStyle.SelectionBackColor = Color.FromArgb(34, 36, 49);
+            dgvStavke.DefaultCellStyle.SelectionForeColor = Color.FromArgb(78, 184, 206);
+            dgvStavke.BackgroundColor = Color.FromArgb(34, 36, 49);
+
         }
 
         private async void btnSave_Click(object sender, EventArgs e)
@@ -151,6 +165,9 @@ namespace eKlinika.WinUI.Apotekar
 
         private void btnDodaj_Click(object sender, EventArgs e)
         {
+            if (!ValidateChildren())
+                return;
+
             Lijek lijek = (Lijek)cmbLijek.SelectedItem;
             string kolicina = txtKolicina.Text;
 

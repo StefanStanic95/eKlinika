@@ -32,12 +32,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvRecepti = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DatumIzdavanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LijekId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PregledId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Uputstvo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsObradjen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnPrikazi = new System.Windows.Forms.Button();
             this.closeForm = new System.Windows.Forms.Label();
@@ -45,6 +39,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dtpDatumIzdavanja = new System.Windows.Forms.DateTimePicker();
             this.btnDodaj = new System.Windows.Forms.Button();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumIzdavanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LijekId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PregledId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Uputstvo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsObradjen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecepti)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -92,51 +92,6 @@
             this.dgvRecepti.TabIndex = 0;
             this.dgvRecepti.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvRecepti_CellFormatting);
             this.dgvRecepti.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvRecepti_CellMouseDoubleClick);
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // DatumIzdavanja
-            // 
-            this.DatumIzdavanja.DataPropertyName = "DatumIzdavanja";
-            this.DatumIzdavanja.HeaderText = "Datum izdavanja";
-            this.DatumIzdavanja.Name = "DatumIzdavanja";
-            this.DatumIzdavanja.ReadOnly = true;
-            this.DatumIzdavanja.Width = 120;
-            // 
-            // LijekId
-            // 
-            this.LijekId.DataPropertyName = "Lijek.Naziv";
-            this.LijekId.HeaderText = "Lijek";
-            this.LijekId.Name = "LijekId";
-            this.LijekId.ReadOnly = true;
-            // 
-            // PregledId
-            // 
-            this.PregledId.DataPropertyName = "Pregled.DatumPregleda";
-            this.PregledId.HeaderText = "Pregled";
-            this.PregledId.Name = "PregledId";
-            this.PregledId.ReadOnly = true;
-            this.PregledId.Width = 135;
-            // 
-            // Uputstvo
-            // 
-            this.Uputstvo.DataPropertyName = "Uputstvo";
-            this.Uputstvo.HeaderText = "Uputstvo";
-            this.Uputstvo.Name = "Uputstvo";
-            this.Uputstvo.ReadOnly = true;
-            // 
-            // IsObradjen
-            // 
-            this.IsObradjen.DataPropertyName = "IsObradjen";
-            this.IsObradjen.HeaderText = "Obrađen (DA/NE)";
-            this.IsObradjen.Name = "IsObradjen";
-            this.IsObradjen.ReadOnly = true;
             // 
             // lblTitle
             // 
@@ -216,6 +171,52 @@
             this.btnDodaj.UseVisualStyleBackColor = false;
             this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
             // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // DatumIzdavanja
+            // 
+            this.DatumIzdavanja.DataPropertyName = "DatumIzdavanja";
+            this.DatumIzdavanja.HeaderText = "Datum izdavanja";
+            this.DatumIzdavanja.Name = "DatumIzdavanja";
+            this.DatumIzdavanja.ReadOnly = true;
+            this.DatumIzdavanja.Width = 120;
+            // 
+            // LijekId
+            // 
+            this.LijekId.DataPropertyName = "Lijek.Naziv";
+            this.LijekId.HeaderText = "Lijek";
+            this.LijekId.Name = "LijekId";
+            this.LijekId.ReadOnly = true;
+            this.LijekId.Width = 250;
+            // 
+            // PregledId
+            // 
+            this.PregledId.DataPropertyName = "Pregled.DatumPregleda";
+            this.PregledId.HeaderText = "Pregled";
+            this.PregledId.Name = "PregledId";
+            this.PregledId.ReadOnly = true;
+            this.PregledId.Width = 135;
+            // 
+            // Uputstvo
+            // 
+            this.Uputstvo.DataPropertyName = "Uputstvo";
+            this.Uputstvo.HeaderText = "Uputstvo";
+            this.Uputstvo.Name = "Uputstvo";
+            this.Uputstvo.ReadOnly = true;
+            // 
+            // IsObradjen
+            // 
+            this.IsObradjen.DataPropertyName = "IsObradjen";
+            this.IsObradjen.HeaderText = "Obrađen (DA/NE)";
+            this.IsObradjen.Name = "IsObradjen";
+            this.IsObradjen.ReadOnly = true;
+            // 
             // frmRecepti
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -253,12 +254,12 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtpDatumIzdavanja;
+        private System.Windows.Forms.Button btnDodaj;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn DatumIzdavanja;
         private System.Windows.Forms.DataGridViewTextBoxColumn LijekId;
         private System.Windows.Forms.DataGridViewTextBoxColumn PregledId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Uputstvo;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsObradjen;
-        private System.Windows.Forms.Button btnDodaj;
     }
 }

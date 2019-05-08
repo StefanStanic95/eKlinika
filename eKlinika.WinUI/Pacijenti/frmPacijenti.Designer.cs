@@ -28,19 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPacijenti));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvKorisnici = new System.Windows.Forms.DataGridView();
-            this.KorisnikId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BrojKartona = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DatumRegistracije = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtPretraga = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -49,6 +41,14 @@
             this.maximizeForm = new System.Windows.Forms.Label();
             this.minimizeForm = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.KorisnikId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BrojKartona = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumRegistracije = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKorisnici)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -61,7 +61,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.groupBox1.Location = new System.Drawing.Point(13, 162);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(764, 370);
+            this.groupBox1.Size = new System.Drawing.Size(866, 370);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Korisnici";
@@ -70,9 +70,9 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
-            this.panel1.Location = new System.Drawing.Point(5, 51);
+            this.panel1.Location = new System.Drawing.Point(5, 35);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(750, 1);
+            this.panel1.Size = new System.Drawing.Size(858, 1);
             this.panel1.TabIndex = 0;
             // 
             // dgvKorisnici
@@ -80,14 +80,14 @@
             this.dgvKorisnici.AllowUserToAddRows = false;
             this.dgvKorisnici.AllowUserToDeleteRows = false;
             this.dgvKorisnici.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvKorisnici.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvKorisnici.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvKorisnici.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvKorisnici.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.KorisnikId,
@@ -104,68 +104,11 @@
             this.dgvKorisnici.ReadOnly = true;
             this.dgvKorisnici.RowHeadersVisible = false;
             this.dgvKorisnici.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvKorisnici.Size = new System.Drawing.Size(758, 351);
+            this.dgvKorisnici.Size = new System.Drawing.Size(860, 351);
             this.dgvKorisnici.TabIndex = 0;
             this.dgvKorisnici.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKorisnici_CellContentClick);
             this.dgvKorisnici.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKorisnici_CellDoubleClick);
             this.dgvKorisnici.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvKorisnici_CellFormatting);
-            // 
-            // KorisnikId
-            // 
-            this.KorisnikId.DataPropertyName = "Id";
-            this.KorisnikId.HeaderText = "KorisnikID";
-            this.KorisnikId.Name = "KorisnikId";
-            this.KorisnikId.ReadOnly = true;
-            this.KorisnikId.Visible = false;
-            // 
-            // UserName
-            // 
-            this.UserName.DataPropertyName = "UserName";
-            this.UserName.HeaderText = "Korisničko Ime";
-            this.UserName.Name = "UserName";
-            this.UserName.ReadOnly = true;
-            // 
-            // Ime
-            // 
-            this.Ime.DataPropertyName = "Ime";
-            this.Ime.HeaderText = "Ime";
-            this.Ime.Name = "Ime";
-            this.Ime.ReadOnly = true;
-            // 
-            // Prezime
-            // 
-            this.Prezime.DataPropertyName = "Prezime";
-            this.Prezime.HeaderText = "Prezime";
-            this.Prezime.Name = "Prezime";
-            this.Prezime.ReadOnly = true;
-            // 
-            // Email
-            // 
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            // 
-            // PhoneNumber
-            // 
-            this.PhoneNumber.DataPropertyName = "PhoneNumber";
-            this.PhoneNumber.HeaderText = "Telefon";
-            this.PhoneNumber.Name = "PhoneNumber";
-            this.PhoneNumber.ReadOnly = true;
-            // 
-            // BrojKartona
-            // 
-            this.BrojKartona.DataPropertyName = "Pacijent.BrojKartona";
-            this.BrojKartona.HeaderText = "Broj kartona";
-            this.BrojKartona.Name = "BrojKartona";
-            this.BrojKartona.ReadOnly = true;
-            // 
-            // DatumRegistracije
-            // 
-            this.DatumRegistracije.DataPropertyName = "Pacijent.DatumRegistracije";
-            this.DatumRegistracije.HeaderText = "Datum registracije";
-            this.DatumRegistracije.Name = "DatumRegistracije";
-            this.DatumRegistracije.ReadOnly = true;
             // 
             // txtPretraga
             // 
@@ -203,7 +146,7 @@
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.btnLogin.Location = new System.Drawing.Point(691, 113);
+            this.btnLogin.Location = new System.Drawing.Point(790, 113);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(86, 30);
             this.btnLogin.TabIndex = 5;
@@ -216,7 +159,7 @@
             this.closeForm.AutoSize = true;
             this.closeForm.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.closeForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-            this.closeForm.Location = new System.Drawing.Point(771, 9);
+            this.closeForm.Location = new System.Drawing.Point(866, 9);
             this.closeForm.Name = "closeForm";
             this.closeForm.Size = new System.Drawing.Size(19, 21);
             this.closeForm.TabIndex = 8;
@@ -228,7 +171,7 @@
             this.maximizeForm.AutoSize = true;
             this.maximizeForm.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.maximizeForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-            this.maximizeForm.Location = new System.Drawing.Point(743, 9);
+            this.maximizeForm.Location = new System.Drawing.Point(838, 9);
             this.maximizeForm.Name = "maximizeForm";
             this.maximizeForm.Size = new System.Drawing.Size(22, 21);
             this.maximizeForm.TabIndex = 7;
@@ -240,7 +183,7 @@
             this.minimizeForm.AutoSize = true;
             this.minimizeForm.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.minimizeForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-            this.minimizeForm.Location = new System.Drawing.Point(719, 9);
+            this.minimizeForm.Location = new System.Drawing.Point(814, 9);
             this.minimizeForm.Name = "minimizeForm";
             this.minimizeForm.Size = new System.Drawing.Size(18, 21);
             this.minimizeForm.TabIndex = 6;
@@ -256,12 +199,72 @@
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
             // 
+            // KorisnikId
+            // 
+            this.KorisnikId.DataPropertyName = "Id";
+            this.KorisnikId.HeaderText = "KorisnikID";
+            this.KorisnikId.Name = "KorisnikId";
+            this.KorisnikId.ReadOnly = true;
+            this.KorisnikId.Visible = false;
+            // 
+            // UserName
+            // 
+            this.UserName.DataPropertyName = "UserName";
+            this.UserName.HeaderText = "Korisničko Ime";
+            this.UserName.Name = "UserName";
+            this.UserName.ReadOnly = true;
+            this.UserName.Width = 130;
+            // 
+            // Ime
+            // 
+            this.Ime.DataPropertyName = "Ime";
+            this.Ime.HeaderText = "Ime";
+            this.Ime.Name = "Ime";
+            this.Ime.ReadOnly = true;
+            // 
+            // Prezime
+            // 
+            this.Prezime.DataPropertyName = "Prezime";
+            this.Prezime.HeaderText = "Prezime";
+            this.Prezime.Name = "Prezime";
+            this.Prezime.ReadOnly = true;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            // 
+            // PhoneNumber
+            // 
+            this.PhoneNumber.DataPropertyName = "PhoneNumber";
+            this.PhoneNumber.HeaderText = "Telefon";
+            this.PhoneNumber.Name = "PhoneNumber";
+            this.PhoneNumber.ReadOnly = true;
+            // 
+            // BrojKartona
+            // 
+            this.BrojKartona.DataPropertyName = "Pacijent.BrojKartona";
+            this.BrojKartona.HeaderText = "Broj kartona";
+            this.BrojKartona.Name = "BrojKartona";
+            this.BrojKartona.ReadOnly = true;
+            this.BrojKartona.Width = 120;
+            // 
+            // DatumRegistracije
+            // 
+            this.DatumRegistracije.DataPropertyName = "Pacijent.DatumRegistracije";
+            this.DatumRegistracije.HeaderText = "Datum registracije";
+            this.DatumRegistracije.Name = "DatumRegistracije";
+            this.DatumRegistracije.ReadOnly = true;
+            this.DatumRegistracije.Width = 140;
+            // 
             // frmPacijenti
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.ClientSize = new System.Drawing.Size(800, 555);
+            this.ClientSize = new System.Drawing.Size(906, 555);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.closeForm);
             this.Controls.Add(this.maximizeForm);
@@ -289,6 +292,13 @@
         private System.Windows.Forms.DataGridView dgvKorisnici;
         private System.Windows.Forms.TextBox txtPretraga;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.Label closeForm;
+        private System.Windows.Forms.Label maximizeForm;
+        private System.Windows.Forms.Label minimizeForm;
+        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn KorisnikId;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
@@ -297,12 +307,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PhoneNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn BrojKartona;
         private System.Windows.Forms.DataGridViewTextBoxColumn DatumRegistracije;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.Label closeForm;
-        private System.Windows.Forms.Label maximizeForm;
-        private System.Windows.Forms.Label minimizeForm;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
