@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:eKlinika.MobileApp.ViewModels"
+             x:Class="eKlinika.MobileApp.Views.LoginPage">
+
+
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout Padding="5" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+            <Label HorizontalOptions="CenterAndExpand" FontSize="20" Margin="50" Text="Welcome to eKlinika"></Label>
+            <Label Text="Username:"/>
+            <Entry Text="{Binding Username}"></Entry>
+
+            <Label Text="Password:"/>
+            <Entry Text="{Binding Password}"></Entry>
+            <Button Command="{Binding LoginCommand}" Text="Login"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
