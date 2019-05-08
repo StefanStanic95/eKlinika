@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using eKlinika.WebAPI.Database;
+using eKlinika.WebAPI.Filters;
 using eKlinika.WebAPI.Security;
 using eKlinika.WebAPI.Services;
 using Microsoft.AspNetCore.Authentication;
@@ -39,7 +40,6 @@ namespace eKlinika.WebAPI
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-
         }
 
         public IConfiguration Configuration { get; }
@@ -50,7 +50,7 @@ namespace eKlinika.WebAPI
             var connection = @"Server=.;Database=eKlinika;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<eKlinikaContext>(options => options.UseSqlServer(connection));
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(x => x.Filters.Add<ErrorFilter>()).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddAutoMapper();
             
             services.AddSwaggerGen(c =>
@@ -109,10 +109,10 @@ namespace eKlinika.WebAPI
             app.UseMvc();
             app.UseSwagger();
 
-            CreateUserRoles(services).Wait();
+            CreateUserRoles(services);
         }
 
-        private async Task CreateUserRoles(IServiceProvider serviceProvider)
+        private void CreateUserRoles(IServiceProvider serviceProvider)
         {
             var UserManager = serviceProvider.GetRequiredService<IKorisniciService>();
             var db = serviceProvider.GetRequiredService<eKlinikaContext>();
@@ -122,54 +122,39 @@ namespace eKlinika.WebAPI
             {
                 if (db.Uloge.Where(x => x.Naziv == naziv).Any())
                     continue;
-
-                Uloge uloga = new Uloge
-                {
-                    Naziv = naziv
-                };
-                db.Uloge.Add(uloga);
+                
+                db.Uloge.Add(new Uloge { Naziv = naziv });
             }
 
             db.SaveChanges();
 
             int AdminUlogaId = db.Uloge.Where(x => x.Naziv == "Administrator").Select(x => x.Id).FirstOrDefault();
-            //Assign Admin role to the main User here we have given our newly registered 
-            //login id for Admin management
 
             Database.Korisnici k = new Korisnici
             {
                 JMBG = "1234567890123",
                 Ime = "Emina",
                 Prezime = "Custovic",
-                Spol = "F"
+                Spol = "F",
+                KorisniciUloge = new List<Database.KorisniciUloge>
+                {
+                    new KorisniciUloge { UlogaId = AdminUlogaId }
+                },
+                Osoblje = new Osoblje
+                {
+                    TrajanjeUgovora = "Stalno",
+                    Jezici = "en",
+                }
             };
             k.UserName = k.Ime + "." + k.Prezime;
             k.Email = k.UserName + "@eKlinika.ba";
             string password = "123";
+            k.LozinkaSalt = KorisniciService.GenerateSalt();
+            k.LozinkaHash = KorisniciService.GenerateHash(k.LozinkaSalt, password);
 
-            Model.Korisnici existingUser = UserManager.GetByEmail(k.Email);
-            if(existingUser == null)
+            if(UserManager.GetByEmail(k.Email) == null)
             {
-                k.LozinkaSalt = KorisniciService.GenerateSalt();
-                k.LozinkaHash = KorisniciService.GenerateHash(k.LozinkaSalt, password);
-
                 db.Korisnici.Add(k);
-
-                Database.KorisniciUloge korisniciUloge = new Database.KorisniciUloge();
-                korisniciUloge.KorisnikId = k.Id;
-                korisniciUloge.UlogaId = AdminUlogaId;
-                db.KorisniciUloge.Add(korisniciUloge);
-
-                db.SaveChanges();
-                
-                Osoblje osoblje = new Osoblje
-                {
-                    Id = k.Id,
-                    TrajanjeUgovora = "Stalno",
-                    Jezici = "en",
-                };
-
-                db.Add(osoblje);
                 db.SaveChanges();
             }
         }

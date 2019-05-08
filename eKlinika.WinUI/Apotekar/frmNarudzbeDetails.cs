@@ -174,8 +174,7 @@ namespace eKlinika.WinUI.Apotekar
 
         private void txtKolicina_Validating(object sender, CancelEventArgs e)
         {
-            int val;
-            if (string.IsNullOrWhiteSpace(txtKolicina.Text) || !int.TryParse(txtKolicina.Text, out val) || val < 1)
+            if (string.IsNullOrWhiteSpace(txtKolicina.Text) || !int.TryParse(txtKolicina.Text, out int val) || val < 1)
             {
                 e.Cancel = true;
                 errorProvider.SetError(txtKolicina, Resources.Validation_RequiredField);

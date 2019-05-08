@@ -4,46 +4,46 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace eProdaja.WebAPI.Mapper
+namespace eKlinika.WebAPI.Mapper
 {
     public class Mapper : Profile
     {
         public Mapper()
         {
-            CreateMap<eKlinika.WebAPI.Database.Korisnici, eKlinika.Model.Korisnici>();
-            CreateMap<eKlinika.Model.Pacijent, eKlinika.WebAPI.Database.Pacijent>()
+            CreateMap<Database.Korisnici, Model.Korisnici>();
+            CreateMap<Model.Pacijent, Database.Pacijent>()
                 .ForMember(x => x.Korisnik, opt => opt.Ignore());
-            CreateMap<eKlinika.Model.Osoblje, eKlinika.WebAPI.Database.Osoblje>();
-            CreateMap<eKlinika.Model.Osoblje_Upsert, eKlinika.WebAPI.Database.Osoblje>();
-            CreateMap<eKlinika.Model.Doktor, eKlinika.WebAPI.Database.Doktor>();
-            CreateMap<eKlinika.Model.Doktor_Upsert, eKlinika.WebAPI.Database.Doktor>();
-            CreateMap<eKlinika.Model.Apotekar, eKlinika.WebAPI.Database.Apotekar>();
-            CreateMap<eKlinika.Model.Apotekar_Upsert, eKlinika.WebAPI.Database.Apotekar>();
-            CreateMap<eKlinika.Model.MedicinskaSestra, eKlinika.WebAPI.Database.MedicinskaSestra>();
-            CreateMap<eKlinika.Model.MedicinskaSestra_Upsert, eKlinika.WebAPI.Database.MedicinskaSestra>();
+            CreateMap<Model.Osoblje, Database.Osoblje>();
+            CreateMap<Model.Osoblje_Upsert, Database.Osoblje>();
+            CreateMap<Model.Doktor, Database.Doktor>();
+            CreateMap<Model.Doktor_Upsert, Database.Doktor>();
+            CreateMap<Model.Apotekar, Database.Apotekar>();
+            CreateMap<Model.Apotekar_Upsert, Database.Apotekar>();
+            CreateMap<Model.MedicinskaSestra, Database.MedicinskaSestra>();
+            CreateMap<Model.MedicinskaSestra_Upsert, Database.MedicinskaSestra>();
 
 
-            CreateMap<eKlinika.WebAPI.Database.Korisnici, eKlinika.Model.Requests.KorisniciInsertRequest>().ReverseMap();
-            CreateMap<eKlinika.WebAPI.Database.Korisnici, eKlinika.Model.Requests.KorisniciUpdateRequest>().ReverseMap();
-            CreateMap<eKlinika.WebAPI.Database.Uputnica, eKlinika.Model.Requests.UputnicaInsertRequest>().ReverseMap();
-            CreateMap<eKlinika.WebAPI.Database.Pregled, eKlinika.Model.Requests.PregledInsertRequest>().ReverseMap();
-            CreateMap<eKlinika.WebAPI.Database.ApotekaRacun, eKlinika.Model.Requests.ApotekaRacunInsertRequest>().ReverseMap();
-            CreateMap<eKlinika.WebAPI.Database.Lijek, eKlinika.Model.Requests.LijekInsertRequest>().ReverseMap();
-            CreateMap<eKlinika.WebAPI.Database.RacunStavka, eKlinika.Model.Requests.RacunStavkaInsertRequest>().ReverseMap();
-            CreateMap<eKlinika.WebAPI.Database.Recept, eKlinika.Model.Requests.ReceptInsertRequest>().ReverseMap();
-            CreateMap<eKlinika.WebAPI.Database.Narudzba, eKlinika.Model.Requests.NarudzbaInsertRequest>().ReverseMap();
-            CreateMap<eKlinika.WebAPI.Database.NarudzbaStavka, eKlinika.Model.Requests.NarudzbaStavkaInsertRequest>().ReverseMap();
+            CreateMap<Database.Korisnici, Model.Requests.KorisniciInsertRequest>().ReverseMap();
+            CreateMap<Database.Korisnici, Model.Requests.KorisniciUpdateRequest>().ReverseMap();
+            CreateMap<Database.Uputnica, Model.Requests.UputnicaInsertRequest>().ReverseMap();
+            CreateMap<Database.Pregled, Model.Requests.PregledInsertRequest>().ReverseMap();
+            CreateMap<Database.ApotekaRacun, Model.Requests.ApotekaRacunInsertRequest>().ReverseMap();
+            CreateMap<Database.Lijek, Model.Requests.LijekInsertRequest>().ReverseMap();
+            CreateMap<Database.RacunStavka, Model.Requests.RacunStavkaInsertRequest>().ReverseMap();
+            CreateMap<Database.Recept, Model.Requests.ReceptInsertRequest>().ReverseMap();
+            CreateMap<Database.Narudzba, Model.Requests.NarudzbaInsertRequest>().ReverseMap();
+            CreateMap<Database.NarudzbaStavka, Model.Requests.NarudzbaStavkaInsertRequest>().ReverseMap();
 
 
-            CreateMap<eKlinika.WebAPI.Database.Pregled, eKlinika.Model.Pregled>();
-            CreateMap<eKlinika.WebAPI.Database.Uputnica, eKlinika.Model.Uputnica>();
-            CreateMap<eKlinika.WebAPI.Database.Uplata, eKlinika.Model.Uplata>();
-            CreateMap<eKlinika.WebAPI.Database.ApotekaRacun, eKlinika.Model.ApotekaRacun>();
-            CreateMap<eKlinika.WebAPI.Database.Lijek, eKlinika.Model.Lijek>();
-            CreateMap<eKlinika.WebAPI.Database.RacunStavka, eKlinika.Model.RacunStavka>();
-            CreateMap<eKlinika.WebAPI.Database.Recept, eKlinika.Model.Recept>();
-            CreateMap<eKlinika.WebAPI.Database.Narudzba, eKlinika.Model.Narudzba>();
-            CreateMap<eKlinika.WebAPI.Database.NarudzbaStavka, eKlinika.Model.NarudzbaStavka>();
+            CreateMap<Database.Pregled, Model.Pregled>();
+            CreateMap<Database.Uputnica, Model.Uputnica>();
+            CreateMap<Database.Uplata, Model.Uplata>();
+            CreateMap<Database.ApotekaRacun, Model.ApotekaRacun>();
+            CreateMap<Database.Lijek, Model.Lijek>();
+            CreateMap<Database.RacunStavka, Model.RacunStavka>();
+            CreateMap<Database.Recept, Model.Recept>();
+            CreateMap<Database.Narudzba, Model.Narudzba>();
+            CreateMap<Database.NarudzbaStavka, Model.NarudzbaStavka>();
 
         }
     }

@@ -135,8 +135,7 @@ namespace eKlinika.WinUI.Apotekar
 
         private void txtCijena_Validating(object sender, CancelEventArgs e)
         {
-            double val;
-            if (string.IsNullOrWhiteSpace(txtCijena.Text) || !double.TryParse(txtCijena.Text, out val) || val < 0.1)
+            if (string.IsNullOrWhiteSpace(txtCijena.Text) || !double.TryParse(txtCijena.Text, out double val) || val < 0.1)
             {
                 e.Cancel = true;
                 errorProvider.SetError(txtCijena, Resources.Validation_RequiredField);
@@ -162,8 +161,7 @@ namespace eKlinika.WinUI.Apotekar
 
         private void txtUkupnoNaStanju_Validating(object sender, CancelEventArgs e)
         {
-            int val;
-            if (string.IsNullOrWhiteSpace(txtUkupnoNaStanju.Text) || !int.TryParse(txtUkupnoNaStanju.Text, out val) || val < 1)
+            if (string.IsNullOrWhiteSpace(txtUkupnoNaStanju.Text) || !int.TryParse(txtUkupnoNaStanju.Text, out int val) || val < 1)
             {
                 e.Cancel = true;
                 errorProvider.SetError(txtUkupnoNaStanju, Resources.Validation_RequiredField);
