@@ -58,7 +58,7 @@ namespace eKlinika.WebAPI.Services
         {
             return query
                 .Include(x => x.KorisniciUloge).ThenInclude(x => x.Uloga)
-                .Include(x => x.Pacijent)
+                .Include(x => x.Pacijent).ThenInclude(x => x.KrvnaGrupa)
                 .Include(x => x.Osoblje).ThenInclude(x => x.Apotekar)
                 .Include(x => x.Osoblje).ThenInclude(x => x.Doktor)
                 .Include(x => x.Osoblje).ThenInclude(x => x.MedicinskaSestra);

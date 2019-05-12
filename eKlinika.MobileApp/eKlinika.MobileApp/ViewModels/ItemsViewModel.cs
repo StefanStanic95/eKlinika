@@ -17,7 +17,7 @@ namespace eKlinika.MobileApp.ViewModels
 
         public ItemsViewModel()
         {
-            Title = "Browse";
+            Title = "sta je ovo";
             Items = new ObservableCollection<Item>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 

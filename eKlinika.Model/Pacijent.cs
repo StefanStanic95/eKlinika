@@ -20,7 +20,7 @@ namespace eKlinika.Model
 
         public string ImePrezime { get => Korisnik?.Ime + " " + Korisnik?.Prezime; }
 
-        //public KrvnaGrupa KrvnaGrupa { get; set; }
+        public KrvnaGrupa KrvnaGrupa { get; set; }
         //public ICollection<ApotekaRacun> ApotekaRacun { get; set; }
         //public ICollection<Pregled> Pregled { get; set; }
         //public ICollection<Uplata> Uplata { get; set; }

@@ -12,47 +12,35 @@ namespace eKlinika.MobileApp.ViewModels
 {
     public class MojProfilViewModel : BaseViewModel
     {
-        public ObservableCollection<Item> Items { get; set; }
-        public Command LoadItemsCommand { get; set; }
+        private readonly APIService _service = new APIService("Korisnici");
+
+        Model.Korisnici korisnik = null;
+        public Model.Korisnici Korisnik
+        {
+            get { return korisnik; }
+            set { SetProperty(ref korisnik, value); }
+        }
+
+        public Command LoadKorisnikCommand { get; set; }
 
         public MojProfilViewModel()
         {
-            Title = "Browse";
-            Items = new ObservableCollection<Item>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
-
-            MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
-            {
-                var newItem = item as Item;
-                Items.Add(newItem);
-                await DataStore.AddItemAsync(newItem);
-            });
+            Title = "Moj profil";
+            LoadKorisnikCommand = new Command(async () => await ExecuteLoadKorisnikCommand());
+            LoadKorisnikCommand.Execute(null);
         }
 
-        async Task ExecuteLoadItemsCommand()
+        async Task ExecuteLoadKorisnikCommand()
         {
-            if (IsBusy)
-                return;
-
-            IsBusy = true;
-
-            try
-            {
-                Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
-                foreach (var item in items)
-                {
-                    Items.Add(item);
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex);
-            }
-            finally
-            {
-                IsBusy = false;
-            }
+            await LoadKorisnika();
         }
+
+        private async Task LoadKorisnika()
+        {
+            Korisnik = await _service.Get<Model.Korisnici>(null, "me");
+        }
+
+
+
     }
 }

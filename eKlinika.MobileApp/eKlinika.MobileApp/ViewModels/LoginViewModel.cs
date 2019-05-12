@@ -21,7 +21,7 @@ namespace eKlinika.MobileApp.ViewModels
         public string Username
         {
             get { return _username; }
-            set { SetProperty( ref _username, value); }
+            set { SetProperty(ref _username, value); }
         }
 
         string _password = string.Empty;
@@ -41,8 +41,23 @@ namespace eKlinika.MobileApp.ViewModels
 
             try
             {
-                await _service.Get<dynamic>(null);
-                Application.Current.MainPage = new MainPage();
+                APIService.Korisnik = await _service.Get<Model.Korisnici>(null, "me");
+
+                bool IsPacijent = false;
+                foreach (Model.KorisniciUloge item in APIService.Korisnik.KorisniciUloge)
+                {
+                    if (item.Uloga.Naziv == "Pacijent")
+                        IsPacijent = true;
+                }
+                if (APIService.Korisnik.Pacijent is null)
+                    IsPacijent = false;
+
+                if (!IsPacijent)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Niste autorizovani", "OK");
+                }
+                else
+                    Application.Current.MainPage = new MainPage();
             }
             catch (Exception ex)
             {

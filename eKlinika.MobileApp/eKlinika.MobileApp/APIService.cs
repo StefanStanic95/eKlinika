@@ -28,9 +28,14 @@ namespace eKlinika.MobileApp
             _route = route;
         }
 
-        public async Task<T> Get<T>(object search)
+        public async Task<T> Get<T>(object search, string action = null)
         {
             var url = $"{_apiUrl}/{_route}";
+            if (action != null)
+            {
+                url += "/";
+                url += action;
+            }
 
             try
             {
