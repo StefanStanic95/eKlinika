@@ -18,6 +18,7 @@
             <Label Text="Password:"/>
             <Entry Text="{Binding Password}"></Entry>
             <Button Command="{Binding LoginCommand}" Text="Login"></Button>
+            <Label IsVisible="{Binding IsBusy}" Text="Working..."></Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

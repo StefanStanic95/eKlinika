@@ -17,7 +17,7 @@ namespace eKlinika.MobileApp.Views
 
             MasterBehavior = MasterBehavior.Popover;
 
-            MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
+            MenuPages.Add((int)MenuItemType.MojProfil, (NavigationPage)Detail);
         }
 
         public async Task NavigateFromMenu(int id)
@@ -26,11 +26,17 @@ namespace eKlinika.MobileApp.Views
             {
                 switch (id)
                 {
-                    case (int)MenuItemType.Browse:
-                        MenuPages.Add(id, new NavigationPage(new ItemsPage()));
+                    case (int)MenuItemType.MojProfil:
+                        MenuPages.Add(id, new NavigationPage(new MojProfilPage()));
                         break;
-                    case (int)MenuItemType.About:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                    case (int)MenuItemType.Uplate:
+                        MenuPages.Add(id, new NavigationPage(new MojProfilPage()));
+                        break;
+                    case (int)MenuItemType.Uputnice:
+                        MenuPages.Add(id, new NavigationPage(new MojProfilPage()));
+                        break;
+                    case (int)MenuItemType.Pregledi:
+                        MenuPages.Add(id, new NavigationPage(new MojProfilPage()));
                         break;
                 }
             }

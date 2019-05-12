@@ -10,7 +10,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.0" />
+    <PackageReference Include="Flurl" Version="2.8.2" />
+    <PackageReference Include="Flurl.Http" Version="2.4.2" />
     <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />  
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\eKlinika.Model\eKlinika.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\MojProfilPage.xaml.cs">
+      <DependentUpon>MojProfilPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

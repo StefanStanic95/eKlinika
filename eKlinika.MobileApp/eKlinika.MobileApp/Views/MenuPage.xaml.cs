@@ -18,8 +18,10 @@ namespace eKlinika.MobileApp.Views
 
             menuItems = new List<HomeMenuItem>
             {
-                new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
-                new HomeMenuItem {Id = MenuItemType.About, Title="About" }
+                new HomeMenuItem {Id = MenuItemType.MojProfil, Title="Moj profil" },
+                new HomeMenuItem {Id = MenuItemType.Uplate, Title="Uplate" },
+                new HomeMenuItem {Id = MenuItemType.Uputnice, Title="Uputnice" },
+                new HomeMenuItem {Id = MenuItemType.Pregledi, Title="Pregledi" },
             };
 
             ListViewMenu.ItemsSource = menuItems;

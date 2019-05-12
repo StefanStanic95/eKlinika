@@ -6,8 +6,10 @@ namespace eKlinika.MobileApp.Models
 {
     public enum MenuItemType
     {
-        Browse,
-        About
+        MojProfil,
+        Uplate,
+        Uputnice,
+        Pregledi
     }
     public class HomeMenuItem
     {

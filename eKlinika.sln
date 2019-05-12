@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{B9C302BD-B0F7-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eKlinika.WinUI", "eKlinika.WinUI\eKlinika.WinUI.csproj", "{D082F8F4-A306-4BB9-87AA-083CCF12BFCD}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "eKlinika.Mobile", "eKlinika.Mobile", "{78F6E823-7E7C-459A-96EE-D2CB1C4A6204}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mobile", "Mobile", "{78F6E823-7E7C-459A-96EE-D2CB1C4A6204}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eKlinika.MobileApp.Android", "eKlinika.MobileApp\eKlinika.MobileApp.Android\eKlinika.MobileApp.Android.csproj", "{24CE3C36-16B9-426D-AA0C-5961ECF8D88C}"
 EndProject
@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eKlinika.MobileApp.iOS", "e
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eKlinika.MobileApp.UWP", "eKlinika.MobileApp\eKlinika.MobileApp.UWP\eKlinika.MobileApp.UWP.csproj", "{DB8C01A8-7012-4182-AC5C-EB9AED7B2313}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eKlinika.MobileApp", "eKlinika.MobileApp\eKlinika.MobileApp\eKlinika.MobileApp.csproj", "{DB7F2727-9EDC-4CC4-B9A6-CF3DA1215A10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eKlinika.MobileApp", "eKlinika.MobileApp\eKlinika.MobileApp\eKlinika.MobileApp.csproj", "{DB7F2727-9EDC-4CC4-B9A6-CF3DA1215A10}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -215,6 +215,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D082F8F4-A306-4BB9-87AA-083CCF12BFCD} = {B9C302BD-B0F7-4092-94AC-D72AC8D2B244}
+		{78F6E823-7E7C-459A-96EE-D2CB1C4A6204} = {B9C302BD-B0F7-4092-94AC-D72AC8D2B244}
 		{24CE3C36-16B9-426D-AA0C-5961ECF8D88C} = {78F6E823-7E7C-459A-96EE-D2CB1C4A6204}
 		{5FE83068-2D92-4638-8AD7-8EF32906A160} = {78F6E823-7E7C-459A-96EE-D2CB1C4A6204}
 		{DB8C01A8-7012-4182-AC5C-EB9AED7B2313} = {78F6E823-7E7C-459A-96EE-D2CB1C4A6204}
