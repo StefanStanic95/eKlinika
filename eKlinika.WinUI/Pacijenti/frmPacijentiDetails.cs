@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -19,7 +20,7 @@ namespace eKlinika.WinUI.Pacijenti
         APIService _service = new APIService("Korisnici");
         APIService _ulogeService = new APIService("Uloge");
         APIService _krvneGrupeService = new APIService("KrvnaGrupa");
-
+        KorisniciInsertRequest request = new KorisniciInsertRequest();
 
         private int? _id = null;
         public frmPacijentiDetails(int? id = null)
@@ -42,64 +43,60 @@ namespace eKlinika.WinUI.Pacijenti
                     }
                 }
 
-                KorisniciInsertRequest request = new KorisniciInsertRequest
-                {
-                    Email = txtEmail.Text,
-                    Ime = txtIme.Text,
-                    UserName = txtKorisnickoIme.Text,
-                    Password = txtPassword.Text,
-                    PasswordPotvrda = txtPasswordPotvrda.Text,
-                    Prezime = txtPrezime.Text,
-                    PhoneNumber = txtTelefon.Text,
-                    Uloge = roleList,
-                    
-                    Pacijent = new Pacijent
-                    {
-                        BrojKartona = txtBrojKartona.Text,
-                        Alergije = txtAlergije.Text,
-                        BrojKnjizice = txtBrojKnjizice.Text,
-                        DatumRegistracije = DateTime.Now,
-                        KrvnaGrupaId = ((KrvnaGrupa)cmbKrvnaGrupa.SelectedValue).Id,
-                        SpecijalniZahtjevi = txtSpecZahtjevi.Text,
-                        Tezina = double.TryParse(txtTezina.Text, out var tezina) ? tezina : 0.0,
-                        Visina = int.TryParse(txtVisina.Text, out var visina) ? visina : 0
-                    }
-                };
+                request.Email = txtEmail.Text;
+                request.Ime = txtIme.Text;
+                request.UserName = txtKorisnickoIme.Text;
+                request.Password = txtPassword.Text;
+                request.PasswordPotvrda = txtPasswordPotvrda.Text;
+                request.Prezime = txtPrezime.Text;
+                request.PhoneNumber = txtTelefon.Text;
+                request.Uloge = roleList;
+                request.Pacijent = new Pacijent();
+                request.Pacijent.BrojKartona = txtBrojKartona.Text;
+                request.Pacijent.Alergije = txtAlergije.Text;
+                request.Pacijent.BrojKnjizice = txtBrojKnjizice.Text;
+                request.Pacijent.DatumRegistracije = DateTime.Now;
+                request.Pacijent.KrvnaGrupaId = ((KrvnaGrupa)cmbKrvnaGrupa.SelectedValue).Id;
+                request.Pacijent.SpecijalniZahtjevi = txtSpecZahtjevi.Text;
+                request.Pacijent.Tezina = double.TryParse(txtTezina.Text, out var tezina) ? tezina : 0.0;
+                request.Pacijent.Visina = int.TryParse(txtVisina.Text, out var visina) ? visina : 0;
 
-                Model.Korisnici entity = null;
-                if (!_id.HasValue)
-                {
-                    try
-                    {
-                        entity = await _service.Insert<Model.Korisnici>(request);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Greška");
+            };
 
-                    }
+            Model.Korisnici entity = null;
+            if (!_id.HasValue)
+            {
+                try
+                {
+                    entity = await _service.Insert<Model.Korisnici>(request);
                 }
-                else
+                catch (Exception ex)
                 {
-                    try
-                    {
-                        entity = await _service.Update<Model.Korisnici>(_id.Value, request);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Greška");
+                    MessageBox.Show("Greška");
 
-                    }
                 }
-
-                if (entity != null)
+            }
+            else
+            {
+                try
                 {
-                    MessageBox.Show("Uspješno izvršeno");
+                    entity = await _service.Update<Model.Korisnici>(_id.Value, request);
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Greška");
 
+                }
+            }
+
+            if (entity != null)
+            {
+                MessageBox.Show("Uspješno izvršeno");
             }
 
         }
+
+
 
         private async void frmKorisniciDetails_Load(object sender, EventArgs e)
         {
@@ -128,6 +125,14 @@ namespace eKlinika.WinUI.Pacijenti
                 txtSpecZahtjevi.Text = entity.Pacijent.SpecijalniZahtjevi;
                 txtTezina.Text = entity.Pacijent.Tezina.ToString();
                 txtVisina.Text = entity.Pacijent.Visina.ToString();
+
+                if(entity.Slika.Length > 0)
+                {
+                    using (MemoryStream ms = new MemoryStream(entity.Slika))
+                    {
+                        pbSlika.Image = Image.FromStream(ms);
+                    }
+                }
             }
         }
 
@@ -325,5 +330,21 @@ namespace eKlinika.WinUI.Pacijenti
             }
         }
 
+        private void btnOdaberiSliku_Click(object sender, EventArgs e)
+        {
+            var result = openFileDialog1.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                var fileName = openFileDialog1.FileName;
+
+                var file = File.ReadAllBytes(fileName);
+
+                request.Slika = file;
+
+                Image image = Image.FromFile(fileName);
+                pbSlika.Image = image;
+            }
+        }
     }
 }

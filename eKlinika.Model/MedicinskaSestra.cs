@@ -11,5 +11,8 @@ namespace eKlinika.Model
         public string Kursevi { get; set; }
 
         public Osoblje Osoblje { get; set; }
+
+        public string ImePrezime { get => Osoblje?.Korisnik?.Ime + " " + Osoblje?.Korisnik?.Prezime; }
+
     }
 }

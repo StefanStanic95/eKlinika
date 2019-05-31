@@ -1,5 +1,9 @@
 ﻿using eKlinika.MobileApp.ViewModels;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -7,20 +11,20 @@ using Xamarin.Forms.Xaml;
 namespace eKlinika.MobileApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MojProfilPage : ContentPage
+    public partial class UplatePage : ContentPage
     {
-        private MojProfilViewModel model;
+        private UplateViewModel model;
 
-        public MojProfilPage()
+        public UplatePage()
         {
             InitializeComponent();
-            BindingContext = model = new MojProfilViewModel();
+            BindingContext = model = new UplateViewModel();
         }
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            await model.LoadKorisnika();
+            await model.LoadUplate();
         }
     }
 }

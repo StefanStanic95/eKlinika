@@ -81,14 +81,20 @@
             this.label16 = new System.Windows.Forms.Label();
             this.maximizeForm = new System.Windows.Forms.Label();
             this.minimizeForm = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.pbSlika = new System.Windows.Forms.PictureBox();
+            this.btnOdaberiSliku = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.panel15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnOdaberiSliku);
+            this.groupBox1.Controls.Add(this.pbSlika);
             this.groupBox1.Controls.Add(this.panel7);
             this.groupBox1.Controls.Add(this.panel6);
             this.groupBox1.Controls.Add(this.panel5);
@@ -111,7 +117,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtIme);
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
-            this.groupBox1.Location = new System.Drawing.Point(30, 124);
+            this.groupBox1.Location = new System.Drawing.Point(30, 197);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(407, 375);
             this.groupBox1.TabIndex = 0;
@@ -163,7 +169,7 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.panel2.Location = new System.Drawing.Point(10, 119);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(338, 1);
+            this.panel2.Size = new System.Drawing.Size(227, 1);
             this.panel2.TabIndex = 15;
             // 
             // panel1
@@ -171,7 +177,7 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.panel1.Location = new System.Drawing.Point(10, 67);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(338, 1);
+            this.panel1.Size = new System.Drawing.Size(227, 1);
             this.panel1.TabIndex = 14;
             // 
             // label7
@@ -296,7 +302,7 @@
             this.txtPrezime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.txtPrezime.Location = new System.Drawing.Point(13, 100);
             this.txtPrezime.Name = "txtPrezime";
-            this.txtPrezime.Size = new System.Drawing.Size(341, 13);
+            this.txtPrezime.Size = new System.Drawing.Size(230, 13);
             this.txtPrezime.TabIndex = 2;
             this.txtPrezime.Validating += new System.ComponentModel.CancelEventHandler(this.txtPrezime_Validating);
             // 
@@ -317,7 +323,7 @@
             this.txtIme.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.txtIme.Location = new System.Drawing.Point(13, 51);
             this.txtIme.Name = "txtIme";
-            this.txtIme.Size = new System.Drawing.Size(341, 13);
+            this.txtIme.Size = new System.Drawing.Size(230, 13);
             this.txtIme.TabIndex = 0;
             this.txtIme.Validating += new System.ComponentModel.CancelEventHandler(this.txtIme_Validating);
             // 
@@ -350,7 +356,7 @@
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.txtBrojKartona);
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
-            this.groupBox2.Location = new System.Drawing.Point(466, 124);
+            this.groupBox2.Location = new System.Drawing.Point(466, 197);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(407, 375);
             this.groupBox2.TabIndex = 2;
@@ -575,7 +581,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.btnSave.Location = new System.Drawing.Point(787, 514);
+            this.btnSave.Location = new System.Drawing.Point(787, 587);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(86, 30);
             this.btnSave.TabIndex = 5;
@@ -616,7 +622,7 @@
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(196, 24);
             this.label16.TabIndex = 0;
-            this.label16.Text = "Registarcija pacijenata";
+            this.label16.Text = "Registracija pacijenata";
             // 
             // maximizeForm
             // 
@@ -642,12 +648,37 @@
             this.minimizeForm.Text = "_";
             this.minimizeForm.Click += new System.EventHandler(this.minimizeForm_Click);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // pbSlika
+            // 
+            this.pbSlika.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pbSlika.Location = new System.Drawing.Point(268, 19);
+            this.pbSlika.Name = "pbSlika";
+            this.pbSlika.Size = new System.Drawing.Size(96, 108);
+            this.pbSlika.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbSlika.TabIndex = 7;
+            this.pbSlika.TabStop = false;
+            // 
+            // btnOdaberiSliku
+            // 
+            this.btnOdaberiSliku.ForeColor = System.Drawing.Color.Black;
+            this.btnOdaberiSliku.Location = new System.Drawing.Point(268, 124);
+            this.btnOdaberiSliku.Name = "btnOdaberiSliku";
+            this.btnOdaberiSliku.Size = new System.Drawing.Size(96, 23);
+            this.btnOdaberiSliku.TabIndex = 20;
+            this.btnOdaberiSliku.Text = "Odaberi sliku";
+            this.btnOdaberiSliku.UseVisualStyleBackColor = true;
+            this.btnOdaberiSliku.Click += new System.EventHandler(this.btnOdaberiSliku_Click);
+            // 
             // frmPacijentiDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.ClientSize = new System.Drawing.Size(905, 568);
+            this.ClientSize = new System.Drawing.Size(905, 643);
             this.Controls.Add(this.panel15);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox2);
@@ -664,6 +695,7 @@
             this.groupBox2.PerformLayout();
             this.panel15.ResumeLayout(false);
             this.panel15.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -722,5 +754,8 @@
         private System.Windows.Forms.Label closeForm;
         private System.Windows.Forms.Label maximizeForm;
         private System.Windows.Forms.Label minimizeForm;
+        private System.Windows.Forms.Button btnOdaberiSliku;
+        private System.Windows.Forms.PictureBox pbSlika;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

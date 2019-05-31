@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eKlinika.MobileApp.Views.PreglediPage"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <ListView ItemsSource="{Binding ListPregledi}">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="20">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+                                    <Label Text="Datum rezervacije:" FontSize="14" FontAttributes="Bold"/>
+                                    <Label Text="{Binding DatumRezervacije, StringFormat='{0:MMMM d, yyyy}'}" FontSize="14"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="0">
+                                    <Label Text="Med. sestra:" FontSize="14" FontAttributes="Bold"/>
+                                    <Label Text="{Binding MedicinskaSestra.ImePrezime}" FontSize="14"/>
+                                </StackLayout>
+
+
+                                <StackLayout Orientation="Vertical" Grid.Row="2" Grid.Column="0">
+                                    <Label Text="Tip pregleda:" FontSize="14" FontAttributes="Bold"/>
+                                    <Label Text="{Binding TipPregleda}" FontSize="14"/>
+                                </StackLayout>
+                                
+                                <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+                                    <Label Text="Datum pregleda:" FontSize="14" FontAttributes="Bold"/>
+                                    <Label Text="{Binding DatumPregleda, StringFormat='{0:MMMM d, yyyy}'}" FontSize="14"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="1">
+                                    <Label Text="Doktor:" FontSize="14" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Doktor.ImePrezime}" FontSize="14"/>
+                                </StackLayout>
+                                
+                                <StackLayout Orientation="Vertical" Grid.Row="2" Grid.Column="1">
+                                    <Label Text="Prioritet:" FontSize="14" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Prioritet}" FontSize="14"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Vertical" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+                                    <Label Text="Napomena:" FontSize="14" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Napomena}" FontSize="16" FontAttributes="Bold"/>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

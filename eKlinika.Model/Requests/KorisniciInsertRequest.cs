@@ -31,5 +31,6 @@ namespace eKlinika.Model.Requests
         public Pacijent Pacijent { get; set; }
 
         public List<int> Uloge { get; set; } = new List<int>();
+        public byte[] Slika { get; set; }
     }
 }

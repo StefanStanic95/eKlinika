@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using eKlinika.Model.Requests;
 using eKlinika.WebAPI.Database;
+using eKlinika.WebAPI.Security;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,15 @@ namespace eKlinika.WebAPI.Services
             if (request?.BrojUplatnice != null)
             {
                 query = query.Where(x => x.BrojUplatnice == request.BrojUplatnice);
+            }
+
+            foreach (var uloga in BasicAuthenticationHandler.korisnik.KorisniciUloge)
+            {
+                if (uloga.Uloga.Naziv == "Pacijent")
+                {
+                    query = query.Where(x => x.PacijentId == BasicAuthenticationHandler.korisnik.Id);
+                    break;
+                }
             }
 
             query = IncludeDetails(query);

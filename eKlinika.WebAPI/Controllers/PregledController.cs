@@ -22,7 +22,7 @@ namespace eKlinika.WebAPI.Controllers
             _service = service;
         }
 
-        [Authorize(Roles = "Administrator,Doktor,MedicinskaSestra")]
+        [Authorize(Roles = "Administrator,Doktor,MedicinskaSestra,Pacijent")]
         [HttpGet]
         public List<Model.Pregled> Get([FromQuery]PregledSearchRequest request)
         {

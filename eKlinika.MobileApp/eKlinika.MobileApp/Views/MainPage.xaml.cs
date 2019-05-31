@@ -30,13 +30,13 @@ namespace eKlinika.MobileApp.Views
                         MenuPages.Add(id, new NavigationPage(new MojProfilPage()));
                         break;
                     case (int)MenuItemType.Uplate:
-                        MenuPages.Add(id, new NavigationPage(new MojProfilPage()));
+                        MenuPages.Add(id, new NavigationPage(new UplatePage()));
                         break;
                     case (int)MenuItemType.Uputnice:
-                        MenuPages.Add(id, new NavigationPage(new MojProfilPage()));
+                        MenuPages.Add(id, new NavigationPage(new UputnicePage()));
                         break;
                     case (int)MenuItemType.Pregledi:
-                        MenuPages.Add(id, new NavigationPage(new MojProfilPage()));
+                        MenuPages.Add(id, new NavigationPage(new PreglediPage()));
                         break;
                 }
             }

@@ -21,21 +21,12 @@ namespace eKlinika.MobileApp.ViewModels
             set { SetProperty(ref korisnik, value); }
         }
 
-        public Command LoadKorisnikCommand { get; set; }
-
         public MojProfilViewModel()
         {
             Title = "Moj profil";
-            LoadKorisnikCommand = new Command(async () => await ExecuteLoadKorisnikCommand());
-            LoadKorisnikCommand.Execute(null);
         }
 
-        async Task ExecuteLoadKorisnikCommand()
-        {
-            await LoadKorisnika();
-        }
-
-        private async Task LoadKorisnika()
+        public async Task LoadKorisnika()
         {
             Korisnik = await _service.Get<Model.Korisnici>(null, "me");
         }
