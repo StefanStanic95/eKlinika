@@ -8,7 +8,7 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <!--Page Level Resources: Compatible with Xamarin Live Player -->
+            Page Level Resources: Compatible with Xamarin Live Player 
             <Color x:Key="Primary">#2196F3</Color>
             <Color x:Key="Accent">#96d1ff</Color>
             <Color x:Key="LightTextColor">#999999</Color>
@@ -84,7 +84,7 @@
         <Label Grid.Row="12" Grid.Column="1"  Text="{Binding Korisnik.Pacijent.Visina}" FontSize="14"></Label>
 
         <Label Grid.Row="13" Grid.Column="0" Text="Alergije:" FontSize="14" FontAttributes="Bold"></Label>
-        <Label Grid.Row="13" Grid.Column="1"  Text="{Binding Korisnik.Pacijent.Alergija}" FontSize="14"></Label>
+        <Label Grid.Row="13" Grid.Column="1"  Text="{Binding Korisnik.Pacijent.Alergije}" FontSize="14"></Label>
     </Grid>
 
     </StackLayout>

@@ -17,6 +17,7 @@ namespace eKlinika.MobileApp.ViewModels
             LoginCommand = new Command(async () => await Login());
 
         }
+
         string _username = string.Empty;
         public string Username
         {

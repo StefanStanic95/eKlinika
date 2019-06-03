@@ -6,7 +6,8 @@
 
     <ContentPage.Content>
         <StackLayout>
-
+            <Picker ItemsSource="{Binding ListVrstaPretrage}"  SelectedItem="{Binding SelectedVrstaPretrage}" ItemDisplayBinding="{Binding Naziv}"></Picker>
+        
             <ListView ItemsSource="{Binding ListUputnice}">
 
                 <ListView.ItemTemplate>
