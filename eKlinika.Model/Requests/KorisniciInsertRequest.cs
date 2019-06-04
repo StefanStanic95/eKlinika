@@ -28,7 +28,7 @@ namespace eKlinika.Model.Requests
 
         public int? GradId { get; set; }
         public Osoblje_Upsert Osoblje { get; set; }
-        public Pacijent Pacijent { get; set; }
+        public Pacijent Pacijent1 { get; set; }
 
         public List<int> Uloge { get; set; } = new List<int>();
         public byte[] Slika { get; set; }

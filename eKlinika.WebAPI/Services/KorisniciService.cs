@@ -142,6 +142,18 @@ namespace eKlinika.WebAPI.Services
 
             _mapper.Map(request, entity);
 
+            if(request.Pacijent1 != null)
+            {
+                entity.Pacijent.Alergije = request.Pacijent1.Alergije;
+                entity.Pacijent.BrojKartona = request.Pacijent1.BrojKartona;
+                entity.Pacijent.BrojKnjizice = request.Pacijent1.BrojKnjizice;
+                entity.Pacijent.DatumRegistracije = request.Pacijent1.DatumRegistracije;
+                entity.Pacijent.KrvnaGrupaId = request.Pacijent1.KrvnaGrupaId;
+                entity.Pacijent.SpecijalniZahtjevi = request.Pacijent1.SpecijalniZahtjevi;
+                entity.Pacijent.Tezina = request.Pacijent1.Tezina;
+                entity.Pacijent.Visina = request.Pacijent1.Visina;
+            }
+
             _context.SaveChanges();
 
             return _mapper.Map<Model.Korisnici>(entity);

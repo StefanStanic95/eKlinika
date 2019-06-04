@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace eKlinika.WebAPI.Database
 {
@@ -13,6 +14,7 @@ namespace eKlinika.WebAPI.Database
         //    Uputnica = new HashSet<Uputnica>();
         //}
 
+        [ForeignKey("Korisnik")]
         public int Id { get; set; }
         public string Alergije { get; set; }
         public string BrojKartona { get; set; }

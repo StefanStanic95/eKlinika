@@ -51,15 +51,17 @@ namespace eKlinika.WinUI.Pacijenti
                 request.Prezime = txtPrezime.Text;
                 request.PhoneNumber = txtTelefon.Text;
                 request.Uloge = roleList;
-                request.Pacijent = new Pacijent();
-                request.Pacijent.BrojKartona = txtBrojKartona.Text;
-                request.Pacijent.Alergije = txtAlergije.Text;
-                request.Pacijent.BrojKnjizice = txtBrojKnjizice.Text;
-                request.Pacijent.DatumRegistracije = DateTime.Now;
-                request.Pacijent.KrvnaGrupaId = ((KrvnaGrupa)cmbKrvnaGrupa.SelectedValue).Id;
-                request.Pacijent.SpecijalniZahtjevi = txtSpecZahtjevi.Text;
-                request.Pacijent.Tezina = double.TryParse(txtTezina.Text, out var tezina) ? tezina : 0.0;
-                request.Pacijent.Visina = int.TryParse(txtVisina.Text, out var visina) ? visina : 0;
+                request.Pacijent1 = new Pacijent
+                {
+                    BrojKartona = txtBrojKartona.Text,
+                    Alergije = txtAlergije.Text,
+                    BrojKnjizice = txtBrojKnjizice.Text,
+                    DatumRegistracije = dtpDatumRegistarcije.Value,
+                    KrvnaGrupaId = ((KrvnaGrupa)cmbKrvnaGrupa.SelectedValue).Id,
+                    SpecijalniZahtjevi = txtSpecZahtjevi.Text,
+                    Tezina = double.TryParse(txtTezina.Text, out var tezina) ? tezina : 0.0,
+                    Visina = int.TryParse(txtVisina.Text, out var visina) ? visina : 0
+                };
 
             };
 
