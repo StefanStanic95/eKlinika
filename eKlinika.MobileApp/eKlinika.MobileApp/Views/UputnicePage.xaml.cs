@@ -27,5 +27,10 @@ namespace eKlinika.MobileApp.Views
             base.OnAppearing();
             await model.LoadUputnice();
         }
+
+        private async void Picker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            await model.LoadUputnice();
+        }
     }
 }

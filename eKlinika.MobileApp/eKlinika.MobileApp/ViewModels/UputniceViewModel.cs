@@ -53,18 +53,20 @@ namespace eKlinika.MobileApp.ViewModels
                 }
             }
 
-            if (SelectedVrstaPretrage != null)
-            {
-                UputnicaSearchRequest search = new UputnicaSearchRequest();
-                search.VrstaId = SelectedVrstaPretrage.Id;
-
-                var list = await _serviceUputnice.Get<List<Models.UputnicaMobile>>(search);
-
-                ListUputnice.Clear();
-                foreach (var uputnica in list)
+            UputnicaSearchRequest search = null;
+            if (SelectedVrstaPretrage != null) {
+                search = new UputnicaSearchRequest
                 {
-                    ListUputnice.Add(uputnica);
-                }
+                    VrstaId = SelectedVrstaPretrage.Id
+                };
+            }
+
+            var list = await _serviceUputnice.Get<List<Models.UputnicaMobile>>(search);
+
+            ListUputnice.Clear();
+            foreach (var uputnica in list)
+            {
+                ListUputnice.Add(uputnica);
             }
 
         }

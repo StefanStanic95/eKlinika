@@ -6,14 +6,11 @@ using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
 using eKlinika.MobileApp.Models;
-using eKlinika.MobileApp.Services;
 
 namespace eKlinika.MobileApp.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
-
         bool isBusy = false;
         public bool IsBusy
         {

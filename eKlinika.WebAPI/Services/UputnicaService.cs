@@ -31,6 +31,11 @@ namespace eKlinika.WebAPI.Services
                 query = query.Where(x => x.DatumUputnice.Date >= request.DatumOd.Value.Date && x.DatumUputnice.Date <= request.DatumDo.Value.Date);
             }
 
+            if(request?.VrstaId != null)
+            {
+                query = query.Where(x => x.VrstaPretrageId == request.VrstaId);
+            }
+
             foreach (var uloga in BasicAuthenticationHandler.korisnik.KorisniciUloge)
             {
                 if (uloga.Uloga.Naziv == "Pacijent")
