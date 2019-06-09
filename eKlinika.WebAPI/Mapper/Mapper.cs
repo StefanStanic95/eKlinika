@@ -25,6 +25,7 @@ namespace eKlinika.WebAPI.Mapper
 
             CreateMap<Database.Korisnici, Model.Requests.KorisniciInsertRequest>().ReverseMap();
             CreateMap<Database.Korisnici, Model.Requests.KorisniciUpdateRequest>().ReverseMap();
+            CreateMap<Database.Korisnici, Model.Requests.PacijentUpdateRequest>().ReverseMap();
             CreateMap<Database.Uputnica, Model.Requests.UputnicaInsertRequest>().ReverseMap();
             CreateMap<Database.Pregled, Model.Requests.PregledInsertRequest>().ReverseMap();
             CreateMap<Database.ApotekaRacun, Model.Requests.ApotekaRacunInsertRequest>().ReverseMap();

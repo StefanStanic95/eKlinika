@@ -18,7 +18,7 @@
             <Entry Text="{Binding Username}"></Entry>
 
             <Label Text="Password:"/>
-            <Entry Text="{Binding Password}"></Entry>
+            <Entry Text="{Binding Password}" IsPassword="True"></Entry>
             <Button Command="{Binding LoginCommand}" Text="Login"></Button>
             <Label IsVisible="{Binding IsBusy}" Text="Working..."></Label>
         </StackLayout>

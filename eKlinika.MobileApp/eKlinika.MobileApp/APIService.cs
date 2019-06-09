@@ -89,11 +89,16 @@ namespace eKlinika.MobileApp
 
         }
 
-        public async Task<T> Update<T>(int id, object request)
+        public async Task<T> Update<T>(int id, object request, string action = "")
         {
             try
             {
-                var url = $"{_apiUrl}/{_route}/{id}";
+                var url = $"{_apiUrl}/{_route}";
+
+                if (action != "")
+                    url += "/" + action;
+
+                url += "/" + id;
 
                 return await url.WithBasicAuth(Username, Password).PutJsonAsync(request).ReceiveJson<T>();
             }

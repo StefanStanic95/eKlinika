@@ -1,4 +1,5 @@
-﻿using eKlinika.Model.Requests;
+﻿using eKlinika.Model;
+using eKlinika.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,5 +22,6 @@ namespace eKlinika.WebAPI.Services
         Model.Korisnici Update(int id, KorisniciUpdateRequest request);
 
         Model.Korisnici Authenticiraj(string username, string pass);
+        Korisnici UpdatePacijent(int id, PacijentUpdateRequest request);
     }
 }

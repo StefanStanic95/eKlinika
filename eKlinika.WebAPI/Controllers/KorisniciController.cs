@@ -47,6 +47,13 @@ namespace eKlinika.WebAPI.Controllers
             return _service.Update(id, request);
         }
 
+        [Authorize(Roles = "Pacijent")]
+        [HttpPut("UpdatePacijent/{id}")]
+        public Model.Korisnici UpdatePacijent(int id, [FromBody]PacijentUpdateRequest request)
+        {
+            return _service.UpdatePacijent(id, request);
+        }
+
         [HttpGet("{id}")]
         public Model.Korisnici GetById(int id)
         {

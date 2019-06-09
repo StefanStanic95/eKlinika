@@ -119,6 +119,44 @@ namespace eKlinika.WebAPI.Services
             return _mapper.Map<Model.Korisnici>(entity);
         }
 
+        public Model.Korisnici UpdatePacijent(int id, PacijentUpdateRequest request)
+        {
+            if (id != BasicAuthenticationHandler.korisnik.Id)
+                return null;
+
+            var result = _context.Korisnici.Where(x => x.Id == BasicAuthenticationHandler.korisnik.Id);
+            result = IncludeUserDetails(result);
+
+            var entity = result.FirstOrDefault();
+
+            _context.Korisnici.Attach(entity);
+            _context.Korisnici.Update(entity);
+
+            if (!string.IsNullOrWhiteSpace(request.Password))
+            {
+                if (request.Password != request.PasswordPotvrda)
+                {
+                    throw new UserException("Passwordi se ne slažu");
+                }
+
+                entity.LozinkaSalt = GenerateSalt();
+                entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Password);
+            }
+
+            _mapper.Map(request, entity);
+
+            if(request.Pacijent1 != null)
+            {
+                entity.Pacijent.Alergije = request.Pacijent1.Alergije;
+                entity.Pacijent.Tezina = request.Pacijent1.Tezina;
+                entity.Pacijent.Visina = request.Pacijent1.Visina;
+            }
+
+            _context.SaveChanges();
+
+            return _mapper.Map<Model.Korisnici>(entity);
+        }
+
         public Model.Korisnici Update(int id, KorisniciUpdateRequest request)
         {
             var result = _context.Korisnici.Where(x => x.Id == id);

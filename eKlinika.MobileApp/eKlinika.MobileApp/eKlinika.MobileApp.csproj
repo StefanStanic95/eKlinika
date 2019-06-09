@@ -21,6 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\UrediProfilPage.xaml.cs">
+      <DependentUpon>UrediProfilPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\MojProfilPage.xaml.cs">
       <DependentUpon>MojProfilPage.xaml</DependentUpon>
     </Compile>
