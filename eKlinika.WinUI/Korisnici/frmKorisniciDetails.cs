@@ -78,6 +78,13 @@ namespace eKlinika.WinUI.Korisnici
                 else
                 {
                     entity = await _service.Update<Model.Korisnici>(_id.Value, request);
+
+                    if (_id.Value == APIService.Korisnik.Id)
+                    {
+                        APIService.Username = request.UserName;
+                        if (!string.IsNullOrWhiteSpace(request.Password))
+                            APIService.Password = request.Password;
+                    }
                 }
 
                 if (entity != null)
@@ -104,10 +111,12 @@ namespace eKlinika.WinUI.Korisnici
                 txtKorisnickoIme.Text = entity.UserName;
                 txtPrezime.Text = entity.Prezime;
                 txtTelefon.Text = entity.PhoneNumber;
-                if(entity.Slika.Length > 0)
+                if (entity.Slika.Length > 0)
                 {
                     var stream = new MemoryStream(entity.Slika);
                     pbSlika.Image = Image.FromStream(stream);
+
+                    request.Slika = entity.Slika;
                 }
 
                 foreach (var uloga in entity.KorisniciUloge)

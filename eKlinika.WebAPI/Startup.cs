@@ -147,9 +147,9 @@ namespace eKlinika.WebAPI
                     Jezici = "en",
                 }
             };
-            k.UserName = k.Ime + "." + k.Prezime;
-            k.Email = k.UserName + "@eKlinika.ba";
-            string password = "123";
+            k.UserName = "admin";
+            k.Email = "admin@eKlinika.ba";
+            string password = "test";
             k.LozinkaSalt = KorisniciService.GenerateSalt();
             k.LozinkaHash = KorisniciService.GenerateHash(k.LozinkaSalt, password);
 

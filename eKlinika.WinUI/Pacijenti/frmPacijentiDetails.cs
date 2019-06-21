@@ -134,6 +134,7 @@ namespace eKlinika.WinUI.Pacijenti
                     {
                         pbSlika.Image = Image.FromStream(ms);
                     }
+                    request.Slika = entity.Slika;
                 }
             }
         }

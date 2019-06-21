@@ -33,6 +33,13 @@
             this.btnPrikazi = new System.Windows.Forms.Button();
             this.closeForm = new System.Windows.Forms.Label();
             this.dgvUputnice = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtFromDate = new System.Windows.Forms.DateTimePicker();
+            this.dtToDate = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumPregleda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumUputnice = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,13 +48,6 @@
             this.PacijentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UputioDoktorId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VrstaPretrageId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dtFromDate = new System.Windows.Forms.DateTimePicker();
-            this.dtToDate = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUputnice)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -114,64 +114,6 @@
             this.dgvUputnice.TabIndex = 0;
             this.dgvUputnice.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvUputnice_CellFormatting);
             // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // DatumPregleda
-            // 
-            this.DatumPregleda.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.DatumPregleda.DataPropertyName = "DatumRezultata";
-            this.DatumPregleda.HeaderText = "Datum rezultata ";
-            this.DatumPregleda.Name = "DatumPregleda";
-            this.DatumPregleda.ReadOnly = true;
-            // 
-            // DatumUputnice
-            // 
-            this.DatumUputnice.DataPropertyName = "DatumUputnice";
-            this.DatumUputnice.HeaderText = "Datum uputnice";
-            this.DatumUputnice.Name = "DatumUputnice";
-            this.DatumUputnice.ReadOnly = true;
-            // 
-            // IsGotovNalaz
-            // 
-            this.IsGotovNalaz.DataPropertyName = "IsGotovNalaz";
-            this.IsGotovNalaz.HeaderText = "Gotov nalaz (DA/NE)";
-            this.IsGotovNalaz.Name = "IsGotovNalaz";
-            this.IsGotovNalaz.ReadOnly = true;
-            // 
-            // LaboratorijDoktorId
-            // 
-            this.LaboratorijDoktorId.DataPropertyName = "LaboratorijDoktor.ImePrezime";
-            this.LaboratorijDoktorId.HeaderText = "Lab. doktor";
-            this.LaboratorijDoktorId.Name = "LaboratorijDoktorId";
-            this.LaboratorijDoktorId.ReadOnly = true;
-            // 
-            // PacijentId
-            // 
-            this.PacijentId.DataPropertyName = "Pacijent.ImePrezime";
-            this.PacijentId.HeaderText = "Pacijent";
-            this.PacijentId.Name = "PacijentId";
-            this.PacijentId.ReadOnly = true;
-            // 
-            // UputioDoktorId
-            // 
-            this.UputioDoktorId.DataPropertyName = "UputioDoktor.ImePrezime";
-            this.UputioDoktorId.HeaderText = "Uputio doktor";
-            this.UputioDoktorId.Name = "UputioDoktorId";
-            this.UputioDoktorId.ReadOnly = true;
-            // 
-            // VrstaPretrageId
-            // 
-            this.VrstaPretrageId.DataPropertyName = "VrstaPretrage.Naziv";
-            this.VrstaPretrageId.HeaderText = "Vrsta pretrage";
-            this.VrstaPretrageId.Name = "VrstaPretrageId";
-            this.VrstaPretrageId.ReadOnly = true;
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
@@ -236,6 +178,65 @@
             this.pictureBox1.Size = new System.Drawing.Size(64, 64);
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // DatumPregleda
+            // 
+            this.DatumPregleda.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.DatumPregleda.DataPropertyName = "DatumRezultata";
+            this.DatumPregleda.HeaderText = "Datum rezultata ";
+            this.DatumPregleda.Name = "DatumPregleda";
+            this.DatumPregleda.ReadOnly = true;
+            // 
+            // DatumUputnice
+            // 
+            this.DatumUputnice.DataPropertyName = "DatumUputnice";
+            this.DatumUputnice.HeaderText = "Datum uputnice";
+            this.DatumUputnice.Name = "DatumUputnice";
+            this.DatumUputnice.ReadOnly = true;
+            // 
+            // IsGotovNalaz
+            // 
+            this.IsGotovNalaz.DataPropertyName = "IsGotovNalaz";
+            this.IsGotovNalaz.HeaderText = "Gotov nalaz (DA/NE)";
+            this.IsGotovNalaz.Name = "IsGotovNalaz";
+            this.IsGotovNalaz.ReadOnly = true;
+            // 
+            // LaboratorijDoktorId
+            // 
+            this.LaboratorijDoktorId.DataPropertyName = "LaboratorijDoktor.ImePrezime";
+            this.LaboratorijDoktorId.HeaderText = "Lab. doktor";
+            this.LaboratorijDoktorId.Name = "LaboratorijDoktorId";
+            this.LaboratorijDoktorId.ReadOnly = true;
+            // 
+            // PacijentId
+            // 
+            this.PacijentId.DataPropertyName = "Pacijent.ImePrezime";
+            this.PacijentId.HeaderText = "Pacijent";
+            this.PacijentId.Name = "PacijentId";
+            this.PacijentId.ReadOnly = true;
+            // 
+            // UputioDoktorId
+            // 
+            this.UputioDoktorId.DataPropertyName = "UputioDoktor.ImePrezime";
+            this.UputioDoktorId.HeaderText = "Uputio doktor";
+            this.UputioDoktorId.Name = "UputioDoktorId";
+            this.UputioDoktorId.ReadOnly = true;
+            // 
+            // VrstaPretrageId
+            // 
+            this.VrstaPretrageId.DataPropertyName = "VrstaPretrage.Naziv";
+            this.VrstaPretrageId.HeaderText = "Vrsta pretrage";
+            this.VrstaPretrageId.Name = "VrstaPretrageId";
+            this.VrstaPretrageId.ReadOnly = true;
+            this.VrstaPretrageId.Width = 180;
             // 
             // frmUputnice
             // 
