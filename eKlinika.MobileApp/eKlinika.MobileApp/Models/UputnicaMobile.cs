@@ -7,7 +7,6 @@ namespace eKlinika.MobileApp.Models
 {
     public class UputnicaMobile
     {
-
         public int Id { get; set; }
         public DateTime DatumRezultata { get; set; }
         public DateTime DatumUputnice { get; set; }

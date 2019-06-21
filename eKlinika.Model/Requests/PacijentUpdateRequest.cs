@@ -18,6 +18,8 @@ namespace eKlinika.Model.Requests
         public string Email { get; set; }
         public string Password { get; set; }
         public string PasswordPotvrda { get; set; }
+        public byte[] Slika { get; set; }
+
 
         public Pacijent Pacijent1 { get; set; }
 

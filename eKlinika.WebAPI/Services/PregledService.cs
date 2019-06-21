@@ -43,6 +43,8 @@ namespace eKlinika.WebAPI.Services
 
             query = IncludeUserDetails(query);
 
+            query = query.Include("UstanovljenaDijagnoza.Dijagnoza");
+
             var list = query
                 .ToList();
 
@@ -61,6 +63,7 @@ namespace eKlinika.WebAPI.Services
         {
             var entity = _context.Pregled.Where(x => x.Id == id);
             entity = IncludeUserDetails(entity);
+            entity = entity.Include("UstanovljenaDijagnoza.Dijagnoza");
 
             return _mapper.Map<Model.Pregled>(entity.FirstOrDefault());
         }

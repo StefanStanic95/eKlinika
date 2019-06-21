@@ -1,10 +1,11 @@
-﻿using System;
+﻿using eKlinika.Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace eKlinika.Model
+namespace eKlinika.MobileApp.Models
 {
-    public class Pregled
+    public class PregledMobile
     {
         public int Id { get; set; }
         public DateTime DatumPregleda { get; set; }
@@ -23,5 +24,8 @@ namespace eKlinika.Model
         public Pacijent Pacijent { get; set; }
         public ICollection<UstanovljenaDijagnoza> UstanovljenaDijagnoza { get; set; }
 
+        public List<Doktor> RecommendedDoktori { get; set; }
+        public int VisinaListeDijagnoza { get; set; }
+        public int VisinaListeDoktora { get; set; }
     }
 }

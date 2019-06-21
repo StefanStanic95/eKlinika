@@ -1,20 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace eKlinika.WebAPI.Database
+namespace eKlinika.Model
 {
     public partial class Dijagnoza
     {
-        public Dijagnoza()
-        {
-            UstanovljenaDijagnoza = new HashSet<UstanovljenaDijagnoza>();
-        }
-
         public int Id { get; set; }
         public string Opis { get; set; }
         public string StrucniOpis { get; set; }
         public string DoktorSpecijalizacija { get; set; }
-
-        public ICollection<UstanovljenaDijagnoza> UstanovljenaDijagnoza { get; set; }
     }
 }

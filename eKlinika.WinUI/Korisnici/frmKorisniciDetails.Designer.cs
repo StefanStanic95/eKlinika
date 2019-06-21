@@ -59,12 +59,20 @@
             this.maximizeForm = new System.Windows.Forms.Label();
             this.minimizeForm = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.pbSlika = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.pbSlika);
+            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.panel7);
             this.groupBox1.Controls.Add(this.panel6);
             this.groupBox1.Controls.Add(this.panel5);
@@ -91,7 +99,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.groupBox1.Location = new System.Drawing.Point(13, 122);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(407, 484);
+            this.groupBox1.Size = new System.Drawing.Size(407, 520);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalji korisnika";
@@ -318,7 +326,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Arial Narrow", 11.25F);
             this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.btnSave.Location = new System.Drawing.Point(340, 612);
+            this.btnSave.Location = new System.Drawing.Point(340, 648);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(80, 30);
             this.btnSave.TabIndex = 1;
@@ -377,12 +385,49 @@
             this.label9.TabIndex = 9;
             this.label9.Text = "Pregled detalja korisnika";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(195, 350);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(30, 13);
+            this.label10.TabIndex = 23;
+            this.label10.Text = "Slika";
+            // 
+            // pbSlika
+            // 
+            this.pbSlika.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pbSlika.Location = new System.Drawing.Point(198, 367);
+            this.pbSlika.Name = "pbSlika";
+            this.pbSlika.Size = new System.Drawing.Size(90, 90);
+            this.pbSlika.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbSlika.TabIndex = 24;
+            this.pbSlika.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Arial Narrow", 11.25F);
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.button1.Location = new System.Drawing.Point(195, 463);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(93, 30);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Odaberi";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // frmKorisniciDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.ClientSize = new System.Drawing.Size(438, 677);
+            this.ClientSize = new System.Drawing.Size(438, 693);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.closeForm);
             this.Controls.Add(this.maximizeForm);
@@ -397,6 +442,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -434,5 +480,9 @@
         private System.Windows.Forms.Label maximizeForm;
         private System.Windows.Forms.Label minimizeForm;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox pbSlika;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

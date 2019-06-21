@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -18,6 +19,8 @@ namespace eKlinika.WinUI.Korisnici
     {
         APIService _service = new APIService("Korisnici");
         APIService _ulogeService = new APIService("Uloge");
+
+        KorisniciInsertRequest request = new KorisniciInsertRequest();
 
         private int? _id = null;
         public frmKorisniciDetails(int? id = null)
@@ -33,39 +36,39 @@ namespace eKlinika.WinUI.Korisnici
                 var roleList = clbRole.CheckedItems.Cast<Model.Uloge>().Select(x => x.Id).ToList();
                 var roleListStr = clbRole.CheckedItems.Cast<Model.Uloge>().Select(x => x.Naziv).ToList();
 
-
                 Model.Korisnici entity = null;
-                var request = new KorisniciInsertRequest
-                {
-                    Email = txtEmail.Text,
-                    Ime = txtIme.Text,
-                    UserName = txtKorisnickoIme.Text,
-                    Password = txtPassword.Text,
-                    PasswordPotvrda = txtPasswordPotvrda.Text,
-                    Prezime = txtPrezime.Text,
-                    PhoneNumber = txtTelefon.Text,
-                    Uloge = roleList
-                };
+                request.Email = txtEmail.Text;
+                request.Ime = txtIme.Text;
+                request.UserName = txtKorisnickoIme.Text;
+                request.Password = txtPassword.Text;
+                request.PasswordPotvrda = txtPasswordPotvrda.Text;
+                request.Prezime = txtPrezime.Text;
+                request.PhoneNumber = txtTelefon.Text;
+                request.Uloge = roleList;
+
                 if (!_id.HasValue)
                 {
-                    if(roleListStr.Contains("Apotekar"))
+                    if (roleListStr.Contains("Apotekar"))
                     {
-                        request.Osoblje = new Osoblje_Upsert {
+                        request.Osoblje = new Osoblje_Upsert
+                        {
                             Apotekar = new Apotekar_Upsert()
                         };
                     }
-                    if(roleListStr.Contains("Doktor"))
+                    if (roleListStr.Contains("Doktor"))
                     {
-                        request.Osoblje = new Osoblje_Upsert {
+                        request.Osoblje = new Osoblje_Upsert
+                        {
                             Doktor = new Doktor_Upsert
                             {
                                 DatumSpecijalizacije = DateTime.Now
                             }
                         };
                     }
-                    if(roleListStr.Contains("MedicinskaSestra"))
+                    if (roleListStr.Contains("MedicinskaSestra"))
                     {
-                        request.Osoblje = new Osoblje_Upsert {
+                        request.Osoblje = new Osoblje_Upsert
+                        {
                             MedicinskaSestra = new MedicinskaSestra_Upsert()
                         };
                     }
@@ -101,6 +104,11 @@ namespace eKlinika.WinUI.Korisnici
                 txtKorisnickoIme.Text = entity.UserName;
                 txtPrezime.Text = entity.Prezime;
                 txtTelefon.Text = entity.PhoneNumber;
+                if(entity.Slika.Length > 0)
+                {
+                    var stream = new MemoryStream(entity.Slika);
+                    pbSlika.Image = Image.FromStream(stream);
+                }
 
                 foreach (var uloga in entity.KorisniciUloge)
                 {
@@ -148,7 +156,7 @@ namespace eKlinika.WinUI.Korisnici
                 e.Cancel = true;
                 errorProvider.SetError(txtEmail, Resources.Validation_RequiredField);
             }
-            else if(!regex.IsMatch(txtEmail.Text))
+            else if (!regex.IsMatch(txtEmail.Text))
             {
                 e.Cancel = true;
                 errorProvider.SetError(txtEmail, Resources.Validation_InvalidFormat);
@@ -209,7 +217,7 @@ namespace eKlinika.WinUI.Korisnici
                 e.Cancel = true;
                 errorProvider.SetError(txtPassword, Resources.Validation_PasswordLength);
             }
-            else if(!pass_empty && !confirm_empty && txtPassword.Text != txtPasswordPotvrda.Text)
+            else if (!pass_empty && !confirm_empty && txtPassword.Text != txtPasswordPotvrda.Text)
             {
                 e.Cancel = true;
                 errorProvider.SetError(txtPassword, Resources.Validation_PasswordNotMatch);
@@ -261,5 +269,21 @@ namespace eKlinika.WinUI.Korisnici
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var result = openFileDialog1.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                var fileName = openFileDialog1.FileName;
+
+                var file = File.ReadAllBytes(fileName);
+
+                request.Slika = file;
+
+                Image image = Image.FromFile(fileName);
+                pbSlika.Image = image;
+            }
+        }
     }
 }

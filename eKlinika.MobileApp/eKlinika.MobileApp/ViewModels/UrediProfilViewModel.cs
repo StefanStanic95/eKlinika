@@ -50,6 +50,7 @@ namespace eKlinika.MobileApp.ViewModels
                 PasswordPotvrda = LozinkaPotvrda,
                 PhoneNumber = korisnik.PhoneNumber,
                 UserName = korisnik.UserName,
+                Slika = korisnik.Slika,
                 Pacijent1 = new Model.Pacijent
                 {
                     Alergije = korisnik.Pacijent.Alergije,

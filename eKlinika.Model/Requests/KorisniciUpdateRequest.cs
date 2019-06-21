@@ -22,9 +22,10 @@ namespace eKlinika.Model.Requests
         public string Email { get; set; }
         public string Password { get; set; }
         public string PasswordPotvrda { get; set; }
+        public byte[] Slika { get; set; }
 
         public int? GradId { get; set; }
-        public Osoblje_Upsert Osoblje { get; set; }
+        //public Osoblje_Upsert Osoblje { get; set; }
         public Pacijent Pacijent1 { get; set; }
 
         public List<int> Uloge { get; set; } = new List<int>();
