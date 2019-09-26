@@ -1,0 +1,54 @@
+﻿@model eKlinika.ViewModels.PregledIndexListVM
+
+@{
+    ViewData["Title"] = "Pregled nalaza";
+}
+
+<h3>@ViewData["Title"]</h3>
+
+
+<div class="row">
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th width="170">Datum pregleda</th>
+                <th width="100">Tip pregleda</th>
+                <th>Napomena</th>
+                <th>Prioritet</th>
+                <th width="170">Datum rezervacije</th>
+                <th>Med. sestra</th>
+                <th>Doktor</th>
+                <th>Akcija</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            @{
+                foreach (var item in Model.Pregledi)
+                {
+                    <tr>
+                        <td>@item.DatumPregleda</td>
+                        <td>@item.TipPregleda</td>
+                        <td>@item.Napomena</td>
+                        <td>@item.Prioritet</td>
+                        <td>@item.DatumRezervacije</td>
+                        <td>@item.MedSestra</td>
+                        <td>@item.Doktor</td>
+
+                        <td>
+                            <a class="btn btn-info" asp-controller="MedicinskaSestra" asp-action="PregledDetalji" asp-route-id="@item.Id">Detalji</a>
+
+                        </td>
+
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" asp-controller="MedicinskaSestra" asp-action="NalaziDodaj" asp-route-id="@Model.PacijentId" ajax-poziv="da" ajax-rezultat="tab-3">Dodaj</a>
+</div>
+
+

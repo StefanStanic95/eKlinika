@@ -1,0 +1,51 @@
+﻿@model eKlinika.ViewModels.PregledDetaljiVM
+
+<h2>Detalji pregleda</h2>
+<div class="row">
+    <form class="col-md-5">
+        <div class="form-group">
+            <label asp-for="@Model.DatumPregleda"></label>
+            <input name="Datum pregleda" value="@Model.DatumPregleda.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ','T')"  asp-for="DatumPregleda" readonly class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.TipPregleda"></label>
+            <input name="Tip pregleda" value="@Model.TipPregleda" asp-for="TipPregleda" readonly class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.Napomena"></label>
+            <input name="Napomena" value="@Model.Napomena" asp-for="Napomena" readonly class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.Prioritet"></label>
+            <input name="Prioritet" value="@Model.Prioritet" asp-for="Prioritet" readonly class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.DatumRezervacije"></label>
+            <input name="Datum rezervacije" value="@Model.DatumRezervacije.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ','T')"  asp-for="DatumRezervacije" readonly class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.MedSestra"></label>
+            <input name="Med. sestra" value="@Model.MedSestra" asp-for="MedSestra" readonly class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.Doktor"></label>
+            <input name="Doktor" value="@Model.Doktor" asp-for="Doktor" readonly class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.Pacijent"></label>
+            <input name="Pacijent" value="@Model.Pacijent" asp-for="Pacijent" readonly class="form-control" />
+        </div>
+        <div class="form-group">
+            <a class="btn btn-success" asp-controller="MedicinskaSestra" asp-action="PregledUredi" asp-route-id="@Model.Id">Uredi</a>
+        </div>
+    </form>
+</div>
+
+

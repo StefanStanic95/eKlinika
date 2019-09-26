@@ -1,0 +1,48 @@
+﻿@model eKlinika.ViewModels.UplataPretragaVM
+@{
+
+}
+<div class="container">
+    <div class="row">
+            <h1>Pretraga uplata</h1>
+    </div>
+
+    <div class="container">
+        <form>
+            <div class="row form-group">
+                <label asp-for="@Model.Text" class="col-md-1" style="vertical-align:middle;">Pretraga:</label>
+                <div class="col-md-5">
+                    <input asp-for="@Model.Text" class="form-control" />
+                </div>
+                <button type="submit" class="btn btn-danger">
+                    <i class="fas fa-search icons-margin-right"></i> Traži
+                </button>
+            </div>
+        </form>
+        <div class="row">
+            <table class="table table-condensed">
+                <thead>
+                <th>
+                    <td>Broj uplatnice</td>
+                    <td>Žiro račun</td>
+                    <td>Akcija</td>
+                </td>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Uplate)
+                    {
+                        <tr>
+                            <td>@item.BrojUplatnice</td>
+                            <td>@item.ZiroRacun</td>
+                            <td>
+                                <a asp-action="Detalji" asp-controller="Pacijent" asp-route-PacijentId="@item.Id" class="btn btn-danger">Detalji</a>
+                                <a asp-action="Uredi" asp-controller="Pacijent" asp-route-PacijentId="@item.Id" class="btn btn-danger">Uredi</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

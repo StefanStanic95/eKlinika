@@ -1,0 +1,48 @@
+﻿@model eKlinika.ViewModels.UplataDetaljiVM
+
+<h2>Detalji uplate</h2>
+
+<div class="row">
+    <div class="row col-md-4">
+        <div class="form-group" hidden>
+            <input asp-for="@Model.Id" value="@Model.Id" readonly id="idInput" />
+        </div>
+        <div class="form-group ">
+            <label>Datum Uplate: </label>
+            <input asp-for="@Model.DatumUplate" value="@Model.DatumUplate.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ','T')" class="form-control" readonly />
+
+        </div>
+
+        <div class="form-group">
+            <label>Iznos: </label>
+            <input asp-for="Iznos" value="@Model.Iznos" class="form-control" readonly />
+        </div>
+
+        <div class="form-group">
+            <label>Namjena: </label>
+            <input asp-for="Namjena" value="@Model.Namjena" class="form-control" readonly />
+        </div>
+      
+        <div class="form-group">
+            <label>Broj Uplatnice: </label>
+            <input asp-for="BrojUplatnice" value="@Model.BrojUplatnice" class="form-control" readonly />
+        </div>
+
+        <div class="form-group">
+            <label>ZiroRacun: </label>
+            <input asp-for="ZiroRacun" value="@Model.ZiroRacun" class="form-control" readonly />
+        </div>
+
+        <div class="form-group">
+            <label>Datum pregleda: </label>
+            <input asp-for="DatumPregleda" value="@Model.DatumPregleda.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ','T')" class="form-control" readonly />
+        </div>
+      
+        <div class="form-group">
+            <label>Broj knjižice: </label>
+            <input asp-for="BrojKnjizice" value="@Model.BrojKnjizice" class="form-control" readonly />
+        </div>
+
+    </div>
+
+</div>

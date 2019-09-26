@@ -1,0 +1,45 @@
+﻿@model eKlinika.ViewModels.ApotekaRacunVM2
+
+<div class="row col-md-6">
+    <form asp-controller="Apoteka" asp-action="IzdavanjeRacunaSave" method="post" class="col-md-5" style="border: solid black 5px;">
+       <div asp-validation-summary="All"></div>
+        <div class="form-group" hidden>
+            <label asp-for="@Model.ApotekarId"></label>
+            <input asp-for="@Model.ApotekarId" value="@Model.ApotekarId" readonly />
+        </div>
+        <div class="form-group" style="margin-top: 10px;" hidden>
+            <label asp-for="@Model.ApotekarIme"></label>
+            <input asp-for="@Model.ApotekarIme" value="@User.Identity.Name" readonly/>
+        </div>
+        <div class="form-group" hidden>
+            <label asp-for="@Model.PacijentId"></label>
+            <input asp-for="@Model.PacijentId" value="@Model.PacijentId" readonly/>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.ApotekarIme"></label>
+            <input asp-for="@Model.ApotekarIme" value="@User.Identity.Name" readonly />
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Datum"></label>
+            <input asp-for="@Model.Datum" value="@Model.Datum" readonly />
+        </div>
+
+            @{
+                for (int i = 0; i < Model.LijekoviNazivi.Count; i++)
+                {
+                    <div class="form-group">
+                        <label>@Model.LijekoviNazivi[i] kolicina:</label>
+                        <input asp-for="@Model.LijekoviIds[i]" value="@Model.LijekoviIds[i]" readonly hidden />
+                        <input asp-for="@Model.Kolicine[i]" class="form-control" min="1" max="5" />
+                    </div>
+                    }
+                }
+                <span asp-validation-for="@Model.Kolicine"></span>
+
+        <input type="submit" value="Submit" class="btn btn-danger" style="margin-bottom: 20px;"/>
+     </form>
+</div>
+
+@section scripts{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

@@ -1,0 +1,62 @@
+﻿@model eKlinika.ViewModels.ApotekaRacunDetaljiVM
+<div class="row" style="position:absolute; margin-top: 40px; margin-left: 35%;">
+    <div class="row">
+        <form>
+            <div class="form-group row">
+                <label>Datum izdavanja:</label>
+                <input type="text" readonly value="@Model.DatumIzdavanja.ToShortDateString()" class="form-control"/>
+            </div>
+            <div class="form-group row">
+                <label>Izdao apotekar:</label>
+                <input asp-for="@Model.Apotekar" value="@Model.Apotekar" readonly  class="form-control"/>
+            </div>
+            <div class="form-group row">
+                <label>Pacijent:</label>
+                <input asp-for="@Model.Pacijent" value="@Model.Pacijent" readonly class="form-control" />
+            </div>
+       
+            <div class="form-group row">
+                <table class="table table-striped" title="Artikli" style="text-align:center;">
+                    <thead>
+                        <tr>
+                            <th colspan="4" align="center" style="text-align: center;">
+                                Artikli
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>Naziv</th>
+                            <th>Cijena</th>
+                            <th>Kolicina</th>
+                            <th>Iznos</th>
+                        </tr>
+                    </thead>
+                    @{ 
+                        double iznos = 0;
+                    }
+                    <tbody>
+                        @foreach (var artikal in Model.Artikli)
+                        {
+                            iznos =  artikal.Kolicina * artikal.Cijena;
+                            <tr>
+                                <td>@artikal.Naziv</td>
+                                <td>@artikal.Cijena</td>
+                                <td>@artikal.Kolicina</td>
+                                <td>@iznos</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="form-group row">
+                <label>Ukupno u KM: </label>
+                <input asp-for="@Model.UkupniIznos" value="@Model.UkupniIznos" readonly class="form-control" />
+            </div>
+            <br />
+            <div class="form-group row">
+                <a asp-action="IzdatiRacuniIndex" asp-controller="Apoteka" class="btn btn-danger">Nazad</a>
+            </div>
+        </form>
+    </div>
+
+    
+</div>

@@ -1,0 +1,69 @@
+﻿@model eKlinika.ViewModels.PacijentUrediVM
+
+<h2>Uredi pacijenta</h2>
+<div class="row">
+    <form class="col-md-5" asp-controller="MedicinskaSestra" asp-action="PacijentUredi" method="post">
+        <div class="form-group" hidden>
+            <input name="Id" value="@Model.Id" asp-for="Id" readonly class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.Ime"></label>
+            <input name="Ime" value="@Model.Ime" asp-for="Ime" class="form-control" readonly/>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.Prezime"></label>
+            <input name="Prezime" value="@Model.Prezime" asp-for="Prezime" class="form-control" readonly/>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.BrojKnjizice"></label>
+            <input name="BrojKnjizice" value="@Model.BrojKnjizice" asp-for="BrojKnjizice" class="form-control" />
+            <span asp-validation-for="@Model.BrojKnjizice"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.BrojKartona"></label>
+            <input name="BrojKartona" value="@Model.BrojKartona" asp-for="BrojKartona" class="form-control" />
+            <span asp-validation-for="@Model.BrojKartona"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.Visina"></label>
+            <input name="Visina" value="@Model.Visina" asp-for="Visina" class="form-control" />
+            <span asp-validation-for="@Model.Visina"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.Tezina"></label>
+            <input name="Tezina" value="@Model.Tezina" asp-for="Tezina" class="form-control" />
+            <span asp-validation-for="@Model.Tezina"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.Alergije"></label>
+            <input name="Alergije" value="@Model.Alergije" asp-for="Alergije" class="form-control" />
+        </div>
+
+
+        <div class="form-group">
+            <label asp-for="@Model.SpecijalniZahtjevi"></label>
+            <input name="SpecijalniZahtjevi" value="@Model.SpecijalniZahtjevi" asp-for="SpecijalniZahtjevi" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.Grad"></label>
+            <select asp-items="@Model.Gradovi" asp-for="@Model.Grad" class="form-control"></select>
+            <span asp-validation-for="@Model.Grad"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.KrvnaGrupa"></label>
+            <select asp-items="@Model.KrvneGrupe" asp-for="@Model.KrvnaGrupa" class="form-control" readonly></select>
+        </div>
+        <input type="submit" name="name" value="Submit" />
+
+    </form>
+
+</div>

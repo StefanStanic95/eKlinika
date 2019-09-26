@@ -1,0 +1,39 @@
+﻿@model eKlinika.ViewModels.UputnicaUrediVM
+
+<h2>Uredi pregled</h2>
+<div class="row">
+    <form class="col-md-5" asp-controller="MedicinskaSestra" asp-action="UputnicaUredi" method="post">
+        <div class="form-group" hidden>
+            <input name="Id" value="@Model.Id" asp-for="Id" readonly class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.DatumUputnice"></label>
+            <input name="DatumUputnice" asp-for="DatumUputnice" class="form-control" />
+        </div>
+
+
+        <div class="form-group">
+            <label asp-for="@Model.PacijentId">Pacijent</label>
+            <select asp-items="@Model.Pacijenti" asp-for="@Model.PacijentId" class="form-control"></select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.UputioDoktorId">Medicinska sestra</label>
+            <select asp-items="@Model.Doktori" asp-for="@Model.UputioDoktorId" class="form-control"></select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.VrstaPretrageId">Doktor</label>
+            <select asp-items="@Model.VrstePretraga" asp-for="@Model.VrstaPretrageId" class="form-control"></select>
+        </div>
+
+        <input type="submit" name="name" value="Submit" />
+
+    </form>
+
+</div>
+
+
+
+

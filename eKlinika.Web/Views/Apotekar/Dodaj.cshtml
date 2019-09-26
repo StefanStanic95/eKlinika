@@ -1,0 +1,121 @@
+﻿
+@model eKlinika.ViewModels.OsobljeVM
+@{
+
+}
+
+<div class="row">
+    <div class="col-md-4 col-sm-4 col-xs-12 picDiv">
+        <img src="~/images/logo.png" class="img-responsive img-circle logoPicture" />
+    </div>
+    <div class="col-md-8 dodajHeaderDiv">
+        <h1>Dodavanje novog apotekara</h1>
+    </div>
+
+</div>
+<form asp-action="Dodaj" asp-controller="Apotekar">
+    <div class="container dodajFormContainerUpper">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="col-md-12">
+                    <img id="blah" src="~/images/default-profile-photo.png" alt="Image" class="img-thumbnail col-md-" style="padding:0; height:18em;" />
+                    <label class="btn btn-default btn-file col-md-12">
+                        Browse<input type='file' id="imgInp" name="imgInp" style="display:none" />
+                    </label>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-12 form-group">
+                <label asp-for="@Model.JMBG">JMBG</label>
+                <input asp-for="@Model.JMBG" class="form-control  col-md-12" type="text" placeholder="Unesite JMBG apotekara" required />
+            </div>
+
+            <div class="col-md-4 col-sm-12 form-group">
+                <label asp-for="@Model.Ime">Ime</label>
+                <input asp-for="@Model.Ime" class="form-control  col-md-12" type="text" placeholder="Unesite ime " maxlength="20" required />
+            </div>
+
+            <div class="col-md-4 col-sm-12 form-group">
+                <label asp-for="@Model.Prezime">Prezime</label>
+                <input asp-for="@Model.Prezime" class="form-control  col-md-12" type="text" placeholder="Unesite prezime apotekara" maxlength="20" required />
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-4 col-sm-12 form-group">
+                <label asp-for="@Model.DatumRodjenja">Datum rodjenja</label>
+                <input asp-for="@Model.DatumRodjenja" class="form-control  col-md-12" type="date" required />
+            </div>
+            <div class="col-md-4 col-sm-12 form-group">
+                <label asp-for="@Model.Telefon">Telefon</label>
+                <input asp-for="@Model.Telefon" type="text" class="form-control col-md-12" placeholder="Unesite telefon apotekara" required />
+            </div>
+
+            <div class="col-md-4 col-sm-12 form-group">
+                <label asp-for="@Model.Spol">Spol</label>
+                <select asp-for="@Model.Spol" asp-items="@Model.Spolovi" class="form-control col-md-12"></select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 col-sm-12 form-group">
+                <label asp-for="@Model.Ulica">Ulica</label>
+                <input asp-for="@Model.Ulica" type="text" class="form-control col-md-12" placeholder="Unesite ulicu apotekara" required />
+            </div>
+            <div class="col-md-4 col-sm-12 form-group">
+                <label asp-for="@Model.Broj">Broj</label>
+                <input asp-for="@Model.Broj" type="text" class="form-control col-md-12" placeholder="Unesite broj ulice" required />
+            </div>
+            <div class="col-md-4 col-sm-12 form-group">
+                <label asp-for="@Model.GradId">Grad</label>
+                <select asp-for="@Model.GradId" asp-items="@Model.Gradovi" class="form-control col-md-12"></select>
+            </div>
+        </div>
+    </div>
+    <div class=" container dodajFormContainerLower">
+        <div class="row">
+            <div class="col-md-6" style="padding-left:0;padding-right:0;">
+                <div class="col-md-12 form-group">
+                    <label asp-for="@Model.GodineStaza">Godine staza:</label>
+                    <input type="number" asp-for="@Model.GodineStaza" class="form-control" />
+                </div>
+
+                <div class="col-md-12 form-group">
+                    <label asp-for="@Model.Jezici">Jezici:</label>
+                    <input type="text" asp-for="@Model.Jezici" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-md-6 form-group" style="padding-left:0;">
+                <label asp-for="@Model.OpisPosla">Opis posla:</label>
+                <textarea asp-for="@Model.OpisPosla" class="form-control" style="height: 7.7em;"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 form-group">
+                <label asp-for="@Model.DatumZaposlenja">Datum zaposlenja:</label>
+                <input type="date" asp-for="@Model.DatumZaposlenja" class="form-control" />
+            </div>
+            <div class="col-md-4 form-group">
+                <label asp-for="@Model.TipZaposlenja">Tip zaposlenja:</label>
+                <select asp-for="@Model.TipZaposlenja" asp-items="@Model.TipoviZaposlenja" class="form-control"></select>
+
+            </div>
+            <div class="col-md-4 form-group">
+                <label asp-for="@Model.TrajanjeUgovora">Trajanje ugovora:</label>
+                <input type="text" asp-for="@Model.TrajanjeUgovora" class="form-control" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10 col-sm-0"></div>
+            <div class="col-md-2 col-sm-12" style="margin-bottom: 1em;">
+                <input type="submit" class="btn btn-danger col-md-12 " value="Spremi" />
+            </div>
+        </div>
+    </div>
+</form>

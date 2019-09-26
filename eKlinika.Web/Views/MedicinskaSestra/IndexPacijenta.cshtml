@@ -1,0 +1,74 @@
+﻿@model eKlinika.ViewModels.PacijentIndexListVM
+
+@{ 
+   int i = 1;
+}
+
+<div class="row" id="lijekLibDiv">
+    <h1>Pacijenti</h1>
+    <a class="btn btn-danger" asp-controller="MedicinskaSestra" asp-action="Index" style="margin-top:20px;"><i class="fas fa-hand-point-left icons-margin-right"></i>Nazad</a>
+    <div class="row" style="margin-left: 350px; float:right; margin-top: 5%;">
+        <input type="text" id="txt" style="padding-left:10px;" />
+        <input type="button" id="searchBtn" value="Trazi" />
+
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="row"></th>
+                <th scope="row">Ime</th>
+                <th scope="row">Prezime</th>
+                <th scope="row">Grad</th>
+                <th scope="row">Akcija</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @{
+                foreach (var item in Model.Pacijenti)
+                {
+                    <tr>
+                        <th>@i</th>
+                        @{
+                            i += 1;
+                        }
+                        <td>@item.Ime</td>
+                        <td>@item.Prezime</td>
+                        <td>@item.Grad</td>
+                        <td>
+                            <a class="btn btn-danger" asp-controller="MedicinskaSestra" asp-action="PacijentDetalji" asp-route-id="@item.Id">Detalji</a>
+                            <a class="btn btn-danger" asp-controller="MedicinskaSestra" asp-action="PacijentUredi" asp-route-id="@item.Id">Uredi</a>
+                            <a class="btn btn-danger" asp-controller="MedicinskaSestra" asp-action="PacijentObrisi" asp-route-id="@item.Id">Obriši</a>
+                        </td>
+
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+
+    <a class="btn btn-danger" asp-controller="MedicinskaSestra" asp-action="PacijentDodaj"><i class="fas fa-plus icons-margin-right"></i>Dodaj</a>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $('#searchBtn').click(function () {
+
+            var search = document.getElementById('txt').value;
+
+            $.ajax({
+                type: 'GET',
+                url: '/MedicinskaSestra/PacijentSearch',
+                data: { 'search': search },
+                success: function (result) {
+                    //$(document).html(result);
+                    $('#lijekLibDiv').html(result);
+                }
+            });
+        });
+       
+    });
+</script>

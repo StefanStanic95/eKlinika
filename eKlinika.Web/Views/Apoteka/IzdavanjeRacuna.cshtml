@@ -1,0 +1,71 @@
+﻿@model eKlinika.ViewModels.ApotekaRacunVM
+
+
+<br />
+<div class="row col-md-6" style="position: absolute; margin: 20px 0 0 450px;" id="izdajRacunDiv">
+    <form id="formaIzdajRacun" class="col-md-5" style="border: solid black 5px;">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div class="form-group" style="margin-top: 20px;">
+            <label asp-for="@Model.Datum"></label>
+            <input id="datumInput" asp-for="@Model.Datum" readonly class="form-control" />
+            <span asp-validation-for="@Model.Datum"></span>
+        </div>
+        
+        <div class="form-group" hidden>
+            <label asp-for="@Model.ApotekarId"></label>
+            <select id="apotekarSelect" asp-items="@Model.Apotekari" asp-for="@Model.ApotekarId" class="form-control"></select>
+            <span asp-validation-for="@Model.ApotekarId"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.PacijentId"></label>
+            <select id="pacijentSelect" asp-items="@Model.Pacijenti" asp-for="@Model.PacijentId" class="form-control"></select>
+            <span asp-validation-for="@Model.PacijentId"></span>
+        </div>
+       
+        <div class="form-group">
+            <label asp-for="@Model.LijekId"></label>
+            <select multiple id="lijekovi" asp-for="@Model.LijekId" asp-items="@Model.Lijekovi" class="form-control"></select>
+            <span asp-validation-for="@Model.LijekId"></span>
+        </div>
+           
+        <a id="createBtn" class="btn btn-danger" style="margin-bottom: 20px;">Create</a>
+    </form>
+</div>
+
+<script>
+
+    $('#createBtn').click(function () {
+        
+        var selectedOptions = $.map($('#lijekovi option:selected'), function (e) { return $(e).val(); });
+
+        var datumInput = $('#datumInput').val();
+        var apotekarInput = $('#apotekarSelect').val();
+        var pacijentInput = $('#pacijentSelect').val();
+
+        var model = {
+            Datum: datumInput,
+            ApotekarId: apotekarInput,
+            ApotekarIme: '---',
+            PacijentId: pacijentInput,
+            PacijentIme: '---',
+            LijekoviIds: selectedOptions,
+            LijekoviNazivi: [],
+            Kolicine: []
+        };
+
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(model),
+            url: "/Apoteka/IzdavanjeRacuna2",
+            contentType: "application/json",
+            success: function (result) {
+                $('#izdajRacunDiv').html(result);
+            }
+        });
+    });
+</script>
+
+@section scripts{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

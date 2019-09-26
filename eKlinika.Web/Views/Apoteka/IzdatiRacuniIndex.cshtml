@@ -1,0 +1,35 @@
+﻿@model eKlinika.ViewModels.ApotekaRacunIndexVM
+    <br />
+@{ 
+    int i = 1;
+}
+<div class="row" style="position:absolute; margin-top: 20px; margin-left: 270px;">
+    <table class="table table-striped" style="text-align: center;">
+        <thead>
+            <tr>
+                <th scope="row">#</th>
+                <th scope="row">Datum izdavanja</th>
+                <th scope="row">Izdao apotekar</th>
+                <th scope="row">Pacijent</th>
+                <th scope="row">Akcija</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var racun in Model.Racuni)
+            {
+                <tr>
+                    <th>@i</th>
+                    @{ 
+                        i += 1;
+                    }
+                    <td>@racun.DatumIzdavanja.ToShortDateString()</td>
+                    <td>@racun.Apotekar</td>
+                    <td>@racun.Pacijent</td>
+                    <td><a class="btn btn-success" asp-controller="Apoteka" asp-action="RacunDetalji" asp-route-id="@racun.Id">Detalji</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-danger" style="margin-bottom: 40px;" asp-controller="Apoteka" asp-action="IzdavanjeRacuna">Novi racun</a>
+
+</div>

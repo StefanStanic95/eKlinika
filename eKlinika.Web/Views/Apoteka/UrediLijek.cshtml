@@ -1,0 +1,54 @@
+﻿@model eKlinika.ViewModels.LijekDodajVM
+
+<div class="row col-md-4" style="margin: 15px 0 10px 450px;">
+    <form asp-controller="Apoteka" asp-action="UrediLijekSave" method="post" style="position:absolute; border: solid black 5px; margin-bottom: 20px;">
+        <div style="margin: 10px 10px 10px 10px;">
+            <div class="row hidden">
+                <label asp-for="@Model.Id"></label>
+                <input asp-for="@Model.Id" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Naziv"></label>
+                <input asp-for="@Model.Naziv" value="@Model.Naziv" class="form-control" />
+                <span asp-validation-for="@Model.Naziv"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.PoReceptu"></label>
+                <input asp-for="@Model.PoReceptu" value="@Model.PoReceptu" class="form-control" />
+                <span asp-validation-for="@Model.PoReceptu"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.Tip"></label>
+                <input asp-for="@Model.Tip" value="@Model.Tip" class="form-control" />
+                <span asp-validation-for="@Model.Tip"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Proizvodjac"></label>
+                <select asp-for="@Model.Proizvodjac" asp-items="@Model.Proizvodjaci" value="@Model.Proizvodjac" class="form-control"></select>
+                <span asp-validation-for="@Model.Proizvodjac"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.CijenaPoKomadu"></label>
+                <input asp-for="@Model.CijenaPoKomadu" value="@Model.CijenaPoKomadu" class="form-control" />
+                <span asp-validation-for="@Model.CijenaPoKomadu"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.UkupnoNaStanju"></label>
+                <input asp-for="@Model.UkupnoNaStanju" value="@Model.UkupnoNaStanju" class="form-control" />
+                <span asp-validation-for="@Model.UkupnoNaStanju"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Uputstvo"></label>
+                <input asp-for="@Model.Uputstvo" value="@Model.Uputstvo" class="form-control" />
+                <span asp-validation-for="@Model.Uputstvo"></span>
+            </div>
+            <input type="submit" class="btn btn-danger" value="Spremi" />
+        </div>
+    </form>
+</div>
+
+@section scripts{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

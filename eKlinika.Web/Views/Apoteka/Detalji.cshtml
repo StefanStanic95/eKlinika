@@ -1,0 +1,47 @@
+﻿@model eKlinika.ViewModels.LijekVM
+
+<div class="row" style="margin: 40px 0 0 425px;">
+    <form class="col-md-3" style="position:absolute; border: solid black 5px;">
+        <div class="form-group" style="margin-top: 10px;">
+            <label asp-for="@Model.Naziv"></label>
+            <input asp-for="@Model.Naziv" value="@Model.Naziv" class="form-control" readonly />
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Proizvodjac"></label>
+            <input asp-for="@Model.Proizvodjac" value="@Model.Proizvodjac" class="form-control"  readonly />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.Tip"></label>
+            <input asp-for="@Model.Tip" value="@Model.Tip" class="form-control" readonly />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.UkupnoNaStanju"></label>
+            <input asp-for="@Model.UkupnoNaStanju" value="@Model.UkupnoNaStanju" class="form-control" readonly>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Uputstvo"></label>
+            <input asp-for="@Model.Uputstvo" value="@Model.Uputstvo" class="form-control" readonly />
+        </div>
+        <div class="form-group">
+            @{ 
+                    if (Model.PoReceptu == true)
+                    {
+                        <strong class="form-control">Lijek se izdaje PO RECEPTU.</strong>
+
+                    }
+                    else
+                    {
+                        <strong class="form-control">Lijek se NE izdaje po receptu.</strong>
+
+                    }
+                }
+            
+        </div>
+        <div class="form-group" style="margin-bottom: 15px;">
+            <a class="btn btn-success" asp-controller="Apoteka" asp-action="UrediLijek" asp-route-id="@Model.Id">Uredi</a>
+            <a class="btn btn-danger" asp-controller="Apoteka" asp-action="IzbrisiLijek" asp-route-id="@Model.Id" style="margin-left: 5px;">Izbrisi</a>
+        </div>
+            </form>
+</div>
