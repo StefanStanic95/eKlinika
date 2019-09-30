@@ -2,30 +2,58 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using eKlinika.Data;
 using eKlinika.Models;
 
 namespace eKlinika.Helper
 {
     public class UserManager : IUserManager
     {
-        public void AddToRoleAsync(Korisnici user, string role)
+        private readonly ApplicationDbContext db;
+
+        public UserManager(ApplicationDbContext db)
         {
-            throw new NotImplementedException();
+            this.db = db;
         }
 
-        public Korisnici CreateAsync(Korisnici user, string password)
+        public void AddUserToRole(Korisnici user, string role)
         {
-            throw new NotImplementedException();
+            Uloge uloga = db.Uloge.Where(x => x.Naziv == role).FirstOrDefault();
+            if (uloga == null)
+                throw new Exception("Role " + role + " not found.");
+
+            Korisnici korisnik = db.Korisnici.Find(user.Id);
+            if (korisnik == null)
+                throw new Exception("User " + user.Id + " not found.");
+
+            korisnik.KorisniciUloge.Add(new KorisniciUloge
+            {
+                KorisnikId = user.Id,
+                UlogaId = uloga.Id
+            });
+            db.SaveChanges();
         }
 
-        public void CreateRoleAsync(Uloge uloge)
+        public Korisnici CreateUser(Korisnici user, string password)
         {
-            throw new NotImplementedException();
+            user.LozinkaSalt = Hashing.GenerateSalt();
+            user.LozinkaHash = Hashing.GenerateHash(user.LozinkaSalt, password);
+
+            db.Korisnici.Add(user);
+            db.SaveChanges();
+
+            return user;
         }
 
-        public bool RoleExistsAsync(string role)
+        public void CreateRole(Uloge uloge)
         {
-            throw new NotImplementedException();
+            db.Uloge.Add(uloge);
+            db.SaveChanges();
+        }
+
+        public bool RoleExists(string role)
+        {
+            return db.Uloge.Any(x => x.Naziv == role);
         }
     }
 }

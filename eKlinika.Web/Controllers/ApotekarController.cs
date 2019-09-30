@@ -26,23 +26,17 @@ namespace eKlinika.Controllers
         private ApplicationDbContext _db;
         private ImgUploadHelper _imgHelper;
         private UserManagementHelper _userManagementHelper;
-
-
-        
-        private IFileManager _fileManager; private IUserManager _userManager;
+        private IUserManager _userManager;
 
         public ApotekarController(ApplicationDbContext db,
-                                  IHostingEnvironment environment, 
                                   IUserManager userManager,
                                   IFileManager manager)
         {
             _db = db;
-            hosting = environment;
             _imgHelper = new ImgUploadHelper(hosting,manager);
             _userManagementHelper = new UserManagementHelper(_db);
-            
-            
-           
+            _userManager = userManager;
+
         }
         public IActionResult Index()
         {
@@ -71,13 +65,13 @@ namespace eKlinika.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Dodaj(OsobljeVM model,IFormFile imgInp)
+        public IActionResult Dodaj(OsobljeVM model,IFormFile imgInp)
         {
             
-            bool x = _userManager.RoleExistsAsync("Apotekar");
+            bool x = _userManager.RoleExists("Apotekar");
 
             if (!x) { 
-                _userManager.CreateRoleAsync(new Uloge {
+                _userManager.CreateRole(new Uloge {
                 Naziv = "Apotekar"
                 });
             }
@@ -101,9 +95,9 @@ namespace eKlinika.Controllers
             };
 
             
-            Korisnici chkUser = _userManager.CreateAsync(user, password);
+            Korisnici chkUser = _userManager.CreateUser(user, password);
 
-            _userManager.AddToRoleAsync(user, "Apotekar");
+            _userManager.AddUserToRole(user, "Apotekar");
 
             Osoblje osoblje = new Osoblje
             {

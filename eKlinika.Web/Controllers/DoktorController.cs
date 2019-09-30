@@ -35,8 +35,9 @@ namespace eKlinika.Controllers
             hosting = environment;
             _imgHelper = new ImgUploadHelper(hosting,manager);
             _userManagementHelper = new UserManagementHelper(_db);
-            
-           
+            _userManager = userManager;
+
+
         }
 
         public IActionResult Index()
@@ -51,13 +52,13 @@ namespace eKlinika.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Dodaj(OsobljeVM model,IFormFile imgInp)
+        public IActionResult Dodaj(OsobljeVM model,IFormFile imgInp)
         {
-            bool x = _userManager.RoleExistsAsync("Doktor");
+            bool x = _userManager.RoleExists("Doktor");
 
             if (!x)
             {
-                _userManager.CreateRoleAsync(new Uloge
+                _userManager.CreateRole(new Uloge
                 {
                     Naziv = "Doktor"
                 });
@@ -81,9 +82,9 @@ namespace eKlinika.Controllers
                 Email = model.Ime + "." + model.Prezime + "@eKlinika.com"//,
             };
 
-            Korisnici chkUser = _userManager.CreateAsync(user, password);
+            Korisnici chkUser = _userManager.CreateUser(user, password);
 
-            _userManager.AddToRoleAsync(user, "Doktor");
+            _userManager.AddUserToRole(user, "Doktor");
 
             Osoblje osoblje = new Osoblje
             {

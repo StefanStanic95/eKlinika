@@ -36,8 +36,9 @@ namespace eKlinika.Controllers
             _db = db;
             _imgHelper = new ImgUploadHelper(environment, manager);
             _userManagementHelper = new UserManagementHelper(_db);
-            
-           
+            _userManager = userManager;
+
+
         }
         public IActionResult Index()
         {
@@ -51,15 +52,15 @@ namespace eKlinika.Controllers
             return View("Dodaj", model);
         }
         [HttpPost]
-        public async Task<IActionResult> Dodaj(PacijentVM model, IFormFile imgInp)
+        public IActionResult Dodaj(PacijentVM model, IFormFile imgInp)
         {
 
 
-            bool x = _userManager.RoleExistsAsync("Pacijent");
+            bool x = _userManager.RoleExists("Pacijent");
 
             if (!x)
             {
-                _userManager.CreateRoleAsync(new Uloge
+                _userManager.CreateRole(new Uloge
                 {
                     Naziv = "Pacijent"
                 });
@@ -88,9 +89,9 @@ namespace eKlinika.Controllers
             };
 
             /*Korisnici chkUser = */
-            _userManager.CreateAsync(user, password);
+            _userManager.CreateUser(user, password);
 
-            _userManager.AddToRoleAsync(user, "Pacijent");
+            _userManager.AddUserToRole(user, "Pacijent");
 
 
 
@@ -201,7 +202,7 @@ namespace eKlinika.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Uredi(PacijentUrediVM model, IFormFile imgInp)
+        public IActionResult Uredi(PacijentUrediVM model, IFormFile imgInp)
         {
             var pacijent = _db.Pacijent
               .Include(p => p.Korisnici)

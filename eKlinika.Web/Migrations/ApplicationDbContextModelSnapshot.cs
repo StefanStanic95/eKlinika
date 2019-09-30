@@ -573,7 +573,7 @@ namespace eKlinika.Migrations
 
                     b.Property<string>("UputioDoktorId");
 
-                    b.Property<int?>("UputioDoktorId1");
+                    b.Property<int?>("UputioDoktorId");
 
                     b.Property<int>("VrstaPretrageId");
 
@@ -583,7 +583,7 @@ namespace eKlinika.Migrations
 
                     b.HasIndex("PacijentId");
 
-                    b.HasIndex("UputioDoktorId1");
+                    b.HasIndex("UputioDoktorId");
 
                     b.HasIndex("VrstaPretrageId");
 
@@ -861,7 +861,7 @@ namespace eKlinika.Migrations
 
                     b.HasOne("eKlinika.Models.Doktor", "UputioDoktor")
                         .WithMany()
-                        .HasForeignKey("UputioDoktorId1");
+                        .HasForeignKey("UputioDoktorId");
 
                     b.HasOne("eKlinika.Models.VrstaPretrage", "VrstaPretrage")
                         .WithMany()

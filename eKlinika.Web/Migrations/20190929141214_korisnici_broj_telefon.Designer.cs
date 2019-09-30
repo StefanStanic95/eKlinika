@@ -12,8 +12,8 @@ using System;
 namespace eKlinika.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190926172409_korisnici")]
-    partial class korisnici
+    [Migration("20190929141214_korisnici_broj_telefon")]
+    partial class korisnici_broj_telefon
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

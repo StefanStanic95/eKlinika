@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.572
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29324.140
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eKlinika.WebAPI", "eKlinika.WebAPI\eKlinika.WebAPI.csproj", "{380DA2C5-B8F7-4305-A996-B7FD00AF7ACD}"
 EndProject
@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eKlinika.MobileApp.UWP", "e
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eKlinika.MobileApp", "eKlinika.MobileApp\eKlinika.MobileApp\eKlinika.MobileApp.csproj", "{DB7F2727-9EDC-4CC4-B9A6-CF3DA1215A10}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eKlinika", "eKlinika.Web\eKlinika.csproj", "{761A10B6-CECE-4321-ACC4-42521DF3E3DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eKlinika.Web", "eKlinika.Web\eKlinika.Web.csproj", "{761A10B6-CECE-4321-ACC4-42521DF3E3DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

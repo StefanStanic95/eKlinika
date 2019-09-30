@@ -37,9 +37,7 @@ namespace eKlinika.Controllers
             hosting = environment;
             _imgHelper = new ImgUploadHelper(hosting, manager);
             _userManagementHelper = new UserManagementHelper(_db);
-            
-            
-           
+            _userManager = userManager;
         }
 
         public IActionResult Index()
@@ -55,13 +53,13 @@ namespace eKlinika.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Dodaj(OsobljeVM model, IFormFile imgInp)
+        public IActionResult Dodaj(OsobljeVM model, IFormFile imgInp)
         {
-            bool x = _userManager.RoleExistsAsync("MedicinskaSestra");
+            bool x = _userManager.RoleExists("MedicinskaSestra");
 
             if (!x)
             {
-                _userManager.CreateRoleAsync(new Uloge
+                _userManager.CreateRole(new Uloge
                 {
                     Naziv = "MedicinskaSestra"
                 });
@@ -85,9 +83,9 @@ namespace eKlinika.Controllers
                 Email = model.Ime + "." + model.Prezime + "@eKlinika.com"//,
             };
 
-            Korisnici chkUser = _userManager.CreateAsync(user, password);
+            Korisnici chkUser = _userManager.CreateUser(user, password);
 
-            _userManager.AddToRoleAsync(user, "MedicinskaSestra");
+            _userManager.AddUserToRole(user, "MedicinskaSestra");
 
 
             Osoblje osoblje = new Osoblje
@@ -151,15 +149,15 @@ namespace eKlinika.Controllers
             return View("PacijentDodaj", model);
         }
         [HttpPost]
-        public async Task<IActionResult> PacijentDodaj(PacijentVM model, IFormFile imgInp)
+        public IActionResult PacijentDodaj(PacijentVM model, IFormFile imgInp)
         {
 
 
-            bool x = _userManager.RoleExistsAsync("Pacijent");
+            bool x = _userManager.RoleExists("Pacijent");
 
             if (!x)
             {
-                _userManager.CreateRoleAsync(new Uloge
+                _userManager.CreateRole(new Uloge
                 {
                     Naziv = "Pacijent"
                 });
@@ -188,9 +186,9 @@ namespace eKlinika.Controllers
             };
 
             /*Korisnici chkUser = */
-            _userManager.CreateAsync(user, password);
+            _userManager.CreateUser(user, password);
 
-            _userManager.AddToRoleAsync(user, "Pacijent");
+            _userManager.AddUserToRole(user, "Pacijent");
 
 
 
@@ -497,8 +495,6 @@ namespace eKlinika.Controllers
             uplata.Namjena = model.Namjena;
             uplata.BrojUplatnice = model.BrojUplatnice;
             uplata.ZiroRacun = model.ZiroRacun;
-            uplata.PregledId = model.PregledId;
-            uplata.PacijentId = model.PacijentId;
 
             _db.SaveChanges();
             return RedirectToAction("IndexUplate");
@@ -507,13 +503,6 @@ namespace eKlinika.Controllers
         public IActionResult UplataObrisi(int id)
         {
             Uplata uplata = _db.Uplata.FirstOrDefault(o => o.Id == id);
-            var pregledi = _db.Pregled.Where(p => p.Uplata.Id == id);
-
-            foreach (var pregled in pregledi)
-            {
-                pregled.UplataId = null;
-            }
-
 
             if (uplata != null)
             {
@@ -704,7 +693,6 @@ namespace eKlinika.Controllers
                 .Include(u => u.VrstaPretrage)
               .FirstOrDefault(p => p.Id == model.Id);
 
-            uputnica.PacijentId = model.PacijentId;
             uputnica.UputioDoktorId = model.UputioDoktorId;
             uputnica.VrstaPretrageId = model.VrstaPretrageId;
 
@@ -900,7 +888,6 @@ namespace eKlinika.Controllers
             pregled.DatumRezervacije = model.DatumRezervacije;
             pregled.MedicinskaSestraId = model.MedicinskaSestraId;
             pregled.DoktorId = model.DoktorId;
-            pregled.PacijentId = model.PacijentId;
 
             _db.SaveChanges();
             return RedirectToAction("PregledIndex");

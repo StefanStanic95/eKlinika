@@ -16,7 +16,7 @@ namespace eKlinika.Helper
     {
         private const string LogiraniKorisnik = "logirani_korisnik";
 
-        public static void SetLogiraniKorisnik(this HttpContext context, Korisnici korisnik, bool snimiUCookie=false)
+        public static void SetLogiraniKorisnik(this HttpContext context, Korisnici korisnik)
         {
 
             ApplicationDbContext db = context.RequestServices.GetService<ApplicationDbContext>();
@@ -68,17 +68,22 @@ namespace eKlinika.Helper
         }
 
 
-        public static Uloge GetUlogaKorisnika(this HttpContext context)
+        public static Uloge GetUlogaKorisnika(this HttpContext context, int Id = 0)
         {
             ApplicationDbContext db = context.RequestServices.GetService<ApplicationDbContext>();
 
-            Korisnici k = context.GetLogiraniKorisnik();
+            if (Id == 0)
+            {
+                Korisnici k = context.GetLogiraniKorisnik();
 
-            if (k == null)
-                return null;
+                if (k == null)
+                    return null;
+
+                Id = k.Id;
+            }
 
             return db.KorisniciUloge
-                .Where(x => x.KorisnikId == k.Id)
+                .Where(x => x.KorisnikId == Id)
                 .Select(x=>x.Uloga)
                 .FirstOrDefault();
         }

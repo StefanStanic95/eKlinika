@@ -39,7 +39,7 @@
 
         <div class="form-group">
             <label>Grad:</label>
-            @Model.Pacijent.Korisnici.Grad.Naziv
+            @Model.Pacijent.Korisnici.Grad?.Naziv
         </div>
 
         <a asp-action="PacijentDetalji" asp-route-id="@Model.PacijentId" class="btn btn-primary">Detalji</a>

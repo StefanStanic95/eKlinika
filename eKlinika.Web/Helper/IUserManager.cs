@@ -8,9 +8,9 @@ namespace eKlinika.Helper
 {
     public interface IUserManager
     {
-        void AddToRoleAsync(Korisnici user, string role);
-        Korisnici CreateAsync(Korisnici user, string password);
-        bool RoleExistsAsync(string role);
-        void CreateRoleAsync(Uloge uloge);
+        void AddUserToRole(Korisnici user, string role);
+        Korisnici CreateUser(Korisnici user, string password);
+        bool RoleExists(string role);
+        void CreateRole(Uloge uloge);
     }
 }

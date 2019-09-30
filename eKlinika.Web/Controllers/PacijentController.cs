@@ -36,17 +36,18 @@ namespace eKlinika.Controllers
             _db = db;
             _imgHelper = new ImgUploadHelper(environment, manager);
             _userManagementHelper = new UserManagementHelper(_db);
-            
-           
+            _userManager = userManager;
+
+
         }
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             Korisnici user = HttpContext.GetLogiraniKorisnik();
 
             return View(user);
         }
 
-        public async Task<IActionResult> Profil()
+        public IActionResult Profil()
         {
             Korisnici user = HttpContext.GetLogiraniKorisnik();
 
@@ -60,7 +61,7 @@ namespace eKlinika.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> Uredi()
+        public IActionResult Uredi()
         {
             Korisnici user = HttpContext.GetLogiraniKorisnik();
 
@@ -122,7 +123,7 @@ namespace eKlinika.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Uredi(PacijentUrediVM model, IFormFile imgInp)
+        public IActionResult Uredi(PacijentUrediVM model, IFormFile imgInp)
         {
             Korisnici user = HttpContext.GetLogiraniKorisnik();
 
@@ -130,7 +131,6 @@ namespace eKlinika.Controllers
           .Include(p => p.Korisnici)
           .Include(p => p.Korisnici.Grad)
           .Include(p => p.KrvnaGrupa)
-          .Where(p => p.Id != null)
           .FirstOrDefault(p => p.Id == user.Id);
 
             pacijent.Korisnici.Telefon = model.Telefon;
@@ -150,7 +150,7 @@ namespace eKlinika.Controllers
             return RedirectToAction("Index");
         }
 
-        public async Task<IActionResult> Uplata()
+        public IActionResult Uplata()
         {
             Korisnici user = HttpContext.GetLogiraniKorisnik();
 
@@ -173,7 +173,7 @@ namespace eKlinika.Controllers
             return View(VM);
         }
 
-        public async Task<IActionResult> Uputnica()
+        public IActionResult Uputnica()
         {
             Korisnici user = HttpContext.GetLogiraniKorisnik();
 
@@ -200,7 +200,7 @@ namespace eKlinika.Controllers
         }
 
 
-        public async Task<IActionResult> Pregled()
+        public IActionResult Pregled()
         {
             Korisnici user = HttpContext.GetLogiraniKorisnik();
 

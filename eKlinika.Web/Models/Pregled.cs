@@ -23,9 +23,7 @@ namespace eKlinika.Models
         public int MedicinskaSestraId { get; set; }
         public MedicinskaSestra MedicinskaSestra { get; set; }
         
-        [ForeignKey("Uplata")]
-        public int? UplataId { get; set; }
-        public Uplata Uplata { get; set; }
+        public ICollection<Uplata> Uplata { get; set; }
 
         [ForeignKey("Doktor")]
         public int DoktorId { get; set; }

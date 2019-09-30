@@ -28,7 +28,7 @@ namespace eKlinika.Controllers
         }
 
         [HttpPost]
-        async public Task<IActionResult> Login(LoginVM model)
+        public IActionResult Login(LoginVM model)
         {
             if (ModelState.IsValid)
             {
@@ -40,8 +40,9 @@ namespace eKlinika.Controllers
 
                     if (newHash == user.LozinkaHash)
                     {
+                        HttpContext.SetLogiraniKorisnik(user);
 
-                        var userRole = HttpContext.GetUlogaKorisnika()?.Naziv;
+                        var userRole = HttpContext.GetUlogaKorisnika(user.Id)?.Naziv;
 
                         if (userRole == "Apotekar")
                             return RedirectToAction("Index", "Apoteka");

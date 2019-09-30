@@ -28,8 +28,9 @@ namespace eKlinika.Controllers
         {
             _db = db;
             _userManagementHelper = new UserManagementHelper(_db);
-            
-            
+            _userManager = userManager;
+
+
         }
         public IActionResult Index()
         {
