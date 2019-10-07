@@ -6,7 +6,7 @@
     <form asp-controller="MedicinskaSestra" asp-action="PregledDodaj" method="post">
         <div class="form-group">
             <label>Datum pregleda</label>
-            <input asp-for="DatumPregleda" class="form-control" />
+            <input asp-for="DatumPregleda" class="form-control" value="@Model.DatumPregleda.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ','T')" />
             <span asp-validation-for="@Model.DatumPregleda"></span>
         </div>
         <div class="form-group">
@@ -27,7 +27,7 @@
         <div class="form-group">
             <label>Datum rezervacije</label>
             <input asp-for="DatumRezervacije" class="form-control" />
-            <span asp-validation-for="@Model.DatumRezervacije"></span>
+            <span asp-validation-for="@Model.DatumRezervacije" value="@Model.DatumRezervacije.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ','T')"></span>
 
         </div>
 

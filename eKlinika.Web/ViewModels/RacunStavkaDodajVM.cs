@@ -9,7 +9,7 @@ namespace eKlinika.ViewModels
     public class RacunStavkaDodajVM
     {
         public int ApotekaRacunId { get; set; }
-        public string LijekId { get; set; }
+        public int LijekId { get; set; }
         public List<SelectListItem> Lijekovi { get; set; }
         public int Kolicina { get; set; }
     }

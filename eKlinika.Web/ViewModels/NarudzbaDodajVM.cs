@@ -22,12 +22,12 @@ namespace eKlinika.ViewModels
 
         [Required]
         [Display(Name = "Dobavljac")]
-        public string DobavljacId { get; set; }
+        public int DobavljacId { get; set; }
         public List<SelectListItem> Dobavljaci { get; set; }
 
         [Required]
         [Display(Name = "Lijek")]
-        public string LijekId { get; set; }
+        public int LijekId { get; set; }
         public List<SelectListItem> Lijekovi { get; set; }
 
         [Required]

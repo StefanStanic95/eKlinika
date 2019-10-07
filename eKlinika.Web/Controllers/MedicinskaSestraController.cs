@@ -588,7 +588,8 @@ namespace eKlinika.Controllers
         {
             var novaUputnica = new Uputnica
             {
-                UputioDoktorId = model.DokotorId,
+                UputioDoktorId = model.DoktorId,
+                LaboratorijDoktorId = model.LabDoktorId,
                 PacijentId = model.PacijentId,
                 VrstaPretrageId = model.VrstePretrageId,
                 DatumUputnice = model.DatumUputnice,
@@ -618,6 +619,7 @@ namespace eKlinika.Controllers
                         DatumUputnice = x.DatumUputnice,
                         Pacijent = x.Pacijent.Korisnici.Ime + " " + x.Pacijent.Korisnici.Prezime,
                         UputioLjekar = x.UputioDoktor.Titula + " " + x.UputioDoktor.Osoblje.Korisnici.Ime + " " + x.UputioDoktor.Osoblje.Korisnici.Prezime,
+                        LabLjekar = x.LaboratorijDoktor.Titula + " " + x.LaboratorijDoktor.Osoblje.Korisnici.Ime + " " + x.LaboratorijDoktor.Osoblje.Korisnici.Prezime,
                         VrstaPretrage = x.VrstaPretrage.Naziv,
                         IsGotovNalaz = x.IsGotovNalaz
                     }).ToList()
@@ -785,7 +787,9 @@ namespace eKlinika.Controllers
             {
                 Pacijenti = pacijenti,
                 Doktori = doktori,
-                MedSestre = sestre
+                MedSestre = sestre,
+                DatumRezervacije = DateTime.Now,
+                DatumPregleda = DateTime.Now,
             };
 
             return View(viewModel);
@@ -944,7 +948,9 @@ namespace eKlinika.Controllers
             {
                 Pacijent = Id,
                 Doktori = doktori,
-                MedSestre = sestre
+                MedSestre = sestre,
+                DatumRezervacije = DateTime.Now,
+                DatumPregleda = DateTime.Now
             };
 
             return PartialView(viewModel);

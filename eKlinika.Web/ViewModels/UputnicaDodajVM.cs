@@ -11,7 +11,8 @@ namespace eKlinika.ViewModels
     {
         public int Id { get; set; }
 
-        public string DokotorId { get; set; }
+        public int DoktorId { get; set; }
+        public int LabDoktorId { get; set; }
         public List<SelectListItem> Doktori { get; set; }
         public int PacijentId { get; set; }
         public int VrstePretrageId { get; set; }

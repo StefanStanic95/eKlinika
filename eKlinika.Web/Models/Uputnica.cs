@@ -20,11 +20,11 @@ namespace eKlinika.Models
         public Pacijent Pacijent { get; set; }
 
         [ForeignKey("Doktor")]
-        public string UputioDoktorId { get; set; }
+        public int UputioDoktorId { get; set; }
         public Doktor UputioDoktor { get; set; }
 
         [ForeignKey("Doktor")]
-        public string LaboratorijDoktorId { get; set; }
+        public int LaboratorijDoktorId { get; set; }
         public Doktor LaboratorijDoktor { get; set; }
 
         [ForeignKey("VrstaPretrage")]

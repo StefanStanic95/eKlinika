@@ -26,7 +26,7 @@ namespace eKlinika.ViewModels
 
         [Required(ErrorMessage = "Polje je obavezno.")]
         public int PacijentId { get; set; }
-        public string PregledId { get; set; }
+        public int PregledId { get; set; }
         public List<SelectListItem> Pacijenti { get; set; }
         public List<SelectListItem> Pregledi { get; set; }
     }

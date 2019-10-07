@@ -9,7 +9,7 @@
 
         <div class="form-group">
             <label asp-for="@Model.DatumPregleda"></label>
-            <input name="DatumPregleda" asp-for="DatumPregleda" class="form-control" />
+            <input name="DatumPregleda" asp-for="DatumPregleda" class="form-control" value="@Model.DatumPregleda.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ','T')" />
         </div>
 
         <div class="form-group">
@@ -29,7 +29,7 @@
 
         <div class="form-group">
             <label asp-for="@Model.DatumRezervacije"></label>
-            <input name="DatumRezervacije" asp-for="DatumRezervacije" class="form-control" />
+            <input name="DatumRezervacije" asp-for="DatumRezervacije" class="form-control"  value="@Model.DatumRezervacije.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ','T')" />
         </div>
 
         <div class="form-group">
