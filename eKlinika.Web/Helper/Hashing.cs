@@ -18,7 +18,16 @@ namespace eKlinika.Helper
 
         public static string GenerateHash(string salt, string password)
         {
-            byte[] src = Convert.FromBase64String(salt);
+            byte[] src;
+            try
+            {
+                src = Convert.FromBase64String(salt);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            
             byte[] bytes = Encoding.Unicode.GetBytes(password);
             byte[] dst = new byte[src.Length + bytes.Length];
 

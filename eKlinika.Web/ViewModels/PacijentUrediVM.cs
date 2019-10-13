@@ -44,7 +44,7 @@ namespace eKlinika.ViewModels
         [Required(ErrorMessage = "Polje je obavezno.")]
         public string Grad { get; set; }
         public string KrvnaGrupa { get; set; }
-        public byte[] Slika { get; set; }
+        public string Slika { get; set; }
 
         public List<SelectListItem> Gradovi { get; set; }
         public List<SelectListItem> KrvneGrupe { get; set; }

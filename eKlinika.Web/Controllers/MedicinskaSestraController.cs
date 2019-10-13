@@ -236,7 +236,7 @@ namespace eKlinika.Controllers
                 Tezina = pacijent.Tezina,
                 Alergije = pacijent.Alergije,
                 SpecijalniZahtjevi = pacijent.SpecijalniZahtjevi,
-                Grad = pacijent.Korisnici.Grad.Naziv,
+                Grad = pacijent.Korisnici.Grad?.Naziv,
                 KrvnaGrupa = pacijent.KrvnaGrupa.Naziv
             };
             return View(model);

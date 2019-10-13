@@ -35,7 +35,7 @@
                 <h4>Odjel za apoteku</h4>
             </div>
         </a>
-        @if (role == "MedicinskaSestra")
+        @if (role == "MedicinskaSestra" || role == "Administrator")
         {
             <a asp-action="Index" asp-controller="MedicinskaSestra" class="col-md-3">
 

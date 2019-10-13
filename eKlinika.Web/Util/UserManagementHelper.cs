@@ -237,7 +237,7 @@ namespace eKlinika.Util
                 Starost = (DateTime.Now.Year-x.Korisnici.DatumRodjenja.Year).ToString(),
                 BrojKartona=x.BrojKartona,
                 BrojKnjizice=x.BrojKnjizice,
-                Image= "/"+x.Korisnici.Slika
+                Image= x.Korisnici.Slika != null ? Convert.ToBase64String(x.Korisnici.Slika) : ""
             }).FirstOrDefault();
             return model;
         }

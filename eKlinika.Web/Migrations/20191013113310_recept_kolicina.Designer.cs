@@ -5,23 +5,23 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using eKlinika.WebAPI.Database;
+using eKlinika.Data;
 
-namespace eKlinika.WebAPI.Migrations
+namespace eKlinika.Migrations
 {
-    [DbContext(typeof(eKlinikaContext))]
-    [Migration("20190427092138_inicijalna")]
-    partial class inicijalna
+    [DbContext(typeof(ApplicationDbContext))]
+    [Migration("20191013113310_recept_kolicina")]
+    partial class recept_kolicina
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.8-servicing-32085")
+                .HasAnnotation("ProductVersion", "2.1.11-servicing-32099")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Apotekar", b =>
+            modelBuilder.Entity("eKlinika.Models.Apotekar", b =>
                 {
                     b.Property<int>("Id");
 
@@ -32,7 +32,7 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("Apotekar");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.ApotekaRacun", b =>
+            modelBuilder.Entity("eKlinika.Models.ApotekaRacun", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -53,7 +53,28 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("ApotekaRacun");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Dijagnoza", b =>
+            modelBuilder.Entity("eKlinika.Models.AutorizacijskiToken", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("IpAdresa");
+
+                    b.Property<int>("KorisniciId");
+
+                    b.Property<string>("Vrijednost");
+
+                    b.Property<DateTime>("VrijemeEvidentiranja");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("KorisniciId");
+
+                    b.ToTable("AutorizacijskiToken");
+                });
+
+            modelBuilder.Entity("eKlinika.Models.Dijagnoza", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -68,7 +89,7 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("Dijagnoza");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Dobavljac", b =>
+            modelBuilder.Entity("eKlinika.Models.Dobavljac", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -87,7 +108,7 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("Dobavljac");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Doktor", b =>
+            modelBuilder.Entity("eKlinika.Models.Doktor", b =>
                 {
                     b.Property<int>("Id");
 
@@ -102,7 +123,7 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("Doktor");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Drzava", b =>
+            modelBuilder.Entity("eKlinika.Models.Drzava", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -117,7 +138,7 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("Drzava");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Grad", b =>
+            modelBuilder.Entity("eKlinika.Models.Grad", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -136,16 +157,17 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("Grad");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Korisnici", b =>
+            modelBuilder.Entity("eKlinika.Models.Korisnici", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Broj");
+
                     b.Property<DateTime>("DatumRodjenja");
 
-                    b.Property<string>("Email")
-                        .HasMaxLength(256);
+                    b.Property<string>("Email");
 
                     b.Property<int?>("GradId");
 
@@ -165,29 +187,20 @@ namespace eKlinika.WebAPI.Migrations
 
                     b.Property<string>("Spol");
 
+                    b.Property<string>("Telefon");
+
                     b.Property<string>("Ulica");
 
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256);
+                    b.Property<string>("UserName");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Email")
-                        .IsUnique()
-                        .HasName("CS_Email")
-                        .HasFilter("[Email] IS NOT NULL");
-
                     b.HasIndex("GradId");
-
-                    b.HasIndex("UserName")
-                        .IsUnique()
-                        .HasName("CS_UserName")
-                        .HasFilter("[UserName] IS NOT NULL");
 
                     b.ToTable("Korisnici");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.KorisniciUloge", b =>
+            modelBuilder.Entity("eKlinika.Models.KorisniciUloge", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -206,7 +219,7 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("KorisniciUloge");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.KrvnaGrupa", b =>
+            modelBuilder.Entity("eKlinika.Models.KrvnaGrupa", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -219,7 +232,7 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("KrvnaGrupa");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.LabPretraga", b =>
+            modelBuilder.Entity("eKlinika.Models.LabPretraga", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -244,7 +257,7 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("LabPretraga");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Lijek", b =>
+            modelBuilder.Entity("eKlinika.Models.Lijek", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -271,7 +284,7 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("Lijek");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.MedicinskaSestra", b =>
+            modelBuilder.Entity("eKlinika.Models.MedicinskaSestra", b =>
                 {
                     b.Property<int>("Id");
 
@@ -284,18 +297,17 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("MedicinskaSestra");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Modalitet", b =>
+            modelBuilder.Entity("eKlinika.Models.Modalitet", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool>("IsReferentnaVrijednost")
-                        .HasColumnName("isReferentnaVrijednost");
-
                     b.Property<int>("LabPretragaId");
 
                     b.Property<string>("Opis");
+
+                    b.Property<bool>("isReferentnaVrijednost");
 
                     b.HasKey("Id");
 
@@ -304,7 +316,7 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("Modalitet");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Narudzba", b =>
+            modelBuilder.Entity("eKlinika.Models.Narudzba", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -325,7 +337,7 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("Narudzba");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.NarudzbaStavka", b =>
+            modelBuilder.Entity("eKlinika.Models.NarudzbaStavka", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -346,7 +358,7 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("NarudzbaStavka");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Osoblje", b =>
+            modelBuilder.Entity("eKlinika.Models.Osoblje", b =>
                 {
                     b.Property<int>("Id");
 
@@ -365,7 +377,7 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("Osoblje");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Pacijent", b =>
+            modelBuilder.Entity("eKlinika.Models.Pacijent", b =>
                 {
                     b.Property<int>("Id");
 
@@ -392,7 +404,7 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("Pacijent");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Pregled", b =>
+            modelBuilder.Entity("eKlinika.Models.Pregled", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -404,9 +416,6 @@ namespace eKlinika.WebAPI.Migrations
 
                     b.Property<int>("DoktorId");
 
-                    b.Property<bool>("IsOdrzan")
-                        .HasColumnName("isOdrzan");
-
                     b.Property<int>("MedicinskaSestraId");
 
                     b.Property<string>("Napomena");
@@ -416,6 +425,8 @@ namespace eKlinika.WebAPI.Migrations
                     b.Property<string>("Prioritet");
 
                     b.Property<string>("TipPregleda");
+
+                    b.Property<bool>("isOdrzan");
 
                     b.HasKey("Id");
 
@@ -428,7 +439,7 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("Pregled");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Proizvodjac", b =>
+            modelBuilder.Entity("eKlinika.Models.Proizvodjac", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -443,7 +454,7 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("Proizvodjac");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.RacunStavka", b =>
+            modelBuilder.Entity("eKlinika.Models.RacunStavka", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -464,7 +475,7 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("RacunStavka");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Recept", b =>
+            modelBuilder.Entity("eKlinika.Models.Recept", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -473,6 +484,8 @@ namespace eKlinika.WebAPI.Migrations
                     b.Property<DateTime>("DatumIzdavanja");
 
                     b.Property<bool>("IsObradjen");
+
+                    b.Property<int>("Kolicina");
 
                     b.Property<int>("LijekId");
 
@@ -489,7 +502,7 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("Recept");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.RezultatPretrage", b =>
+            modelBuilder.Entity("eKlinika.Models.RezultatPretrage", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -514,7 +527,7 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("RezultatPretrage");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Uloge", b =>
+            modelBuilder.Entity("eKlinika.Models.Uloge", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -529,7 +542,7 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("Uloge");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Uplata", b =>
+            modelBuilder.Entity("eKlinika.Models.Uplata", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -558,7 +571,7 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("Uplata");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Uputnica", b =>
+            modelBuilder.Entity("eKlinika.Models.Uputnica", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -591,7 +604,7 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("Uputnica");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.UstanovljenaDijagnoza", b =>
+            modelBuilder.Entity("eKlinika.Models.UstanovljenaDijagnoza", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -614,7 +627,7 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("UstanovljenaDijagnoza");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.VrstaPretrage", b =>
+            modelBuilder.Entity("eKlinika.Models.VrstaPretrage", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -627,249 +640,258 @@ namespace eKlinika.WebAPI.Migrations
                     b.ToTable("VrstaPretrage");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Apotekar", b =>
+            modelBuilder.Entity("eKlinika.Models.Apotekar", b =>
                 {
-                    b.HasOne("eKlinika.WebAPI.Database.Osoblje", "Osoblje")
-                        .WithOne("Apotekar")
-                        .HasForeignKey("eKlinika.WebAPI.Database.Apotekar", "Id")
+                    b.HasOne("eKlinika.Models.Osoblje", "Osoblje")
+                        .WithMany()
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.ApotekaRacun", b =>
+            modelBuilder.Entity("eKlinika.Models.ApotekaRacun", b =>
                 {
-                    b.HasOne("eKlinika.WebAPI.Database.Apotekar", "Apotekar")
-                        .WithMany("ApotekaRacun")
+                    b.HasOne("eKlinika.Models.Apotekar", "Apotekar")
+                        .WithMany()
                         .HasForeignKey("ApotekarId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("eKlinika.WebAPI.Database.Pacijent", "Pacijent")
-                        .WithMany("ApotekaRacun")
+                    b.HasOne("eKlinika.Models.Pacijent", "Pacijent")
+                        .WithMany()
                         .HasForeignKey("PacijentId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Dobavljac", b =>
+            modelBuilder.Entity("eKlinika.Models.AutorizacijskiToken", b =>
                 {
-                    b.HasOne("eKlinika.WebAPI.Database.Drzava", "Drzava")
-                        .WithMany("Dobavljac")
+                    b.HasOne("eKlinika.Models.Korisnici", "Korisnici")
+                        .WithMany()
+                        .HasForeignKey("KorisniciId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("eKlinika.Models.Dobavljac", b =>
+                {
+                    b.HasOne("eKlinika.Models.Drzava", "Drzava")
+                        .WithMany()
                         .HasForeignKey("DrzavaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Doktor", b =>
+            modelBuilder.Entity("eKlinika.Models.Doktor", b =>
                 {
-                    b.HasOne("eKlinika.WebAPI.Database.Osoblje", "Osoblje")
-                        .WithOne("Doktor")
-                        .HasForeignKey("eKlinika.WebAPI.Database.Doktor", "Id")
+                    b.HasOne("eKlinika.Models.Osoblje", "Osoblje")
+                        .WithMany()
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Grad", b =>
+            modelBuilder.Entity("eKlinika.Models.Grad", b =>
                 {
-                    b.HasOne("eKlinika.WebAPI.Database.Drzava", "Drzava")
-                        .WithMany("Grad")
+                    b.HasOne("eKlinika.Models.Drzava", "Drzava")
+                        .WithMany()
                         .HasForeignKey("DrzavaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Korisnici", b =>
+            modelBuilder.Entity("eKlinika.Models.Korisnici", b =>
                 {
-                    b.HasOne("eKlinika.WebAPI.Database.Grad", "Grad")
-                        .WithMany("Korisnici")
+                    b.HasOne("eKlinika.Models.Grad", "Grad")
+                        .WithMany()
                         .HasForeignKey("GradId");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.KorisniciUloge", b =>
+            modelBuilder.Entity("eKlinika.Models.KorisniciUloge", b =>
                 {
-                    b.HasOne("eKlinika.WebAPI.Database.Korisnici", "Korisnik")
+                    b.HasOne("eKlinika.Models.Korisnici", "Korisnik")
                         .WithMany("KorisniciUloge")
                         .HasForeignKey("KorisnikId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("eKlinika.WebAPI.Database.Uloge", "Uloga")
+                    b.HasOne("eKlinika.Models.Uloge", "Uloga")
                         .WithMany("KorisniciUloge")
                         .HasForeignKey("UlogaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.LabPretraga", b =>
+            modelBuilder.Entity("eKlinika.Models.LabPretraga", b =>
                 {
-                    b.HasOne("eKlinika.WebAPI.Database.VrstaPretrage", "VrstaPretrage")
-                        .WithMany("LabPretraga")
+                    b.HasOne("eKlinika.Models.VrstaPretrage", "VrstaPretrage")
+                        .WithMany()
                         .HasForeignKey("VrstaPretrageId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Lijek", b =>
+            modelBuilder.Entity("eKlinika.Models.Lijek", b =>
                 {
-                    b.HasOne("eKlinika.WebAPI.Database.Proizvodjac", "Proizvodjac")
-                        .WithMany("Lijek")
+                    b.HasOne("eKlinika.Models.Proizvodjac", "Proizvodjac")
+                        .WithMany()
                         .HasForeignKey("ProizvodjacId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.MedicinskaSestra", b =>
+            modelBuilder.Entity("eKlinika.Models.MedicinskaSestra", b =>
                 {
-                    b.HasOne("eKlinika.WebAPI.Database.Osoblje", "Osoblje")
-                        .WithOne("MedicinskaSestra")
-                        .HasForeignKey("eKlinika.WebAPI.Database.MedicinskaSestra", "Id")
+                    b.HasOne("eKlinika.Models.Osoblje", "Osoblje")
+                        .WithMany()
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Modalitet", b =>
+            modelBuilder.Entity("eKlinika.Models.Modalitet", b =>
                 {
-                    b.HasOne("eKlinika.WebAPI.Database.LabPretraga", "LabPretraga")
-                        .WithMany("Modalitet")
+                    b.HasOne("eKlinika.Models.LabPretraga", "LabPretraga")
+                        .WithMany()
                         .HasForeignKey("LabPretragaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Narudzba", b =>
+            modelBuilder.Entity("eKlinika.Models.Narudzba", b =>
                 {
-                    b.HasOne("eKlinika.WebAPI.Database.Dobavljac", "Dobavljac")
-                        .WithMany("Narudzba")
+                    b.HasOne("eKlinika.Models.Dobavljac", "Dobavljac")
+                        .WithMany()
                         .HasForeignKey("DobavljacId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.NarudzbaStavka", b =>
+            modelBuilder.Entity("eKlinika.Models.NarudzbaStavka", b =>
                 {
-                    b.HasOne("eKlinika.WebAPI.Database.Lijek", "Lijek")
-                        .WithMany("NarudzbaStavka")
+                    b.HasOne("eKlinika.Models.Lijek", "Lijek")
+                        .WithMany()
                         .HasForeignKey("LijekId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("eKlinika.WebAPI.Database.Narudzba", "Narudzba")
-                        .WithMany("NarudzbaStavka")
+                    b.HasOne("eKlinika.Models.Narudzba", "Narudzba")
+                        .WithMany()
                         .HasForeignKey("NarudzbaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Osoblje", b =>
+            modelBuilder.Entity("eKlinika.Models.Osoblje", b =>
                 {
-                    b.HasOne("eKlinika.WebAPI.Database.Korisnici", "Korisnik")
+                    b.HasOne("eKlinika.Models.Korisnici", "Korisnici")
                         .WithOne("Osoblje")
-                        .HasForeignKey("eKlinika.WebAPI.Database.Osoblje", "Id")
+                        .HasForeignKey("eKlinika.Models.Osoblje", "Id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Pacijent", b =>
+            modelBuilder.Entity("eKlinika.Models.Pacijent", b =>
                 {
-                    b.HasOne("eKlinika.WebAPI.Database.Korisnici", "Korisnik")
+                    b.HasOne("eKlinika.Models.Korisnici", "Korisnici")
                         .WithOne("Pacijent")
-                        .HasForeignKey("eKlinika.WebAPI.Database.Pacijent", "Id")
+                        .HasForeignKey("eKlinika.Models.Pacijent", "Id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("eKlinika.WebAPI.Database.KrvnaGrupa", "KrvnaGrupa")
-                        .WithMany("Pacijent")
+                    b.HasOne("eKlinika.Models.KrvnaGrupa", "KrvnaGrupa")
+                        .WithMany()
                         .HasForeignKey("KrvnaGrupaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Pregled", b =>
+            modelBuilder.Entity("eKlinika.Models.Pregled", b =>
                 {
-                    b.HasOne("eKlinika.WebAPI.Database.Doktor", "Doktor")
-                        .WithMany("Pregled")
+                    b.HasOne("eKlinika.Models.Doktor", "Doktor")
+                        .WithMany()
                         .HasForeignKey("DoktorId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("eKlinika.WebAPI.Database.MedicinskaSestra", "MedicinskaSestra")
-                        .WithMany("Pregled")
+                    b.HasOne("eKlinika.Models.MedicinskaSestra", "MedicinskaSestra")
+                        .WithMany()
                         .HasForeignKey("MedicinskaSestraId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("eKlinika.WebAPI.Database.Pacijent", "Pacijent")
-                        .WithMany("Pregled")
+                    b.HasOne("eKlinika.Models.Pacijent", "Pacijent")
+                        .WithMany()
                         .HasForeignKey("PacijentId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.RacunStavka", b =>
+            modelBuilder.Entity("eKlinika.Models.RacunStavka", b =>
                 {
-                    b.HasOne("eKlinika.WebAPI.Database.ApotekaRacun", "ApotekaRacun")
-                        .WithMany("RacunStavka")
+                    b.HasOne("eKlinika.Models.ApotekaRacun", "ApotekaRacun")
+                        .WithMany()
                         .HasForeignKey("ApotekaRacunId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("eKlinika.WebAPI.Database.Lijek", "Lijek")
-                        .WithMany("RacunStavka")
+                    b.HasOne("eKlinika.Models.Lijek", "Lijek")
+                        .WithMany()
                         .HasForeignKey("LijekId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Recept", b =>
+            modelBuilder.Entity("eKlinika.Models.Recept", b =>
                 {
-                    b.HasOne("eKlinika.WebAPI.Database.Lijek", "Lijek")
-                        .WithMany("Recept")
+                    b.HasOne("eKlinika.Models.Lijek", "Lijek")
+                        .WithMany()
                         .HasForeignKey("LijekId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("eKlinika.WebAPI.Database.Pregled", "Pregled")
-                        .WithMany("Recept")
+                    b.HasOne("eKlinika.Models.Pregled", "Pregled")
+                        .WithMany()
                         .HasForeignKey("PregledId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.RezultatPretrage", b =>
+            modelBuilder.Entity("eKlinika.Models.RezultatPretrage", b =>
                 {
-                    b.HasOne("eKlinika.WebAPI.Database.LabPretraga", "LabPretraga")
-                        .WithMany("RezultatPretrage")
+                    b.HasOne("eKlinika.Models.LabPretraga", "LabPretraga")
+                        .WithMany()
                         .HasForeignKey("LabPretragaId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("eKlinika.WebAPI.Database.Modalitet", "Modalitet")
-                        .WithMany("RezultatPretrage")
+                    b.HasOne("eKlinika.Models.Modalitet", "Modalitet")
+                        .WithMany()
                         .HasForeignKey("ModalitetId");
 
-                    b.HasOne("eKlinika.WebAPI.Database.Uputnica", "Uputnica")
-                        .WithMany("RezultatPretrage")
-                        .HasForeignKey("UputnicaId");
+                    b.HasOne("eKlinika.Models.Uputnica", "Uputnica")
+                        .WithMany()
+                        .HasForeignKey("UputnicaId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Uplata", b =>
+            modelBuilder.Entity("eKlinika.Models.Uplata", b =>
                 {
-                    b.HasOne("eKlinika.WebAPI.Database.Pacijent", "Pacijent")
-                        .WithMany("Uplata")
+                    b.HasOne("eKlinika.Models.Pacijent", "Pacijent")
+                        .WithMany()
                         .HasForeignKey("PacijentId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("eKlinika.WebAPI.Database.Pregled", "Pregled")
+                    b.HasOne("eKlinika.Models.Pregled", "Pregled")
                         .WithMany("Uplata")
                         .HasForeignKey("PregledId");
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.Uputnica", b =>
+            modelBuilder.Entity("eKlinika.Models.Uputnica", b =>
                 {
-                    b.HasOne("eKlinika.WebAPI.Database.Doktor", "LaboratorijDoktor")
+                    b.HasOne("eKlinika.Models.Doktor", "LaboratorijDoktor")
                         .WithMany()
                         .HasForeignKey("LaboratorijDoktorId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("eKlinika.WebAPI.Database.Pacijent", "Pacijent")
-                        .WithMany("Uputnica")
+                    b.HasOne("eKlinika.Models.Pacijent", "Pacijent")
+                        .WithMany()
                         .HasForeignKey("PacijentId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("eKlinika.WebAPI.Database.Doktor", "UputioDoktor")
+                    b.HasOne("eKlinika.Models.Doktor", "UputioDoktor")
                         .WithMany()
                         .HasForeignKey("UputioDoktorId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("eKlinika.WebAPI.Database.VrstaPretrage", "VrstaPretrage")
-                        .WithMany("Uputnica")
+                    b.HasOne("eKlinika.Models.VrstaPretrage", "VrstaPretrage")
+                        .WithMany()
                         .HasForeignKey("VrstaPretrageId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("eKlinika.WebAPI.Database.UstanovljenaDijagnoza", b =>
+            modelBuilder.Entity("eKlinika.Models.UstanovljenaDijagnoza", b =>
                 {
-                    b.HasOne("eKlinika.WebAPI.Database.Dijagnoza", "Dijagnoza")
-                        .WithMany("UstanovljenaDijagnoza")
+                    b.HasOne("eKlinika.Models.Dijagnoza", "Dijagnoza")
+                        .WithMany()
                         .HasForeignKey("DijagnozaId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("eKlinika.WebAPI.Database.Pregled", "Pregled")
-                        .WithMany("UstanovljenaDijagnoza")
+                    b.HasOne("eKlinika.Models.Pregled", "Pregled")
+                        .WithMany()
                         .HasForeignKey("PregledId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

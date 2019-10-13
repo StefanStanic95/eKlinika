@@ -19,17 +19,13 @@ using eKlinika.Helper;
 
 namespace eKlinika.Controllers
 {
-    [Autorizacija(pacijent: true, administrator: true)]
+    [Autorizacija(pacijent: true)]
     public class PacijentController : Controller
     {
-        private readonly IServer _server;
         private ApplicationDbContext _db;
         private ImgUploadHelper _imgHelper;
         private UserManagementHelper _userManagementHelper;
         private IUserManager _userManager;
-
-        
-
 
         public PacijentController(ApplicationDbContext db, IHostingEnvironment environment, IFileManager manager, IUserManager userManager)
         {
@@ -104,7 +100,7 @@ namespace eKlinika.Controllers
                 JMBG = pacijent.Korisnici.JMBG,
                 Telefon = pacijent.Korisnici.Telefon,
                 Grad = _db.Grad.FirstOrDefault(g => g.Id == pacijent.Korisnici.GradId).Naziv,
-                Slika = pacijent.Korisnici.Slika,
+                Slika = pacijent.Korisnici.Slika != null ? Convert.ToBase64String(pacijent.Korisnici.Slika) : "",
                 Spol = pacijent.Korisnici.Spol
             };
             model.Spolovi = new List<SelectListItem>();

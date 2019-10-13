@@ -32,12 +32,12 @@
                 <h3>Detalji o pacijentu:</h3>
 
                 <div class="img-responsive col-md-9 col-xs-12 marginBottom1em">
-                    <img id="blah" src="@Url.Content("/"+Model.Pacijent.Korisnici.Slika)" alt="Image" class="img-thumbnail col-md-12 col-xs-12" style="padding:0;" />
+                    <img id="blah" src="data:image/png;base64,@(Model.Korisnici.Slika != null ? Convert.ToBase64String(Model.Korisnici.Slika) : "")" alt="Image" class="img-thumbnail col-md-12 col-xs-12" style="padding:0;" />
                 </div>
                 <div class="col-md-12">
                     <p><b>Ime i prezime</b>: @(Model.Pacijent.Korisnici.Ime + " " + Model.Pacijent.Korisnici.Prezime)</p>
                     <p><b>Spol:</b> @Model.Pacijent.Korisnici.Spol</p>
-                    <p><b>Starost:</b> @(DateTime.Now.Year - Model.Pacijent.Korisnici.DatumRodjenja.Year).ToString())</p>
+                    <p><b>Starost:</b> @(DateTime.Now.Year - Model.Pacijent.Korisnici.DatumRodjenja.Year)</p>
                     <p><b>Broj knjizice:</b> @Model.Pacijent.BrojKnjizice</p>
                     <p><b>Broj kartona:</b> @Model.Pacijent.BrojKartona</p>
                 </div>

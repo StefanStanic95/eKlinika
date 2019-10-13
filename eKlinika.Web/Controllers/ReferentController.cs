@@ -194,7 +194,7 @@ namespace eKlinika.Controllers
                 JMBG = pacijent.Korisnici.JMBG,
                 Telefon = pacijent.Korisnici.Telefon,
                 Grad = _db.Grad.FirstOrDefault(g => g.Id == pacijent.Korisnici.GradId).Naziv,
-                Slika = pacijent.Korisnici.Slika,
+                Slika = pacijent.Korisnici.Slika != null ? Convert.ToBase64String(pacijent.Korisnici.Slika) : "",
                 Spol = pacijent.Korisnici.Spol,
                 Spolovi = spolovi
             };
