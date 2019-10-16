@@ -22,7 +22,6 @@ namespace eKlinika.Controllers
     [Autorizacija(referent: true, administrator: true)]
     public class ReferentController : Controller
     {
-        private readonly IServer _server;
         private ApplicationDbContext _db;
         private ImgUploadHelper _imgHelper;
         private UserManagementHelper _userManagementHelper;
@@ -31,10 +30,10 @@ namespace eKlinika.Controllers
         
 
 
-        public ReferentController(ApplicationDbContext db, IHostingEnvironment environment, IFileManager manager, IUserManager userManager)
+        public ReferentController(ApplicationDbContext db, IUserManager userManager)
         {
             _db = db;
-            _imgHelper = new ImgUploadHelper(environment, manager);
+            _imgHelper = new ImgUploadHelper();
             _userManagementHelper = new UserManagementHelper(_db);
             _userManager = userManager;
 
@@ -194,7 +193,7 @@ namespace eKlinika.Controllers
                 JMBG = pacijent.Korisnici.JMBG,
                 Telefon = pacijent.Korisnici.Telefon,
                 Grad = _db.Grad.FirstOrDefault(g => g.Id == pacijent.Korisnici.GradId).Naziv,
-                Slika = pacijent.Korisnici.Slika != null ? Convert.ToBase64String(pacijent.Korisnici.Slika) : "",
+                Slika = pacijent.Korisnici.Slika != null ? Convert.ToBase64String(pacijent.Korisnici.Slika) : null,
                 Spol = pacijent.Korisnici.Spol,
                 Spolovi = spolovi
             };

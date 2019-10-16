@@ -11,18 +11,17 @@ namespace eKlinika.Util
 {
     public class ImgUploadHelper
     {
-        private readonly IHostingEnvironment _hostingEnvironment;
-        private readonly IFileManager _fileManager;
-        public ImgUploadHelper(IHostingEnvironment he,IFileManager manager)
-        {
-            _hostingEnvironment = he;
-            _fileManager = manager;
-        }
-
-
         public byte[] GetImgLocationAsync(IFormFile imgInp)
         {
-            return new byte[100];
+            if (imgInp.Length == 0)
+                return null;
+    
+            using (var ms = new MemoryStream())
+            {
+                imgInp.CopyTo(ms);
+                var fileBytes = ms.ToArray();
+                return fileBytes;
+            }
         }
 
     }

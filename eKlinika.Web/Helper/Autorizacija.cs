@@ -48,15 +48,12 @@ namespace eKlinika.Helper
             {
                 if (filterContext.Controller is Controller controller)
                 {
-                    controller.TempData["error_poruka"] = "Niste logirani";
+                    controller.TempData["login_error"] = "Niste logirani";
                 }
 
-                filterContext.Result = new RedirectToActionResult("Index", "Autentifikacija", new { @area = "" });
+                filterContext.Result = new RedirectToActionResult("Login", "Account", new { @area = "" });
                 return;
             }
-
-            //Preuzimamo DbContext preko app services
-            ApplicationDbContext db = filterContext.HttpContext.RequestServices.GetService<ApplicationDbContext>();
 
             Uloge uloga = filterContext.HttpContext.GetUlogaKorisnika();
             if (uloga != null)
@@ -97,9 +94,9 @@ namespace eKlinika.Helper
 
             if (filterContext.Controller is Controller c1)
             {
-                c1.ViewData["error_poruka"] = "Nemate pravo pristupa";
+                c1.TempData["login_error"] = "Nemate pravo pristupa";
             }
-            filterContext.Result = new RedirectToActionResult("Index", "Home", new { @area = "" });
+            filterContext.Result = new RedirectToActionResult("Login", "Account", new { @area = "" });
         }
 
         public void OnActionExecuted(ActionExecutedContext context)

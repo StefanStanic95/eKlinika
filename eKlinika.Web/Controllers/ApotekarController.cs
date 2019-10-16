@@ -22,18 +22,16 @@ namespace eKlinika.Controllers
 {
     public class ApotekarController : Controller
     {
-        private readonly IHostingEnvironment hosting;
         private ApplicationDbContext _db;
         private ImgUploadHelper _imgHelper;
         private UserManagementHelper _userManagementHelper;
         private IUserManager _userManager;
 
         public ApotekarController(ApplicationDbContext db,
-                                  IUserManager userManager,
-                                  IFileManager manager)
+                                  IUserManager userManager)
         {
             _db = db;
-            _imgHelper = new ImgUploadHelper(hosting,manager);
+            _imgHelper = new ImgUploadHelper();
             _userManagementHelper = new UserManagementHelper(_db);
             _userManager = userManager;
 

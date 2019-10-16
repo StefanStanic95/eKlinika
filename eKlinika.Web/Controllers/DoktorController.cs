@@ -21,22 +21,18 @@ namespace eKlinika.Controllers
     [Autorizacija(doktor:true, administrator: true)]
     public class DoktorController : Controller
     {
-        private readonly IHostingEnvironment hosting;
         private ApplicationDbContext _db;
         private ImgUploadHelper _imgHelper;
         private UserManagementHelper _userManagementHelper;
         private IUserManager _userManager;
 
 
-        public DoktorController(ApplicationDbContext db,IHostingEnvironment environment,IFileManager manager, IUserManager userManager)
+        public DoktorController(ApplicationDbContext db, IUserManager userManager)
         {
             _db = db;
-            hosting = environment;
-            _imgHelper = new ImgUploadHelper(hosting,manager);
+            _imgHelper = new ImgUploadHelper();
             _userManagementHelper = new UserManagementHelper(_db);
             _userManager = userManager;
-
-
         }
 
         public IActionResult Index()
@@ -200,12 +196,12 @@ namespace eKlinika.Controllers
             return RedirectToAction("UputnicaPrikazi", new { Id = model.PacijentId });
         }
 
-        public IActionResult UputnicaPrikazi(int Id)
+        public IActionResult UputnicaPrikazi(int Id, int readOnly)
         {
             UputnicaPrikaziVM VM = new UputnicaPrikaziVM()
             {
                 PacijentId = Id,
-
+                readOnly = readOnly,
                 Uputnice =
                     _db.Uputnica.Include(x => x.Pacijent)
                     .Where(x => x.PacijentId == Id)

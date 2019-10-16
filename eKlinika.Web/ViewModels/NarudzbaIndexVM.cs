@@ -29,5 +29,13 @@ namespace eKlinika.ViewModels
 
         [Display(Name = "Iznos narudzbe")]
         public double IznosNarudzbe { get; set; }
+        public List<NarudzbaStavkaIndexVM> Stavke { get; set; }
+    }
+
+    public class NarudzbaStavkaIndexVM
+    {
+        public string Lijek { get; set; }
+        public int Kolicina { get; set; }
+        public double CijenaPoKomadu { get; set; }
     }
 }

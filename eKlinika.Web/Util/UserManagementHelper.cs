@@ -218,11 +218,13 @@ namespace eKlinika.Util
                 TerminId = x.Id,
                 Doktor = x.Doktor.Titula + " " + x.Doktor.Osoblje.Korisnici.Ime + " "
                 + x.Doktor.Osoblje.Korisnici.Prezime,
-                Pacijent = prepPacijentShort(x.PacijentId),
+                PacijentId = x.PacijentId,
                 DatumPregleda = x.DatumPregleda.Date.ToShortDateString(),
                 DatumRezervacije = x.DatumRezervacije.Date.ToShortDateString(),
                 VrijemePregleda = x.DatumPregleda.Hour.ToString() + ":" + x.DatumPregleda.Minute.ToString()
             }).FirstOrDefault();
+
+            model.Pacijent = prepPacijentShort(model.PacijentId);
 
             return model;
         }
@@ -237,7 +239,7 @@ namespace eKlinika.Util
                 Starost = (DateTime.Now.Year-x.Korisnici.DatumRodjenja.Year).ToString(),
                 BrojKartona=x.BrojKartona,
                 BrojKnjizice=x.BrojKnjizice,
-                Image= x.Korisnici.Slika != null ? Convert.ToBase64String(x.Korisnici.Slika) : ""
+                Image= x.Korisnici.Slika != null ? Convert.ToBase64String(x.Korisnici.Slika) : null
             }).FirstOrDefault();
             return model;
         }

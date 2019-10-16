@@ -35,7 +35,17 @@
                 <h4>Odjel za apoteku</h4>
             </div>
         </a>
-        @if (role == "MedicinskaSestra" || role == "Administrator")
+        @if (role == "Administrator")
+        {
+            <div class="col-md-3">
+                <div class="col-md-12 homePageDivs text-center">
+                        <img src="~/images/Nurse.jpg" style="max-height: 108px; margin-bottom: 0" />
+                    <h4><a asp-action="Index" asp-controller="MedicinskaSestra" style="color:#c80d0d">Odjel za medicinske sestre</a></h4>
+                    <h4><a asp-action="Index" asp-controller="Referent" style="color:#c80d0d">Odjel za referente</a></h4>
+                </div>
+            </div>
+        }
+        else if (role == "MedicinskaSestra")
         {
             <a asp-action="Index" asp-controller="MedicinskaSestra" class="col-md-3">
 

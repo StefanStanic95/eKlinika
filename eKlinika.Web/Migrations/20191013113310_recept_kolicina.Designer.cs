@@ -328,8 +328,6 @@ namespace eKlinika.Migrations
 
                     b.Property<int>("DobavljacId");
 
-                    b.Property<double>("Iznos");
-
                     b.HasKey("Id");
 
                     b.HasIndex("DobavljacId");

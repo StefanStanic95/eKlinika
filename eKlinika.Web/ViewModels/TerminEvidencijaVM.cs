@@ -14,5 +14,6 @@ namespace eKlinika.ViewModels
         public string DatumPregleda { get; set; }
         public string VrijemePregleda { get; set; }
         public string Napomena { get; set; }
+        public int PacijentId { get; set; }
     }
 }

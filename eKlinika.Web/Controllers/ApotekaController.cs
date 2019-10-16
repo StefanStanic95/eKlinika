@@ -251,12 +251,13 @@ namespace eKlinika.Controllers
             return View(model);
         }
 
-        public IActionResult IzdavanjeRacuna2([FromBody]ApotekaRacunVM2 model)
+        [HttpPost]
+        public IActionResult IzdavanjeRacuna2(ApotekaRacunVM2 model, List<string> LijekId)
         {
-            
+
             Korisnici apotekar = _context.Korisnici.FirstOrDefault(u => u.Id == model.ApotekarId);
             string apotekarIme = apotekar.Ime + ' ' + apotekar.Prezime;
-            
+
             Korisnici pacijent = _context.Korisnici.FirstOrDefault(u => u.Id == model.PacijentId);
             string pacijentIme = pacijent.Ime + ' ' + pacijent.Prezime;
 
@@ -267,7 +268,7 @@ namespace eKlinika.Controllers
                 PacijentId = model.PacijentId,
                 PacijentIme = pacijentIme,
                 Datum = model.Datum,
-                LijekoviIds = model.LijekoviIds,
+                LijekoviIds = LijekId,
                 LijekoviNazivi = new List<string>(),
                 Kolicine = new List<int>()
             };
@@ -392,32 +393,37 @@ namespace eKlinika.Controllers
         {
             Recept recept = _context.Recept.Include(r=>r.Pregled).FirstOrDefault(r => r.Id == Id);
 
-            var UserId = HttpContext.GetLogiraniKorisnik().Id;
-
-            ApotekaRacun racun = new ApotekaRacun
+            if(HttpContext.GetUlogaKorisnika(0).Naziv == "Apotekar")
             {
-                DatumIzdavanja = DateTime.Now,
-                ApotekarId = UserId,
-                PacijentId = recept.Pregled.PacijentId
-            };
+                var UserId = HttpContext.GetLogiraniKorisnik().Id;
 
-            _context.Add(racun);
-            _context.SaveChanges();
+                ApotekaRacun racun = new ApotekaRacun
+                {
+                    DatumIzdavanja = DateTime.Now,
+                    ApotekarId = UserId,
+                    PacijentId = recept.Pregled.PacijentId
+                };
 
-            _context.Add(new RacunStavka
-            {
-                ApotekaRacunId = racun.Id,
-                Kolicina = recept.Kolicina,
-                LijekId = recept.LijekId
-            });
+                _context.Add(racun);
+                _context.SaveChanges();
 
-            recept.IsObradjen = true;
+                _context.Add(new RacunStavka
+                {
+                    ApotekaRacunId = racun.Id,
+                    Kolicina = recept.Kolicina,
+                    LijekId = recept.LijekId
+                });
 
-            Lijek lijek = _context.Lijek.FirstOrDefault(l => l.Id == recept.LijekId);
-            lijek.UkupnoNaStanju -= recept.Kolicina;
+                recept.IsObradjen = true;
+
+                Lijek lijek = _context.Lijek.FirstOrDefault(l => l.Id == recept.LijekId);
+                lijek.UkupnoNaStanju -= recept.Kolicina;
 
 
-            _context.SaveChanges();
+                _context.SaveChanges();
+            }
+
+
 
             return RedirectToAction("IzdatiRacuniIndex");
         }
@@ -635,20 +641,20 @@ namespace eKlinika.Controllers
             var narudzba = _context.Narudzba.Include(n => n.Dobavljac)
                 .FirstOrDefault(n => n.Id == id);
 
-            var stavka = _context.NarudzbaStavka.Include(n => n.Lijek)
-                .FirstOrDefault(n => n.NarudzbaId == id);
-            
-
-            //ovdje ima neki problem
             NarudzbaIndexVM model = new NarudzbaIndexVM
             {
                 Id = narudzba.Id,
-               DatumNarudzbe = narudzba.DatumNarudzbe,
-               Dobavljac = narudzba.Dobavljac.Naziv,
-               Lijek = stavka.Lijek.Naziv,
-               IznosNarudzbe = narudzba.Iznos,
-              Kolicina = stavka.Kolicina,
-               CijenaPoKomadu = stavka.Lijek.CijenaPoKomadu
+                DatumNarudzbe = narudzba.DatumNarudzbe,
+                Dobavljac = narudzba.Dobavljac.Naziv,
+                IznosNarudzbe = _context.NarudzbaStavka.Where(n => n.NarudzbaId == id).Sum(x=>x.Lijek.CijenaPoKomadu * x.Kolicina),
+                Stavke = _context.NarudzbaStavka.Include(n => n.Lijek)
+                .Where(n => n.NarudzbaId == id)
+                .Select(x => new NarudzbaStavkaIndexVM
+                {
+                    Lijek = x.Lijek.Naziv,
+                    Kolicina = x.Kolicina,
+                    CijenaPoKomadu = x.Lijek.CijenaPoKomadu,
+                }).ToList()
             };
 
             if (narudzba.DatumIsporuke.HasValue)

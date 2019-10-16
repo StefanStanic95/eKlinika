@@ -39,7 +39,14 @@
                 <h3>Detalji o pacijentu:</h3>
 
                 <div class="img-responsive col-md-9 col-xs-12 marginBottom1em">
-                    <img id="blah" src="data:image/png;base64,@Model.Pacijent.Image" alt="Image" class="img-thumbnail col-md-12 col-xs-12" style="padding:0;" />
+                    @if (Model.Pacijent.Image == null || Model.Pacijent.Image.Length <1000)
+                    {
+                        <img id="blah" src="~/images/default-profile-photo.png" alt="Image" class="img-thumbnail col-md-12" style="padding:0; height:18em;" />
+                    }
+                    else
+                    {
+                        <img id="blah" src="data:image/png;base64,@Model.Pacijent.Image" alt="Image" class="img-thumbnail col-md-12 col-xs-12" style="padding:0;" />
+                    }
                 </div>
                 <div class="col-md-12">
                     <p><b>Ime i prezime</b>: @Model.Pacijent.ImePrezime</p>
@@ -69,7 +76,7 @@
             <ul class="nav nav-tabs nav-justified" id="tabs-list">
                 <li class="active"><a asp-controller="Dijagnoza" asp-action="Index" asp-route-terminId="@Model.TerminId" class="clickMe" ajax-poziv="da" ajax-rezultat="rezDiv">Dijagnoze</a></li>
                 <li><a asp-controller="Pregledi" asp-action="ReceptiIndex" asp-route-Id="@Model.TerminId" ajax-poziv="da" ajax-rezultat="rezDiv">Recepti</a></li>
-                <li><a href="#">Uputnice</a></li>
+                <li><a asp-controller="Doktor" asp-action="UputnicaPrikazi" asp-route-Id="@Model.PacijentId" asp-route-readOnly="1" ajax-poziv="da" ajax-rezultat="rezDiv">Uputnice</a></li>
             </ul>
             <div class=" container-fluid marginTop0 paddingLeft0 paddingRight0" id="rezDiv">
 

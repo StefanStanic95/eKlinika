@@ -35,7 +35,12 @@ namespace eKlinika.Controllers
         public IActionResult Index()
         {
             var currentUser = HttpContext.GetLogiraniKorisnik().Id;
-            List<PreglediIndexVM> model = _db.Pregled.Include(x => x.Pacijent).Include(x => x.Doktor).Include(x => x.MedicinskaSestra).Where(x=>!x.isOdrzan && currentUser==x.DoktorId).Select(
+            List<PreglediIndexVM> model = _db.Pregled
+                .Include(x => x.Pacijent)
+                .Include(x => x.Doktor)
+                .Include(x => x.MedicinskaSestra)
+                .Where(x => !x.isOdrzan && (currentUser == x.DoktorId || HttpContext.GetUlogaKorisnika(0).Naziv == "Administrator"))
+                .Select(
                 x => new PreglediIndexVM
                 {
                     Id = x.Id,

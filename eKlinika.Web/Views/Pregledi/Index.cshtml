@@ -1,6 +1,6 @@
 ﻿@model List<eKlinika.ViewModels.PreglediIndexVM>
-@{ 
-
+@{
+    ViewData["Title"] = "Popis rezervisanih termina";
 }
 
 <div class="container" style="position:absolute;">
@@ -17,11 +17,13 @@
 
         <table class="table table-condensed">
             <thead>
-                <th>Datum pregleda</th>
-                <th>Vrijeme pregleda</th>
-                <th>Doktor</th>
-                <th>Pacijent</th>
-                <th>Akcija</th>
+                <tr>
+                    <th>Datum pregleda</th>
+                    <th>Vrijeme pregleda</th>
+                    <th>Doktor</th>
+                    <th>Pacijent</th>
+                    <th>Akcija</th>
+                </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
@@ -31,8 +33,10 @@
                         <td>@item.DatumPregleda.ToShortTimeString()</td>
                         <td>@item.Doktor</td>
                         <td>@item.Pacijent</td>
-                        <td><a class="btn btn-success" asp-action="EvidencijaPregleda" asp-controller="Pregledi" asp-route-Id="@item.Id">Evidentiraj</a> 
-                        <a class="btn btn-danger" asp-action="Otkazi" asp-controller="Pregledi" asp-route-Id="@item.Id">Otkazi</a></td>
+                        <td>
+                            <a class="btn btn-success" asp-action="EvidencijaPregleda" asp-controller="Pregledi" asp-route-Id="@item.Id">Evidentiraj</a>
+                            <a class="btn btn-danger" asp-action="Otkazi" asp-controller="Pregledi" asp-route-Id="@item.Id">Otkazi</a>
+                        </td>
                     </tr>
                 }
             </tbody>

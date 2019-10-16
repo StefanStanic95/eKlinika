@@ -10,6 +10,7 @@ namespace eKlinika.ViewModels
         public int PacijentId { get; set; }
 
         public List<UputniceRow> Uputnice { get; set; }
+        public int readOnly { get; set; }
 
         public class UputniceRow
         {

@@ -193,3 +193,13 @@ ul.tabs {
 .dodajFormContainerLower .field-validation-error {
     color: yellow
 }
+
+.fusion-imageframe {
+    display: inline-block;
+    z-index: 1;
+    position: relative;
+    max-width: 100%;
+}
+.imageframe-align-center {
+    text-align: center;
+}

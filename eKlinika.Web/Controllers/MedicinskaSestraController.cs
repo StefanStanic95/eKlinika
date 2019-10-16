@@ -20,7 +20,6 @@ namespace eKlinika.Controllers
     [Autorizacija(medicinskasestra: true, administrator: true)]
     public class MedicinskaSestraController : Controller
     {
-        private readonly IHostingEnvironment hosting;
         private ApplicationDbContext _db;
         private ImgUploadHelper _imgHelper;
         private UserManagementHelper _userManagementHelper;
@@ -31,11 +30,10 @@ namespace eKlinika.Controllers
 
         // *************** MEDICINSKA SESTRA *************** 
 
-        public MedicinskaSestraController(ApplicationDbContext db, IHostingEnvironment environment, IFileManager manager, IUserManager userManager)
+        public MedicinskaSestraController(ApplicationDbContext db, IUserManager userManager)
         {
             _db = db;
-            hosting = environment;
-            _imgHelper = new ImgUploadHelper(hosting, manager);
+            _imgHelper = new ImgUploadHelper();
             _userManagementHelper = new UserManagementHelper(_db);
             _userManager = userManager;
         }
