@@ -13,6 +13,12 @@
 
         <StackLayout Padding="5" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
 
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView VerticalOptions="FillAndExpand">
+                    <Image Source="logo.png" VerticalOptions="Center" HeightRequest="160" />
+                </ContentView>
+            </StackLayout>
+            
             <Label HorizontalOptions="CenterAndExpand" FontSize="20" Margin="50" Text="Welcome to eKlinika"></Label>
             <Label Text="Username:"/>
             <Entry Text="{Binding Username}"></Entry>

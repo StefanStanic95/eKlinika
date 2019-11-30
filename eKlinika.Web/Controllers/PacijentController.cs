@@ -19,7 +19,7 @@ using eKlinika.Helper;
 
 namespace eKlinika.Controllers
 {
-    [Autorizacija(pacijent: true)]
+    [Autorizacija(pacijent: true, administrator:true)]
     public class PacijentController : Controller
     {
         private ApplicationDbContext _db;

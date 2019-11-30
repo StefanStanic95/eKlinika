@@ -1,9 +1,12 @@
 ﻿@model eKlinika.ViewModels.ApotekaReceptIndexVM
 
-@{ 
+@{
     int i = 1;
 }
+
 <div class="row" id="filteredDiv">
+    <h2 style="text-align:center; margin-top: 20px;">Recepti</h2>
+
     <div class="row" style="position: absolute; margin: 40px 0 0 260px;">
         <div class="row" style="margin-left: 430px;">
             <select id="filterSelect">
@@ -37,7 +40,7 @@
                         <td>@recept.NazivLijeka</td>
                         <td>@recept.PacijentIme</td>
                         <td>@recept.DoktorIme</td>
-                        <td>@recept.Obradjen</td>
+                        <td>@(recept.Obradjen ? "DA" : "NE")</td>
                         @{
                             if (!recept.Obradjen)
                             {
@@ -48,29 +51,29 @@
                             else
                             {
                                 <td>
-                                    <h5>Obradjen</h5>
+                                    <h5>Obrađen</h5>
                                 </td>
                             }
                         }
                     </tr>
-                            }
+                }
             </tbody>
         </table>
     </div>
 
 </div>
-<script>
-    $('#filterBtn').click(function () {
-        var selected = document.getElementById('filterSelect');
+    <script>
+        $('#filterBtn').click(function () {
+            var selected = document.getElementById('filterSelect');
 
-        $.ajax({
-            type: 'GET',
-            data: { 'value': selected.value },
-            url: '/Apoteka/FilterRecepti',
-            success: function (result) {
-                $('#filteredDiv').html(result);
-            }
+            $.ajax({
+                type: 'GET',
+                data: { 'value': selected.value },
+                url: '/Apoteka/FilterRecepti',
+                success: function (result) {
+                    $('#filteredDiv').html(result);
+                }
 
+            });
         });
-    });
-</script>
+    </script>

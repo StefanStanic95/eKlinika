@@ -102,6 +102,11 @@ namespace eKlinika.WebAPI.Services
             entity.LozinkaSalt = GenerateSalt();
             entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Password);
 
+            if(request.Pacijent1 != null)
+            {
+                entity.Pacijent = _mapper.Map<Database.Pacijent>(request.Pacijent1);
+            }
+
             _context.Korisnici.Add(entity);
             _context.SaveChanges();
 

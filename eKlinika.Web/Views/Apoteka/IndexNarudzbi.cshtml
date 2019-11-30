@@ -1,9 +1,11 @@
 ﻿@model eKlinika.ViewModels.NarudzbaIndexListVM
- 
-@{ 
-   var brojac = 0;
+
+@{
+    var brojac = 1;
 }
-<div class="row" style="position:absolute; margin-top: 40px; margin-left: 270px;">
+<h2 style="text-align:center; margin-top: 40px;"> Narudžbe </h2>
+
+<div class="row" style="position:absolute; margin-top: 20px; margin-left: 330px;">
     <table class="table table-striped" style=" text-align: center;">
         <thead>
             <tr>
@@ -14,19 +16,20 @@
                 <th scope="row">Akcija</th>
             </tr>
         </thead>
-        
+
         <tbody>
-            @foreach(var narudzba in Model.Narudzbe)
+            @foreach (var narudzba in Model.Narudzbe)
             {
                 <tr>
                     <th>@brojac</th>
-                    @{ 
+                    @{
                         brojac += 1;
                     }
                     <td>@narudzba.DatumNarudzbe.ToShortDateString()</td>
                     <td>
                         @{
-                            if (narudzba.DatumIsporuke.HasValue) { 
+                            if (narudzba.DatumIsporuke.HasValue)
+                            {
                                 <span>@narudzba.DatumIsporuke.Value.ToShortDateString()</span>
                             }
                             else
@@ -35,13 +38,13 @@
                             }
                         }
                     </td>
-                       <td>@narudzba.Dobavljac</td>
+                    <td>@narudzba.Dobavljac</td>
                     <td><a class="btn btn-success" asp-controller="Apoteka" asp-action="DetaljiNarudzbe" asp-route-id="@narudzba.Id">Detalji</a></td>
                 </tr>
             }
         </tbody>
     </table>
-    
+
     <a class="btn btn-danger" style="margin-bottom: 40px;" asp-controller="Apoteka" asp-action="DodajNarudzbu">Dodaj</a>
 </div>
 

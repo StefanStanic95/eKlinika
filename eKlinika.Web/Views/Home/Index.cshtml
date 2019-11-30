@@ -17,12 +17,24 @@
         </div>
     </div>
     <div class="row">
-        <a asp-action="Index" asp-controller="Pacijent" class="col-md-3">
-            <div class="col-md-12 homePageDivs">
-                <img src="~/images/patitent-home.png" class="col-md-12 img-responsive" />
-                <h4>Odjel za pacijente</h4>
-            </div>
-        </a>
+        @if (role == "Administrator")
+        {
+            <a asp-action="Index" asp-controller="Referent" class="col-md-3">
+                <div class="col-md-12 homePageDivs">
+                    <img src="~/images/patitent-home.png" class="col-md-12 img-responsive" />
+                    <h4>Odjel za referente</h4>
+                </div>
+            </a>
+        }
+        else
+        {
+            <a asp-action="Index" asp-controller="Pacijent" class="col-md-3">
+                <div class="col-md-12 homePageDivs">
+                    <img src="~/images/patitent-home.png" class="col-md-12 img-responsive" />
+                    <h4>Odjel za pacijente</h4>
+                </div>
+            </a>
+        }
         <a asp-action="LandingPage" asp-controller="Pregledi" class="col-md-3">
             <div class="col-md-12 homePageDivs">
                 <img src="~/images/staff-home.jpg" class="col-md-12 img-responsive" />
@@ -37,19 +49,17 @@
         </a>
         @if (role == "Administrator")
         {
-            <div class="col-md-3">
+            <a asp-action="Index" asp-controller="MedicinskaSestra" class="col-md-3">
                 <div class="col-md-12 homePageDivs text-center">
-                        <img src="~/images/Nurse.jpg" style="max-height: 108px; margin-bottom: 0" />
-                    <h4><a asp-action="Index" asp-controller="MedicinskaSestra" style="color:#c80d0d">Odjel za medicinske sestre</a></h4>
-                    <h4><a asp-action="Index" asp-controller="Referent" style="color:#c80d0d">Odjel za referente</a></h4>
+                    <img src="~/images/Nurse.jpg" class="col-md-12 img-responsive" />
+                    <h4>Odjel za medicinske sestre</h4>
                 </div>
-            </div>
+            </a>
         }
         else if (role == "MedicinskaSestra")
         {
             <a asp-action="Index" asp-controller="MedicinskaSestra" class="col-md-3">
-
-                <div class="col-md-12 homePageDivs">
+                <div class="col-md-12 homePageDivs text-center">
                     <img src="~/images/Nurse.jpg" class="col-md-12 img-responsive" />
                     <h4>Odjel za admin. osoblje</h4>
                 </div>
@@ -83,21 +93,13 @@
         Naš tim sačinjavaju iskusni i priznati medicinski stručnjaci koji su prepoznati kao jedni od vodećih stručnjaka u svojim oblastima kako u BiH, tako i u inostranstvu. Pružamo usluge iz različitih medicinskih oblasti poput opće, porodične, sportske i interne medicine, radiologije, kardiologije itd.
     </div>
 
-    <div class="fullwidth-box" style="background-color: rgb(225,225,255);background-position: center center;background-repeat: no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;width:100%; margin:50px 0 50px 0;opacity:0.8;">
-        <div class="fusion-column-content-centered" style="min-height: 150px; height: auto; padding:20px;">
-            <div class="fusion-text">
-                <h3 style="color: rgb(128, 128, 128); text-align:center;" data-fontsize="25" data-lineheight="50">Prepustite Vaše zdravlje i zdravlje vaših najbližih u sigurne i pouzdane ruke timu iskusnih medicinskih stručnjaka.</h3>
-            </div>
-        </div>
-    </div>
-
 
     <div>
-        <div class="fusion-layout-column fusion_builder_column fusion_builder_column_1_3  fusion-one-third fusion-column-first 1_3" style="margin-top:0px;margin-bottom:20px;width:33.33%;width:calc(33.33% - ( ( 4% + 4% ) * 0.3333 ) );margin-right: 2%; display: inline-block;">
+        <div class="fusion-layout-column fusion_builder_column fusion_builder_column_1_3  fusion-one-third fusion-column-first 1_3" style="margin-top:30px;margin-bottom:20px;width:33.33%;width:calc(33.33% - ( ( 4% + 4% ) * 0.3333 ) );margin-right: 2%; display: inline-block;">
             <div class="fusion-column-wrapper" style="padding: 0px 0px 0px 0px;background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;" data-bg-url="">
                 <div class="imageframe-align-center">
                     <span class="fusion-imageframe imageframe-none imageframe-4 hover-type-none">
-                        <img src="~/images/patient03.jpg" width="100px" height="100px" alt="" title="" style="border-radius: 50%;">
+                        <img src="~/images/patient03.jpg" width="90px" height="100px" alt="" title="" style="border-radius: 50%;">
                     </span>
                 </div>
                 <div class="fusion-sep-clear">
@@ -115,7 +117,7 @@
             <div class="fusion-column-wrapper" style="padding: 0px 0px 0px 0px;background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;" data-bg-url="">
                 <div class="imageframe-align-center">
                     <span class="fusion-imageframe imageframe-none imageframe-4 hover-type-none">
-                        <img src="~/images/patient02.jpg" width="100px" height="100px" alt="" title="" style="border-radius: 50%;">
+                        <img src="~/images/patient02.jpg" width="90px" height="100px" alt="" title="" style="border-radius: 50%;">
                     </span>
                 </div>
                 <div class="fusion-sep-clear">
@@ -123,7 +125,7 @@
                 <div class="fusion-separator fusion-full-width-sep sep-single sep-solid" style="border-color:#f4f4f4;border-top-width:5px;margin-left: auto;margin-right: auto;margin-top:15px;margin-bottom:15px;width:100%;max-width:100%;">
                 </div>
                 <div class="fusion-text">
-                    <p>Nakon neugodnih pregleda po raznim zdravstvenim ustanovama širom BiH, Atrijum je jedini napravio čudo. Usluga za 10! </p>
+                    <p>Nakon neugodnih pregleda po raznim zdravstvenim ustanovama širom BiH, eKlinika je jedina napravila čudo. Usluga za 10! </p>
                     <p><strong>Dino Šerić – Mostar</strong></p>
                 </div>
                 <div class="fusion-clearfix"></div>
@@ -133,7 +135,7 @@
             <div class="fusion-column-wrapper" style="padding: 0px 0px 0px 0px;background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;" data-bg-url="">
                 <div class="imageframe-align-center">
                     <span class="fusion-imageframe imageframe-none imageframe-4 hover-type-none">
-                        <img src="~/images/patient01.jpg" width="100px" height="100px" alt="" title="" style="border-radius: 50%;">
+                        <img src="~/images/patient01.jpg" width="90px" height="100px" alt="" title="" style="border-radius: 50%;">
                     </span>
                 </div>
                 <div class="fusion-sep-clear">
@@ -141,7 +143,7 @@
                 <div class="fusion-separator fusion-full-width-sep sep-single sep-solid" style="border-color:#f4f4f4;border-top-width:5px;margin-left: auto;margin-right: auto;margin-top:15px;margin-bottom:15px;width:100%;max-width:100%;">
                 </div>
                 <div class="fusion-text">
-                    <p>I pored mora bližih privatnih poliklinika i ambulanti, Poliklinika Atrijum je već duži niz godina moj prvi i jedini izbor.</p>
+                    <p>I pored mora bližih privatnih poliklinika i ambulanti, odlučila sam se na potez da eKlinika bude moj prvi i jedini izbor.</p>
                     <p><strong>Sanja Tomić – Tuzla</strong></p>
                 </div>
                 <div class="fusion-clearfix"></div>
@@ -170,6 +172,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        z-index: 1;
     }
 
         .footer p {

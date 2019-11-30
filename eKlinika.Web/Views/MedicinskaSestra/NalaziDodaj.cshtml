@@ -1,5 +1,7 @@
 ﻿@model eKlinika.ViewModels.PregledDodajVM
-
+@{ 
+    var date = DateTime.Now;
+}
 <h2>Dodaj nalaz</h2>
 
 <div>
@@ -7,7 +9,7 @@
         @Html.HiddenFor(x => x.Pacijent)
         <div class="form-group">
             <label>Datum pregleda</label>
-            <input asp-for="DatumPregleda" class="form-control" />
+            <input asp-for="DatumPregleda" value="@date.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ','T')" class="form-control" />
             <span asp-validation-for="@Model.DatumPregleda"></span>
         </div>
         <div class="form-group">
@@ -27,7 +29,7 @@
         </div>
         <div class="form-group">
             <label>Datum rezervacije</label>
-            <input asp-for="DatumRezervacije" class="form-control" />
+            <input asp-for="DatumRezervacije" value="@date.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ','T')" class="form-control" />
             <span asp-validation-for="@Model.DatumRezervacije"></span>
 
         </div>

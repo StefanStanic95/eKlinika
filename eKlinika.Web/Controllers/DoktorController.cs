@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Http;
 
 using eKlinika.Util.FileManager;
 using eKlinika.Helper;
+using eKlinika.Web.ViewModels;
 
 namespace eKlinika.Controllers
 {
@@ -72,7 +73,7 @@ namespace eKlinika.Controllers
                 Spol = model.Spol,
                 Ulica = model.Ulica,
                 Broj = model.Broj,
-                Slika = _imgHelper.GetImgLocationAsync(imgInp),
+                Slika = imgInp != null ? _imgHelper.GetImgLocationAsync(imgInp) : new byte[0],
                 UserName = model.Ime + '.' + model.Prezime,
                 Email = model.Ime + "." + model.Prezime + "@eKlinika.com"//,
             };
@@ -106,6 +107,23 @@ namespace eKlinika.Controllers
             _db.SaveChanges();
 
             return RedirectToAction("Index", "Home");
+        }
+
+        /************ PRETRAGA *********/
+
+
+        public IActionResult Pretraga(string Text = " ")
+        {
+            DoktorPretragaVM rezultat = new DoktorPretragaVM
+            {
+                Doktori = !string.IsNullOrEmpty(Text) ? _db.Doktor.Include(x => x.Osoblje.Korisnici).Where(x => x.Osoblje.Korisnici.Ime.ToLower().Contains(Text.ToLower())
+                                   || x.Osoblje.Korisnici.Prezime.ToLower().Contains(Text.ToLower())
+                                   || (x.Osoblje.Korisnici.Ime + " " + x.Osoblje.Korisnici.Prezime).ToLower().Contains(Text.ToLower())).OrderBy(x => x.Osoblje.Korisnici.Ime).ToList() :
+                                   _db.Doktor.Include(x => x.Osoblje.Korisnici).OrderBy(x => x.Osoblje.Korisnici.Ime).ToList(),
+                Text = Text
+            };
+            return View(rezultat);
+
         }
 
 

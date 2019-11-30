@@ -77,17 +77,21 @@
                     {
                         <li><a asp-area="" asp-controller="Pacijent" asp-action="Index">Pacijent Home</a></li>
                     }
-                    @if (role == "Referent")
+                    @if (role == "Referent" || role == "Administrator")
                     {
                         <li><a asp-area="" asp-controller="Referent" asp-action="Index">Referent Home</a></li>
                     }
-                    @if (role == "MedicinskaSestra")
+                    @if (role == "Administrator")
                     {
-                        <li><a asp-area="" asp-controller="MedicinskaSestra" asp-action="Index">Med.Sestra Home</a></li>
+                        <li><a asp-area="" asp-controller="Pregledi" asp-action="LandingPage">Osoblje Home</a></li>
                     }
-                    @if (role == "Apotekar")
+                    @if (role == "Apotekar" || role == "Administrator")
                     {
                         <li><a asp-area="" asp-controller="Apoteka" asp-action="Index">Apoteka Home</a></li>
+                    }
+                    @if (role == "MedicinskaSestra" || role == "Administrator")
+                    {
+                        <li><a asp-area="" asp-controller="MedicinskaSestra" asp-action="Index">Med.Sestra Home</a></li>
                     }
                     @if (role == "Doktor")
                     {

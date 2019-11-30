@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Http;
 
 using eKlinika.Util.FileManager;
 using eKlinika.Helper;
+using eKlinika.Web.ViewModels;
 
 namespace eKlinika.Controllers
 {
@@ -116,6 +117,23 @@ namespace eKlinika.Controllers
             return View();
         }
 
+
+        /************ PRETRAGA *********/
+
+
+        public IActionResult Pretraga(string Text = " ")
+        {
+            MedSestraPretragaVM rezultat = new MedSestraPretragaVM
+            {
+                MedSestre = !string.IsNullOrEmpty(Text) ? _db.MedicinskaSestra.Include(x => x.Osoblje.Korisnici).Where(x => x.Osoblje.Korisnici.Ime.ToLower().Contains(Text.ToLower())
+                                   || x.Osoblje.Korisnici.Prezime.ToLower().Contains(Text.ToLower())
+                                   || (x.Osoblje.Korisnici.Ime + " " + x.Osoblje.Korisnici.Prezime).ToLower().Contains(Text.ToLower())).OrderBy(x => x.Osoblje.Korisnici.Ime).ToList() :
+                                   _db.MedicinskaSestra.Include(x => x.Osoblje.Korisnici).OrderBy(x => x.Osoblje.Korisnici.Ime).ToList(),
+                Text = Text
+            };
+            return View(rezultat);
+
+        }
         // *************** PACIJENT *************** 
 
         public IActionResult IndexPacijenta()

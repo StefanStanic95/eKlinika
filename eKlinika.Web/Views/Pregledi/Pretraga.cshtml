@@ -32,17 +32,19 @@
         <div class="row">
             <table class="table table-condensed">
                 <thead>
-                <th>Doktor</th>
-                <th>Pacijent</th>
-                <th>Datum pregleda</th>
-                <th>Akcija</th>
+                    <tr>
+                        <th>Doktor</th>
+                        <th>Pacijent</th>
+                        <th>Datum pregleda</th>
+                        <th>Akcija</th>
+                    </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model.Pregledi)
                     {
                         <tr>
                             <td>@(item.Doktor.Osoblje.Korisnici.Ime+" "+ item.Doktor.Osoblje.Korisnici.Prezime)</td>
-                            <td>@(item.Pacijent.Korisnici.Ime+" "+ item.Pacijent.Korisnici.Ime)</td>
+                            <td>@(item.Pacijent.Korisnici.Ime+" "+ item.Pacijent.Korisnici.Prezime)</td>
                             <td>@(item.DatumPregleda.ToString("dd.MM.yyyy"))</td>
                             <td><a asp-action="Details" asp-controller="Pregledi" asp-route-Id="@item.Id" class="btn btn-danger">Detalji</a></td>
                         </tr>

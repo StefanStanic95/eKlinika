@@ -111,7 +111,7 @@ namespace eKlinika.Controllers
             _db.Add(pacijent);
             _db.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Pretraga");
         }
 
         public IActionResult Pretraga(string Text=" ")

@@ -15,7 +15,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace eKlinika.Controllers
 {
-    [Autorizacija(apotekar:true, administrator: true)]
+    [Autorizacija(apotekar: true, administrator: true)]
     public class ApotekaController : Controller
     {
         private ApplicationDbContext _context;
@@ -26,8 +26,8 @@ namespace eKlinika.Controllers
         public ApotekaController(ApplicationDbContext context)
         {
             _context = context;
-            
-            
+
+
         }
 
         //LIJEKOVI
@@ -59,16 +59,17 @@ namespace eKlinika.Controllers
 
         public IActionResult Dodaj()
         {
-            List<SelectListItem> proizvodjaci = _context.Proizvodjac.Select(p=>new SelectListItem {
-                 Value = p.Id.ToString(),
-                 Text = p.Naziv
+            List<SelectListItem> proizvodjaci = _context.Proizvodjac.Select(p => new SelectListItem
+            {
+                Value = p.Id.ToString(),
+                Text = p.Naziv
             }).ToList();
 
-            
+
             LijekDodajVM model = new LijekDodajVM
             {
                 Proizvodjaci = proizvodjaci
-            };  
+            };
 
             return View(model);
         }
@@ -94,7 +95,7 @@ namespace eKlinika.Controllers
                 _context.Add(noviLijek);
                 _context.SaveChanges();
             }
-            
+
 
             return RedirectToAction("LijekLibrary");
         }
@@ -121,7 +122,7 @@ namespace eKlinika.Controllers
         public IActionResult UrediLijek(int Id)
         {
             Lijek lijek = _context.Lijek
-                .Include(l=>l.Proizvodjac)
+                .Include(l => l.Proizvodjac)
                 .FirstOrDefault(l => l.Id == Id);
 
             List<SelectListItem> proizvodjaci = _context.Proizvodjac.Select(p => new SelectListItem
@@ -144,7 +145,7 @@ namespace eKlinika.Controllers
                 Proizvodjac = lijek.Proizvodjac.Naziv.ToString(),
                 Proizvodjaci = proizvodjaci
             };
-            
+
             return View(model);
         }
 
@@ -165,31 +166,32 @@ namespace eKlinika.Controllers
                 lijek.UkupnoNaStanju = model.UkupnoNaStanju;
                 lijek.Uputstvo = model.Uputstvo;
                 _context.SaveChanges();
-                
+
             }
             return RedirectToAction("LijekLibrary");
         }
-       
+
         public IActionResult IzbrisiLijek(int Id)
         {
-            Lijek lijek = _context.Lijek.FirstOrDefault(l=>l.Id == Id);
+            Lijek lijek = _context.Lijek.FirstOrDefault(l => l.Id == Id);
 
-            if(lijek != null) { 
-            _context.Lijek.Remove(lijek);
-            _context.SaveChanges();
+            if (lijek != null)
+            {
+                _context.Lijek.Remove(lijek);
+                _context.SaveChanges();
             }
             return RedirectToAction("LijekLibrary");
         }
 
-        
+
         public IActionResult LijekSearch(string search)
         {
             string searchTxt = search.ToLower();
 
 
             var listaLijekova = _context.Lijek.Where(l => l.Naziv.ToLower().Contains(searchTxt));
-            
-           
+
+
             var lijekovi = listaLijekova.Select(l => new LijekVM
             {
                 Id = l.Id,
@@ -211,7 +213,7 @@ namespace eKlinika.Controllers
             return View("LijekLibrary", model);
 
         }
-        
+
         //APOTEKARACUNI
 
         public IActionResult RacuniRecepti()
@@ -274,7 +276,7 @@ namespace eKlinika.Controllers
             };
 
             int id = 0;
-            foreach(var lijek in model2.LijekoviIds)
+            foreach (var lijek in model2.LijekoviIds)
             {
                 id = Convert.ToInt32(lijek);
                 model2.LijekoviNazivi.Add(_context.Lijek.FirstOrDefault(l => l.Id == id).Naziv);
@@ -285,7 +287,7 @@ namespace eKlinika.Controllers
 
 
             return View(model2);
-            }
+        }
 
         [HttpPost]
         public IActionResult IzdavanjeRacunaSave(ApotekaRacunVM2 model)
@@ -310,7 +312,7 @@ namespace eKlinika.Controllers
 
                 lijek = _context.Lijek.FirstOrDefault(l => l.Id == id);
 
-                if(lijek.UkupnoNaStanju - model.Kolicine[i] <= 0)
+                if (lijek.UkupnoNaStanju - model.Kolicine[i] <= 0)
                 {
                     lijek.UkupnoNaStanju = 0;
                 }
@@ -318,7 +320,7 @@ namespace eKlinika.Controllers
                 {
                     lijek.UkupnoNaStanju -= model.Kolicine[i];
                 }
-                    
+
                 _context.Add(new RacunStavka
                 {
                     ApotekaRacunId = racunId,
@@ -372,7 +374,7 @@ namespace eKlinika.Controllers
             Korisnici pacijent = new Korisnici();
             Korisnici doktor = new Korisnici();
 
-            foreach(var item in recepti)
+            foreach (var item in recepti)
             {
                 pacijent = _context.Korisnici.FirstOrDefault(u => u.Id == item.PacijentId);
                 doktor = _context.Korisnici.FirstOrDefault(u => u.Id == item.DoktorId);
@@ -391,11 +393,20 @@ namespace eKlinika.Controllers
 
         public IActionResult ObradiRecept(int Id)
         {
-            Recept recept = _context.Recept.Include(r=>r.Pregled).FirstOrDefault(r => r.Id == Id);
+            Recept recept = _context.Recept.Include(r => r.Pregled).FirstOrDefault(r => r.Id == Id);
 
-            if(HttpContext.GetUlogaKorisnika(0).Naziv == "Apotekar")
+            var UserId = 0;
+            if (HttpContext.GetUlogaKorisnika(0).Naziv == "Apotekar")
+                UserId = HttpContext.GetLogiraniKorisnik().Id;
+            else
             {
-                var UserId = HttpContext.GetLogiraniKorisnik().Id;
+                var apotekar = _context.Apotekar.FirstOrDefault();
+                if (apotekar != null)
+                    UserId = apotekar.Id;
+            }
+
+            if (UserId != 0)
+            {
 
                 ApotekaRacun racun = new ApotekaRacun
                 {
@@ -421,9 +432,9 @@ namespace eKlinika.Controllers
 
 
                 _context.SaveChanges();
+
+                return RedirectToAction("RacunDetalji", new { Id = racun.Id } );
             }
-
-
 
             return RedirectToAction("IzdatiRacuniIndex");
         }
@@ -536,7 +547,7 @@ namespace eKlinika.Controllers
 
             model.Artikli = artikli;
 
-            foreach(var artikal in artikli)
+            foreach (var artikal in artikli)
             {
                 model.UkupniIznos += artikal.Cijena * artikal.Kolicina;
             }
@@ -558,7 +569,7 @@ namespace eKlinika.Controllers
             };
 
             return PartialView("RacunStavkaDodaj", model);
-    }
+        }
 
         //NARUDZBE
         public IActionResult IndexNarudzbi()
@@ -581,13 +592,13 @@ namespace eKlinika.Controllers
 
         public IActionResult DodajNarudzbu()
         {
-            
+
             List<SelectListItem> dobavljaci = _context.Dobavljac.Select(d => new SelectListItem
             {
                 Value = d.Id.ToString(),
                 Text = d.Naziv
             }).ToList();
-            
+
             List<SelectListItem> lijekovi = _context.Lijek.Select(l => new SelectListItem
             {
                 Value = l.Id.ToString(),
@@ -608,28 +619,29 @@ namespace eKlinika.Controllers
         [HttpPost]
         public IActionResult DodajNarudzbu(NarudzbaDodajVM model)
         {
-            if (ModelState.IsValid) { 
-            Narudzba novaNarudzba = new Narudzba
+            if (ModelState.IsValid)
             {
-                DatumIsporuke = null,
-                DatumNarudzbe = model.DatumNarudzbe,
-                DobavljacId = Convert.ToInt32(model.DobavljacId),
-                Iznos = 0
-            };
+                Narudzba novaNarudzba = new Narudzba
+                {
+                    DatumIsporuke = null,
+                    DatumNarudzbe = model.DatumNarudzbe,
+                    DobavljacId = Convert.ToInt32(model.DobavljacId),
+                    Iznos = 0
+                };
 
-            _context.Add(novaNarudzba);
-            _context.SaveChanges();
-            
-            int id = _context.Narudzba.Last().Id;
+                _context.Add(novaNarudzba);
+                _context.SaveChanges();
 
-            NarudzbaStavka novaStavka = new NarudzbaStavka
-            {
-                Kolicina = model.Kolicina,
-                LijekId = Convert.ToInt32(model.LijekId),
-                NarudzbaId = id
-            };
-            _context.Add(novaStavka);
-            _context.SaveChanges();
+                int id = _context.Narudzba.Last().Id;
+
+                NarudzbaStavka novaStavka = new NarudzbaStavka
+                {
+                    Kolicina = model.Kolicina,
+                    LijekId = Convert.ToInt32(model.LijekId),
+                    NarudzbaId = id
+                };
+                _context.Add(novaStavka);
+                _context.SaveChanges();
 
                 return RedirectToAction("IndexNarudzbi");
             }
@@ -646,7 +658,7 @@ namespace eKlinika.Controllers
                 Id = narudzba.Id,
                 DatumNarudzbe = narudzba.DatumNarudzbe,
                 Dobavljac = narudzba.Dobavljac.Naziv,
-                IznosNarudzbe = _context.NarudzbaStavka.Where(n => n.NarudzbaId == id).Sum(x=>x.Lijek.CijenaPoKomadu * x.Kolicina),
+                IznosNarudzbe = _context.NarudzbaStavka.Where(n => n.NarudzbaId == id).Sum(x => x.Lijek.CijenaPoKomadu * x.Kolicina),
                 Stavke = _context.NarudzbaStavka.Include(n => n.Lijek)
                 .Where(n => n.NarudzbaId == id)
                 .Select(x => new NarudzbaStavkaIndexVM
@@ -665,7 +677,7 @@ namespace eKlinika.Controllers
 
         public IActionResult NarudzbaFinaliziraj(NarudzbaIndexVM model)
         {
-            
+
             Narudzba narudzba = _context.Narudzba.FirstOrDefault(n => n.Id == model.Id);
             narudzba.DatumIsporuke = DateTime.Now;
             _context.SaveChanges();
@@ -690,7 +702,7 @@ namespace eKlinika.Controllers
         {
             Narudzba narudzba = _context.Narudzba.FirstOrDefault(n => n.Id == Id);
 
-            if(narudzba != null)
+            if (narudzba != null)
             {
                 _context.Narudzba.Remove(narudzba);
                 _context.SaveChanges();
