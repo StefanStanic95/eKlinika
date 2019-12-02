@@ -37,11 +37,17 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill" Grid.Row="1" Grid.ColumnSpan="2">
+                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Vertical">
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                         <ContentView Padding="0,20,0,20" VerticalOptions="FillAndExpand">
                             <Image x:Name="Profilna" Source="{Binding Korisnik.Slika, Converter={StaticResource imgConv}}" VerticalOptions="Center" HeightRequest="160" />
                         </ContentView>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical">
+                        <ActivityIndicator x:Name="uploadIndicator" IsVisible="False" IsRunning="False" Color="DodgerBlue" />
+                        <Button x:Name="btnSelectPic" Text="Odaberi sliku iz galerije" Clicked="btnSelectPic_Clicked" BackgroundColor="DodgerBlue" TextColor="White" />
+                        <Button x:Name="btnTakePic" Text="Odaberi sliku preko kamere" Clicked="btnTakePic_Clicked" BackgroundColor="DodgerBlue" TextColor="White" />
                     </StackLayout>
                 </StackLayout>
 
@@ -90,7 +96,7 @@
                 <Label Grid.Row="16" Grid.Column="0" Text="Potvrda lozinke:" FontSize="14" FontAttributes="Bold"></Label>
                 <Entry Grid.Row="16" Grid.Column="1"  Text="{Binding LozinkaPotvrda}" FontSize="14" IsPassword="True"/>
 
-                <Button Grid.Row="17" Grid.Column="0" Grid.ColumnSpan="2" Text="Sačuvaj izmjene" Command="{Binding SacuvajIzmjeneCommand}"/>
+                <Button Grid.Row="17" Grid.Column="0" Grid.ColumnSpan="2" Text="Sačuvaj izmjene" x:Name="btnSave"  Command="{Binding SacuvajIzmjeneCommand}"/>
             </Grid>
 
         </StackLayout>
