@@ -47,7 +47,7 @@ namespace eKlinika.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connection = @"Server=.;Database=eKlinika;Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = Configuration.GetConnectionString("eKlinikaConnString");
             services.AddDbContext<eKlinikaContext>(options => options.UseSqlServer(connection));
 
             services.AddMvc(x => x.Filters.Add<ErrorFilter>()).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

@@ -49,7 +49,7 @@ namespace eKlinika.WebAPI.Database
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=.;Database=eKlinika;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=eklinika-sql,1433;Database=eKlinika;User=sa;Password=eKlinika123!;ConnectRetryCount=0");
             }
         }
 
