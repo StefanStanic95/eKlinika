@@ -44,5 +44,5 @@ Password: test
 Ovaj projekat koristi Stripe TEST mode integraciju, te je online kupovinu moguće vršiti uz pomoć sljedećih podataka:
 
 Card number: `4242 4242 4242 4242`  
-Security code: _(bilo koji 3-cifreni)_ 
-Expiration date: _(bilo koji mjesec i godina u budućnosti)_
+Security code: _(bilo koji 3-cifreni)_  
+Expiration date: _(bilo koji mjesec i godina u budućnosti)_  
