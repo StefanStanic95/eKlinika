@@ -5,7 +5,7 @@ eKlinika je informacijski sistem koji dozvoljava evidentiranje uputnica, pregled
 eKlinika podržava više korisničkih uloga, te za svaku ulogu postoje pristupni podaci namijenjeni za testiranje funkcionalnosti.  
 Ovisno o ulozi prijavljenog korisnika, na desktop aplikaciji će biti dostupne razlicite funkcionalnosti odobrene za koristenje od strane te uloge.
 
-## Pristupnci podaci:
+## Pristupnci podaci
 
 ### Windows Forms Desktop aplikacija
 
@@ -28,3 +28,13 @@ Password: test
 
 Username: pacijent
 Password: test
+
+## Konfiguracija okruženja za rad aplikacije
+
+1. Run `git clone https://github.com/StefanStanic95/eKlinika.git`
+2. U glavnom folderu pokrenuti komandu `docker-compose up`
+3. Nakon downloada svakog image-a, pokrenut će se API i SQL server docker container, ali je očekivano da API container daje error u vezi spajanja na database.
+4. Logirati se na SQL server preko adrese `localhost,1401` i `SQL Server Authentication` koristeći Login `sa` i Password `eKlinika123!`
+5. Uraditi import SQL skripte `eKlinika_skripta.sql` prilikom čega će se kreirati baza podatka sa testnim podacima
+6. Po potrebi, restartati container `eklinika-api` ukoliko se nije uspješno upalio u kraćem roku
+5. Testirati Windows Forms aplikaciju, Xamarin ili API po želji
