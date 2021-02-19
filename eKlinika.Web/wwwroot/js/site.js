@@ -1,1 +1,0 @@
-﻿$.validator.setDefaults({ ignore: ":hidden:not(select)" })
