@@ -39,6 +39,13 @@ Password: test
 6. Po potrebi, restartati container `eklinika-api` ukoliko se nije uspješno upalio u kraćem roku
 5. Testirati Windows Forms aplikaciju, Xamarin ili API po želji
 
+## Konekcija na bazu
+
+U projektu su navedena 2 različita _connection string_-a, i to:
+- **eKlinikaConnString** (default) za spajanje dockerizovanog ASP.NET API-ja na SQL Server koji je također Docker okruženju, port 1433
+- **eKlinikaDirectConnection** Za direktno spajanje na dockerizovani SQL server, dok se ASP.NET API nalazi na host machine, port 1401 (korisno prilikom debugiranja API-ja koristeći Visual studio)
+
+
 ## Testiranje online payment sistema
 
 Ovaj projekat koristi Stripe TEST mode integraciju, te je online kupovinu moguće vršiti uz pomoć sljedećih podataka:
