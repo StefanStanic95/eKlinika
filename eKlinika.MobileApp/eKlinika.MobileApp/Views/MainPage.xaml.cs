@@ -38,6 +38,9 @@ namespace eKlinika.MobileApp.Views
                     case (int)MenuItemType.Pregledi:
                         MenuPages.Add(id, new NavigationPage(new PreglediPage()));
                         break;
+                    case (int)MenuItemType.ApotekaRacuni:
+                        MenuPages.Add(id, new NavigationPage(new ApotekaRacuniPage()));
+                        break;
                 }
             }
 

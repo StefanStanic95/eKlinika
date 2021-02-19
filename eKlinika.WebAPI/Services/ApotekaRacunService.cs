@@ -6,7 +6,9 @@ using AutoMapper;
 using eKlinika.Model;
 using eKlinika.Model.Requests;
 using eKlinika.WebAPI.Database;
+using eKlinika.WebAPI.Security;
 using Microsoft.EntityFrameworkCore;
+using Stripe;
 
 namespace eKlinika.WebAPI.Services
 {
@@ -27,6 +29,10 @@ namespace eKlinika.WebAPI.Services
             if (request?.DatumIzdavanja != null)
             {
                 query = query.Where(x => x.DatumIzdavanja.Date == request.DatumIzdavanja.Value.Date);
+            }
+            if(BasicAuthenticationHandler.korisnik.Pacijent != null)
+            {
+                query = query.Where(x => x.PacijentId == BasicAuthenticationHandler.korisnik.Id);
             }
 
             query = query.Include(x => x.Pacijent.Korisnik).Include(x => x.Apotekar.Osoblje.Korisnik);
@@ -89,5 +95,36 @@ namespace eKlinika.WebAPI.Services
             return _mapper.Map<Model.ApotekaRacun>(entity);
         }
 
+        public object UplataIzvrsena(int Id, string PaymentMethodId)
+        {
+            var result = _context.ApotekaRacun.Include("RacunStavka.Lijek").Where(x => x.Id == Id);
+            var entity = result.FirstOrDefault();
+            if (entity == null)
+                return null;
+
+            var paymentIntents = new PaymentIntentService();
+            long amount = (long)entity.RacunStavka.Sum(x => x.Lijek.CijenaPoKomadu * x.Kolicina);
+
+            try
+            {
+
+                var paymentIntent = paymentIntents.Create(new PaymentIntentCreateOptions
+                {
+                    Amount = amount * 100,
+                    PaymentMethod = PaymentMethodId,
+                    Confirm = true,
+                    Currency = "usd"
+                });
+
+                entity.DatumUplate = DateTime.Now;
+                _context.SaveChanges();
+
+                return paymentIntent;
+            }
+            catch (Exception ex)
+            {
+                return new { Error = ex.Message };
+            }
+        }
     }
 }

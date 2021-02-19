@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eKlinika.MobileApp.Views.ApotekaRacuniPage"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout>
+
+
+            <ListView ItemsSource="{Binding ListRacuni}">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="20">
+                                <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
+                                    <Label Text="Datum izdavanja:" FontSize="14" FontAttributes="Bold"/>
+                                    <Label Text="{Binding DatumIzdavanjaStr}" FontSize="14"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
+                                    <Label Text="Datum uplate:" FontSize="14" FontAttributes="Bold"/>
+                                    <Label Text="{Binding DatumUplateStr}" FontSize="14"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="0">
+                                    <Label Text="Račun izdao apotekar:" FontSize="14" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Apotekar.Osoblje.ImePrezime}" FontSize="14"/>
+                                </StackLayout>
+
+
+                                <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
+                                    <Label Text="{Binding Iznos, StringFormat='{0:C}'}" FontSize="18" FontAttributes="Bold"/>
+                                </StackLayout>
+
+                                <StackLayout IsVisible="{Binding RacunNeplacen}" Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+                                    <Button Text="Online Uplata" Clicked="Button_Clicked"/>
+                                </StackLayout>
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

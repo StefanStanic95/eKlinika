@@ -17,6 +17,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Stripe;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
@@ -48,11 +49,12 @@ namespace eKlinika.WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             var connection = Configuration.GetConnectionString("eKlinikaConnString");
+            //var connection = Configuration.GetConnectionString("eKlinikaDirectConnection");
             services.AddDbContext<eKlinikaContext>(options => options.UseSqlServer(connection));
 
             services.AddMvc(x => x.Filters.Add<ErrorFilter>()).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddAutoMapper();
-            
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "eKlinika API", Version = "v1" });
@@ -82,11 +84,16 @@ namespace eKlinika.WebAPI
             services.AddScoped<IService<Model.Proizvodjac, object>, BaseService<Model.Proizvodjac, object, Proizvodjac>>();
             services.AddScoped<IService<Model.Dobavljac, object>, BaseService<Model.Dobavljac, object, Dobavljac>>();
 
+            services.AddCors(allowsites => {
+                allowsites.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider services)
         {
+            StripeConfiguration.ApiKey = "sk_test_51INB7pFoCnvSBaJrXTHULZKslthd4h0NYxgVsDneyFEbxLZBjwzhNTU2l53P8QZFH9ikGd4l7tmOXEPviWESRnP500XmN6G9zd";
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -109,6 +116,7 @@ namespace eKlinika.WebAPI
             //app.UseHttpsRedirection();
             app.UseMvc();
             app.UseSwagger();
+            app.UseCors(options => options.AllowAnyOrigin());
 
             CreateUserRoles(services);
         }
@@ -123,7 +131,7 @@ namespace eKlinika.WebAPI
             {
                 if (db.Uloge.Where(x => x.Naziv == naziv).Any())
                     continue;
-                
+
                 db.Uloge.Add(new Uloge { Naziv = naziv });
             }
 
@@ -153,7 +161,7 @@ namespace eKlinika.WebAPI
             k.LozinkaSalt = KorisniciService.GenerateSalt();
             k.LozinkaHash = KorisniciService.GenerateHash(k.LozinkaSalt, password);
 
-            if(UserManager.GetByEmail(k.Email) == null)
+            if (UserManager.GetByEmail(k.Email) == null)
             {
                 db.Korisnici.Add(k);
                 db.SaveChanges();

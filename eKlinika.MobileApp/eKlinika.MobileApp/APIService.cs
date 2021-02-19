@@ -17,10 +17,10 @@ namespace eKlinika.MobileApp
         private readonly string _route;
 
 #if DEBUG
-        private string _apiUrl = "http://localhost:5000/api";
+        public static string ApiUrl = "http://localhost:5000/api";
 #endif
 #if RELEASE
-        private string _apiUrl = "https://mywebsite.azure.com/api/";
+        public static string ApiUrl = "https://mywebsite.azure.com/api/";
 #endif
 
         public APIService(string route)
@@ -30,7 +30,7 @@ namespace eKlinika.MobileApp
 
         public async Task<T> Get<T>(object search, string action = null)
         {
-            var url = $"{_apiUrl}/{_route}";
+            var url = $"{ApiUrl}/{_route}";
             if (action != null)
             {
                 url += "/";
@@ -60,14 +60,14 @@ namespace eKlinika.MobileApp
 
         public async Task<T> GetById<T>(object id)
         {
-            var url = $"{_apiUrl}/{_route}/{id}";
+            var url = $"{ApiUrl}/{_route}/{id}";
 
             return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
         }
 
         public async Task<T> Insert<T>(object request)
         {
-            var url = $"{_apiUrl}/{_route}";
+            var url = $"{ApiUrl}/{_route}";
 
             try
             {
@@ -93,7 +93,7 @@ namespace eKlinika.MobileApp
         {
             try
             {
-                var url = $"{_apiUrl}/{_route}";
+                var url = $"{ApiUrl}/{_route}";
 
                 if (action != "")
                     url += "/" + action;

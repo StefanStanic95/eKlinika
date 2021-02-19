@@ -23,6 +23,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\ApotekaRacuniPage.xaml.cs">
+      <DependentUpon>ApotekaRacuniPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ApotekaRacuniUplataPage.xaml.cs">
+      <DependentUpon>ApotekaRacuniUplataPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\UrediProfilPage.xaml.cs">
       <DependentUpon>UrediProfilPage.xaml</DependentUpon>
     </Compile>
@@ -32,6 +38,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Views\ApotekaRacuniUplataPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\LoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

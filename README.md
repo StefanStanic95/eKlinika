@@ -43,6 +43,16 @@ Password: test
 
 Ovaj projekat koristi Stripe TEST mode integraciju, te je online kupovinu moguće vršiti uz pomoć sljedećih podataka:
 
+Za testiranje payment sistema, potrebno je logirati se na Xamarin aplikaciju.  
+Nakon toga treba odabrati stavku menija **Apotekarski računi**, te na kraju odabrati neplaćeni račun klikom na dugme **Online Uplata**.
+
 Card number: `4242 4242 4242 4242`  
 Security code: _(bilo koji 3-cifreni)_  
 Expiration date: _(bilo koji mjesec i godina u budućnosti)_  
+
+## Testiranje sistema preporuke
+
+Sistem preporuke radi na način da preporuči odgovaraćuje doktore, ovisno o dijagnozi i bolesti koja je ustanovljena na pregledu pacijenta.  
+Prilikom preporuke uzete su u obzir specijaizacije doktora, te specijalizacije relevantne za ustanovljenu dijagnozu koja je rezultirala iz datog ljekarskog pregleda.
+
+Sistem je moguće testirati na Xamarin aplikaciji, pod stavkom "**Pregledi pacijenta**".

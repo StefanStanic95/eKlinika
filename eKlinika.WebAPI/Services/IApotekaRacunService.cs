@@ -1,4 +1,6 @@
-﻿using eKlinika.Model.Requests;
+﻿using eKlinika.Model;
+using eKlinika.Model.Requests;
+using Stripe;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +17,6 @@ namespace eKlinika.WebAPI.Services
         Model.ApotekaRacun Insert(ApotekaRacunInsertRequest request);
 
         Model.ApotekaRacun Update(int id, ApotekaRacunInsertRequest request);
+        object UplataIzvrsena(int id, string PaymentMethodId);
     }
 }

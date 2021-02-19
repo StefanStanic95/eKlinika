@@ -22,6 +22,7 @@ namespace eKlinika.MobileApp.Views
                 new HomeMenuItem {Id = MenuItemType.Uplate, Title="Uplate" },
                 new HomeMenuItem {Id = MenuItemType.Uputnice, Title="Uputnice" },
                 new HomeMenuItem {Id = MenuItemType.Pregledi, Title="Pregledi" },
+                new HomeMenuItem {Id = MenuItemType.ApotekaRacuni, Title="Apotekarski računi" },
             };
 
             ListViewMenu.ItemsSource = menuItems;

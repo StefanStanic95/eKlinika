@@ -9,7 +9,8 @@ namespace eKlinika.MobileApp.Models
         MojProfil,
         Uplate,
         Uputnice,
-        Pregledi
+        Pregledi,
+        ApotekaRacuni
     }
     public class HomeMenuItem
     {
