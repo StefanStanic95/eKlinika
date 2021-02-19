@@ -1,0 +1,31 @@
+version: '3'
+services:
+#mssql docker
+  eklinika-sql:
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    restart: unless-stopped
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=eKlinika123!
+      - MSSQL_PID=Enterprise
+    ports:
+      - 1401:1433
+    networks:
+      - eklinikanet
+
+  eklinika-api:
+    restart: unless-stopped
+    build:
+      context: .
+    ports:
+      - 5000:80
+    networks:
+      - eklinikanet      
+    links:
+      - eklinika-sql
+    depends_on:
+      - eklinika-sql
+      
+networks:
+  eklinikanet:
+    driver: bridge      
