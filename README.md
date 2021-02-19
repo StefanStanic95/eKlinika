@@ -9,24 +9,24 @@ Ovisno o ulozi prijavljenog korisnika, na desktop aplikaciji će biti dostupne r
 
 ### Windows Forms Desktop aplikacija
 
-Username: admin
+Username: admin  
 Password: test
 
-Username: doktor
+Username: doktor  
 Password: test
 
-Username: medsestra
+Username: medsestra  
 Password: test
 
-Username: apotekar
+Username: apotekar  
 Password: test
 
-Username: referent
+Username: referent  
 Password: test
 
 ### Xamarin Crossplatform aplikacija 
 
-Username: pacijent
+Username: pacijent  
 Password: test
 
 ## Konfiguracija okruženja za rad aplikacije
@@ -38,3 +38,11 @@ Password: test
 5. Uraditi import SQL skripte `eKlinika_skripta.sql` prilikom čega će se kreirati baza podatka sa testnim podacima
 6. Po potrebi, restartati container `eklinika-api` ukoliko se nije uspješno upalio u kraćem roku
 5. Testirati Windows Forms aplikaciju, Xamarin ili API po želji
+
+## Testiranje online payment sistema
+
+Ovaj projekat koristi Stripe TEST mode integraciju, te je online kupovinu moguće vršiti uz pomoć sljedećih podataka:
+
+Card number: `4242 4242 4242 4242`
+Security code: (bilo koji 3-cifreni)
+Expiration date: Bilo koji mjesec i godina u budućnosti
